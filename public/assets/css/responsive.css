@@ -20,6 +20,13 @@
   header .menu li {
     margin-right: 20px;
   }
+    .title-menu{
+        font-size:32px;
+        margin-bottom: 15px;
+    }
+  .create{
+      font-size: 18px;
+  }
   header .button-header .custom-btn {
     /*width: 98px;*/
   }
@@ -66,14 +73,61 @@
     margin-top: -5px;
   }
 }
-@media only screen and (min-width: 991px) and (max-width: 1200px) {}
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+    .content-order .register-img img,
+    .login-img img{
+        max-width: 90%;;
+    }
+
+    .register-bg form, .sign-up form{
+        width: 460px !important;
+        padding: 40px 45px 25px 45px !important;
+
+    }
+    .login-bg form .form-group, .sign-up form .form-group{
+        margin-bottom: 20px;
+    }
+
+}
 @media only screen and (min-width: 991px) and (max-width: 1200px) {
   /*==================================
 	=            Index.html            =
 	==================================*/
+    .login-bg{
+        padding-left: 5px;
+    }
+    .participation-form{
+        padding: 0;
+    }
+    .title-menu{
+        font-size:30px;
+        margin-bottom: 15px;
+    }
+    .login-container ,.register-container {
+        width: 90% !important;
+    }
+
+    .create{
+        font-size: 18px;
+    }
+    .register-bg form, .sign-up form{
+        width: auto !important;
+        padding: 35px 40px 20px 38px !important;
+
+    }
+    .section-contact .contact-us-bg form{
+        float: none;
+    }
+    .login-bg form .form-group, .sign-up form .form-group{
+        margin-bottom: 15px;
+    }
   header.transparent {
     padding: 20px 0 0;
   }
+  .content-order .register-img img{
+        max-width: 85%;;
+  }
+
   header .button-header .custom-btn {
     /*width: 91px;*/
   }
@@ -184,10 +238,7 @@
   .order {
     margin-bottom: 120px;
   }
-  .tab-content,
-  .login-bg {
-    padding-bottom: 150px;
-  }
+
   /*=====  End of order.html  ======*/
   /*====================================
 	=            contact.html            =
@@ -203,7 +254,170 @@
   }
   /*=====  End of contact.html  ======*/
 }
+@media only screen and  (max-width: 1000px) {
+    .login-img img{
+        margin-top: 140px;
+        max-width: 100%;
+    }
+    .section-contact .images-bg-fix .text-section{
+        padding: 0 30px;
+    }
+    .content-order .register-img img{
+        max-width: 40%;
+        margin-top: 100px;
+    }
+    .login-bg form .form-group, .sign-up form .form-group{
+        margin-bottom: 15px;
+    }
+    .login-form{
+        float: none;
+    }
+    .participation-form{
+        float: right !important;
+    }
+    .login-bg form .form-group label, .sign-up form .form-group{
+        margin-bottom: 10px;
+    }
+    .login-img img{
+        margin-top: 120px;
+
+    }
+
+}
+@media only screen and (min-width: 1000px) and  (max-width: 1200px) {
+    .section-contact .images-bg-fix .text-section{
+        padding: 0 30px;
+    }
+    .title-head{
+        font-size: 25px;
+        margin-bottom: 0px;
+    }
+    .login-img img {
+        margin-top: 120px;
+        max-width: 100%;
+    }
+    .contact-us-bg form{
+        margin-left: 10px;
+        padding: 40px 40px 30px 40px !important;
+    }
+    .section-contact .images-bg-fix .text-section p{
+        font-size: 22px;
+    }
+}
+@media only screen and (min-width: 1400px) and  (max-width: 1600px) {
+    .contact-us-bg form{
+        width: 580px !important;
+
+    }
+}
+@media only screen and (min-width: 1200px) and  (max-width: 1400px) {
+    .contact-us-bg form{
+        width: 530px !important;
+
+    }
+    .section-contact .images-bg-fix .text-section p{
+        font-size: 22px;
+    }
+}
+@media only screen and (min-width: 1100px) and  (max-width: 1200px) {
+    .contact-us-bg form {
+        width: 500px !important;
+    }
+
+}
+@media only screen and (min-width: 990px) and  (max-width: 1100px) {
+    .contact-us-bg form{
+        width: 450px !important;
+
+    }
+}
+@media only screen and (min-width: 800px) and  (max-width: 991px) {
+    .contact-us-bg form{
+        width: 450px !important;
+    }
+    .section-contact .images-bg-fix .text-section p{
+        font-size: 20px;
+        line-height: 26px;
+
+    }
+    .images-bg-fix{
+        padding-top: 55px;
+    }
+}
+@media (min-width: 768px){
+    .container {
+        width: 90%;
+    }
+}
+@media only screen and (min-width: 500px) and  (max-width: 799px) {
+    .contact-us-bg form{
+        width: 420px !important;
+    }
+    .title-head{
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+}
+@media only screen and (min-width: 1200px) and  (max-width: 1600px) {
+    .login-img img {
+        margin-top: 120px;
+        max-width: 100%;
+    }
+    .section-contact .images-bg-fix .text-section{
+        padding: 0 50px;
+    }
+    footer .widget-footer{
+        margin-bottom: 5px;
+        padding: 4px;
+        width: 25%;
+    }
+
+
+    .widget-footer form input{
+        width: 290px;
+    }
+    .contact-us-bg form{
+        padding: 40px 35px 40px 35px !important;
+    }
+    footer {
+
+    }
+
+}
+@media only screen and  (max-width: 1600px) {
+
+    .content-order .register-img img{
+        margin-top: 100px;
+    }
+    footer .widget-footer .social-icon li{
+        width: 45px;
+    }
+    .create{
+        line-height: 25px;
+    }
+}
+
 @media only screen and (min-width: 670px) and (max-width: 991px) {
+
+    .register-bg form, .sign-up form{
+        width: 440px !important;
+        padding: 35px 40px 20px 38px !important;
+
+    }
+    .title-menu{
+        font-size:28px;
+        margin-bottom: 10px;
+    }
+
+    .title-head{
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+
+    .login-img img{
+        padding-top: 40px;
+    }
     .base-slider .inside {
         left: 53%;
     }
@@ -220,9 +434,8 @@
         float: right;
     }
     .contact-us-bg form {
-        width: 440px !important;
+
         padding: 30px 35px 20px 35px !important;
-        background-color: #392891 !important;
     }
     .widget-footer form input{
         width: 230px;
@@ -327,11 +540,19 @@
     margin-bottom: 100px;
   }
   footer .widget-footer {
-    width: 33%;
+    /*width: 33%; /*width: 33%;*/
     word-wrap: break-word;
+      margin-bottom: 10px;
+      padding: 5px;
   }
+    .widget-footer .links{
+        width: 90%;
+    }
+    footer .footer-logo .logo{
+        float: none;
+    }
   footer .widget-footer:nth-child(3n+1) {
-    clear: both;
+    /*clear: both;*/
   }
   footer .widget-footer.last {
     width: 33%;
@@ -369,6 +590,12 @@
   .sign-up {
     margin: 0 15px;
   }
+    .participation-form{
+        margin: 0px !important;
+    }
+    .section-contact .login-bg {
+        margin: 0px;
+    }
   /*=====  End of About.html  ======*/
   /*=========================================
 	=            service-page.html            =
@@ -472,11 +699,11 @@
   .form-contact {
     margin: -200px auto 150px;
   }
-  .form-contact form,
-  .login-bg form,
-  .sign-up form {
-    margin: 0 15px;
-  }
+  /*.form-contact form,*/
+  /*.login-bg form,*/
+  /*.sign-up form {*/
+  /*  margin: 0 15px;*/
+  /*}*/
   .contact .mobile-menu .inside {
     padding: 0;
   }
@@ -489,14 +716,24 @@
   .contact .inside.right {
     padding-left: 0;
   }
-  .login-bg form,
-  .sign-up form {
-    margin: 30px auto;
-  }
+  /*.login-bg form,*/
+  /*.sign-up form {*/
+  /*  margin: 30px auto;*/
+  /*}*/
   .login-page header {
     background-color: #0479ec;
   }
   /*=====  End of contact.html  ======*/
+}
+@media only screen and (max-width:1000px) {
+    footer .container {
+        padding-top: 25px;
+    }
+}
+@media only screen and (min-width:900px) {
+    .participation-footer{
+        position: inherit !important;
+    }
 }
 @media only screen and (max-width: 768px) {
   /*==================================
@@ -505,6 +742,7 @@
   header {
     margin-bottom: 60px;
   }
+
   .base-slider .custom-btn {
     font-size: 12px;
     padding: 11px 22px;
@@ -574,19 +812,19 @@
   .pre-footer {
     margin-bottom: -4%;
   }
-  footer .widget-footer {
-    width: 50%;
-  }
+  /*footer .widget-footer {*/
+  /*  width: 50%;*/
+  /*}*/
   footer .widget-footer:nth-child(2n+1) {
     clear: both;
   }
   footer .widget-footer:nth-child(3n+1) {
     clear: initial;
   }
-  footer .widget-footer.last {
-    width: 50%;
-    padding-left: 0;
-  }
+  /*footer .widget-footer.last {*/
+  /*  width: 50%;*/
+  /*  padding-left: 0;*/
+  /*}*/
   /*=====  End of Index.html  ======*/
   /*==================================
 	=            About.html            =
@@ -802,6 +1040,24 @@
     width: 100%;
   }
   /*=====  End of login.html  ======*/
+}
+@media only screen and  (min-width: 500px) and (max-width: 780px){
+    .form-contact form, .login-bg form, .sign-up form {
+         margin: 0 15px;
+    }
+    .content-order .register-img img{
+        max-width: 40% !important;;
+    }
+    .login-bg form .form-group, .sign-up form .form-group{
+        margin-bottom: 12px;
+    }
+    .content-order .register-img img {
+        max-width: 43% !important;
+    }
+    .register-bg form, .sign-up form {
+        width: 384px !important;
+        padding: 28px 30px 20px 30px !important;
+    }
 }
 @media only screen and (max-width: 480px) {
   /*==================================
