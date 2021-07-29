@@ -16,3 +16,15 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.theme.default.css') }}">
 
+<style>
+    .active{
+        display: block !important;
+    }
+    .de-active{
+        display: none !important;
+    }
+
+    body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+        font-family: Lato !important;
+    }
+</style>

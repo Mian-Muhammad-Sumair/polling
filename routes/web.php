@@ -24,4 +24,10 @@ Route::post('{guard}/login',[App\Http\Controllers\Auth\LoginController::class,'l
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::view('/', 'poll_participation');
+Route::view('/', 'pollParticipation');
+Route::view('/home', 'home');
+Route::view('/register_billing', 'signUpBilling');
+Route::view('/register_poll', 'registerPoll');
+Route::view('/create_poll', 'createPoll');
+Route::view('/select_plan', 'selectPlan');
+Route::view('/dashboard', 'dashboard');
