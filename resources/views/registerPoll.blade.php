@@ -131,9 +131,9 @@
                     <div class="col-md-4 col-sm-4 col-lg-4  second-part">
                         <div class="form-group">
                             <label>Generate polling key</label>
-                            <input type="text" name="key" value="{{ old('key') }}" >
+                            <input type="text" id="key" name="key" value="{{ old('key') }}" >
                             @error('key') <span class="error_msg">{{$message}}</span> @enderror
-                            <div class="custom-btn ">Generate</div>
+                            <div onclick="getkey()" class="custom-btn ">Generate</div>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
@@ -174,6 +174,21 @@
                 x--; //Decrement field counter
             });
         });
+        function makekey() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for (var i = 0; i < 20; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+        function getkey() {
+            var value = "";
+            value=makekey();
+            var key=document.getElementById('key').value=value;
+
+        }
     </script>
 @endsection
 @section('extra_css')
