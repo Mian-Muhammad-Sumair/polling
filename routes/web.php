@@ -23,11 +23,10 @@ Route::get('{guard}/register',[App\Http\Controllers\Auth\RegisterController::cla
 Route::post('{guard}/login',[App\Http\Controllers\Auth\LoginController::class,'login']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::resource('/register_poll', App\Http\Controllers\PollController::class);
 Route::view('/', 'pollParticipation');
-Route::view('/home', 'home');
 Route::view('/register_billing', 'signUpBilling');
-Route::view('/register_poll', 'registerPoll');
+//Route::view('/register_poll', 'registerPoll');
 Route::view('/create_poll', 'createPoll');
 Route::view('/select_plan', 'selectPlan');
 Route::view('/dashboard', 'dashboard');

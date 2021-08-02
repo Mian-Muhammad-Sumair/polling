@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $rules = array(
+            'email' => 'required',
+        );
         return view('home');
     }
 }
