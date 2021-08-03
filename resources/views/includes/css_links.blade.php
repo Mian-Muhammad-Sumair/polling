@@ -27,4 +27,11 @@
     body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
         font-family: Lato !important;
     }
+    .error_msg{
+        display: block;
+        margin-top: 10px;
+        color:#302f42;
+        font-weight: 800;
+        font-size: 14px;
+    }
 </style>

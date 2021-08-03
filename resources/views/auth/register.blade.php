@@ -21,17 +21,17 @@
                         <label>{{ __('Name') }} </label>
                         <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('name')<span>{{ $message }}</span>@enderror
-                        @error('user_type')<span>{{ $message }}</span>@enderror
+                        @error('user_type')<span class="error_msg">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
                         <label>{{ __('E-Mail Address') }} </label>
                         <input type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
-                        @error('email')<span>{{ $message }}</span>@enderror
+                        @error('email')<span class="error_msg">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
                         <label>{{ __('Password') }} </label>
                         <input type="password" name="password" required autocomplete="new-password">
-                        @error('password')<span>{{ $message }}</span>@enderror
+                        @error('password')<span class="error_msg">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
                         <label>{{ __('Confirm Password') }}</label>
