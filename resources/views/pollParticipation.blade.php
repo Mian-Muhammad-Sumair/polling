@@ -26,7 +26,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="container participation-section  content-order animatedParent" >
+    <div class="container  participation-section  content-order animatedParent" >
         <div class="row">
             <div class="col-md-6 col-sm-7  animated bounceInRight">
                 <div class="login-bg login-form participation-form register-bg animatedParent">

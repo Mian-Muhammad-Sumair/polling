@@ -23,7 +23,7 @@ Route::get('{guard}/register',[App\Http\Controllers\Auth\RegisterController::cla
 Route::post('{guard}/login',[App\Http\Controllers\Auth\LoginController::class,'login']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/register_poll', App\Http\Controllers\PollController::class);
+Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::view('/', 'pollParticipation');
 Route::view('/register_billing', 'signUpBilling');
 //Route::view('/register_poll', 'registerPoll');

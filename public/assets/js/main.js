@@ -57,10 +57,10 @@ $( document ).ready(function() {
 	// **********************************************************************//
 	// 02. Custom Select
 	// **********************************************************************//
-	$('select').each(function(){
+	    $('select').each(function(){
 		var $this = $(this), numberOfOptions = $(this).children('option').length;
 
-		$this.addClass('select-hidden'); 
+		$this.addClass('select-hidden');
 		$this.wrap('<div class="select"></div>');
 		$this.after('<div class="select-styled"></div>');
 

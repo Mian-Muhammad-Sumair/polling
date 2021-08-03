@@ -7,7 +7,7 @@
 
     <div class="container content-order ">
         <div class="row login-bg ">
-            <form method="POST" action="{{ url(request()->segment(1)=='register_poll'?'/register_poll':request()->segment(1).'/register_poll') }}" >
+            <form method="POST" action="{{ url('poll') }}" >
                 @csrf
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="col-md-8 col-sm-8">
@@ -17,26 +17,25 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Poll Name</label>
+                                <label>Poll name</label>
                                 <input type="text" name="name" value="{{ old('name') }}" >
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <label>Poll Open Window</label>
+                                <label>Poll open window</label>
                                 <div class="text" style="font-size:40px;">
                                     <input type="date" name="start_date"  style="width: 40%" placeholder="From" value="{{ old('start_date') }}"> -
                                     <input type="date" name="end_date"  style="width: 40%" placeholder="To"  value="{{ old('end_date') }}">
                                     @error('start_date') <span class="error_msg">{{$message}}</span> @enderror
                                     @error('end_date') <span class="error_msg">{{$message}}</span> @enderror
-
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Poll Info</label>
+                                <label>Poll info</label>
                                 <input type="text" name="info" placeholder=""  value="{{ old('info') }}">
                                 @error('info') <span class="error_msg">{{$message}}</span> @enderror
 
@@ -49,11 +48,19 @@
                                 @error('question') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
+{{--                        {{dd($errors)}}--}}
                         <div class="col-md-12 field_wrapper">
                             <div class="form-group">
-                                <label>Poll Option</label>
-                                <input type="text" name="option[]" value="">
-                                @error('option') <span class="error_msg">{{$message}}</span> @enderror
+                                <label>Poll option</label>
+                                @if(old('poll_option'))
+                                @foreach(old('poll_option') as $index=>$option)
+                                        <input type="text" name="poll_option[]" value="{{$option}}">
+                                        @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+                                    @endforeach
+                                @else
+                                    <input type="text" name="poll_option[]" value="">
+                                @endif
+                                @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div>
@@ -79,10 +86,11 @@
                     </div>
                     <div class="col-md-5 col-sm-5 ">
                         <div class="form-group">
-                            <label>Poll visibility <span>*</span></label>
-                            <select name="visibility" value="{{ old('visibility') }}">
-                                <option value="">Select</option>
-                                <option value="Private">Private</option>
+                            <label>Poll visibility  <span>*</span></label>
+                            <select name="visibility" selected="{{ old('visibility') }}">
+                                <option value="" >Select</option>
+                                <option value="public" >Public</option>
+                                <option value="private" >Private</option>
                             </select>
                             @error('visibility') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
@@ -91,42 +99,23 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="col-md-10 col-sm-10 account-details ">
                         <div class="form-group checkbox">
-                            <label>Poll category</label>
+                            <label>Poll option type</label>
+                            @foreach(config('poll_option_types') as $option_type=>$option_type_title)
                             <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Allow Multiple Votes" id="Allow Multiple Votes"><label
-                                    class="checkbox-main" for="Allow Multiple Votes" ><span class="first"></span><span>Allow Multiple Votes</span></label>
+                                <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if(old('option_type') && in_array($option_type,old('option_type')) ) checked @else @endif id="{{$option_type}}">
+                                <label class="checkbox-main" for="{{$option_type}}" >
+                                    <span class="first"></span>
+                                    <span>{{$option_type_title}}</span>
+                                </label>
                             </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Login to Vote" id="Login to Vote"><label
-                                    class="checkbox-main" for="Login to Vote"><span class="first"></span><span>Login to Vote</span></label>
-                            </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Add Comments " id="Add Comments "><label
-                                    class="checkbox-main" for="Add Comments "><span class="first"></span><span>Add Comments </span></label>
-                            </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Allow Multiple Votes" id="Allow Multiple Votes"><label
-                                    class="checkbox-main" for="Allow Multiple Votes"><span class="first"></span><span>Allow Multiple Votes</span></label>
-                            </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Allow Multiple Votes" id="Allow Multiple Votes"><label
-                                    class="checkbox-main" for="Allow Multiple Votes"><span class="first"></span><span>Allow Multiple Votes</span></label>
-                            </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="Login to Vote" id="Login to Vote"><label
-                                    class="checkbox-main" for="Login to Vote"><span class="first"></span><span>Login to Vote</span></label>
-                            </div>
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="poll_cat" value="save as draft" id="save as draft"><label
-                                    class="checkbox-main" for="save as draft"><span class="first"></span><span>save as draft</span></label>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12 bottom">
                     <div class="col-md-4 col-sm-4 col-lg-4">
-                     <div class="custom-btn btn-lg">Lock poll</div>
+                     <input type="submit" class="custom-btn btn-lg" name="status"  value="Lock Poll">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4  second-part">
                         <div class="form-group">
@@ -137,7 +126,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
-                        <input type="submit" class="custom-btn btn-lg" value="Publish poll">
+                        <input type="submit" class="custom-btn btn-lg" name="status" value="Publish Poll">
                     </div>
 
                 </div>
@@ -152,10 +141,10 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var x = 1; //Initial field counter is 1
-            var maxField = 5; //Input fields increment limitation
+            var maxField = 25; //Input fields increment limitation
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
-            var fieldHTML = '<div> <input type="text" name="option[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
+            var fieldHTML = '<div> <input type="text" name="poll_option[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
 
 
             //Once add button is clicked

@@ -22,12 +22,21 @@ class Poll extends Model
         'info',
         'question',
         'category',
-        'visible',
-        'poll_category',
+        'visibility',
+        'option_type',
         'key',
         'status',
         'user_id',
     ];
+
+    protected $casts=[
+        'option_type'=>'array'
+    ];
+
+    public function questionsOptions()
+    {
+        return $this->hasMany(QuestionOptions::class);
+    }
 
 
 

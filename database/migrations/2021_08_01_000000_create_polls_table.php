@@ -15,16 +15,17 @@ class CreatePollsTable extends Migration
     {
         Schema::create('polls', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->string('name');
             $table->date('start_date');
             $table->date('end_date');
-            $table->text('info');
+            $table->string('info');
             $table->text('question');
-            $table->text('category');
-            $table->text('visible');
-            $table->text('key');
-            $table->text('status');
-            $table->text('user_id');
+            $table->string('category');
+            $table->string('visibility');
+            $table->string('option_type');
+            $table->string('key');
+            $table->string('status');
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

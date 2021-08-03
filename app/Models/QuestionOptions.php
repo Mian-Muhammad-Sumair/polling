@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Notifications\Notifiable;
-
 class QuestionOptions extends Model
 {
 
@@ -19,5 +17,10 @@ class QuestionOptions extends Model
         'poll_id',
         'question_option'
     ];
+
+    public function poll()
+    {
+        return $this->belongsTo(Poll::class);
+    }
 
 }

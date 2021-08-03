@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PollStoreRequest;
+use App\Http\Requests\PollUpdateRequest;
 use App\Models\poll;
 use App\Models\QuestionOptions;
+use App\Repositories\PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class PollController extends Controller
 {
+    private $repository;
+
+    public function __construct(PollRepositoryInterface $repository)
+    {
+        $this->middleware('auth:admin,customer');
+        $this->repository=$repository;
+    }
 
     /**
      * Show the application dashboard.
@@ -18,50 +27,27 @@ class PollController extends Controller
      */
     public function index()
     {
-        return view('registerPoll');
+        return 'Table will Goes here.';
     }
-    public function store(Request $request)
+
+    public function create(){
+        return view('poll.create');
+    }
+    public function store(PollStoreRequest $request)
     {
+        $data=$request->validated();
+        $data['user_id']=auth()->id();
+        $data= $this->repository->create($data);
+        return redirect('dashboard')->with('status', 'Poll updated!');
+    }
 
-//     i als0 create store request seprate file but validation not working the issue is when valdition is true it will show no response
-//     PollStoreRequest
-//        $request->validate([
-//            'name' => 'required',
-//            'start_date' => 'required|date|after_or_equal:today',
-//            'end_date' => 'required|date|after:start_date',
-//            'info' => 'required',
-//            'category' => 'required',
-//            'visibility' => 'required',
-//            'question' => 'required',
-//            'option' => 'required|array',
-//            'Poll_category' => 'required',
-//            'key' => 'required|unique:polls,key',
-//        ]);
+    public function edit($id){
+        return view('poll.edit');
+    }
 
-        $startDate = $request['start_date'];
-        $endDate = $request['end_date'];
-
-
-        $poll= Poll::create([
-            'name' => $request['name'],
-            'start_date'  => $startDate,
-            'end_date'  => $endDate,
-            'info'  => $request['info'],
-            'question'  => $request['question'],
-            'category'  => $request['category'],
-            'visible'  => $request['visibility'],
-            'status'  => 1,
-            'user_id'  => 1,
-            'poll_category '  => $request['poll_category'],
-            'key'  => $request['key'],
-        ])->id;
-
-        foreach ($request['option'] as $key => $value) {
-             QuestionOptions::create([
-                'poll_id' =>$poll,
-                'question_option' =>$value
-            ]);
-        }
+    public function update(PollUpdateRequest $request,$id){
+        $data=$request->validated();
+        $data= $this->repository->update($data,$id);
         return redirect('dashboard')->with('status', 'Poll updated!');
     }
 }
