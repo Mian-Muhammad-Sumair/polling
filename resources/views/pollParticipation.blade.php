@@ -43,7 +43,7 @@
                         <div class="form-group text-right">
                             <button>Participate a poll</button>
                         </div>
-                        <div  class="text-center create clr-wt pd-10">Already have an account? <a class="clr-wt" href="{{url('/')}}"><strong>Login</strong></a></div>
+                        <div  class="text-center create clr-wt pd-10">Already have an account? <a class="clr-wt" href="{{url('/login')}}"><strong>Login</strong></a></div>
                         </form>
                 </div>
             </div>
