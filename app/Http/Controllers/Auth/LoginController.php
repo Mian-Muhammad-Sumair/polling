@@ -52,7 +52,6 @@ class LoginController extends Controller
     {
         config()->set('auth.current',$guard);
         session(['auth.current' => $guard]);
-        $this->redirectTo=$guard;
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
