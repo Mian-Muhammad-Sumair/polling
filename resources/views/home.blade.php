@@ -50,8 +50,8 @@
                 <h2>Get Answers with <strong>Survays</strong></h2>
                 <p>Be the person with great ideas. Surveys give you actionable insights
                     and fresh perspectives..</p>
-                <a href="{{ URL::to('/create_poll') }}" class="custom-btn">Get Started</a>
-                <a href="#" class="custom-btn-white" style="margin-left:10px">Go Premium</a>
+                <a href="{{ URL::to('/register_poll') }}" class="custom-btn">Get Started</a>
+                <a href="{{URL::to('/select_plan')}}" class="custom-btn-white" style="margin-left:10px">Go Premium</a>
             </div><!--inside-->
         </div>
     </div>

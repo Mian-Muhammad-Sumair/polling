@@ -34,4 +34,9 @@
         font-weight: 800;
         font-size: 14px;
     }
+    footer{
+        /*position: fixed;*/
+        bottom: 0;
+        width: 100%;
+    }
 </style>

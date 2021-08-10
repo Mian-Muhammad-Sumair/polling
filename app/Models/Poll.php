@@ -35,6 +35,7 @@ class Poll extends Model
 
     public function questionsOptions()
     {
+
         return $this->hasMany(QuestionOptions::class);
     }
 

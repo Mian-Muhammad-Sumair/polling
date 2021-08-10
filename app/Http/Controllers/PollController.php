@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
 use App\Models\poll;
@@ -9,6 +10,8 @@ use App\Models\QuestionOptions;
 use App\Repositories\PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class PollController extends Controller
 {
@@ -27,7 +30,9 @@ class PollController extends Controller
      */
     public function index()
     {
-        return 'Table will Goes here.';
+        $polls = Poll::all();
+        return view('poll.pollList', compact('polls'));
+
     }
 
     public function create(){
@@ -38,7 +43,7 @@ class PollController extends Controller
         $data=$request->validated();
         $data['user_id']=auth()->id();
         $data= $this->repository->create($data);
-        return redirect('dashboard')->with('status', 'Poll updated!');
+        return redirect('dashboard')->with('status', 'Poll created!');
     }
 
     public function edit($id){
@@ -50,4 +55,7 @@ class PollController extends Controller
         $data= $this->repository->update($data,$id);
         return redirect('dashboard')->with('status', 'Poll updated!');
     }
+
+
+
 }
