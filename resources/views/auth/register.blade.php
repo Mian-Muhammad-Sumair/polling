@@ -70,5 +70,11 @@
             background-color: #7158F4;
             margin-bottom: 20px;
         }
+        .error_msg{
+            color: #0a0550;
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+        }
     </style>
 @endsection

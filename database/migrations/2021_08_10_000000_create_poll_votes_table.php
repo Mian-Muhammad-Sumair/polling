@@ -15,7 +15,7 @@ class CreatePollVotesTable extends Migration
     {
         Schema::create('poll_votes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->nullable();
             $table->string('answer');
             $table->timestamps();
         });

@@ -17,12 +17,12 @@
                     <div class="form-group">
                         <label>{{ __('E-Mail Address') }} </label>
                         <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        @error('email') <span>{{$message}}</span> @enderror
+                        @error('email') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label>Password </label>
                         <input type="password" name="password" required autocomplete="current-password">
-                        @error('password') <span>{{$message}}</span> @enderror
+                        @error('password') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="form-group text-right">
                         <button>{{ __('Login') }}</button>
@@ -63,6 +63,13 @@
         }
         .login-container{
             width: 100%;
+        }
+
+        .error_msg{
+            color: #0a0550;
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
         }
     </style>
 @endsection

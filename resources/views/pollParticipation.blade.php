@@ -16,6 +16,7 @@
                         <div class="form-group">
                             <label>Enter Polling key </label>
                             <input type="text" name="polling_key"  value="{{ old('polling_key') }}" >
+                            <input type="hidden" name="user_id"  value="{{ auth()->id() }}" >
                             @error('polling_key') <span class="error_msg">{{$message}}</span> @enderror
 
                         </div>

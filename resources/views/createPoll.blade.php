@@ -5,6 +5,7 @@
 
 @section('content')
     <div class="container create-pool animatedParent">
+
         <div class="row">
             <div class="col-md-12 col-sm-12 col-lg-12  animated bounceInLeft">
                 <div class="main-heading">
@@ -14,11 +15,12 @@
                     <h3>{{$poll['question']}}</h3>
                     <p>Poll offered by {{$creator_name}} from {{$poll['start_date']}} to {{$poll['end_date']}}</p>
                 </div>
-{{--                {{dd($poll,$poll['questionsOptions']->first())}}--}}
 
             </div>
+
             <form method="post" action="{{ url('/voting') }}">
                 @csrf
+
             @foreach ($poll['questionsOptions'] as $index => $option)
 
             <div class="col-md-12 col-sm-12 col-lg-12 checkbox  animated bounceInRight">

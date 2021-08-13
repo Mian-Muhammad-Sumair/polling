@@ -75,6 +75,25 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12 second-part">
+                    <div class="col-md-12 field_wrap">
+                        <div class="form-group">
+                            <label>Poll identifier questions</label>
+                            @if(old('identifier_question'))
+                                @foreach(old('identifier_question') as $index=>$option)
+                                    <input type="text" name="identifier_question[]" value="{{$option}}">
+                                    @error('identifier_question.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+                                @endforeach
+                            @else
+                                <input type="text" name="identifier_question[]" value="">
+                            @endif
+                            @error('identifier_question') <span class="error_msg">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group text-right float-right">
+                            <a  href="javascript:void(0);" title="Add field" class="custom-btn add_question">Add more question +</a>
+                        </div>
+                    </div>
                     <div class="col-md-5 col-sm-5">
                         <div class="form-group ">
                             <label>Poll category</label>
@@ -121,8 +140,10 @@
                         <div class="form-group">
                             <label>Generate polling key</label>
                             <input type="text" id="key" name="key" value="{{ old('key') }}" >
+                            <input type="checkbox" id="key_type" name="key_type" value="1" >
                             @error('key') <span class="error_msg">{{$message}}</span> @enderror
                             <div onclick="getkey()" class="custom-btn ">Generate</div>
+
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
@@ -141,10 +162,14 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var x = 1; //Initial field counter is 1
-            var maxField = 25; //Input fields increment limitation
+            var z = 1; //Initial field counter is 1
+            var maxField = 5; //Input fields increment limitation
             var addButton = $('.add_button'); //Add button selector
+            var addQuestion = $('.add_question'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
+            var wrap = $('.field_wrap'); //Input field wrapper
             var fieldHTML = '<div> <input type="text" name="poll_option[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
+            var fieldQuestionHTML = '<div> <input type="text" name="identifier_question[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
 
 
             //Once add button is clicked
@@ -154,6 +179,18 @@
                     x++; //Increment field counter
                     $(wrapper).append(fieldHTML); //Add field html
                 }
+            });
+            $(addQuestion).click(function(){
+                //Check maximum number of input fields
+                if(z < maxField){
+                    z++; //Increment field counter
+                    $(wrap).append(fieldQuestionHTML); //Add field html
+                }
+            });
+            $(wrap).on('click', '.remove_button', function(e){
+                e.preventDefault();
+                $(this).parent('div').remove(); //Remove field html
+                x--; //Decrement field counter
             });
 
             //Once remove button is clicked

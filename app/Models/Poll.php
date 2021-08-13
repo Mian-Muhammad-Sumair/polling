@@ -38,6 +38,15 @@ class Poll extends Model
 
         return $this->hasMany(QuestionOptions::class);
     }
+    public function pollKeys()
+    {
+
+        return $this->hasMany(PollKey::class);
+    }
+    public function pollIdentifierQuestions()
+    {
+        return $this->hasMany(PollIdentifierQuestion::class);
+    }
 
 
 

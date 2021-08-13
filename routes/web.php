@@ -27,9 +27,10 @@ Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::post('/', [App\Http\Controllers\PollVotingController::class,'pollParticipate']);
 Route::get('/', [App\Http\Controllers\PollVotingController::class,'showParticipationForm']);
 Route::resource('/voting', App\Http\Controllers\PollVotingController::class);
+Route::get('/voting/participate/{id}', [App\Http\Controllers\PollVotingController::class,'showPollIdentifyForm']);
+Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::class,'storePollIdentifyForm']);
 
 Route::view('/register_billing', 'signUpBilling');
-Route::view('/register_poll', 'poll.create');
 //Route::view('/create_poll', 'createPoll');
 Route::view('/select_plan', 'selectPlan');
 Route::view('/dashboard', 'dashboard');

@@ -12,8 +12,9 @@
                 <div class="button-header">
                     @guest(session('auth.current'))
                     <a href="{{ url('register') }}" class="custom-btn login">Sign Up</a>
-                        <a href="{{ url('/login') }}" class="custom-btn">Poll Participation </a>
+                        <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
                     @else
+                        <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="custom-btn login">{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

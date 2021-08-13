@@ -22,8 +22,7 @@ class CreatePollsTable extends Migration
             $table->text('question');
             $table->string('category');
             $table->string('visibility');
-            $table->string('option_type');
-            $table->string('key');
+            $table->string('option_type')->nullable();
             $table->string('status');
             $table->bigInteger('user_id');
             $table->timestamps();
