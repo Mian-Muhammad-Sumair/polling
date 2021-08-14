@@ -10,7 +10,7 @@
             <form method="POST" action="{{ url('poll') }}" >
                 @csrf
                 <div class="col-md-12 col-sm-12 col-lg-12">
-                    <div class="col-md-8 col-sm-8">
+                    <div class="col-md-7 col-sm-8">
                         <div class="col-md-12 main">
                             <h2 class="title-page">Create poll</h2>
                             <div class="theme-bar"></div>
@@ -63,14 +63,14 @@
                                 @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div>
+                        <div class="col-md-12">
                             <div class="form-group text-right float-right">
                                 <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-4 col-sm-4 register-img images">
+                    <div class="col-md-5 col-sm-12 register-img images">
                         <img class="" src="{{asset('assets/images/register_poll.png')}}" alt="image">
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12">
-                    <div class="col-md-10 col-sm-10 account-details ">
+                    <div class=" account-details ">
                         <div class="form-group checkbox">
                             <label>Poll option type</label>
                             @foreach(config('poll_option_types') as $option_type=>$option_type_title)
@@ -239,10 +239,14 @@
             margin-bottom: 10px;
         }
 
-        .container {
+        /* .container {
             width: 80%;
-        }
-
+        } */
+        .form-contact form,
+    .login-bg form,
+    .sign-up form {
+        padding: 20px 0px;
+    }
         .login-bg form {
             background-color: white;
             border-color: #707070;
@@ -335,11 +339,11 @@
             color: #000000 !important;
         }
         .btn-lg{
-            padding: 25px 120px !important;
+            padding: 15px  !important;
             color: white !important;
             font-weight: 600 !important;
-            margin-top: 40px !important;
-            font-size: 24px !important;
+            margin-top: 30px !important;
+            font-size: 18px !important;
             background-color: #7158f4 !important;
 
         }
@@ -359,5 +363,11 @@
         .bottom{
             margin-top: 30px;
         }
+        @media screen and (max-width: 767px) {
+        .content-order .register-img img {
+     
+     margin-bottom: 30px;       margin-top: 20px !important;
+        }
+    }
     </style>
 @endsection
