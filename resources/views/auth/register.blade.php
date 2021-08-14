@@ -3,12 +3,12 @@
     Register
 @endsection
 @section('content')
-<div class=" content-order animatedParent">
+<div class=" content-order animatedParent container">
     <div class="row">
-        <div class="col-md-6 images animated bounceInLeft ">
+        <div class="col-md-7 images animated bounceInLeft ">
             <img class="" src="{{asset('assets/images/register.png')}}" alt="image">
         </div>
-        <div class="col-md-6 animated bounceInRight">
+        <div class="col-md-5 animated bounceInRight">
             <div class="login-bg register-bg animatedParent">
                 <div class="main">
                     <h2 class="title-page" >{{ __('Register') }}</h2>
@@ -52,9 +52,9 @@
         .images img{
             float: right;
         }
-        .login-bg{
+        /* .login-bg{
             padding-left: 50px;
-        }
+        } */
         .title-page{
             font-weight: 600;
         }
