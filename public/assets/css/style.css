@@ -224,7 +224,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     h2 {
-        font-size: 50px;
+        font-size: 28px;
         line-height: 60px;
         letter-spacing: 2px;
     }
@@ -242,7 +242,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     h5 {
-        font-size: 26px;
+        font-size: 16px;
         line-height: 32px;
         letter-spacing: 1px;
     }
@@ -3921,7 +3921,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     .register-bg form,
     .sign-up form {
         width: 100% !important;
-        padding: 40px 35px !important;
+        padding: 35px 30px !important;
     }
     
     .login-bg form a,
@@ -4030,7 +4030,85 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
             margin-top: 20px !important;
         }
         .section-contact .images-bg-fix .text-section p {
-            font-size: 14px !important;
+            font-size: 1 4px !important;
             line-height: 16px !important;
         }
+        .register-bg form,
+        .sign-up form {
+            padding: 20px !important;
+        }
+    }
+    
+    .table-outer-body {
+        /* overflow-x: scroll; */
+        width: 100%;
+        padding: 30px 20px 10px;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        box-shadow: 1px 2px 40px rgba(28, 30, 32, 0.14);
+    }
+    
+    .table-outer-body .dataTables_filter input {
+        border-radius: 100px;
+        height: 40px;
+        border: 2px solid lightgray;
+        margin-bottom: 20px;
+    }
+    
+    .table-outer-body .dataTable tbody tr:last-child td a {
+        background: #eeeeee;
+        height: 30px;
+        width: 30px;
+        margin: auto;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        margin-right: 4px;
+    }
+    
+    .table-outer-body .dataTable tbody tr td:last-child {
+        display: flex;
+    }
+    
+    .table-outer-body .dataTable .fa-trash {
+        color: #ef4444;
+    }
+    
+    .table-outer-body .dataTable .fa-eye {
+        color: #10b981;
+    }
+    
+    .table-outer-body .dataTable .fa-edit {
+        color: #3b82f6;
+    }
+    
+    .table-outer-body .dataTable {
+        margin-bottom: 30px;
+    }
+    
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background: #eeeeee !important;
+        border: none !important;
+        border-radius: 4px;
+    }
+    
+    html {
+        --scrollbarBG: #cfd8dc;
+        --thumbBG: #90a4ae;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: white;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #3b82f6;
     }

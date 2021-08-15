@@ -16,9 +16,6 @@
             margin-bottom: 10px;
         }
 
-        .container {
-            width: 80%;
-        }
 
         .login-bg form {
             background-color: #F3F3F3;
@@ -46,7 +43,7 @@
             width: 20%;
             height: 4px;
             background-color: #7158F4;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             margin-top: 0px;
         }
 
@@ -55,14 +52,14 @@
             color: #707070;
             font-weight: 600;
         }
-
+/* 
         .register-bg form {
             width: 90% !important;
 
-        }
+        } */
 
         .login-bg form .form-group {
-            margin-bottom: 25px !important;
+            margin-bottom: 15px !important;
             margin-top: 0px !important;
 
         }
@@ -96,7 +93,7 @@
         .label_item {
             padding: 10px;
             width: 100%;
-            height: 170px;
+            height: 150px;
 
         }
 
@@ -108,8 +105,13 @@
         .img-content {
             padding: 10px;
             margin: auto;
-            height: 70px;
+            height: 50px;
         }
+        .img-content  img {
+            height: 50px;
+
+        }
+
 
         .payment_method .text-center {
             margin-top: 15px;
@@ -128,7 +130,7 @@
         .payment_method h2 {
             margin-bottom: 40px;
             font-weight: 800;
-            font-size: 40px;
+            font-size: 28px;
         }
 
         .payment_method {
@@ -136,9 +138,9 @@
         }
 
         @media only screen and (max-width: 1800px) {
-            .register-bg form, .sign-up form {
+            /* .register-bg form, .sign-up form {
                 padding: 40px 35px 24px 35px !important;
-            }
+            } */
 
             .login-bg {
                 padding-left: 0px;
@@ -146,9 +148,9 @@
         }
 
         @media only screen and  (max-width: 1400px) {
-            .register-bg form, .sign-up form {
+            /* .register-bg form, .sign-up form {
                 padding: 30px 25px 20px 25px !important;
-            }
+            } */
 
             .img-content {
                 height: 56px;
@@ -156,9 +158,9 @@
         }
 
         @media only screen and (min-width: 991px) and (max-width: 1200px) {
-            .register-bg form, .sign-up form {
+            /* .register-bg form, .sign-up form {
                 padding: 30px 25px 20px 25px !important;
-            }
+            } */
 
             .content-order .register-img img {
                 max-width: 100%;
@@ -170,9 +172,9 @@
         }
 
         @media only screen and (max-width: 1500px) {
-            .container {
+            /* .container {
                 width: 90%;
-            }
+            } */
 
             .content-order .register-img img {
                 max-width: 100%;
@@ -204,9 +206,9 @@
 @endsection
 @section('content')
 
-    <div class="container content-order " s>
+    <div class="container" >
         <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-7 col-sm-12">
                 <div class="login-bg register-bg ">
                     <form class="">
                         <div class="col-md-12 col-sm-12 main">
@@ -319,7 +321,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-4 register-img images  ">
+            <div class="col-md-5 register-img images  " style="padding-top:100px">
                 <img class="" src="{{asset('assets/images/billing.png')}}" alt="image">
             </div>
         </div>

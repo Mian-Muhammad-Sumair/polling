@@ -3,11 +3,11 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-sm-12 widget-footer footer-logo">
+                    <div class="col-lg-3 col-md-6 col-sm-12 widget-footer footer-logo">
                         <div class="logo "><a href="{{ URL::to('/home') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
                     </div>
                     <!--widget-footer-->
-                    <div class="col-md-4 col-sm-3 widget-footer wt-2">
+                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
                         <ul class="links">
                             <li><a href="#">Get Started</a></li>
                             <li><a href="#">Price & plans</a></li>
@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                     <!--widget-footer-->
-                    <div class="col-md-4 col-sm-3 widget-footer wt-2">
+                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
                         <h4>Subscribe for newletter</h4>
                         <ul>
                             <form>
@@ -30,7 +30,7 @@
                     </div>
                     <!--widget-footer-->
 
-                    <div class="col-md-5 col-sm-3 widget-footer wt-5 text-right">
+                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-5 text-right">
                         <h4 class="">Social Links</h4>
                         <ul class="social-icon">
                             <li><a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
