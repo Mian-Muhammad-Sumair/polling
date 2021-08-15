@@ -26,8 +26,15 @@ class PollIdentifierQuestionStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "answer"  => "required|array",
-            "answer.*"  => "required|string|distinct",
+            "answer" => "required|array",
+            "answer.*" => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if ($value['answer'] == ''||$value['question'] == '') {
+                        $fail('This answer is required.');
+                    }
+                },
+            ],
 
         ];
     }
