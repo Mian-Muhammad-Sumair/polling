@@ -224,7 +224,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     h2 {
-        font-size: 50px;
+        font-size: 28px;
         line-height: 60px;
         letter-spacing: 2px;
     }
@@ -242,7 +242,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     h5 {
-        font-size: 26px;
+        font-size: 16px;
         line-height: 32px;
         letter-spacing: 1px;
     }
@@ -3921,7 +3921,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     .register-bg form,
     .sign-up form {
         width: 100% !important;
-        padding: 40px 35px !important;
+        padding: 35px 30px !important;
     }
     
     .login-bg form a,
@@ -4030,7 +4030,160 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
             margin-top: 20px !important;
         }
         .section-contact .images-bg-fix .text-section p {
-            font-size: 14px !important;
+            font-size: 1 4px !important;
             line-height: 16px !important;
         }
+        .register-bg form,
+        .sign-up form {
+            padding: 20px !important;
+        }
+    }
+    
+    .table-outer-body {
+        /* overflow-x: scroll; */
+        width: 100%;
+        padding: 30px 20px 10px;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        box-shadow: 1px 2px 40px rgba(28, 30, 32, 0.14);
+    }
+    
+    .table-outer-body .dataTables_filter input {
+        border-radius: 100px;
+        height: 40px;
+        padding: 0px 10px;
+        border: 2px solid lightgray;
+        margin-bottom: 20px;
+    }
+    
+    .table-outer-body .dataTable tbody tr:last-child td a {
+        background: #eeeeee;
+        height: 30px;
+        width: 30px;
+        margin: auto;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        margin-right: 4px;
+    }
+    
+    .table-outer-body .dataTable tbody tr td:last-child {
+        display: flex;
+    }
+    
+    .table-outer-body .dataTable .fa-trash {
+        color: #ef4444;
+    }
+    
+    .table-outer-body .dataTable .fa-eye {
+        color: #10b981;
+    }
+    
+    .table-outer-body .dataTable .fa-edit {
+        color: #3b82f6;
+    }
+    
+    .table-outer-body .dataTable {
+        margin-bottom: 30px;
+    }
+    
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background: #eeeeee !important;
+        border: none !important;
+        border-radius: 4px;
+    }
+    
+    html {
+        --scrollbarBG: #cfd8dc;
+        --thumbBG: #90a4ae;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: white;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+    }
+    
+    .button-header .dropdown-menu {
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    .button-header {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .button-header .dropdown {
+        background: #7158f4 none;
+        border-radius: 7px;
+        box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
+        margin-right: 5px;
+    }
+    
+    .button-header .dropdown .btn {
+        background: #7158f4;
+        border-radius: 7px;
+        color: white;
+        box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
+    }
+    
+    .button-header .custom-btn {
+        margin-right: 5px;
+    }
+    
+    .button-header .dropdown .dropdown-item {
+        padding: 8px 5px;
+    }
+    
+    .btn,
+    button,
+    .dropdown-menu,
+    .dropdown,
+    input {
+        outline: 2px solid transparent !important;
+    }
+    
+    .table-outer-body .dt-buttons a {
+        background: #eeeeee;
+        border: none;
+        padding: 10px 15px;
+        color: gray;
+    }
+    
+    .table-outer-body .dt-buttons a:hover {
+        background: #eeeeee !important;
+        border: none !important;
+        padding: 10px 15px !important;
+        color: gray !important;
+    }
+    
+    .error-msg-screen {
+        min-height: 500px;
+        width: 100%;
+        display: flex;
+        padding-bottom: 50px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .error-msg-screen img {
+        max-width: 400px;
+    }
+    
+    .error-msg-screen h5 {
+        font-size: 18px;
+        margin-top: 20px;
+        font-weight: bold;
     }

@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\CustomerDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public $model;
 
-    public function __construct()
+    public function __construct(User $model)
     {
         $this->middleware('auth:admin');
+        $this->model=$model->customer;
     }
 
     /**
@@ -83,10 +86,12 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+
+        toastr()->success('Successfully! Customer has been deleted.');
+        return back();
     }
 }

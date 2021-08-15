@@ -383,7 +383,7 @@
     footer .widget-footer {
         margin-bottom: 5px;
         padding: 4px;
-        width: 25%;
+        /* width: 25%; */
     }
     .widget-footer form input {
         /* width: 290px; */
@@ -1376,3 +1376,12 @@
 
 
 /*=====  End of Style Responsive  ======*/
+
+@media only screen and (min-width: 565px) and (max-width: 787px) {
+    .widget-footer {
+        width: 50% !important;
+    }
+    .footer-outer .text-right {
+        text-align: left !important;
+    }
+}

@@ -22,11 +22,13 @@ class CustomerDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', "
-                <a href='#'><i class='fa fa-trash'></i></a>
+            ->addColumn('action', function($item){
+           return     "
+                <a href='customer/delete/{$item->id}'><i class='fa fa-trash'></i></a>
                 <a href='#'><i class='fa fa-eye'></i></a>
                 <a href='#'><i class='fa fa-edit'></i></a>
-")
+";
+            })
             ;
     }
 
@@ -55,7 +57,6 @@ class CustomerDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create'),
                         Button::make('export'),
                         Button::make('print'),
                         Button::make('reset'),
