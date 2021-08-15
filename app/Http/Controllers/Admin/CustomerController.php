@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function index(CustomerDataTable $dataTable)
     {
-        return $dataTable->render('admin.customer.index');
+        return $dataTable->render('admin.index_table');
     }
 
     /**
