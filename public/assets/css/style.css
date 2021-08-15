@@ -4167,3 +4167,23 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         padding: 10px 15px !important;
         color: gray !important;
     }
+    
+    .error-msg-screen {
+        min-height: 500px;
+        width: 100%;
+        display: flex;
+        padding-bottom: 50px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .error-msg-screen img {
+        max-width: 400px;
+    }
+    
+    .error-msg-screen h5 {
+        font-size: 18px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
