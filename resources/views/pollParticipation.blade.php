@@ -30,118 +30,118 @@ Poll Participation
         <div class="col-md-6 col-sm-5 participation-img login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
-        <div class="col-md-12 col-sm-5">
-            <br><br>
-            <div class="panel panel-default panel-table">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col col-xs-6">
-                            <h3 class="panel-title">Panel Heading</h3>
-                        </div>
-                        <div class="col col-xs-6 text-right">
-                            <a href="https://www.youtube.com/channel/UC_osRDuNAp1ZZxKckdKlNsw?sub_confirmation=1"><button type="button" class="btn btn-sm btn-primary btn-create">Create New Task</button></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-striped table-bordered table-list">
-                        <thead>
-                            <tr>
-                                <th><i class="fa fa-cog"></i></th>
-                                <th class="hidden-xs">ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Email</th>
-                                <th>Email</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td align="center">
-                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td class="hidden-xs">1</td>
-                                <td>Master Shine</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td class="hidden-xs">1</td>
-                                <td>Master Shine</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td class="hidden-xs">1</td>
-                                <td>Master Shine</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td class="hidden-xs">1</td>
-                                <td>Master Shine</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                                <td class="hidden-xs">1</td>
-                                <td>Master Shine</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                                <td>name@domain.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
+{{--        <div class="col-md-12 col-sm-5">--}}
+{{--            <br><br>--}}
+{{--            <div class="panel panel-default panel-table">--}}
+{{--                <div class="panel-heading">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col col-xs-6">--}}
+{{--                            <h3 class="panel-title">Panel Heading</h3>--}}
+{{--                        </div>--}}
+{{--                        <div class="col col-xs-6 text-right">--}}
+{{--                            <a href="https://www.youtube.com/channel/UC_osRDuNAp1ZZxKckdKlNsw?sub_confirmation=1"><button type="button" class="btn btn-sm btn-primary btn-create">Create New Task</button></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="panel-body">--}}
+{{--                    <table class="table table-striped table-bordered table-list">--}}
+{{--                        <thead>--}}
+{{--                            <tr>--}}
+{{--                                <th><i class="fa fa-cog"></i></th>--}}
+{{--                                <th class="hidden-xs">ID</th>--}}
+{{--                                <th>Name</th>--}}
+{{--                                <th>Email</th>--}}
+{{--                                <th>Email</th>--}}
+{{--                                <th>Email</th>--}}
+{{--                                <th>Email</th>--}}
+{{--                            </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
+{{--                            <tr>--}}
+{{--                                <td align="center">--}}
+{{--                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>--}}
+{{--                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>--}}
+{{--                                </td>--}}
+{{--                                <td class="hidden-xs">1</td>--}}
+{{--                                <td>Master Shine</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td align="center">--}}
+{{--                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>--}}
+{{--                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>--}}
+{{--                                </td>--}}
+{{--                                <td class="hidden-xs">1</td>--}}
+{{--                                <td>Master Shine</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td align="center">--}}
+{{--                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>--}}
+{{--                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>--}}
+{{--                                </td>--}}
+{{--                                <td class="hidden-xs">1</td>--}}
+{{--                                <td>Master Shine</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td align="center">--}}
+{{--                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>--}}
+{{--                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>--}}
+{{--                                </td>--}}
+{{--                                <td class="hidden-xs">1</td>--}}
+{{--                                <td>Master Shine</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td align="center">--}}
+{{--                                    <a class="btn btn-default"><i class="fa fa-pencil"></i></a>--}}
+{{--                                    <a class="btn btn-danger"><i class="fa fa-trash"></i></a>--}}
+{{--                                </td>--}}
+{{--                                <td class="hidden-xs">1</td>--}}
+{{--                                <td>Master Shine</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                                <td>name@domain.com</td>--}}
+{{--                            </tr>--}}
+{{--                        </tbody>--}}
+{{--                    </table>--}}
 
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col col-xs-4">Page 1 of 5
-                        </div>
-                        <div class="col col-xs-8">
-                            <ul class="pagination hidden-xs pull-right">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                            </ul>
-                            <ul class="pagination visible-xs pull-right">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{{--                </div>--}}
+{{--                <div class="panel-footer">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col col-xs-4">Page 1 of 5--}}
+{{--                        </div>--}}
+{{--                        <div class="col col-xs-8">--}}
+{{--                            <ul class="pagination hidden-xs pull-right">--}}
+{{--                                <li><a href="#">1</a></li>--}}
+{{--                                <li><a href="#">2</a></li>--}}
+{{--                                <li><a href="#">3</a></li>--}}
+{{--                                <li><a href="#">4</a></li>--}}
+{{--                                <li><a href="#">5</a></li>--}}
+{{--                            </ul>--}}
+{{--                            <ul class="pagination visible-xs pull-right">--}}
+{{--                                <li><a href="#">«</a></li>--}}
+{{--                                <li><a href="#">»</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 </div>
 @endsection
