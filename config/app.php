@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Yajra\DataTables\ButtonsServiceProvider::class,
 
     ],
 
