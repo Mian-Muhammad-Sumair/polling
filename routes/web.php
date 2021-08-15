@@ -34,3 +34,7 @@ Route::view('/register_billing', 'signUpBilling');
 //Route::view('/create_poll', 'createPoll');
 Route::view('/select_plan', 'selectPlan');
 Route::view('/dashboard', 'dashboard');
+
+Route::prefix('admin')->group(function(){
+    Route::get('customer',[\App\Http\Controllers\Admin\CustomerController::class,'index']);
+});

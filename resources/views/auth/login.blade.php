@@ -6,7 +6,7 @@ Login
 
 <div class="container login-container content-order animatedParent">
     <div class="row">
-        <div class="col-md-12 col-sm-12  animated bounceInRight"">
+        <div class="col-md-12 col-sm-12  animated bounceInRight">
             <div class="main">
                 <h2 class="title-page">{{ __('Login') }}</h2>
                 <div class="theme-bar"></div>
@@ -61,7 +61,7 @@ Login
         margin-bottom: 40px;
     }
 
-    /* 
+    /*
     .login-container {
         width: 100%;
     } */
