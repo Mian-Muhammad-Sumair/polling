@@ -39,4 +39,5 @@ Route::prefix('admin')->group(function(){
     Route::get('/',[\App\Http\Controllers\Admin\DashboardController::class,'index']);
     Route::get('customer',[\App\Http\Controllers\Admin\CustomerController::class,'index']);
     Route::get('customer/delete/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'destroy']);
+    Route::get('customer/status/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'status']);
 });

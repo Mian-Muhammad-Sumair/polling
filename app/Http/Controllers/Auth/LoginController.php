@@ -76,7 +76,7 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
     protected function credentials(Request $request) {
-        return array_merge($request->only($this->username(), 'password'), ['user_type' => config('auth.current')]);
+        return array_merge($request->only($this->username(), 'password'), ['user_type' => config('auth.current'),'status' => 'active']);
     }
 
     protected function guard()

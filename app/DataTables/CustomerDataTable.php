@@ -24,11 +24,20 @@ class CustomerDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function($item){
            return     "
-                <a href='customer/delete/{$item->id}'><i class='fa fa-trash'></i></a>
-                <a href='#'><i class='fa fa-eye'></i></a>
-                <a href='#'><i class='fa fa-edit'></i></a>
-";
+                <a href='customer/delete/{$item->id}' class='col-delete'><i class='fa fa-trash'></i></a>
+                <a href='#' class='col-view'><i class='fa fa-eye' ></i></a>
+                <a href='#' class='col-edit'><i class='fa fa-edit'></i></a>
+                ";
             })
+            ->addColumn('status', function($item){
+                $type='badge-danger';
+                if($item->status=='active'){
+                    $type='badge-success';
+                }
+           return     "
+                <a href='customer/status/{$item->id}' class='text-capitalize col-status'><span class='badge ".$type."'>{$item->status}</span></a>
+                ";
+            })->rawColumns(['action','status'])
             ;
     }
 
@@ -77,11 +86,17 @@ class CustomerDataTable extends DataTable
             Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::computed('status')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
+
         ];
     }
 
