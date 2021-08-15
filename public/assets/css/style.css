@@ -4051,6 +4051,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     .table-outer-body .dataTables_filter input {
         border-radius: 100px;
         height: 40px;
+        padding: 0px 10px;
         border: 2px solid lightgray;
         margin-bottom: 20px;
     }
@@ -4111,4 +4112,58 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     
      ::-webkit-scrollbar-thumb {
         background: #3b82f6;
+    }
+    
+    .button-header .dropdown-menu {
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    .button-header {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .button-header .dropdown {
+        background: #7158f4 none;
+        border-radius: 7px;
+        box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
+        margin-right: 5px;
+    }
+    
+    .button-header .dropdown .btn {
+        background: #7158f4;
+        border-radius: 7px;
+        color: white;
+        box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
+    }
+    
+    .button-header .custom-btn {
+        margin-right: 5px;
+    }
+    
+    .button-header .dropdown .dropdown-item {
+        padding: 8px 5px;
+    }
+    
+    .btn,
+    button,
+    .dropdown-menu,
+    .dropdown,
+    input {
+        outline: 2px solid transparent !important;
+    }
+    
+    .table-outer-body .dt-buttons a {
+        background: #eeeeee;
+        border: none;
+        padding: 10px 15px;
+        color: gray;
+    }
+    
+    .table-outer-body .dt-buttons a:hover {
+        background: #eeeeee !important;
+        border: none !important;
+        padding: 10px 15px !important;
+        color: gray !important;
     }
