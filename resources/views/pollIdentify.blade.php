@@ -19,12 +19,14 @@
                             </div>
 
                         </div>
+
                         @foreach ($poll['pollIdentifierQuestions'] as $index => $question)
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label>{{$question['identifier_question']}}</label>
-                                    <input type="text" name="answer[{{$question['id']}}]"  placeholder="{{$question['identifier_question']}}">
-                                    @error('answer[]') <span class="error_msg">{{$message}}</span> @enderror
+                                    <input type="hidden" name="answer[{{$index+1}}][question]" value="{{$question['id']}}" >
+                                    <input type="text" name="answer[{{$index+1}}][answer]" value="{{old('answer.'.($index+1).'.answer')}}"  placeholder="{{$question['identifier_question']}}">
+                                    @error('answer.'.($index+1)) <span class="error_msg">{{$message}}</span> @enderror
                                 </div>
                             </div>
                         @endforeach

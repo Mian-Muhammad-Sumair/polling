@@ -81,11 +81,12 @@ class PollVotingController extends Controller
     }
     public function storePollIdentifyForm(PollIdentifierQuestionStoreRequest $request)
     {
+
         $data=$request->validated();
-        foreach($data['answer'] as $index=> $answer){
+        foreach($data['answer'] as $answer){
             $entry=[
-                'identifier_question_id'=>$index,
-                'answer'=>$answer,
+                'identifier_question_id'=>$answer['question'],
+                'answer'=>$answer['answer'],
             ];
             $vote=PollIdentifierAnswer::create($entry);
         }
