@@ -2658,9 +2658,9 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     .login-bg form input,
     .sign-up form input {
         width: 100%;
-        font-size: 15px;
+        font-size: 13px;
         color: #ffffff;
-        padding: 15px;
+        padding: 15px 10px;
         border-radius: 8px;
         border: 1px solid #ffffff;
     }
