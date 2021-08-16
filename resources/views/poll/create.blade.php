@@ -15,19 +15,19 @@
                             <h2 class="title-page">Create poll</h2>
                             <div class="theme-bar"></div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label>Poll name</label>
                                 <input type="text" name="name" value="{{ old('name') }}" >
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <div class="form-group ">
                                 <label>Poll open window</label>
-                                <div class="text" style="font-size:40px;">
-                                    <input type="date" name="start_date"  style="width: 40%" placeholder="From" value="{{ old('start_date') }}"> -
-                                    <input type="date" name="end_date"  style="width: 40%" placeholder="To"  value="{{ old('end_date') }}">
+                                <div class="text" style="font-size:30px;">
+                                    <input type="date" name="start_date"  style="width: 43%" placeholder="From" value="{{ old('start_date') }}"> -
+                                    <input type="date" name="end_date"  style="width: 43%" placeholder="To"  value="{{ old('end_date') }}">
                                     @error('start_date') <span class="error_msg">{{$message}}</span> @enderror
                                     @error('end_date') <span class="error_msg">{{$message}}</span> @enderror
                                 </div>

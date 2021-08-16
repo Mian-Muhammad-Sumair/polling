@@ -14,7 +14,7 @@ class CustomerController extends Controller
     public function __construct(User $model)
     {
         $this->middleware('auth:admin');
-        $this->model=$model->customer;
+        $this->model=$model->customer();
     }
 
     /**
@@ -90,8 +90,20 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-
+       $this->model->findOrFail($id)->delete();
         toastr()->success('Successfully! Customer has been deleted.');
+        return back();
+    }
+    public function status($id){
+        $item=$this->model->findOrFail($id);
+        if($item->status=='active'){
+            $item->status='inactive';
+        }else{
+            $item->status='active';
+        }
+        $item->save()?
+        toastr()->success('Successfully! Customer status has been updated.'):
+        toastr()->error('Sorry! Please try again later.');
         return back();
     }
 }
