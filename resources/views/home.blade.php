@@ -34,7 +34,7 @@ Home
 
     @media only screen and (max-width:1200px) {
         .images-bg-fix {
-            height: 1250px;
+            height: 1350px;
         }
 
         .section-contact {
