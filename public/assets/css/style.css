@@ -665,10 +665,6 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         line-height: 30px;
     }
     
-    .section-contact .contact-us-bg form {
-        /* float: right; */
-    }
-    
     .custom-btn.green {
         border: none;
         padding: 15px 71px;
@@ -3094,11 +3090,6 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     /* 04. Account Details
    ==================================== */
     
-    .account-details {
-        /*width: 635px;*/
-        /*float: right;*/
-    }
-    
     .account-details h2 {
         color: #39335b;
         font-size: 32px;
@@ -3185,10 +3176,6 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         height: auto;
         margin-left: 0;
         display: none;
-    }
-    
-    .account-details .form-group.checkbox input+label {
-        /*padding-left: 0;*/
     }
     
     .account-details .form-group.checkbox input+label .first {
@@ -3899,11 +3886,6 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     /* 02. Login Bg
    ==================================== */
     
-    .login-bg,
-    .sign-up {
-        /*padding-bottom: 150px;*/
-    }
-    
     .widget-footer form input {
         width: 100%;
         border: none;
@@ -4037,6 +4019,17 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         .sign-up form {
             padding: 20px !important;
         }
+        footer {
+            background-repeat: no-repeat;
+        }
+    }
+    
+    body,
+    /* .container, */
+    
+    .container-fluid,
+    .row {
+        overflow-x: hidden;
     }
     
     .table-outer-body {
@@ -4056,7 +4049,11 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         margin-bottom: 20px;
     }
     
-    .table-outer-body .dataTable tbody tr:last-child td a {
+    .table-outer-body .dataTable tbody tr td {
+        font-size: 12px;
+    }
+    
+    .table-outer-body .dataTable tbody tr td:last-child a {
         background: #eeeeee;
         height: 30px;
         width: 30px;
