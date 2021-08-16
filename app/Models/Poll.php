@@ -50,7 +50,11 @@ class Poll extends Model
         return $this->hasMany(PollIdentifierQuestion::class);
     }
     public function scopeCustomerPoll($query){
-        return $query->where('user_id',auth()->id());
+        if(session('auth.current')!='admin') {
+            $query->where('user_id', auth()->id());
+            }
+        return $query;
+
     }
     public function scopeExpiredPoll($query){
         return $query->whereDate('end_date','<',now());

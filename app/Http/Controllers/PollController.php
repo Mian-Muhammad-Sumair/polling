@@ -31,7 +31,7 @@ class PollController extends Controller
      */
     public function index(CustomerPollDataTable $dataTable)
     {
-        return $dataTable->render('poll.pollList');
+        return $dataTable->render('admin.index_table',['title'=>'Poll List']);
     }
 
     public function create(){
