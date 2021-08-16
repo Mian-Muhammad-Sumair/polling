@@ -572,7 +572,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     header .button-header {
-        text-align: right;
+        /* text-align: right; */
         margin-right: 7px;
     }
     
@@ -666,7 +666,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     .section-contact .contact-us-bg form {
-        float: right;
+        /* float: right; */
     }
     
     .custom-btn.green {
@@ -1604,7 +1604,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 } */
     
     .section-contact .images-bg-fix .text-section {
-        padding: 0px 80px;
+        padding: 0px 0px 0px 30px;
         float: right;
         text-align: right;
         color: white;
@@ -4186,4 +4186,70 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         font-size: 18px;
         margin-top: 20px;
         font-weight: bold;
+    }
+    
+    .sidenav-section .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #eeeeee;
+        overflow-x: hidden;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        padding-top: 40px;
+    }
+    
+    .sidenav-section .sidenav a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 22px;
+        color: #818181;
+        display: block;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+    
+    .sidenav-section .sidenav a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidenav-section .sidenav .closebtn {
+        /* position: absolute; */
+        top: 0;
+        left: 25px;
+        font-size: 36px;
+        /* margin-left: 50px; */
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav-section .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav-section .sidenav a {
+            font-size: 18px;
+        }
+    }
+    
+    .sidenav-btn {
+        background: #7158f4;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        cursor: pointer;
+        color: white;
+        border-radius: 7px;
+        box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
+    }
+    
+    .closebtn:hover {
+        color: #7158f4 !important;
+    }
+    
+    .sidenav-section .sidenav a:hover {
+        color: #7158f4 !important;
     }
