@@ -22,6 +22,7 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
    public function create(array $data)
    {
      $item=parent::create($data);
+
        if(isset($data['key_type'])&&$data['key_type']==1){
            for ($i = 0; $i < 2; $i++) {
                $newKew = Str::random(30);

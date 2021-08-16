@@ -10,21 +10,22 @@
             </div>
             <div class="col-md-10 col-lg-10 col-sm-12">
                 <div class="button-header">
-                    <div class="dropdown">
-                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
+{{--                    <div class="dropdown">--}}
+{{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            Dropdown button--}}
+{{--                        </button>--}}
+{{--                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                            <a class="dropdown-item" href="#">Action</a>--}}
+{{--                            <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                            <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     @guest(session('auth.current'))
                     <a href="{{ url('register') }}" class="custom-btn login">Sign Up</a>
                     <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
                     @else
                     <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
+                    <a href="{{ url('/poll') }}" class="custom-btn">Poll List </a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="custom-btn login">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

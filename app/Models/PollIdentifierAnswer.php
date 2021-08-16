@@ -18,6 +18,7 @@ class PollIdentifierAnswer extends Model
     protected $fillable = [
         'identifier_question_id',
         'answer',
+        'user_id',
     ];
     public function identifierQuestion()
     {

@@ -14,6 +14,7 @@ use App\Models\PollVote;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 
 class PollVotingController extends Controller
@@ -22,7 +23,7 @@ class PollVotingController extends Controller
 
     public function __construct()
     {
-    //        $this->middleware('auth:user,user,admin,customer');
+//            $this->middleware('auth:user,user,admin,customer');
 
     }
 
@@ -39,17 +40,14 @@ class PollVotingController extends Controller
     public function create(){
 
     }
-    public function show($id){
-        $pollData=Poll::where('id',$id)->with('questionsOptions')->first();
+    public function show($id,$poll){
+        $pollData=Poll::where('id',$poll)->with('questionsOptions')->first();
         $name=User::where('id',$pollData['user_id'])->select('name')->first();
-        return view('createPoll')->with(['poll'=>$pollData,'creator_name' =>$name['name']]);
+        return view('createPoll')->with(['poll'=>$pollData,'creator_name' =>$name['name'],'id'=>$id]);
     }
     public function store(PollVotingRequest $request)
     {
         $data=$request->validated();
-        $this->middleware('auth:user,user,admin,customer');
-        $data['user_id']=auth()->id();
-
         $vote=PollVote::create($data);
         return redirect('dashboard')->with('status', 'Success');
 
@@ -77,20 +75,26 @@ class PollVotingController extends Controller
 
     public function pollParticipate(PollParticipateRequest $request){
         $data=$request->validated();
-        return redirect('voting/participate/'.$data['polling_key'])->with( ['key' => $data['polling_key']] );
+        return redirect('vote/participate/'.$data['polling_key'])->with( ['key' => $data['polling_key']] );
     }
+
     public function storePollIdentifyForm(PollIdentifierQuestionStoreRequest $request)
     {
-
         $data=$request->validated();
+//        $userId=auth()->id();
+//        if($userId==''){
+            $userId = Str::random(10);
+//        } dd($userId);
+
         foreach($data['answer'] as $answer){
             $entry=[
+                'user_id'=>$userId,
                 'identifier_question_id'=>$answer['question'],
                 'answer'=>$answer['answer'],
             ];
             $vote=PollIdentifierAnswer::create($entry);
         }
-        return redirect('voting/'.$request['poll_code'])->with( ['id' => $request['poll_code']] );
+        return redirect('voting/'.$userId.'/'.$request['poll_code'])->with( ['id' => $request['poll_code']] );
     }
 
 }

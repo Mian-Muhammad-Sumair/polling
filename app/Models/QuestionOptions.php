@@ -22,5 +22,9 @@ class QuestionOptions extends Model
     {
         return $this->belongsTo(Poll::class);
     }
+    public function OptionVote()
+    {
+        return $this->hasmany(PollVote::class,'answer','id');
+    }
 
 }

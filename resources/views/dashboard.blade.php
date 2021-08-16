@@ -155,10 +155,10 @@ Dashboard
                             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
                         </div>
                         <div class="text">
-                            <h6>Asim rasheed</h6>
-                            <p>loram ipsome lorem ipsom <br> loram ipsome lorem ipsom</p>
+                            <h6>{{$user['name']}}</h6>
+                            <p>loram ipsome lorem ipsom </p>
                             <a href="">settings</a>
-                            <p>john@gmail.com</p>
+                            <p>{{$user['email']}}</p>
                             <div class="social-icons">
                                 <i class="fa fa-twitter"></i> <span>Share with twitter</span>
                                 <br>
@@ -174,20 +174,20 @@ Dashboard
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Total Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$totalPoll}}<i class="fa fa-info-circle"> </i></h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Open Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$activePoll}}<i class="fa fa-info-circle"> </i></h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Expired Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$expiredPoll}}<i class="fa fa-info-circle"> </i></h5>
                             </div>
                         </div>
                         <div class="col-lg-4">

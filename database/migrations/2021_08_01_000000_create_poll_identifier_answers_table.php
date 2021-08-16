@@ -17,6 +17,7 @@ class CreatePollIdentifierAnswersTable extends Migration
             $table->id();
             $table->bigInteger('identifier_question_id');
             $table->string('answer');
+            $table->string('user_id');
             $table->timestamps();
         });
     }

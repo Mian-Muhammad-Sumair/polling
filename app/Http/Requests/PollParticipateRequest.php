@@ -30,23 +30,21 @@ class PollParticipateRequest extends FormRequest
                 'required',
                 'exists:poll_keys,key',
                 function ($attribute, $value, $fail) {
-        ;
-
             $pollKey=PollKey::where('key',$value)->with('Poll')->first();
-
                     $poll= $pollKey['Poll'];
                     $optionType=$poll['option_type'];
-//                    dd($optionType);
                     if ($poll['status'] != 'Publish Poll') {
                         $fail('This Poll is not active.');
                     }elseif(now()->format('Y-m-d') >= $poll['end_date']){
                         $fail('This Poll is Expired.');
-                    }elseif(in_array("login_to_vote", $optionType)){
-                        //this validation is not working because is this request we cannot trace if the user is login or not
+                    }elseif(isset($optionType) && $optionType!=''){
+                        if (in_array("login_to_vote", $optionType)) {
+                            //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You must have to login first to participate in this poll.');
-                    }elseif(!in_array("allow_multiple_votes", $optionType)){
-                        //this validation is not working because is this request we cannot trace if the user is login or not
+                        } elseif (!in_array("allow_multiple_votes", $optionType)) {
+                            //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You already vote on this poll ');
+                        }
                     }
                 },
             ],

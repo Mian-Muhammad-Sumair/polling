@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CustomerPollDataTable;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
@@ -24,15 +25,13 @@ class PollController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CustomerPollDataTable $dataTable)
     {
-        $polls = Poll::all();
-        return view('poll.pollList', compact('polls'));
-
+        return $dataTable->render('poll.pollList');
     }
 
     public function create(){
@@ -47,7 +46,8 @@ class PollController extends Controller
     }
 
     public function edit($id){
-        return view('poll.edit');
+        $poll=Poll::where('user_id',auth()->id())->where('id',$id);
+        return view('poll.edit')->with('poll',$poll);
     }
 
     public function update(PollUpdateRequest $request,$id){

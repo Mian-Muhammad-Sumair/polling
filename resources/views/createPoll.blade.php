@@ -19,6 +19,7 @@
             </div>
 
             <form method="post" action="{{ url('/voting') }}">
+                <input type="hidden" name="user_id" value="{{$id}}">
                 @csrf
 
             @foreach ($poll['questionsOptions'] as $index => $option)

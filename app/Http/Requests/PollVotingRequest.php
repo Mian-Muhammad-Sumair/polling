@@ -26,6 +26,7 @@ class PollVotingRequest extends FormRequest
     {
         return [
             'answer' => 'required|exists:question_options,id',
+            'user_id' => 'required',
         ];
     }
 }
