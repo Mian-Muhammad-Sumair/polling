@@ -35,7 +35,7 @@ class CustomerPollOptionDataTable extends DataTable
             })
 
             ->addColumn('action', function($item){
-                return     "  <a class='col-view' href='poll/view/{$item->id}'><i class='fa fa-eye'> </i>  View</a>";
+                return     "   <a  href='#' class='col-view'><i class='fa fa-eye' ></i></a>";
             })
             ;
     }

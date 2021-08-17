@@ -31,23 +31,16 @@ class CustomerPollDataTable extends DataTable
             ->addColumn('action', function($item){
                 $action='';
                 if($item->visibility=='public'){
-                    $action="<a class='dropdown-item' href='poll/deactive/{$item->id}'>De Active</a>";
+                    $action="<a  href='poll/deactive/{$item->id}' class='col-delete'><i class='fa fa-ban'></i></a>";
                 }else{
-                    $action=" <a class='dropdown-item' href='poll/active/{$item->id}'> Active</a>";
+                    $action="<a  href='poll/active/{$item->id}' class='col-delete'><i class='fa fa-check'></i></a>";
                 }
 
-           return     "<div class='button-header'>
-                     <div class='dropdown'>
-                        <button class='btn  dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                          Action
-                        </button>
-                        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                        {$action}
-                            <a class='dropdown-item' href='poll/view/{$item->id}'><i class='fa fa-eye'></i>  View</a>
-                            <a class='dropdown-item' href='poll/{$item->id}/edit'><i class='fa fa-edit'></i> Edit</a>
-                        </div>
-                    </div>
-                    </div>
+           return     "
+                    {$action}
+                <a  href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
+                <a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>
+
 ";
             })
             ;
