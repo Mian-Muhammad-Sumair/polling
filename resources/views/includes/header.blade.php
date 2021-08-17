@@ -25,11 +25,28 @@
                     <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
                     @else
                     <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
-                    <a href="{{ url('/poll') }}" class="custom-btn">Poll List </a>
+
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="custom-btn login">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
+                        <div class="sidenav-btn" onclick="openNav()">&#9776;</div>
+                        <div class="sidenav-section">
+                            <div id="mySidenav" right  class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                @if(session('auth.current')=='admin')
+                                    <a href="{{url('admin/customer')}}">Customers</a>
+
+                                @else
+
+                                @endif
+                                <a href="{{ url('/dashboard') }}" >Dashboard </a>
+                                <a href="{{ url('/poll/create') }}" >Create Poll </a>
+                                <a href="{{ url('/poll') }}" >Poll List </a>
+
+                            </div>
+                        </div>
+
                     @endguest
 
                 </div>
@@ -37,3 +54,13 @@
         </div>
     </div>
 </header>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>

@@ -31,7 +31,7 @@ class PollController extends Controller
      */
     public function index(CustomerPollDataTable $dataTable)
     {
-        return $dataTable->render('poll.pollList');
+        return $dataTable->render('admin.index_table',['title'=>'Poll List']);
     }
 
     public function create(){
@@ -41,19 +41,25 @@ class PollController extends Controller
     {
         $data=$request->validated();
         $data['user_id']=auth()->id();
-        $data= $this->repository->create($data);
-        return redirect('dashboard')->with('status', 'Poll created!');
+        $data= $this->repository->create($data)?
+            toastr()->success('Successfully! Poll has been Created.'):
+            toastr()->error('Sorry! Please try again later.');
+        return back();
+
     }
 
     public function edit($id){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id);
+        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->first();
         return view('poll.edit')->with('poll',$poll);
     }
 
     public function update(PollUpdateRequest $request,$id){
         $data=$request->validated();
-        $data= $this->repository->update($data,$id);
-        return redirect('dashboard')->with('status', 'Poll updated!');
+        $data= $this->repository->update($id,$data)?
+            toastr()->success('Successfully! Poll has been updated.'):
+            toastr()->error('Sorry! Please try again later.');
+
+        return redirect('dashboard');
     }
 
 

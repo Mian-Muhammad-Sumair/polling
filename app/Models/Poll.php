@@ -50,7 +50,11 @@ class Poll extends Model
         return $this->hasMany(PollIdentifierQuestion::class);
     }
     public function scopeCustomerPoll($query){
-        return $query->where('user_id',auth()->id());
+        if(session('auth.current')!='admin') {
+            $query->where('user_id', auth()->id());
+            }
+        return $query;
+
     }
     public function scopeExpiredPoll($query){
         return $query->whereDate('end_date','<',now());
@@ -60,9 +64,8 @@ class Poll extends Model
     }
     public function scopePollVotes($query,$id){
 
-//        $vote=QuestionOptions::where('poll_id',$id)->with('OptionVote')->get();
         $options=QuestionOptions::where('poll_id',$id)->with('OptionVote')->get();
-//        $votes=array();
+
         $votes=[];
 
       foreach($options as $index=>$option){
@@ -78,10 +81,6 @@ class Poll extends Model
           array_push($votes, $array);
       }
         return $votes;
-//        return $query->whereDate('end_date','>',now());
-//$this->setShowWiths(['purchaseOrder', 'purchasedProduct.productProfile.suppliers', 'purchasedProduct.productProfile.manufacturerProfile', 'franchise:id,name', 'receivable', 'rackInventories', 'rackInventories.productProfile', 'backstoreInventories', 'backstoreInventories.productProfile', 'warehouseInventories', 'warehouseInventories.productProfile', 'supplier','purchasedProduct.productProfile.productUnit','purchasedProduct.productProfile.productSubCategory.productCategory','purchasedProduct.productProfile.parentDynamicAttributes']);
-//$this->setShowWiths(['availablePackages.nonModuleFeatureValues.nonModuleFeature','availablePackages.moduleFeatureValues.moduleFeature.module']);
-
 
 
     }

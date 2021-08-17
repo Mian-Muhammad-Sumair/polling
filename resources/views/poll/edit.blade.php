@@ -7,7 +7,7 @@
 
     <div class="container content-order ">
         <div class="row login-bg ">
-            <form method="POST" action="{{ url('poll') }}" >
+            <form method="post" action="{{ url("poll/$poll->id") }}" >
                 @csrf
                 @method('put')
                 <div class="col-md-12 col-sm-12 col-lg-12">
@@ -19,16 +19,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Poll name</label>
-                                <input type="text" name="name" value="{{ old('name') }}" >
+                                <input type="text" name="name" value="{{old('name') == '' ?$poll->name:old('name') }}" >
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
-                                <label>Poll open window</label>
+                                <label>Poll End Date</label>
                                 <div class="text" style="font-size:40px;">
-                                    <input type="date" name="start_date"  style="width: 40%" placeholder="From" value="{{ old('start_date') }}"> -
-                                    <input type="date" name="end_date"  style="width: 40%" placeholder="To"  value="{{ old('end_date') }}">
+                                    <input type="date" name="end_date"   placeholder="To"  value="{{old('end_date') == '' ?$poll->end_date:old('end_date') }}">
                                     @error('start_date') <span class="error_msg">{{$message}}</span> @enderror
                                     @error('end_date') <span class="error_msg">{{$message}}</span> @enderror
                                 </div>
@@ -37,7 +36,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Poll info</label>
-                                <input type="text" name="info" placeholder=""  value="{{ old('info') }}">
+                                <input type="text" name="info" placeholder=""  value="{{old('info') == '' ?$poll->info:old('info')}}">
                                 @error('info') <span class="error_msg">{{$message}}</span> @enderror
 
                             </div>
@@ -45,87 +44,87 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Poll question</label>
-                                <input type="text" name="question"  value="{{ old('question') }}">
+                                <input type="text" name="question"  value="{{old('info') == '' ?$poll->question:old('question')}}">
                                 @error('question') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-{{--                        {{dd($errors)}}--}}
-                        <div class="col-md-12 field_wrapper">
-                            <div class="form-group">
-                                <label>Poll option</label>
-                                @if(old('poll_option'))
-                                @foreach(old('poll_option') as $index=>$option)
-                                        <input type="text" name="poll_option[]" value="{{$option}}">
-                                        @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-                                    @endforeach
-                                @else
-                                    <input type="text" name="poll_option[]" value="">
-                                @endif
-                                @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-group text-right float-right">
-                                <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
-                            </div>
-                        </div>
+
+{{--                        <div class="col-md-12 field_wrapper">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>Poll option</label>--}}
+{{--                                @if(old('poll_option'))--}}
+{{--                                @foreach(old('poll_option') as $index=>$option)--}}
+{{--                                        <input type="text" name="poll_option[]" value="{{$option}}">--}}
+{{--                                        @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror--}}
+{{--                                    @endforeach--}}
+{{--                                @else--}}
+{{--                                    <input type="text" name="poll_option[]" value="">--}}
+{{--                                @endif--}}
+{{--                                @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <div class="form-group text-right float-right">--}}
+{{--                                <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                     </div>
                     <div class="col-md-4 col-sm-4 register-img images">
                         <img class="" src="{{asset('assets/images/register_poll.png')}}" alt="image">
                     </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-lg-12 second-part">
-                    <div class="col-md-5 col-sm-5">
-                        <div class="form-group ">
-                            <label>Poll category</label>
-                            <select class="" name="category" value="{{ old('category') }}">
-                                <option class="Eg. Web Desig">Eg. Web Design</option>
-                            </select>
-                            @error('category') <span class="error_msg">{{$message}}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5 ">
-                        <div class="form-group">
-                            <label>Poll visibility  <span>*</span></label>
-                            <select name="visibility" selected="{{ old('visibility') }}">
-                                <option value="" >Select</option>
-                                <option value="public" >Public</option>
-                                <option value="private" >Private</option>
-                            </select>
-                            @error('visibility') <span class="error_msg">{{$message}}</span> @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-sm-12 col-lg-12">
-                    <div class="col-md-10 col-sm-10 account-details ">
-                        <div class="form-group checkbox">
-                            <label>Poll option type</label>
-                            @foreach(config('poll_option_types') as $option_type=>$option_type_title)
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if(old('option_type') && in_array($option_type,old('option_type')) ) checked @else @endif id="{{$option_type}}">
-                                <label class="checkbox-main" for="{{$option_type}}" >
-                                    <span class="first"></span>
-                                    <span>{{$option_type_title}}</span>
-                                </label>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+{{--                <div class="col-md-12 col-sm-12 col-lg-12 second-part">--}}
+{{--                    <div class="col-md-5 col-sm-5">--}}
+{{--                        <div class="form-group ">--}}
+{{--                            <label>Poll category</label>--}}
+{{--                            <select class="" name="category" value="{{ old('category') }}">--}}
+{{--                                <option class="Eg. Web Desig">Eg. Web Design</option>--}}
+{{--                            </select>--}}
+{{--                            @error('category') <span class="error_msg">{{$message}}</span> @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-5 col-sm-5 ">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>Poll visibility  <span>*</span></label>--}}
+{{--                            <select name="visibility" selected="{{ old('visibility') }}">--}}
+{{--                                <option value="" >Select</option>--}}
+{{--                                <option value="public" >Public</option>--}}
+{{--                                <option value="private" >Private</option>--}}
+{{--                            </select>--}}
+{{--                            @error('visibility') <span class="error_msg">{{$message}}</span> @enderror--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-12 col-sm-12 col-lg-12">--}}
+{{--                    <div class="col-md-10 col-sm-10 account-details ">--}}
+{{--                        <div class="form-group checkbox">--}}
+{{--                            <label>Poll option type</label>--}}
+{{--                            @foreach(config('poll_option_types') as $option_type=>$option_type_title)--}}
+{{--                            <div class="col-md-3 col-sm-3 ">--}}
+{{--                                <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if(old('option_type') && in_array($option_type,old('option_type')) ) checked @else @endif id="{{$option_type}}">--}}
+{{--                                <label class="checkbox-main" for="{{$option_type}}" >--}}
+{{--                                    <span class="first"></span>--}}
+{{--                                    <span>{{$option_type_title}}</span>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
                 <div class="col-md-12 col-sm-12 col-lg-12 bottom">
-                    <div class="col-md-4 col-sm-4 col-lg-4">
-                     <input type="submit" class="custom-btn btn-lg" name="status"  value="Lock Poll">
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4  second-part">
-                        <div class="form-group">
-                            <label>Generate polling key</label>
-                            <input type="text" id="key" name="key" value="{{ old('key') }}" >
-                            @error('key') <span class="error_msg">{{$message}}</span> @enderror
-                            <div onclick="getkey()" class="custom-btn ">Generate</div>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4 col-sm-4 col-lg-4">--}}
+{{--                     <input type="submit" class="custom-btn btn-lg" name="status"  value="Lock Poll">--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-sm-4 col-lg-4  second-part">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>Generate polling key</label>--}}
+{{--                            <input type="text" id="key" name="key" value="{{ old('key') }}" >--}}
+{{--                            @error('key') <span class="error_msg">{{$message}}</span> @enderror--}}
+{{--                            <div onclick="getkey()" class="custom-btn ">Generate</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <input type="submit" class="custom-btn btn-lg" name="status" value="Publish Poll">
                     </div>

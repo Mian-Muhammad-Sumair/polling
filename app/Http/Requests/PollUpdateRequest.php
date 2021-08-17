@@ -25,17 +25,17 @@ class PollUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'start_date' => 'required|date|after_or_equal:today',
+
             'end_date' => 'required|date|after:start_date',
             'info' => 'required',
-            'category' => 'required',
+//            'category' => 'required',
             'question' => 'required',
-            'poll_option' => 'required|array',
-            'poll_option.*'=> 'required',
-            'visibility' => 'required',
-            'option_type' => 'nullable|array',
-            'status'=> 'required|in:Lock Poll,Publish Poll',
-            'key' => 'required_if:status,Publish Poll|unique:polls,key'
+//            'poll_option' => 'required|array',
+//            'poll_option.*'=> 'required',
+//            'visibility' => 'required',
+//            'option_type' => 'nullable|array',
+//            'status'=> 'required|in:Lock Poll,Publish Poll',
+//            'key' => 'required_if:status,Publish Poll|unique:polls,key'
         ];
     }
 }

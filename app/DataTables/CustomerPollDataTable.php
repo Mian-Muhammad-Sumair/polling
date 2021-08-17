@@ -12,6 +12,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class CustomerPollDataTable extends DataTable
 {
+    protected $index;
     /**
      * Build DataTable class.
      *
@@ -23,6 +24,10 @@ class CustomerPollDataTable extends DataTable
 
         return datatables()
             ->eloquent($query)
+            ->addColumn('#', function($item){
+                $this->index=$this->index+1;
+                return $this->index;
+            })
             ->addColumn('action', function($item){
                 $action='';
                 if($item->visibility=='public'){
@@ -88,7 +93,7 @@ class CustomerPollDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('#'),
             Column::make('name'),
             Column::make('start_date'),
             Column::make('end_date'),
