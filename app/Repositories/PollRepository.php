@@ -43,11 +43,13 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
 
    public function update($id, array $data)
    {
+
      $item= parent::update($id,$data);
-     $item->questionsOptions()->delete();
-       foreach ($data['poll_option'] as $value) {
-           $item->questionsOptions()->create(['question_option'=>$value]);
-       }
+
+//     $item->questionsOptions()->delete();
+//       foreach ($data['poll_option'] as $value) {
+//           $item->questionsOptions()->create(['question_option'=>$value]);
+//       }
        return true;
    }
 

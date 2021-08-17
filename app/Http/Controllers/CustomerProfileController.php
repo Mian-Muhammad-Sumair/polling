@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CustomerPollDataTable;
+use App\DataTables\CustomerPollOptionDataTable;
+use App\DataTables\CustomerPollOptionTable;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
@@ -37,9 +39,6 @@ class CustomerProfileController extends Controller
         $totalPoll=$poll->count();
         $activePoll=$poll->Activepoll()->count();
         $expiredPoll=Poll::where('user_id',auth()->id())->ExpiredPoll()->count();
-
-//        dd($activePoll);
-//        $activePoll=0;
         return view('dashboard')->with(['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
     }
 
@@ -72,9 +71,10 @@ class CustomerProfileController extends Controller
         toastr()->success('Successfully! Poll is  de activated.');
         return redirect('/poll');
     }
-    public function pollView($id,CustomerPollDataTable $dataTable){
+    public function pollView($id,CustomerPollOptionDataTable $dataTable){
         $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['pollKeys','pollIdentifierQuestions','questionOptions'])->first();
         $pollVote=Poll::PollVotes($id);
+        $dataTable->with('id', $id);
         return $dataTable->render('poll.pollView',['poll'=>$poll,'TotalVote'=>$pollVote]);
     }
 

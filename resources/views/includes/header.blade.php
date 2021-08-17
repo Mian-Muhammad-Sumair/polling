@@ -41,6 +41,7 @@
 
                                 @endif
                                 <a href="{{ url('/poll') }}" >Poll List </a>
+                                <a href="{{ url('/poll/create') }}" >Create Poll </a>
                             </div>
                         </div>
 
