@@ -14,18 +14,18 @@
             <div class=" ">
                 <div class="row">
                     <div class="col-lg-4">
-{{--                        <label><b>Name:</b></label><label> {{$poll->name}}</label>--}}
+                       <label><b>Name:</b></label><label> {{$poll->name}}</label>
                     </div>
                     <div class="col-lg-4">
-{{--                        <label><b>Info:</b></label><label> {{$poll->info}}</label>--}}
+                       <label><b>Info:</b></label><label> {{$poll->info}}</label>
                     </div>
                     <div class="col-lg-4">
-{{--                        <label><b>Question:</b></label><label> {{$poll->question}}</label>--}}
+                       <label><b>Question:</b></label><label> {{$poll->question}}</label>
                     </div>
                     <div class="col-lg-6">
                         <label><b>Poll Key:</b></label><br>
                         @foreach($poll->pollkeys as $key)
-                            <label> {{$key->key}}</label><br>
+                            <label>000 {{$key->key}}</label><br>
                         @endforeach
                     </div>
                     <div class="col-lg-12">
