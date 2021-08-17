@@ -40,8 +40,10 @@
                                 @else
 
                                 @endif
-                                <a href="{{ url('/poll') }}" >Poll List </a>
+                                <a href="{{ url('/dashboard') }}" >Dashboard </a>
                                 <a href="{{ url('/poll/create') }}" >Create Poll </a>
+                                <a href="{{ url('/poll') }}" >Poll List </a>
+
                             </div>
                         </div>
 

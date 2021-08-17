@@ -58,7 +58,7 @@ class PollController extends Controller
         $data= $this->repository->update($id,$data)?
             toastr()->success('Successfully! Poll has been updated.'):
             toastr()->error('Sorry! Please try again later.');
- 
+
         return redirect('dashboard');
     }
 
