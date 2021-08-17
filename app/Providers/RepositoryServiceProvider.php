@@ -6,6 +6,8 @@ namespace App\Providers;
 
 use App\CRUD\Repositories\BaseCRUDRepository;
 use App\CRUD\Repositories\BaseCRUDRepositoryInterface;
+use App\Repositories\PermissionRepository;
+use App\Repositories\PermissionRepositoryInterface;
 use App\Repositories\PollRepository;
 use App\Repositories\PollRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +23,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             PollRepositoryInterface::class,
             PollRepository::class
+        );
+        $this->app->bind(
+            PermissionRepositoryInterface::class,
+            PermissionRepository::class
         );
     }
 }
