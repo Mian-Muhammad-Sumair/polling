@@ -1125,6 +1125,10 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         padding-left: 32px;
     }
     
+    .Generate-polling-key-radio input {
+        width: auto !important;
+    }
+    
     .info-pricing ul li.button {
         background: none;
     }
@@ -1154,10 +1158,14 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     .info-pricing ul .custom-btn:hover {
-        color: #fff;
+        color: #fff !important;
         -ms-transform: scale(1.02);
         transform: scale(1.02);
         background-color: #238ff9;
+    }
+    
+    .custom-btn:hover {
+        color: #fff !important;
     }
     
     .info-pricing ul.right {
@@ -4249,4 +4257,14 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     
     .sidenav-section .sidenav a:hover {
         color: #7158f4 !important;
+    }
+    
+    .table-outer-body tbody tr {
+        /* height: 40px !important; */
+    }
+    
+    .table-outer-body .dataTables_empty {
+        left: 40%;
+        font-size: 16px !important;
+        position: absolute;
     }

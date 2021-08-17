@@ -25,6 +25,7 @@
                     <div class="col-lg-6">
                         <label><b>Poll Key:</b></label><br>
                         @foreach($poll->pollkeys as $key)
+                            <label>000 {{$key->key}}</label><br>
                             <label> {{$key->key}}</label><br>
                         @endforeach
                     </div>
