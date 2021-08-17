@@ -29,7 +29,10 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                $item->pollKeys()->create(['key'=>$newKew]);
            }
        }
-       $item->pollKeys()->create(['key'=>$data['key']]);
+       if($data['status']=='Publish Poll') {
+           $item->pollKeys()->create(['key' => $data['key']]);
+       }
+
 
        foreach ($data['identifier_question'] as $value) {
            $item->pollIdentifierQuestions()->create(['identifier_question'=>$value]);
