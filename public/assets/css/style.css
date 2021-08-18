@@ -141,11 +141,11 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     body {
         line-height: 1;
     }
-    
-    ol,
+    /* ol,
     ul {
         list-style: none;
     }
+     */
     
     blockquote,
     q {
@@ -1129,6 +1129,23 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         width: auto !important;
     }
     
+    input.largerCheckbox {
+        border: 2px solid #dee6eb !important;
+        width: 15px !important;
+        height: 15px !important;
+    }
+    
+    .Generate-polling-key-radio {
+        display: flex;
+        align-items: baseline;
+    }
+    
+    .Generate-polling-key-radio label {
+        margin-left: 8px;
+        font-size: 14px !important;
+        /* font-weight: lighter !important; */
+    }
+    
     .info-pricing ul li.button {
         background: none;
     }
@@ -1299,19 +1316,19 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         display: none;
         position: absolute;
         top: 100%;
+        margin-top: 3px !important;
         right: 0;
         left: 0;
         z-index: 999;
         margin: 0;
         padding: 0;
-        width: 195px;
+        /* width: 195px; */
         border-radius: 5px;
         list-style: none;
         box-shadow: 1px 2px 40px rgba(28, 30, 32, 0.14);
         background-color: #fff;
     }
-    
-    .select-options:before {
+    /* .select-options:before {
         content: "";
         top: -7px;
         left: 50%;
@@ -1322,11 +1339,11 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         border-right: 8px solid transparent;
         border-bottom: 7px solid #fff;
         position: absolute;
-    }
+    } */
     
     .select-options li {
         margin: 0;
-        padding: 14px 30px;
+        padding: 5px 15px;
         font-size: 14px;
         text-transform: uppercase;
         color: rgba(35, 120, 236, 0.9);
@@ -4035,8 +4052,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     body,
     /* .container, */
     
-    .container-fluid,
-    .row {
+    .container-fluid {
         overflow-x: hidden;
     }
     
@@ -4079,14 +4095,17 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
     }
     
     .table-outer-body .dataTable .fa-trash {
+        font-size: 14px;
         color: #ef4444;
     }
     
     .table-outer-body .dataTable .fa-eye {
+        font-size: 14px;
         color: #10b981;
     }
     
     .table-outer-body .dataTable .fa-edit {
+        font-size: 14px;
         color: #3b82f6;
     }
     
@@ -4259,12 +4278,33 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
         color: #7158f4 !important;
     }
     
-    .table-outer-body tbody tr {
-        /* height: 40px !important; */
-    }
-    
     .table-outer-body .dataTables_empty {
         left: 40%;
         font-size: 16px !important;
         position: absolute;
     }
+    
+    .poll-date-section {
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-shadow: 1px 2px 40px rgba(28, 30, 32, 0.14);
+    }
+    
+    .poll-date-section label {
+        margin-right: 10px;
+        margin-bottom: 20px;
+    }
+    
+    ol,
+    ul {
+        list-style: none;
+    }
+    
+    .poll-date-section ol {
+        margin-left: 20px;
+        list-style: circle;
+    }
+    
+    .poll-select-list {}
