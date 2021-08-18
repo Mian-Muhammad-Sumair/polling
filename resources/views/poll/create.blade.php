@@ -106,7 +106,7 @@ Create Poll
                 <div class="col-md-6 col-sm-12 ">
                     <div class="form-group">
                         <label>Poll visibility <span>*</span></label>
-                        <select name="visibility" selected="{{ old('visibility') }}">
+                        <select class="poll-select-list" name="visibility" selected="{{ old('visibility') }}">
                             <option value="">Select</option>
                             <option value="public">Public</option>
                             <option value="private">Private</option>
@@ -141,9 +141,12 @@ Create Poll
                         <label>Generate polling key</label>
                         <input type="text" id="key" name="key" value="{{ old('key') }}">
                         <div class="Generate-polling-key-radio">
-                            <input type="checkbox" id="key_type" name="key_type" value="1">
-                            @error('key') <span class="error_msg">{{$message}}</span> @enderror
+                            <input type="checkbox" id="key_type"  class="largerCheckbox"  name="key_type" value="1">
+                            <label for="key_type"> Multiple polling keys</label>
+                          
                         </div>
+                        
+                        @error('key') <span class="error_msg">{{$message}}</span> @enderror
                         <div onclick="getkey()" class="custom-btn ">Generate</div>
 
                     </div>
