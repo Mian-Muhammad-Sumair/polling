@@ -61,6 +61,12 @@ class PollController extends Controller
 
         return redirect('dashboard');
     }
+    public function delete($id){
+        $data= $this->repository->delete($id)?
+            toastr()->success('Successfully! Poll has been deleted.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('poll');
+    }
 
 
 

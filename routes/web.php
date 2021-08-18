@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::put('/poll', [App\Http\Controllers\PollController::class,'update']);
+Route::get('/poll/delete/{id}', [App\Http\Controllers\PollController::class,'delete']);
 Route::post('/', [App\Http\Controllers\PollVotingController::class,'pollParticipate']);
 Route::get('/', [App\Http\Controllers\PollVotingController::class,'showParticipationForm']);
 Route::resource('/voting', App\Http\Controllers\PollVotingController::class);

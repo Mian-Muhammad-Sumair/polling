@@ -76,5 +76,28 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
        }
        return true;
    }
+    public function delete($id)
+    {
+        $user_id=auth()->id();
+        $poll=Poll::where('id',$id)->where('user_id',$user_id)->first();
+        if($poll){
+            $pollVote=Poll::PollVotes($id);
+            $pollVote=collect($pollVote)->sum('total_Vote');
+           if($pollVote==0){
+               $item= parent::delete($id);
+               $item->pollKeys()->delete();
+               $item->pollIdentifierQuestions()->delete();
+               $item->questionsOptions()->delete();
+
+           }else{
+               return false;
+           }
+
+        }else{
+            return false;
+        }
+
+        return true;
+    }
 
 }

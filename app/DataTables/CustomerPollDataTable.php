@@ -31,7 +31,7 @@ class CustomerPollDataTable extends DataTable
             ->addColumn('action', function($item){
                 $action='';
                 if($item->visibility=='public'){
-                    $action="<a  href='poll/deactive/{$item->id}' class='col-delete'><i class='fa fa-trash'></i></a>";
+                    $action="<a  href='poll/deactive/{$item->id}' class='col-delete'><i class='fa fa-ban'></i></a>";
                 }else{
                     $action="<a  href='poll/active/{$item->id}' class='col-delete'><i class='fa fa-check'></i></a>";
                 }
@@ -40,7 +40,7 @@ class CustomerPollDataTable extends DataTable
                     {$action}
                 <a  href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
                 <a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>
-
+                <a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>
 ";
             })
             ;
