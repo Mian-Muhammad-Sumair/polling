@@ -49,7 +49,7 @@ class PollController extends Controller
     }
 
     public function edit($id){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['questionsOptions','pollKeys','pollIdentifierQuestions'])->first();
+        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['questionOptions','pollKeys','pollIdentifierQuestions'])->first();
         return view('poll.edit')->with('poll',$poll);
     }
 

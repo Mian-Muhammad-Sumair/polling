@@ -32,7 +32,7 @@ class Poll extends Model
         'option_type'=>'array'
     ];
 
-    public function questionsOptions()
+    public function questionOptions()
     {
         return $this->hasMany(QuestionOptions::class);
     }

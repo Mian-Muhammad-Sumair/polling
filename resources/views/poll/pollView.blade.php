@@ -23,9 +23,8 @@ Poll Data
                     <label><b>Question :</b></label><label> {{$poll->question}}</label>
                 </div>
                 <div class="col-lg-6">
-                    <label><b>Poll Key :</b></label>
+                    <label><b>Poll Key :</b></label><br>
                     @foreach($poll->pollkeys as $key)
-                    <label> {{$key->key}}</label>
                     <label> {{$key->key}}</label><br>
                     @endforeach
                 </div>

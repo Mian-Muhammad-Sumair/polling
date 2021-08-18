@@ -61,8 +61,8 @@
                                           $totalOption=$index;
                                           @endphp
                                     @endforeach
-                                @elseif($poll->questionsOptions)
-                                    @foreach($poll->questionsOptions as $index=>$option)
+                                @elseif($poll->questionOptions)
+                                    @foreach($poll->questionOptions as $index=>$option)
                                         <input type="text"name="poll_option[{{$option->id}}]" value="{{$option->question_option}}">
                                         @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
                                         @php

@@ -40,7 +40,7 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
            $item->pollIdentifierQuestions()->create(['identifier_question'=>$value]);
        }
        foreach ($data['poll_option'] as $value) {
-           $item->questionsOptions()->create(['question_option'=>$value]);
+           $item->questionOptions()->create(['question_option'=>$value]);
        }
 
      return true;
@@ -57,7 +57,7 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                $questionOptions->save();
 
            }else{
-               $item->questionsOptions()->create(['question_option'=>$option]);
+               $item->questionOptions()->create(['question_option'=>$option]);
            }
 
        }
@@ -87,7 +87,7 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                $item= parent::delete($id);
                $item->pollKeys()->delete();
                $item->pollIdentifierQuestions()->delete();
-               $item->questionsOptions()->delete();
+               $item->questionOptions()->delete();
 
            }else{
                return false;
