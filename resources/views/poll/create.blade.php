@@ -358,8 +358,8 @@ Create Poll
 
     }
 
-    .add_button:hover,
-    .add_button:focus {
+    .add_button:hover, .add_button:focus,
+    .add_question:hover, .add_question:focus{
         color: #fff !important;
         text-decoration: none;
     }

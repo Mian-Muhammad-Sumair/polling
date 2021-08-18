@@ -6,6 +6,8 @@ namespace App\Repositories;
 
 use App\CRUD\Repositories\BaseCRUDRepository;
 use App\Models\Poll;
+use App\Models\PollIdentifierQuestion;
+use App\Models\QuestionOptions;
 use Illuminate\Support\Str;
 
 
@@ -48,11 +50,30 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
    {
 
      $item= parent::update($id,$data);
+       foreach ($data['poll_option'] as $index=>$option){
+           $questionOptions=QuestionOptions::find($index);
+           if($questionOptions&&$questionOptions['poll_id']==$id){
+               $questionOptions['question_option']=$option;
+               $questionOptions->save();
 
-//     $item->questionsOptions()->delete();
-//       foreach ($data['poll_option'] as $value) {
-//           $item->questionsOptions()->create(['question_option'=>$value]);
-//       }
+           }else{
+               $item->questionsOptions()->create(['question_option'=>$option]);
+           }
+
+       }
+       foreach ($data['identifier_question'] as $index=>$question){
+           $identifyQuestion=PollIdentifierQuestion::find($index);
+           if($identifyQuestion&&$identifyQuestion['poll_id']==$id){
+               $identifyQuestion['identifier_question']=$question;
+               $identifyQuestion->save();
+           }else{
+               $item->pollIdentifierQuestions()->create(['identifier_question'=>$question]);
+           }
+       }
+     $item->pollKeys()->delete();
+       foreach ($data['key'] as $value) {
+           $item->pollKeys()->create(['key'=>$value]);
+       }
        return true;
    }
 
