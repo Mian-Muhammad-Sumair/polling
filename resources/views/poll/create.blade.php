@@ -89,7 +89,7 @@ Create Poll
                         @error('identifier_question') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                 </div>
-                <div class="col-md-12 field_wrap">
+                <div class="col-md-12">
                     <div class="form-group text-right float-right">
                         <a href="javascript:void(0);" title="Add field" class="custom-btn add_question">Add more question +</a>
                     </div>
@@ -143,9 +143,9 @@ Create Poll
                         <div class="Generate-polling-key-radio">
                             <input type="checkbox" id="key_type"  class="largerCheckbox"  name="key_type" value="1">
                             <label for="key_type"> Multiple polling keys</label>
-                          
+
                         </div>
-                        
+
                         @error('key') <span class="error_msg">{{$message}}</span> @enderror
                         <div onclick="getkey()" class="custom-btn ">Generate</div>
 

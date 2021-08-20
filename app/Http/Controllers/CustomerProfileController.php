@@ -67,8 +67,6 @@ class CustomerProfileController extends Controller
         $user->name=$data['name'];
         $user->email=$data['email'];
         $user->about=$data['about'];
-        $user->fb_link=$data['fb_link'];
-        $user->fb_link=$data['tw_link'];
             $user->save()?
             toastr()->success('Successfully! Profile is Updated.'):
             toastr()->error('Sorry! Please try again later.');
@@ -78,21 +76,28 @@ class CustomerProfileController extends Controller
     public function pollStatus($id){
         $messege='';
         $poll=Poll::where('id',$id);
+
         // check if the user is admin or customer
         $poll= auth()->user()->user_type=='admin'? $poll:
             $poll->where('user_id',auth()->id());
-
         $poll=$poll->first();
-        // update poll visibility if private if public or private if public
-        $poll->visibility = $poll->visibility=='public'? 'private':
-                                'public';
+        if(auth()->user()->user_type=='admin') {
+            // update poll visibility if private if public or private if public
+            $poll->visibility = $poll->visibility=='public'?'private':'public';
+            $poll->edit_by =$poll->visibility=='public'?0: auth()->id();
+        }else{
+            // update poll visibility if private if public or private if public
+            $poll->visibility = $poll->visibility=='public'?'private':'public';
+        }
+
         // Change response message
         $messege = $poll->visibility=='public'?'Successfully! Poll is activated.':
             'Successfully! Poll is  de activated.';
+
         $poll->save()?
             toastr()->success($messege):
             toastr()->error('Sorry! Please try again later.');
-        return redirect('/poll');
+        return redirect('/dashboard');
     }
     public function pollView($id,CustomerPollOptionDataTable $dataTable){
         $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['pollKeys','pollIdentifierQuestions','questionOptions'])->first();

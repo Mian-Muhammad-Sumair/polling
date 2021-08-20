@@ -23,7 +23,7 @@ class CreatePollsTable extends Migration
             $table->string('category');
             $table->string('visibility');
             $table->string('option_type')->nullable();
-            $table->string('status');
+            $table->string('edit_by')->default(0);
             $table->bigInteger('user_id');
             $table->timestamps();
         });

@@ -156,7 +156,7 @@ Dashboard
                         </div>
                         <div class="text">
                             <h6>{{$user['name']}}</h6>
-                            <p>loram ipsome lorem ipsom </p>
+                            <p>{{$user['about']}}</p>
                             <a href="customer/{{$user['id']}}">settings</a>
                             <p>{{$user['email']}}</p>
                             <div class="social-icons">
@@ -190,12 +190,12 @@ Dashboard
                                 <h5 class="numbers">{{$expiredPoll}}<i class="fa fa-info-circle"> </i></h5>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
-                            </div>
-                        </div>
+{{--                        <div class="col-lg-4">--}}
+{{--                            <div class="pool-card">--}}
+{{--                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>--}}
+{{--                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
 
                     </div>

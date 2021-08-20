@@ -37,7 +37,10 @@ class PollParticipateRequest extends FormRequest
                         $fail('This Poll is not active.');
                     }elseif(now()->format('Y-m-d') >= $poll['end_date']){
                         $fail('This Poll is Expired.');
-                    }elseif(isset($optionType) && $optionType!=''){
+                    }elseif($poll['edit_by']!=0){
+                        $fail('This Poll is banned by admin.');
+                    }
+                    elseif(isset($optionType) && $optionType!=''){
                         if (in_array("login_to_vote", $optionType)) {
                             //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You must have to login first to participate in this poll.');

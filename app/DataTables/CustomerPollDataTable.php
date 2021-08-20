@@ -30,13 +30,17 @@ class CustomerPollDataTable extends DataTable
             })
             ->addColumn('status', function($item){
                 $type='badge-error';
+                $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
                 if($item->visibility=='public'){
                     $type='badge-success';
                 }
-                return     "
-                        <a href='poll/action/{$item->id}' class='text-capitalize col-status'><span class='badge ".$type."'>{$item->visibility}</span></a>
+                if(auth()->user()->user_type=='admin' || $item->edit_by==0){
+                    $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
+                }elseif( $item->edit_by=!0){
+                    $status="<span class='text-capitalize col-status badge ".$type."'>banned</span>";
+                }
 
-                ";
+                return  $status;
             })->rawColumns(['action','status'])
             ->addColumn('action', function($item){
 
