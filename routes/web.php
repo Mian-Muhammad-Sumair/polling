@@ -35,6 +35,7 @@ Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::cl
 Route::resource('/dashboard', App\Http\Controllers\CustomerProfileController::class);
 Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus']);
 Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
+Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
 
 Route::view('/register_billing', 'signUpBilling');
 //Route::view('/create_poll', 'createPoll');

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\DataTables\CustomerPollDataTable;
 use App\DataTables\CustomerPollOptionDataTable;
 use App\DataTables\CustomerPollOptionTable;
+use App\DataTables\PollOptionVotesDataTable;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
 use App\Models\poll;
+use App\Models\PollVote;
 use App\Models\QuestionOptions;
 use App\Models\User;
 use App\Repositories\PollRepositoryInterface;
@@ -81,6 +83,15 @@ class CustomerProfileController extends Controller
         $pollVote=Poll::PollVotes($id);
         $dataTable->with('id', $id);
         return $dataTable->render('poll.pollView',['poll'=>$poll,'TotalVote'=>$pollVote]);
+    }
+    public function pollVotes($pollID,$id,PollOptionVotesDataTable $dataTable){
+        $poll=Poll::where('user_id',auth()->id())->where('id',$pollID)->with(['pollKeys','questionOptions','pollIdentifierQuestions'])->first();
+        $selectedOption=QuestionOptions::where('id',$id)->first();
+        $pollVote=Poll::PollVotes($pollID);
+        $dataTable->with('id', $id);
+        $dataTable->with('selected', $selectedOption);
+        $dataTable->with('pollIdentifierQuestions', $poll->pollIdentifierQuestions);
+        return $dataTable->render('poll.pollVotes',['poll'=>$poll,'selectedOption'=>$selectedOption,'pollVote'=>$pollVote]);
     }
 
 

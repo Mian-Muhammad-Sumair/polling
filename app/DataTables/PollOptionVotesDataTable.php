@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Poll;
+use App\Models\PollIdentifierAnswer;
+use App\Models\PollVote;
 use App\Models\QuestionOptions;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
@@ -11,9 +13,12 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CustomerPollOptionDataTable extends DataTable
+class PollOptionVotesDataTable extends DataTable
 {
     protected $index;
+    public $identifyAnswer;
+    public $userId;
+    public $answerId;
     /**
      * Build DataTable class.
      *
@@ -22,33 +27,42 @@ class CustomerPollOptionDataTable extends DataTable
      */
     public function dataTable($query)
     {
-
-        return datatables()
+        $return= datatables()
             ->eloquent($query)
-            ->addColumn('total_vote', function($item){
-                $totalVote=QuestionOptions::TotalVote($item->id);
-                return     $totalVote;
+            ->addColumn('answer', function($item){
+
+                return $this->selected->question_option;
             })
             ->addColumn('#', function($item){
+                $this->userId=$item->user_id;
                 $this->index=$this->index+1;
-               return $this->index;
-            })
+                return $this->index;
+            });
+        foreach($this->pollIdentifierQuestions as $index=>$IdentifierQuestion){
+            $this->identifyAnswer=$IdentifierQuestion->id;
+            $return=$return->addColumn($IdentifierQuestion->identifier_question, function($item){
+                $identifyAnswer=PollIdentifierAnswer::where('user_id', $this->userId)->get();
+                foreach($identifyAnswer as $index=>$answer){
+                    if( $this->answerId!=$answer->id){
+                        $this->answerId=$answer->id;
+                        return $answer->answer;
+                    }
+                }
+            });
 
-            ->addColumn('action', function($item){
-                return     "   <a  href='/poll/votes/{$this->id}/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";
-            })
-            ;
+        }
+        return $return;
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\QuestionOptions $model
+     * @param \App\Models\PollVote $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(QuestionOptions $model)
+    public function query(PollVote $model)
     {
-        return $model->PollOptions($this->id)->newQuery();
+        return $model->OptionsVotes($this->id)->newQuery();
     }
 
     /**
@@ -59,7 +73,7 @@ class CustomerPollOptionDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('customer-poll-option-table')
+            ->setTableId('customer-option-vote-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
@@ -79,16 +93,15 @@ class CustomerPollOptionDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [
-            Column::make('#'),
-            Column::make('question_option'),
-            Column::computed('total_vote'),
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(100)
-                ->addClass('text-center'),
-        ];
+        $column=[Column::make('#')];
+        foreach($this->pollIdentifierQuestions as $IdentifierQuestions){
+            $add=  Column::make($IdentifierQuestions->identifier_question);
+            array_push($column,$add);
+        }
+        $adds=Column::make('answer');
+        array_push($column,$adds);
+
+        return $column;
     }
 
     /**
