@@ -37,14 +37,15 @@ class CustomerProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CustomerPollDataTable $dataTable)
     {
         $user=User::where('id',auth()->id())->first();
         $poll=Poll::where('user_id',auth()->id());
         $totalPoll=$poll->count();
         $activePoll=$poll->Activepoll()->count();
         $expiredPoll=Poll::where('user_id',auth()->id())->ExpiredPoll()->count();
-        return view('dashboard')->with(['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
+        return $dataTable->render('dashboard',['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
+
     }
 
     public function create(){

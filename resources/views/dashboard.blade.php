@@ -203,5 +203,7 @@ Dashboard
             </div>
         </div>
     </div>
+    @include('includes.datatable')
 </div>
+
 @endsection
