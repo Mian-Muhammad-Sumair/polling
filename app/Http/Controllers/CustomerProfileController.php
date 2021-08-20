@@ -9,6 +9,8 @@ use App\DataTables\PollOptionVotesDataTable;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
+use App\Http\Requests\UserPasswordChangeRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\poll;
 use App\Models\PollVote;
 use App\Models\QuestionOptions;
@@ -16,6 +18,7 @@ use App\Models\User;
 use App\Repositories\PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -56,7 +59,19 @@ class CustomerProfileController extends Controller
         return view('poll.edit');
     }
 
-    public function update(PollUpdateRequest $request,$id){
+    public function update(UserUpdateRequest $request){
+
+        $data=$request->validated();
+        $user=User::where('id',auth()->id())->first();
+        $user->name=$data['name'];
+        $user->email=$data['email'];
+        $user->about=$data['about'];
+        $user->fb_link=$data['fb_link'];
+        $user->fb_link=$data['tw_link'];
+            $user->save()?
+            toastr()->success('Successfully! Profile is Updated.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('dashboard');
 
     }
     public function pollStatus($id){
@@ -92,6 +107,30 @@ class CustomerProfileController extends Controller
         $dataTable->with('selected', $selectedOption);
         $dataTable->with('pollIdentifierQuestions', $poll->pollIdentifierQuestions);
         return $dataTable->render('poll.pollVotes',['poll'=>$poll,'selectedOption'=>$selectedOption,'pollVote'=>$pollVote]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showCustomer($id)
+    {
+        $user=User::where('id',auth()->id())->where('id',$id)->first();
+        return view('auth.edit')->with('user',$user);
+
+    }
+
+    public function updatePassword(UserPasswordChangeRequest $request)
+    {
+        $data=$request->validated();
+        $user=User::where('id',auth()->id())->first();
+        $user->password=Hash::make($data['new_password']);
+        $user->save()?
+            toastr()->success('Successfully! Password is Updated.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('dashboard');
+
     }
 
 

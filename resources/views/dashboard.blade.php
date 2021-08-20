@@ -157,7 +157,7 @@ Dashboard
                         <div class="text">
                             <h6>{{$user['name']}}</h6>
                             <p>loram ipsome lorem ipsom </p>
-                            <a href="">settings</a>
+                            <a href="customer/{{$user['id']}}">settings</a>
                             <p>{{$user['email']}}</p>
                             <div class="social-icons">
                                 <i class="fa fa-twitter"></i> <span>Share with twitter</span>
