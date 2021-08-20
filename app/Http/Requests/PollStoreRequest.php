@@ -37,7 +37,8 @@ class PollStoreRequest extends FormRequest
             'status'=> 'required|in:Lock Poll,Publish Poll',
             'key' => 'required_if:status,Publish Poll|unique:poll_keys,key',
             'key_type' => 'nullable|numeric',
-            'identifier_question' => 'required|array'
+            'identifier_question' => 'required|array',
+            'identifier_question.*'=> 'required'
         ];
     }
 }

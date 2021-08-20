@@ -29,8 +29,12 @@ class CustomerDataTable extends DataTable
                 <a href='#' class='col-edit'><i class='fa fa-edit'></i></a>
                 ";
             })
+            ->addColumn('#', function($item){
+                $this->index=$this->index+1;
+                return $this->index;
+            })
             ->addColumn('status', function($item){
-                $type='badge-danger';
+                $type='badge-error';
                 if($item->status=='active'){
                     $type='badge-success';
                 }
@@ -81,7 +85,7 @@ class CustomerDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::make('#'),
             Column::make('name'),
             Column::make('email'),
             Column::make('created_at'),

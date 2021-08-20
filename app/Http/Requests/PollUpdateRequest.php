@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\PollKey;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PollUpdateRequest extends FormRequest
@@ -28,14 +29,27 @@ class PollUpdateRequest extends FormRequest
 
             'end_date' => 'required|date|after:start_date',
             'info' => 'required',
-//            'category' => 'required',
+            'category' => 'required',
             'question' => 'required',
-//            'poll_option' => 'required|array',
-//            'poll_option.*'=> 'required',
-//            'visibility' => 'required',
-//            'option_type' => 'nullable|array',
-//            'status'=> 'required|in:Lock Poll,Publish Poll',
-//            'key' => 'required_if:status,Publish Poll|unique:polls,key'
+            'poll_option' => 'required|array',
+            'poll_option.*'=> 'required',
+            'identifier_question' => 'required|array',
+            'identifier_question.*'=> 'required',
+            'visibility' => 'required',
+            'option_type' => 'nullable|array',
+            'status'=> 'required|in:Lock Poll,Publish Poll',
+            'key' => 'required|array',
+            "key.*" => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $id=explode('.',$attribute);
+                    $id=PollKey::where('id',$id[1])->select('poll_id')->first();
+                    $key=PollKey::where('key',$value)->where('poll_id','!=',$id->poll_id)->first();
+                    if($key){
+                        $fail('Please Enter a unique key.');
+                    }
+                },
+            ],
         ];
     }
 }

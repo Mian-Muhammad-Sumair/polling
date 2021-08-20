@@ -22,7 +22,7 @@
                 <input type="hidden" name="user_id" value="{{$id}}">
                 @csrf
 
-            @foreach ($poll['questionsOptions'] as $index => $option)
+            @foreach ($poll['questionOptions'] as $index => $option)
 
             <div class="col-md-12 col-sm-12 col-lg-12 checkbox  animated bounceInRight">
                 <input type="checkbox" name="answer" value="{{$option['id']}}" id="vote{{$index}}" >

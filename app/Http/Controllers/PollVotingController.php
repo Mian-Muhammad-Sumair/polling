@@ -41,7 +41,7 @@ class PollVotingController extends Controller
 
     }
     public function show($id,$poll){
-        $pollData=Poll::where('id',$poll)->with('questionsOptions')->first();
+        $pollData=Poll::where('id',$poll)->with('questionOptions')->first();
         $name=User::where('id',$pollData['user_id'])->select('name')->first();
         return view('createPoll')->with(['poll'=>$pollData,'creator_name' =>$name['name'],'id'=>$id]);
     }

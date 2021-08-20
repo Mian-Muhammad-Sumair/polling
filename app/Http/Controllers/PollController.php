@@ -49,7 +49,7 @@ class PollController extends Controller
     }
 
     public function edit($id){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->first();
+        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['questionOptions','pollKeys','pollIdentifierQuestions'])->first();
         return view('poll.edit')->with('poll',$poll);
     }
 
@@ -60,6 +60,12 @@ class PollController extends Controller
             toastr()->error('Sorry! Please try again later.');
 
         return redirect('dashboard');
+    }
+    public function delete($id){
+        $data= $this->repository->delete($id)?
+            toastr()->success('Successfully! Poll has been deleted.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('poll');
     }
 
 

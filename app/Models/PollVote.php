@@ -21,6 +21,13 @@ class PollVote extends Model
     ];
 
 
+    public function identifierAnswer()
+    {
+        return $this->hasMany(PollIdentifierAnswer::class,'user_id','user_id');
+    }
+    public function scopeOptionsVotes($query,$id){
+        return $query->where('answer',$id);
+    }
 
 
 

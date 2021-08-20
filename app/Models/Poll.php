@@ -32,19 +32,15 @@ class Poll extends Model
         'option_type'=>'array'
     ];
 
-    public function questionsOptions()
+    public function questionOptions()
     {
-
         return $this->hasMany(QuestionOptions::class);
     }
     public function pollKeys()
     {
         return $this->hasMany(PollKey::class);
     }
-    public function questionOptions()
-    {
-        return $this->hasMany(QuestionOptions::class);
-    }
+
     public function pollIdentifierQuestions()
     {
         return $this->hasMany(PollIdentifierQuestion::class);
@@ -65,15 +61,14 @@ class Poll extends Model
     public function scopePollVotes($query,$id){
 
         $options=QuestionOptions::where('poll_id',$id)->with('OptionVote')->get();
-
         $votes=[];
-
       foreach($options as $index=>$option){
           $total_vote=00;
           if(isset($option->OptionVote)&&$option->OptionVote->count()!=0){
               $total_vote=$option->OptionVote->count();
           }
           $array=[
+              'id'=>$option->id,
               'question_option'=>$option->question_option,
               'poll_id' =>$option->poll_id,
               'total_Vote'=>$total_vote,
@@ -83,6 +78,10 @@ class Poll extends Model
         return $votes;
 
 
+    }
+    public function scopePollVote($query,$id){
+        $vote=PollVote::where('answer',$id)->with('identifierAnswer')->get();
+        return $vote;
     }
 
 

@@ -28,19 +28,22 @@ class CustomerPollDataTable extends DataTable
                 $this->index=$this->index+1;
                 return $this->index;
             })
-            ->addColumn('action', function($item){
-                $action='';
+            ->addColumn('status', function($item){
+                $type='badge-error';
                 if($item->visibility=='public'){
-                    $action="<a  href='poll/deactive/{$item->id}' class='col-delete'><i class='fa fa-ban'></i></a>";
-                }else{
-                    $action="<a  href='poll/active/{$item->id}' class='col-delete'><i class='fa fa-check'></i></a>";
+                    $type='badge-success';
                 }
+                return     "
+                        <a href='poll/action/{$item->id}' class='text-capitalize col-status'><span class='badge ".$type."'>{$item->visibility}</span></a>
+
+                ";
+            })->rawColumns(['action','status'])
+            ->addColumn('action', function($item){
 
            return     "
-                    {$action}
                 <a  href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
                 <a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>
-
+                <a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>
 ";
             })
             ;
@@ -93,6 +96,7 @@ class CustomerPollDataTable extends DataTable
             Column::make('question'),
             Column::make('category'),
             Column::make('visibility'),
+            Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

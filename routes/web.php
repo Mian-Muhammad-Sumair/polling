@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::put('/poll', [App\Http\Controllers\PollController::class,'update']);
+Route::get('/poll/delete/{id}', [App\Http\Controllers\PollController::class,'delete']);
 Route::post('/', [App\Http\Controllers\PollVotingController::class,'pollParticipate']);
 Route::get('/', [App\Http\Controllers\PollVotingController::class,'showParticipationForm']);
 Route::resource('/voting', App\Http\Controllers\PollVotingController::class);
@@ -32,9 +33,9 @@ Route::get('/voting/{id}/{pol}', [App\Http\Controllers\PollVotingController::cla
 Route::get('/vote/participate/{id}', [App\Http\Controllers\PollVotingController::class,'showPollIdentifyForm']);
 Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::class,'storePollIdentifyForm']);
 Route::resource('/dashboard', App\Http\Controllers\CustomerProfileController::class);
-Route::get('/poll/active/{id}', [App\Http\Controllers\CustomerProfileController::class,'activePoll']);
-Route::get('/poll/deactive/{id}', [App\Http\Controllers\CustomerProfileController::class,'deactivePoll']);
+Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus']);
 Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
+Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
 
 Route::view('/register_billing', 'signUpBilling');
 //Route::view('/create_poll', 'createPoll');

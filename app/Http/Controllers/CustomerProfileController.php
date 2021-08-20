@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\DataTables\CustomerPollDataTable;
 use App\DataTables\CustomerPollOptionDataTable;
 use App\DataTables\CustomerPollOptionTable;
+use App\DataTables\PollOptionVotesDataTable;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollStoreRequest;
 use App\Http\Requests\PollUpdateRequest;
 use App\Models\poll;
+use App\Models\PollVote;
 use App\Models\QuestionOptions;
 use App\Models\User;
 use App\Repositories\PollRepositoryInterface;
@@ -23,7 +25,7 @@ class CustomerProfileController extends Controller
 
     public function __construct(PollRepositoryInterface $repository)
     {
-        $this->middleware('auth:customer');
+        $this->middleware('auth:customer,admin');
         $this->repository=$repository;
     }
 
@@ -57,18 +59,23 @@ class CustomerProfileController extends Controller
     public function update(PollUpdateRequest $request,$id){
 
     }
-    public function activePoll($id){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->first();
-        $poll->visibility='public';
-        $poll->save();
-        toastr()->success('Successfully! Poll is activated.');
-        return redirect('/poll');
-    }
-    public function deactivePoll($id){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->first();
-        $poll->visibility='private';
-        $poll->save();
-        toastr()->success('Successfully! Poll is  de activated.');
+    public function pollStatus($id){
+        $messege='';
+        $poll=Poll::where('id',$id);
+        // check if the user is admin or customer
+        $poll= auth()->user()->user_type=='admin'? $poll:
+            $poll->where('user_id',auth()->id());
+
+        $poll=$poll->first();
+        // update poll visibility if private if public or private if public
+        $poll->visibility = $poll->visibility=='public'? 'private':
+                                'public';
+        // Change response message
+        $messege = $poll->visibility=='public'?'Successfully! Poll is activated.':
+            'Successfully! Poll is  de activated.';
+        $poll->save()?
+            toastr()->success($messege):
+            toastr()->error('Sorry! Please try again later.');
         return redirect('/poll');
     }
     public function pollView($id,CustomerPollOptionDataTable $dataTable){
@@ -76,6 +83,15 @@ class CustomerProfileController extends Controller
         $pollVote=Poll::PollVotes($id);
         $dataTable->with('id', $id);
         return $dataTable->render('poll.pollView',['poll'=>$poll,'TotalVote'=>$pollVote]);
+    }
+    public function pollVotes($pollID,$id,PollOptionVotesDataTable $dataTable){
+        $poll=Poll::where('user_id',auth()->id())->where('id',$pollID)->with(['pollKeys','questionOptions','pollIdentifierQuestions'])->first();
+        $selectedOption=QuestionOptions::where('id',$id)->first();
+        $pollVote=Poll::PollVotes($pollID);
+        $dataTable->with('id', $id);
+        $dataTable->with('selected', $selectedOption);
+        $dataTable->with('pollIdentifierQuestions', $poll->pollIdentifierQuestions);
+        return $dataTable->render('poll.pollVotes',['poll'=>$poll,'selectedOption'=>$selectedOption,'pollVote'=>$pollVote]);
     }
 
 
