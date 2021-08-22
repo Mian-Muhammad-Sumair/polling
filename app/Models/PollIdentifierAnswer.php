@@ -24,6 +24,14 @@ class PollIdentifierAnswer extends Model
     {
         return $this->belongsTo(PollIdentifierQuestion::class);
     }
+    public function identifierVote()
+    {
+        return $this->belongsTo(PollVote::class,'user_id','user_id');
+    }
+    public function scopeIdentifyUser($query,$poll_id)
+    {
+        return  $query->addSelect(['poll_question'=>PollIdentifierQuestion::whereColumn('poll_identifier_questions.id','poll_identifier_answers.identifier_question_id')->where('poll_identifier_questions.poll_id',$poll_id)->select('identifier_question')]);
+    }
 
 
 

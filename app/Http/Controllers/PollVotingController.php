@@ -14,6 +14,7 @@ use App\Models\PollVote;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
@@ -23,7 +24,7 @@ class PollVotingController extends Controller
 
     public function __construct()
     {
-//            $this->middleware('auth:user,user,admin,customer');
+//        $this->middleware('auth:user,user,customer');
 
     }
 
@@ -80,11 +81,13 @@ class PollVotingController extends Controller
 
     public function storePollIdentifyForm(PollIdentifierQuestionStoreRequest $request)
     {
+
         $data=$request->validated();
-//        $userId=auth()->id();
-//        if($userId==''){
-            $userId = Str::random(10);
-//        } dd($userId);
+        if(auth()->check()){
+        $userId=auth()->id();
+        }else{
+            $userId=request()->ip();
+        }
 
         foreach($data['answer'] as $answer){
             $entry=[

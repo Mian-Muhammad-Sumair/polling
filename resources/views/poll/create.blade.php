@@ -152,7 +152,7 @@ Create Poll
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-lg-4">
-                    <input type="submit" class="custom-btn btn-lg" name="status" value="Publish Poll">
+                    <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
                 </div>
 
             </div>

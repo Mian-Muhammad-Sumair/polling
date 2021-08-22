@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Poll;
+use App\Models\PollIdentifierAnswer;
 use App\Models\PollKey;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -44,9 +45,12 @@ class PollParticipateRequest extends FormRequest
                         if (in_array("login_to_vote", $optionType)) {
                             //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You must have to login first to participate in this poll.');
-                        } elseif (!in_array("allow_multiple_votes", $optionType)) {
-                            //this validation is not working because is this request we cannot trace if the user is login or not
-//                        $fail('You already vote on this poll ');
+                        }
+                        if(!in_array("allow_multiple_votes", $optionType)) {
+                            $vote=PollIdentifierAnswer::where('user_id',request()->ip())->IdentifyUser($poll['id'])->first();
+                            if(!empty($vote)){
+                                $fail('You already vote on this poll ');
+                            }
                         }
                     }
                 },

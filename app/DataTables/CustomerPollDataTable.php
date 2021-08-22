@@ -13,6 +13,8 @@ use Yajra\DataTables\Services\DataTable;
 class CustomerPollDataTable extends DataTable
 {
     protected $index;
+    protected $poll_data;
+    protected $user_type;
     /**
      * Build DataTable class.
      *
@@ -21,35 +23,46 @@ class CustomerPollDataTable extends DataTable
      */
     public function dataTable($query)
     {
-
         return datatables()
             ->eloquent($query)
             ->addColumn('#', function($item){
+                $this->poll_data=$item;
                 $this->index=$this->index+1;
                 return $this->index;
             })
             ->addColumn('status', function($item){
-                $type='badge-error';
-                $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
-                if($item->visibility=='public'){
-                    $type='badge-success';
+                $type='badge-success';
+                if($item->status!='Published' && $item->end_date>=now()){
+                    $type='badge-error';
                 }
-                if(auth()->user()->user_type=='admin' || $item->edit_by==0){
-                    $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
-                }elseif( $item->edit_by=!0){
-                    $status="<span class='text-capitalize col-status badge ".$type."'>banned</span>";
+                $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
+                if($this->user_type=='admin'){
+                    if($item->status=='Stopped'){
+                        $status="<span class='text-capitalize col-status badge ".$type."'>Stopped</span>";
+                    }else{
+                        $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
+                    }
                 }
-
+                if($item->end_date<=now()){
+                    $status="<span class='text-capitalize col-status badge ".$type."'>Expired</span>";
+                }
                 return  $status;
             })->rawColumns(['action','status'])
             ->addColumn('action', function($item){
-
-           return     "
-                <a  href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
-                <a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>
-                <a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>
-";
-            })
+            $edit='';
+            $delete='';
+            if($this->user_type!='admin'){
+                if($item->end_date>now() && $item->start_data>now()){
+                    $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
+                }
+                $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
+            }
+            return
+                "<a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
+                     {$edit}
+                     {$delete}
+                 ";
+        })
             ;
     }
 
@@ -61,6 +74,7 @@ class CustomerPollDataTable extends DataTable
      */
     public function query(Poll $model)
     {
+        $this->user_type=auth()->user()->user_type;
         return $model->CustomerPoll()->newQuery();
     }
 

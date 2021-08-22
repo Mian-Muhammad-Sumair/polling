@@ -19,13 +19,16 @@ Poll Data
                 <div class="col-lg-6">
                     <label><b>Info :</b></label><label> {{$poll->info}}</label>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <label><b>Question :</b></label><label> {{$poll->question}}</label>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <label><b>Poll Key :</b></label><br>
-                    @foreach($poll->pollkeys as $key)
-                    <label> {{$key->key}}</label><br>
+                    @foreach($poll->pollkeys as $index=>$key)
+                        <label class="selected">( {{$key->key}} )</label>
+                        @if(count($poll->pollkeys)!=$index+1)
+                            <span class="separate">--</span>
+                        @endif
                     @endforeach
                 </div>
                 <div class="col-lg-12">
@@ -51,5 +54,10 @@ Poll Data
 @endsection
 
 @section('extra_css')
-
+    <style>
+        .selected {
+            color: #7259F4 !important;
+            font-weight: 800;
+        }
+    </style>
 @endsection
