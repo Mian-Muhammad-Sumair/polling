@@ -97,20 +97,47 @@ Create Poll
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group ">
                         <label>Poll category</label>
-                        <select class="" name="category" value="{{ old('category') }}">
+                        <!-- <select class="" name="category" value="{{ old('category') }}">
                             <option class="Eg. Web Desig">Eg. Web Design</option>
-                        </select>
+                        </select> -->
+                        <div class="select-dropdown">
+                            <select>
+                                <option class="option-item" value="Option 1">
+                                    Option 1
+                                </option>
+                                <option class="option-item" value="Option 2">
+                                    Option 2
+                                </option>
+                                <option class="option-item" value="Option 3">
+                                    Option 3
+                                </option>
+                            </select>
+                        </div>
                         @error('category') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 ">
                     <div class="form-group">
                         <label>Poll visibility <span>*</span></label>
-                        <select class="poll-select-list" name="visibility" selected="{{ old('visibility') }}">
+                        <!-- <select class="poll-select-list" name="visibility" selected="{{ old('visibility') }}">
                             <option value="">Select</option>
                             <option value="public">Public</option>
                             <option value="private">Private</option>
-                        </select>
+                        </select> -->
+                        <div class="select-dropdown">
+                            <select>
+                                <option class="option-item" value="Option 1">
+                                    Option 1
+                                </option>
+                                <option class="option-item" value="Option 2">
+                                    Option 2
+                                </option>
+                                <option class="option-item" value="Option 3">
+                                    Option 3
+                                </option>
+                            </select>
+                        </div>
+
                         @error('visibility') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                 </div>
@@ -141,11 +168,11 @@ Create Poll
                         <label>Generate polling key</label>
                         <input type="text" id="key" name="key" value="{{ old('key') }}">
                         <div class="Generate-polling-key-radio">
-                            <input type="checkbox" id="key_type"  class="largerCheckbox"  name="key_type" value="1">
+                            <input type="checkbox" id="key_type" class="largerCheckbox" name="key_type" value="1">
                             <label for="key_type"> Multiple polling keys</label>
-                          
+
                         </div>
-                        
+
                         @error('key') <span class="error_msg">{{$message}}</span> @enderror
                         <div onclick="getkey()" class="custom-btn ">Generate</div>
 
