@@ -38,6 +38,7 @@ Route::get('/dashboard', [App\Http\Controllers\CustomerProfileController::class,
 Route::put('/user/update', [App\Http\Controllers\CustomerProfileController::class,'update']);
 Route::put('/user/update/password', [App\Http\Controllers\CustomerProfileController::class,'updatePassword']);
 Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus']);
+Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility']);
 Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
 Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
 Route::get('customer/{id}',[\App\Http\Controllers\CustomerProfileController::class,'showCustomer']);

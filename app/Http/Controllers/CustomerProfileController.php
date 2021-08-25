@@ -82,20 +82,33 @@ class CustomerProfileController extends Controller
             $poll->where('user_id',auth()->id());
         $poll=$poll->first();
         if(auth()->user()->user_type=='admin') {
-            // update poll visibility if private if public or private if public
+
             $poll->status = $poll->status=='Published'?'Banned':'Published';
             $poll->edit_by =$poll->status=='Published'?0: auth()->id();
         }else{
-            // update poll visibility if private if public or private if public
+
             $poll->status = $poll->status=='Published'?'Stopped':'Published';
         }
 
         // Change response message
-        $message = $poll->visibility=='public'?'Successfully! Poll is activated.':
+        $message = $poll->status=='Published'?'Successfully! Poll is activated.':
             'Successfully! Poll is  Stopped.';
 
         $poll->save()?
             toastr()->success($message):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('/dashboard');
+    }
+    public function pollVisibility($id){
+        $messege='';
+        $poll=Poll::where('id',$id)->first();
+      
+            // update poll visibility if private if public or private if public
+            $poll->visibility = $poll->visibility=='public'?'private':'public';
+
+
+        $poll->save()?
+            toastr()->success('Successfully! Poll type is changed.'):
             toastr()->error('Sorry! Please try again later.');
         return redirect('/dashboard');
     }
