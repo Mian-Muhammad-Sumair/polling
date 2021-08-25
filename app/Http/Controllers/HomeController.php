@@ -33,7 +33,6 @@ class HomeController extends Controller
 //->addSelect(["number"=>DB::table('question_options')->whereColumn('polls.id','=','question_options.poll_id')->select('id')->first()])
 //            ->addSelect(['poll_vote'=>DB::table('question_options')->whereColumn('polls.id','=','question_options.poll_id')->select('id')->get()])
             ->get();
-dd($poll);
         return view('home')->with(['poll'=>$poll]);
     }
 }
