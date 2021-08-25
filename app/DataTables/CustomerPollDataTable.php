@@ -63,7 +63,7 @@ class CustomerPollDataTable extends DataTable
             $edit='';
             $delete='';
             if($this->user_type!='admin'){
-                if(strtotime($item->start_date) < strtotime(now()->format('Y-m-d'))){
+                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d'))){
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
                 $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
