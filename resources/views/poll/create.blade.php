@@ -101,15 +101,12 @@ Create Poll
                             <option class="Eg. Web Desig">Eg. Web Design</option>
                         </select> -->
                         <div class="select-dropdown">
-                            <select>
-                                <option class="option-item" value="Option 1">
-                                    Option 1
+                            <select name="category"  selected="{{ old('category') }}">
+                                <option class="option-item" disabled selected>
+                                    Select
                                 </option>
-                                <option class="option-item" value="Option 2">
-                                    Option 2
-                                </option>
-                                <option class="option-item" value="Option 3">
-                                    Option 3
+                                <option class="option-item" value=" Eg. Web Design">
+                                    Eg. Web Design
                                 </option>
                             </select>
                         </div>
@@ -125,15 +122,15 @@ Create Poll
                             <option value="private">Private</option>
                         </select> -->
                         <div class="select-dropdown">
-                            <select>
-                                <option class="option-item" value="Option 1">
-                                    Option 1
+                            <select name="visibility" selected="{{ old('visibility') }}">
+                                <option class="option-item" disabled selected>
+                                   Select
                                 </option>
-                                <option class="option-item" value="Option 2">
-                                    Option 2
+                                <option class="option-item" value="private">
+                                   Private
                                 </option>
-                                <option class="option-item" value="Option 3">
-                                    Option 3
+                                <option class="option-item" value="public">
+                                   Public
                                 </option>
                             </select>
                         </div>

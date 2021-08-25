@@ -30,6 +30,17 @@ class CustomerPollDataTable extends DataTable
                 $this->index=$this->index+1;
                 return $this->index;
             })
+            ->addColumn('visibility', function($item){
+                $type='badge-success';
+                if($item->visibility=='private' ){
+                    $type='badge-warning';
+                }
+                $visibility="<a href='poll/visibility/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
+                if($this->user_type=='admin'){
+                    $visibility="<span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span>";
+                }
+                return  $visibility;
+            })
             ->addColumn('status', function($item){
                 $type='badge-success';
                 if($item->status!='Published' && $item->end_date>=now()){
@@ -37,8 +48,8 @@ class CustomerPollDataTable extends DataTable
                 }
                 $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
                 if($this->user_type=='admin'){
-                    if($item->status=='Stopped'){
-                        $status="<span class='text-capitalize col-status badge ".$type."'>Stopped</span>";
+                    if($item->status=='Stopped' && $item->status=='Lock Poll'){
+                        $status="<span class='text-capitalize col-status badge ".$type."'>{$item->status}</span>";
                     }else{
                         $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
                     }
@@ -47,19 +58,20 @@ class CustomerPollDataTable extends DataTable
                     $status="<span class='text-capitalize col-status badge ".$type."'>Expired</span>";
                 }
                 return  $status;
-            })->rawColumns(['action','status'])
+            })->rawColumns(['action','status','visibility'])
             ->addColumn('action', function($item){
             $edit='';
             $delete='';
             if($this->user_type!='admin'){
-                if($item->end_date>now() && $item->start_data>now()){
+                if(strtotime($item->start_date) < strtotime(now()->format('Y-m-d'))){
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
                 $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
             }
             return
-                "<a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
+                "
                      {$edit}
+                    <a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
                      {$delete}
                  ";
         })

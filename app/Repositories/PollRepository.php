@@ -5,10 +5,13 @@ namespace App\Repositories;
 
 
 use App\CRUD\Repositories\BaseCRUDRepository;
+use App\Exports\PollKeysExport;
 use App\Models\Poll;
 use App\Models\PollIdentifierQuestion;
 use App\Models\QuestionOptions;
 use Illuminate\Support\Str;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class PollRepository extends BaseCRUDRepository implements PollRepositoryInterface
@@ -25,17 +28,19 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
    {
      $item=parent::create($data);
 
-       if(isset($data['key_type'])&&$data['key_type']==1){
-           for ($i = 0; $i < 2; $i++) {
-               $newKew = Str::random(30);
-               $item->pollKeys()->create(['key'=>$newKew]);
+//     $key=[];
+       if($data['status']=='Published') {
+           if(isset($data['key_type'])&&$data['key_type']==1){
+               for ($i = 0; $i < 2; $i++) {
+                   $newKew = Str::random(30);
+                   $item->pollKeys()->create(['key'=>$newKew]);
+//                   array_push($key,$newKew);
+               }
            }
-       }
-       if($data['status']=='Publish Poll') {
            $item->pollKeys()->create(['key' => $data['key']]);
+//           array_push($key, $data['key']);
        }
-
-
+       Excel::download(new PollKeysExport, 'keys.xlsx');
        foreach ($data['identifier_question'] as $value) {
            $item->pollIdentifierQuestions()->create(['identifier_question'=>$value]);
        }

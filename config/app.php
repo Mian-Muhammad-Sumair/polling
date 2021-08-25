@@ -178,7 +178,8 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class
+        Spatie\Permission\PermissionServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

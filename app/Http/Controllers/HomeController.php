@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Poll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,12 @@ class HomeController extends Controller
         $rules = array(
             'email' => 'required',
         );
-        return view('home');
+        $poll=DB::table('polls')->whereDate('start_date','<=', now()->format('Y-m-d'))->whereDate('end_date','<=', now()->addMonths(1)->format('Y-m-d'))
+            ->where('visibility','public')
+//->addSelect(["number"=>DB::table('question_options')->whereColumn('polls.id','=','question_options.poll_id')->select('id')->first()])
+//            ->addSelect(['poll_vote'=>DB::table('question_options')->whereColumn('polls.id','=','question_options.poll_id')->select('id')->get()])
+            ->get();
+dd($poll);
+        return view('home')->with(['poll'=>$poll]);
     }
 }

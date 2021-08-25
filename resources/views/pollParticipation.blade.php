@@ -11,7 +11,14 @@ Poll Participation
                     <h2 class="title-page">Poll Participation</h2>
                     <div class="theme-bar"></div>
                 </div>
-                <form action="{{ url('/') }}" method="POST">
+                    @if(auth()->id())
+                        <form action="{{ url("/poll-participate") }}" method="POST">
+                    @else
+                       <form action="{{ url("/") }}" method="POST">
+                    @endif
+{{--                <form action="{{ url(auth()->id()!='/'? "/" : "/pollParticipate") }}" method="POST">--}}
+{{--                <form action="{{ url(auth()->id()!=''? "/" : "/pollParticipate") }}" method="POST">--}}
+{{--                <form action="{{ url(auth()->id()>0?'/': '/pollParticipate'  ) }}" method="POST">--}}
                     @csrf
                     <div class="form-group">
                         <label>Enter Polling key </label>

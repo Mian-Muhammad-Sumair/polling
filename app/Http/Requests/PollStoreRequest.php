@@ -34,7 +34,7 @@ class PollStoreRequest extends FormRequest
             'poll_option.*'=> 'required',
             'visibility' => 'required',
             'option_type' => 'nullable|array',
-            'status'=> 'required|in:Lock Poll,Publish Poll',
+            'status'=> 'required|in:Lock Poll,Published',
             'key' => 'required_if:status,Publish Poll|unique:poll_keys,key',
             'key_type' => 'nullable|numeric',
             'identifier_question' => 'required|array',

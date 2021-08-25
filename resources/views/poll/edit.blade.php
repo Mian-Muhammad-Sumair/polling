@@ -122,20 +122,35 @@
                     <div class="col-md-5 col-sm-5">
                         <div class="form-group ">
                             <label>Poll category</label>
-                            <select class="" name="category" selected="{{ old('category') }}">
-                                <option class="Eg. Web Desig">Eg. Web Design</option>
-                            </select>
+                            <div class="select-dropdown">
+                                <select name="category"  value="{{ $poll->category }}">
+                                    <option class="option-item" disabled selected>
+                                        Select
+                                    </option>
+                                    <option class="option-item" value="Eg. Web Design" {{$poll->category||old('visibility') == 'Eg. Web Design' ?'selected':''}}>
+                                        Eg. Web Design
+                                    </option>
+                                </select>
+                            </div>
                             @error('category') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-5 ">
                         <div class="form-group">
                             <label>Poll visibility  <span>*</span></label>
-                            <select name="visibility"  selected="{{old('visibility') == '' ?$poll->visibility:old('visibility')}}">
-                                <option value="" >Select</option>
-                                <option value="public" >Public</option>
-                                <option value="private" >Private</option>
-                            </select>
+                            <div class="select-dropdown">
+                                <select name="visibility" >
+                                    <option class="option-item" disabled selected>
+                                        Select
+                                    </option>
+                                    <option class="option-item" value="private" {{$poll->visibility||old('visibility') == 'private' ?'selected':''}}>
+                                        Private
+                                    </option>
+                                    <option class="option-item" value="public" {{$poll->visibility == 'public' ?'selected':''}}>
+                                        Public
+                                    </option>
+                                </select>
+                            </div>
                             @error('visibility') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
@@ -144,37 +159,25 @@
                     <div class="col-md-10 col-sm-10 account-details ">
                         <div class="form-group checkbox">
                             <label>Poll option type</label>
-{{--                            @if(old('poll_option_types'))--}}
-{{--                                @foreach(config('poll_option_types') as $option_type=>$option_type_title)--}}
-{{--                                    <div class="col-md-3 col-sm-3 ">--}}
-{{--                                        <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if(old('option_type') && in_array($option_type,old('option_type')) ) checked @else @endif id="{{$option_type}}">--}}
-{{--                                        <label class="checkbox-main" for="{{$option_type}}" >--}}
-{{--                                            <span class="first"></span>--}}
-{{--                                            <span>{{$option_type_title}}</span>--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            @elseif($poll->option_type)--}}
-{{--                                @foreach($poll->option_type as $option_type=>$option_type_title)--}}
-{{--                                    <div class="col-md-3 col-sm-3 ">--}}
-{{--                                        <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if($poll->option_type && in_array($option_type,$poll->option_type) ) checked @else @endif id="{{$option_type}}">--}}
-{{--                                        <label class="checkbox-main" for="{{$option_type}}" >--}}
-{{--                                            <span class="first"></span>--}}
-{{--                                            <span>{{$option_type_title}}</span>--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            @endif--}}
+                            @if(old('poll_option_types')||$poll->option_type)
+                                @php
+                                    $option=old('poll_option_types');
+                                     if(empty(old('poll_option_types'))){$option=$poll->option_type;}
+                                @endphp
+                                @foreach(config('poll_option_types') as $option_type=>$option_type_title)
+                                    <div class="col-md-3 col-sm-3 ">
+                                        <input type="checkbox" name="option_type[]" value="{{$option_type}}"
+                                               @if($option && in_array($option_type,$option) ) checked @else @endif
 
-                        @foreach(config('poll_option_types') as $option_type=>$option_type_title)
-                            <div class="col-md-3 col-sm-3 ">
-                                <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if(old('option_type') && in_array($option_type,old('option_type')) ) checked @else @endif id="{{$option_type}}">
-                                <label class="checkbox-main" for="{{$option_type}}" >
-                                    <span class="first"></span>
-                                    <span>{{$option_type_title}}</span>
-                                </label>
-                            </div>
-                            @endforeach
+                                               id="{{$option_type}}">
+                                        <label class="checkbox-main" for="{{$option_type}}" >
+                                            <span class="first"></span>
+                                            <span>{{$option_type_title}}</span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @endif
+
                         </div>
                     </div>
 
