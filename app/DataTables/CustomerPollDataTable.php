@@ -63,10 +63,12 @@ class CustomerPollDataTable extends DataTable
             $edit='';
             $delete='';
             if($this->user_type!='admin'){
-                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d'))){
+                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) || $item->status!='Published' || $this->user_type=='admin'){
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
-                $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
+                if($item->status!='Published'){
+                    $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
+                }
             }
             return
                 "
@@ -86,7 +88,7 @@ class CustomerPollDataTable extends DataTable
      */
     public function query(Poll $model)
     {
-        $this->user_type=auth()->user()->user_type;
+        $this->user_type=session('auth.current');
         return $model->CustomerPoll()->newQuery();
     }
 
