@@ -161,24 +161,33 @@
                     <div class="col-md-10 col-sm-10 account-details ">
                         <div class="form-group checkbox">
                             <label>Poll option type</label>
-                            @if(old('poll_option_types')||$poll->option_type)
-                                @php
-                                    $option=old('poll_option_types');
-                                     if(empty(old('poll_option_types'))){$option=$poll->option_type;}
-                                @endphp
-                                @foreach(config('poll_option_types') as $option_type=>$option_type_title)
-                                    <div class="col-md-3 col-sm-3 ">
-                                        <input type="checkbox" name="option_type[]" value="{{$option_type}}"
-                                               @if($option && in_array($option_type,$option) ) checked @else @endif
+                            @foreach(config('poll_option_types') as $option_type=>$option_type_title)
+                                <div class="col-md-3 col-sm-3 ">
+                                    <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if((old('option_type') && in_array($option_type,old('option_type'))) || (!empty($poll->option_type) && in_array($option_type,$poll->option_type)) ) checked @else '' @endif id="{{$option_type}}">
+                                    <label class="checkbox-main" for="{{$option_type}}">
+                                        <span class="first"></span>
+                                        <span>{{$option_type_title}}</span>
+                                    </label>
+                                </div>
+                            @endforeach
+{{--                            @if(old('poll_option_types')||$poll->option_type)--}}
+{{--                                @php--}}
+{{--                                    $option=old('poll_option_types');--}}
+{{--                                     if(empty(old('poll_option_types'))){$option=$poll->option_type;}--}}
+{{--                                @endphp--}}
+{{--                                @foreach(config('poll_option_types') as $option_type=>$option_type_title)--}}
+{{--                                    <div class="col-md-3 col-sm-3 ">--}}
+{{--                                        <input type="checkbox" name="option_type[]" value="{{$option_type}}"--}}
+{{--                                               @if($option && in_array($option_type,$option) ) checked @else @endif--}}
 
-                                               id="{{$option_type}}">
-                                        <label class="checkbox-main" for="{{$option_type}}" >
-                                            <span class="first"></span>
-                                            <span>{{$option_type_title}}</span>
-                                        </label>
-                                    </div>
-                                @endforeach
-                            @endif
+{{--                                               id="{{$option_type}}">--}}
+{{--                                        <label class="checkbox-main" for="{{$option_type}}" >--}}
+{{--                                            <span class="first"></span>--}}
+{{--                                            <span>{{$option_type_title}}</span>--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            @endif--}}
 
                         </div>
                     </div>
