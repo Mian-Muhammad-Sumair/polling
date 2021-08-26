@@ -47,7 +47,7 @@ class PollController extends Controller
         $data= $this->repository->create($data)?
             toastr()->success('Successfully! Poll has been Created.'):
             toastr()->error('Sorry! Please try again later.');
-        return back();
+        return redirect('/poll');
 
     }
 
@@ -58,11 +58,13 @@ class PollController extends Controller
 
     public function update(PollUpdateRequest $request,$id){
         $data=$request->validated();
+
+        dd($data);
         $data= $this->repository->update($id,$data)?
             toastr()->success('Successfully! Poll has been updated.'):
             toastr()->error('Sorry! Please try again later.');
 
-        return redirect('dashboard');
+        return redirect('/poll');
     }
     public function delete($id){
         $data= $this->repository->delete($id)?
