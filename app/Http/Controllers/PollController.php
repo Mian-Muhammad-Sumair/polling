@@ -18,6 +18,8 @@ class PollController extends Controller
 {
     private $repository;
 
+    public $categories=['Eg. Web Design'];
+
     public function __construct(PollRepositoryInterface $repository)
     {
         $this->middleware('auth:admin,customer');
@@ -35,7 +37,8 @@ class PollController extends Controller
     }
 
     public function create(){
-        return view('poll.create');
+
+        return view('poll.create')->with(['categories'=>$this->categories]);
     }
     public function store(PollStoreRequest $request)
     {
@@ -50,7 +53,7 @@ class PollController extends Controller
 
     public function edit($id){
         $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['questionOptions','pollKeys','pollIdentifierQuestions'])->first();
-        return view('poll.edit')->with('poll',$poll);
+        return view('poll.edit')->with(['poll'=>$poll,'categories'=>$this->categories]);
     }
 
     public function update(PollUpdateRequest $request,$id){
