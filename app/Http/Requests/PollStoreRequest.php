@@ -41,4 +41,11 @@ class PollStoreRequest extends FormRequest
             'identifier_question.*'=> 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'This field is required.',
+        ];
+    }
 }
