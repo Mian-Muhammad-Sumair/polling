@@ -123,13 +123,15 @@
                         <div class="form-group ">
                             <label>Poll category</label>
                             <div class="select-dropdown">
-                                <select name="category"  value="{{ $poll->category }}">
+                                <select name="category">
                                     <option class="option-item" disabled selected>
                                         Select
                                     </option>
-                                    <option class="option-item" value="Eg. Web Design" {{$poll->category||old('visibility') == 'Eg. Web Design' ?'selected':''}}>
-                                        Eg. Web Design
-                                    </option>
+                                    @foreach($categories as $category)
+                                        <option class="option-item" {{($category==old('category') || $category==$poll->category)?'selected':''}} value="{{$category}}">
+                                        {{$category}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             @error('category') <span class="error_msg">{{$message}}</span> @enderror
@@ -143,10 +145,10 @@
                                     <option class="option-item" disabled selected>
                                         Select
                                     </option>
-                                    <option class="option-item" value="private" {{$poll->visibility||old('visibility') == 'private' ?'selected':''}}>
+                                    <option class="option-item" value="private" {{('private'==old('visibility') || 'private'==$poll->visibility)?'selected':''}}>
                                         Private
                                     </option>
-                                    <option class="option-item" value="public" {{$poll->visibility == 'public' ?'selected':''}}>
+                                    <option class="option-item" value="public" {{('public'==old('visibility') || 'public'==$poll->visibility)?'selected':''}}>
                                         Public
                                     </option>
                                 </select>

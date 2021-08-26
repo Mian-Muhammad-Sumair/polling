@@ -97,17 +97,17 @@ Create Poll
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group ">
                         <label>Poll category</label>
-                        <!-- <select class="" name="category" value="{{ old('category') }}">
-                            <option class="Eg. Web Desig">Eg. Web Design</option>
-                        </select> -->
                         <div class="select-dropdown">
-                            <select name="category"  selected="{{ old('category') }}">
+                            <select name="category">
                                 <option class="option-item" disabled selected>
                                     Select
                                 </option>
-                                <option class="option-item" value=" Eg. Web Design">
-                                    Eg. Web Design
+
+                                @foreach($categories as $category)
+                                <option class="option-item" {{$category==old('category')?'selected':''}} value="{{$category}}">
+                                    {{$category}}
                                 </option>
+                                @endforeach
                             </select>
                         </div>
                         @error('category') <span class="error_msg">{{$message}}</span> @enderror
@@ -122,15 +122,12 @@ Create Poll
                             <option value="private">Private</option>
                         </select> -->
                         <div class="select-dropdown">
-                            <select name="visibility" selected="{{ old('visibility') }}">
-                                <option class="option-item" disabled selected>
-                                   Select
+                            <select name="visibility">
+                                <option class="option-item" value="private" {{'private'==old('visibility')?'selected':''}}>
+                                    Private
                                 </option>
-                                <option class="option-item" value="private">
-                                   Private
-                                </option>
-                                <option class="option-item" value="public">
-                                   Public
+                                <option class="option-item" value="public" {{'public'==old('visibility')?'selected':''}}>
+                                    Public
                                 </option>
                             </select>
                         </div>
