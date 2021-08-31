@@ -180,25 +180,26 @@ Home
             <div class="container">
                 <div class="col-md-6 col-sm-6 animated bounceInRight">
                     <div class="login-bg contact-us-bg animatedParent">
-                        <form>
+                        <form method="POST" action="{{ url('contact_us/send') }}">
+                            @csrf
                             <div class="form-group">
-                                <label>Name </label>
-                                <input type="text" required>
+                                <label>First Name  @error('first_name')<sup style="color: red">*</sup>@enderror </label>
+                                <input type="text"  name="first_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Email </label>
-                                <input type="text" required>
+                                <label>Last Name  @error('last_name')<sup style="color: red">*</sup>@enderror</label>
+                                <input type="text"  name="last_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Password </label>
-                                <input type="password" required>
+                                <label>Email @error('email')<sup style="color: red">*</sup>@enderror </label>
+                                <input type="text" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label>Message </label>
-                                <textarea required></textarea>
+                                <label>Message  @error('message')<sup style="color: red">*</sup>@enderror</label>
+                                <textarea name="message" required></textarea>
                             </div>
                             <div class="form-group text-right">
-                                <button>Send</button>
+                                <button type="submit">Send</button>
                             </div>
                         </form>
                     </div>

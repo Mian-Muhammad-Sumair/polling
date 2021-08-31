@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label>{{ __('Name') }} </label>
                         <input type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        @error('name')<span>{{ $message }}</span>@enderror
+                        @error('name')<span class="error_msg">{{ $message }}</span>@enderror
                         @error('user_type')<span class="error_msg">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">

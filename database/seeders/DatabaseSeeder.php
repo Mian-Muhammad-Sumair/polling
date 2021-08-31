@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminPermissionSeeder::class);
         $this->call(AdminRoleSeeder::class);
+        $this->call(DefaultAdminSeeder::class);
         $this->call(SubscriptionPlansSeeder::class);
     }
 }
