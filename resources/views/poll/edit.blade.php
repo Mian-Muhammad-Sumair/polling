@@ -200,7 +200,6 @@
                     <div class="col-md-4 col-sm-4 col-lg-4  second-part">
                         <div class="form-group">
                             <label>Polling key</label>
-
                             @if(old('key'))
                                 @foreach(old('key') as $index=>$key)
                                     <input type="text" id="key" name="key[{{$index}}]" value="{{$key}}" >
@@ -208,10 +207,17 @@
 
                                 @endforeach
                             @elseif($poll->pollKeys)
+                                <input type="text" id="key" name="key[0]" value="" >
+                                <div class="Generate-polling-key-radio">
+                                    <input type="checkbox" id="key_type" class="largerCheckbox" name="key_type" value="1">
+                                    <label for="key_type"> Multiple polling keys</label>
+                                </div>
+                                <div onclick="getkey()" class="custom-btn ">Generate</div>
+                                @error('key') <span class="error_msg">{{$message}}</span> @enderror
+                            @elseif($poll->pollKeys)
                                 @foreach($poll->pollKeys as $index=>$key)
                                     <input type="text" id="key" name="key[{{$key->id}}]" value="{{$key->key}}" >
                                     @error('key.'.$key->id) <span class="error_msg">{{$message}}</span> @enderror
-
                                 @endforeach
                             @endif
                         </div>

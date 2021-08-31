@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePollIdentifierQuestionsTable extends Migration
+class CreateSubscriptionPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreatePollIdentifierQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('poll_identifier_questions', function (Blueprint $table) {
+        Schema::create('subscription_plans', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('poll_id');
-            $table->string('identifier_question');
+            $table->string('name');
+            $table->string('plan_type');
+            $table->text('info');
+            $table->text('total_poll');
+            $table->string('keys');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreatePollIdentifierQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poll_identifier_questions');
+        Schema::dropIfExists('subscription_plans');
     }
 }

@@ -34,13 +34,10 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                for ($i = 0; $i < 2; $i++) {
                    $newKew = Str::random(30);
                    $item->pollKeys()->create(['key'=>$newKew]);
-//                   array_push($key,$newKew);
                }
            }
            $item->pollKeys()->create(['key' => $data['key']]);
-//           array_push($key, $data['key']);
        }
-       Excel::download(new PollKeysExport, 'keys.xlsx');
        foreach ($data['identifier_question'] as $value) {
            $item->pollIdentifierQuestions()->create(['identifier_question'=>$value]);
        }

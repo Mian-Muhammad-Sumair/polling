@@ -6,7 +6,6 @@ use App\Models\Poll;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
@@ -47,8 +46,8 @@ class CustomerPollDataTable extends DataTable
                     $type='badge-error';
                 }
                 $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
-                if($this->user_type=='admin'){
-                    if($item->status=='Stopped' && $item->status=='Lock Poll'){
+                if($this->user_type!='admin'){
+                    if($item->status=='Lock Poll' && $item->edit_by!=null){
                         $status="<span class='text-capitalize col-status badge ".$type."'>{$item->status}</span>";
                     }else{
                         $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
@@ -63,7 +62,8 @@ class CustomerPollDataTable extends DataTable
             $edit='';
             $delete='';
             if($this->user_type!='admin'){
-                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) || $item->status!='Published' || $this->user_type=='admin'){
+                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) && $item->status!='Published' || $this->user_type!='admin'){
+
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
                 if($item->status!='Published'){

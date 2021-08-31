@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CustomerPollDataTable;
+use App\DataTables\CustomerPollKeysDataTable;
 use App\DataTables\CustomerPollOptionDataTable;
 use App\DataTables\CustomerPollOptionTable;
 use App\DataTables\PollOptionVotesDataTable;
@@ -102,7 +103,7 @@ class CustomerProfileController extends Controller
     public function pollVisibility($id){
         $messege='';
         $poll=Poll::where('id',$id)->first();
-      
+
             // update poll visibility if private if public or private if public
             $poll->visibility = $poll->visibility=='public'?'private':'public';
 
@@ -112,11 +113,19 @@ class CustomerProfileController extends Controller
             toastr()->error('Sorry! Please try again later.');
         return redirect('/dashboard');
     }
-    public function pollView($id,CustomerPollOptionDataTable $dataTable){
+    public function pollView($id,CustomerPollOptionDataTable $datatable,CustomerPollKeysDataTable$pollKeysDataTable){
         $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['pollKeys','pollIdentifierQuestions','questionOptions'])->first();
-        $pollVote=Poll::PollVotes($id);
-        $dataTable->with('id', $id);
-        return $dataTable->render('poll.pollView',['poll'=>$poll,'TotalVote'=>$pollVote]);
+        $TotalVote=Poll::PollVotes($id);
+        $datatable->with('id', $id);
+        $pollKeysDataTable->with('id', $id);
+        return $datatable->render('poll.pollView',['poll'=>$poll,'TotalVote'=>$TotalVote]);
+//        return ($datatable)->render(
+//            'poll.pollView',
+//                compact('datatable', 'poll','TotalVote')
+//        );
+
+//        return view('poll.pollView', compact('poll', 'TotalVote', 'datatable'));
+
     }
     public function pollVotes($pollID,$id,PollOptionVotesDataTable $dataTable){
         $poll=Poll::where('user_id',auth()->id())->where('id',$pollID)->with(['pollKeys','questionOptions','pollIdentifierQuestions'])->first();

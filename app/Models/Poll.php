@@ -53,6 +53,12 @@ class Poll extends Model
         return $query;
 
     }
+    public function scopePollKeys($query,$pollKey){
+            $pollKey=PollKey::where('poll_id', $pollKey)->get();
+        return $pollKey;
+
+    }
+
     public function scopeExpiredPoll($query){
         return $query->whereDate('end_date','<',now());
     }

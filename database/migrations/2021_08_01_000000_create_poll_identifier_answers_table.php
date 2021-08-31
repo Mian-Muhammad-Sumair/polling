@@ -29,6 +29,6 @@ class CreatePollIdentifierAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('polls');
+        Schema::dropIfExists('poll_identifier_answers');
     }
 }

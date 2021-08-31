@@ -1,16 +1,29 @@
 <header class="transparent">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-lg-2 col-sm-12 ">
+            <div class="col-md-2 col-lg-2 col-sm-10 ">
                 @if(request()->is('home'))
                 <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="logo"></a></div>
                 @else
                 <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo1.png') }}" alt="logo"></a></div>
                 @endif
             </div>
-            <div class="col-md-10 col-lg-10 col-sm-12">
-                <div class="button-header">
-{{--                    <div class="dropdown">--}}
+            <div class="col-md-1 col-lg-1 col-sm-2 ">
+                            <div class="button-header">
+                                <div class="dropdown">
+                                    <button class="btn custom-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Language
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">English</a>
+                                        <a class="dropdown-item" href="#">French</a>
+                                    </div>
+                                </div>
+                            </div>
+                      </div>
+                        <div class="col-md-9 col-lg-9 col-sm-12">
+                            <div class="button-header">
+            {{--                    <div class="dropdown">--}}
 {{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 {{--                            Dropdown button--}}
 {{--                        </button>--}}

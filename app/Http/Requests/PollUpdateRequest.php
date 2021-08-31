@@ -26,7 +26,6 @@ class PollUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-
             'end_date' => 'required|date|after:start_date',
             'info' => 'required',
             'category' => 'required',
@@ -43,11 +42,15 @@ class PollUpdateRequest extends FormRequest
                 'required',
                 function ($attribute, $value, $fail) {
                     $id=explode('.',$attribute);
-                    $id=PollKey::where('id',$id[1])->select('poll_id')->first();
-                    $key=PollKey::where('key',$value)->where('poll_id','!=',$id->poll_id)->first();
-                    if($key){
+                    $id=PollKey::where('id',$id[1])->first();
+                    $key = PollKey::where('key', $value)->first();
+                    if($id) {
+                        $key=$key->where('poll_id', '!=', $id->poll_id);
+                    }
+                    if ($key) {
                         $fail('Please Enter a unique key.');
                     }
+
                 },
             ],
         ];

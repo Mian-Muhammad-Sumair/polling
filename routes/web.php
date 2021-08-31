@@ -44,9 +44,8 @@ Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileCon
 Route::get('customer/{id}',[\App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
 
 Route::view('/register_billing', 'signUpBilling');
-//Route::view('/create_poll', 'createPoll');
 
-Route::view('/select_plan', 'selectPlan');
+Route::get('/select_plan', [App\Http\Controllers\HomeController::class, 'subscriptionPlan'])->name('Select Plan');
 Route::prefix('admin')->group(function(){
     Route::get('/',[\App\Http\Controllers\Admin\DashboardController::class,'index']);
     Route::get('customer',[\App\Http\Controllers\Admin\CustomerController::class,'index']);
