@@ -206,76 +206,76 @@ Dashboard
             <div class="row">
                 @include('includes.datatable')
             </div>
-            <div class="top-header">
-                <div>
-                    <h2> <b> Recent polls</b></h2>
-                    <div class="underline"></div>
-                </div>
+{{--            <div class="top-header">--}}
+{{--                <div>--}}
+{{--                    <h2> <b> Recent polls</b></h2>--}}
+{{--                    <div class="underline"></div>--}}
+{{--                </div>--}}
 
-            </div>
-            <br>
-            <br>
-            <div class="recent-polls-body">
-                <div class="badge-left">Name Here</div>
-                <div class="badge-right">Draft</div>
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--            </div>--}}
+{{--            <br>--}}
+{{--            <br>--}}
+{{--            <div class="recent-polls-body">--}}
+{{--                <div class="badge-left">Name Here</div>--}}
+{{--                <div class="badge-right">Draft</div>--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-xs-6">
-                        <div class="itom-box">
-                            <h6>
-                                0
-                            </h6>
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-md-4 col-xs-6">--}}
+{{--                        <div class="itom-box">--}}
+{{--                            <h6>--}}
+{{--                                0--}}
+{{--                            </h6>--}}
 
-                            <b>title here</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+{{--                            <b>title here</b>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
         </div>
     </div>
 </div>
