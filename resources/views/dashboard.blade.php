@@ -153,8 +153,8 @@ Dashboard
                     <div class="profile">
                         <div class="img">
                             <div class="img-outer">
-                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
-                        </div>
+                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+                            </div>
                         </div>
                         <div class="text">
                             <h6>{{$user['name']}}</h6>
@@ -192,20 +192,91 @@ Dashboard
                                 <h5 class="numbers">{{$expiredPoll}}<i class="fa fa-info-circle"> </i></h5>
                             </div>
                         </div>
-{{--                        <div class="col-lg-4">--}}
-{{--                            <div class="pool-card">--}}
-{{--                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>--}}
-{{--                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{-- <div class="col-lg-4">--}}
+                        {{-- <div class="pool-card">--}}
+                        {{-- <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>--}}
+                        {{-- <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>--}}
+                        {{-- </div>--}}
+                        {{-- </div>--}}
 
 
                     </div>
                 </div>
             </div>
+            <div class="row">
+                @include('includes.datatable')
+            </div>
+            <div class="top-header">
+                <div>
+                    <h2> <b> Recent polls</b></h2>
+                    <div class="underline"></div>
+                </div>
+
+            </div>
+            <br>
+            <br>
+            <div class="recent-polls-body">
+                <div class="badge-left">Name Here</div>
+                <div class="badge-right">Draft</div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-xs-6">
+                        <div class="itom-box">
+                            <h6>
+                                0
+                            </h6>
+
+                            <b>title here</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    @include('includes.datatable')
 </div>
 
 @endsection

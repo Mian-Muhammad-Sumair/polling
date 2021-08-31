@@ -4619,3 +4619,72 @@ ul {
     width: 100%;
     text-align: center;
 }
+
+.recent-polls-body {
+    width: 100%;
+    position: relative;
+    min-height: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f5f5f5;
+}
+
+.recent-polls-body .badge-left {
+    position: absolute;
+    border-radius: 5px;
+    top: -10px;
+    background: #ef4444;
+    color: white;
+    padding: 5px 10px;
+    left: 30px;
+    font-size: 14px;
+}
+
+.recent-polls-body .badge-right {
+    position: absolute;
+    border-radius: 5px;
+    top: -10px;
+    background: #ef4444;
+    color: white;
+    padding: 5px 10px;
+    right: 30px;
+    font-size: 14px;
+}
+
+.recent-polls-body .itom-box {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px 10px;
+    border-right: 2px solid lightgray;
+}
+
+.recent-polls-body .itom-box h6 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.recent-polls-body .itom-box b {
+    font-weight: lighter;
+}
+
+.recent-polls-body .col-lg-2:last-child .itom-box {
+    border-right: none;
+}
+
+@media screen and (max-width: 1081px) {
+    .recent-polls-body .col-lg-2:last-child .itom-box {
+        border-right: 2px solid lightgray !important;
+    }
+    .recent-polls-body .badge-left {
+        left: 20px;
+    }
+    .recent-polls-body .badge-right {
+        right: 20px;
+    }
+    .recent-polls-body .itom-box {
+        padding: 10px 0px;
+    }
+}
