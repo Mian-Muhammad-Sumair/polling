@@ -53,7 +53,7 @@ class CustomerPollDataTable extends DataTable
                         $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
                     }
                 }
-                if($item->end_date<=now()){
+                if((strtotime($item->end_date)) < strtotime(now()->format('Y-m-d'))){
                     $status="<span class='text-capitalize col-status badge ".$type."'>Expired</span>";
                 }
                 return  $status;
@@ -61,6 +61,7 @@ class CustomerPollDataTable extends DataTable
             ->addColumn('action', function($item){
             $edit='';
             $delete='';
+            $view='';
             if($this->user_type!='admin'){
                 if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) && $item->status!='Published' || $this->user_type!='admin'){
 
@@ -70,10 +71,13 @@ class CustomerPollDataTable extends DataTable
                     $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
                 }
             }
+                if($item->status!='Lock Poll'){
+                    $view =" <a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";
+                }
             return
                 "
                      {$edit}
-                    <a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>
+                     {$view}
                      {$delete}
                  ";
         })

@@ -4395,7 +4395,7 @@ html {
 }
 
 .button-header .dropdown .btn {
-    background: #7158f4;
+    background:#3f2ca7;
     border-radius: 7px;
     color: white;
     box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
@@ -4497,7 +4497,7 @@ input {
 }
 
 .sidenav-btn {
-    background: #7158f4;
+    background: #3f2ca7;
     height: 36px;
     display: flex;
     justify-content: center;

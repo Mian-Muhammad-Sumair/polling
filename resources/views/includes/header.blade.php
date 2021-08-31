@@ -1,29 +1,26 @@
 <header class="transparent">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-lg-2 col-sm-10 ">
-                @if(request()->is('home'))
-                <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="logo"></a></div>
-                @else
-                <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo1.png') }}" alt="logo"></a></div>
-                @endif
+            <div class="col-md-2 col-lg-2 col-sm-12 ">
+{{--                @if(request()->is('home'))--}}
+{{--                <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="logo"></a></div>--}}
+{{--                @else--}}
+                <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo.png?1') }}" alt="logo"></a></div>
+
             </div>
-            <div class="col-md-1 col-lg-1 col-sm-2 ">
-                            <div class="button-header">
-                                <div class="dropdown">
-                                    <button class="btn custom-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Language
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">English</a>
-                                        <a class="dropdown-item" href="#">French</a>
-                                    </div>
-                                </div>
+            <div class="col-md-9 col-lg-9 col-sm-12">
+                <div class="button-header">
+                    <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Language
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">English</a>
+                                <a class="dropdown-item" href="#">French</a>
                             </div>
-                      </div>
-                        <div class="col-md-9 col-lg-9 col-sm-12">
-                            <div class="button-header">
-            {{--                    <div class="dropdown">--}}
+                    </div>
+
+{{--                    <div class="dropdown">--}}
 {{--                        <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 {{--                            Dropdown button--}}
 {{--                        </button>--}}
@@ -33,12 +30,20 @@
 {{--                            <a class="dropdown-item" href="#">Something else here</a>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
+                    @if(!request()->is('home'))
+                        <a href="{{ url('/') }}" class="custom-btn">Home</a>
+                    @endif
+                    @if(!request()->is('/'))
+                        <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
+                    @endif
                     @guest(session('auth.current'))
-                    <a href="{{ url('register') }}" class="custom-btn login">Sign Up</a>
-                    <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
+                        @if(!request()->is('home') && !request()->is('register'))
+                                <a href="{{ url('register') }}" class="custom-btn login">Sign Up</a>
+                        @endif
+                         @if(!request()->is('login') && !request()->is('/'))
+                                <a href="{{ url('login') }}" class="custom-btn login">Login</a>
+                         @endif
                     @else
-                    <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
-
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="custom-btn login">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

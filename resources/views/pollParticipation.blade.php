@@ -30,7 +30,9 @@ Poll Participation
                     <div class="form-group text-right">
                         <button>Participate a poll</button>
                     </div>
-                    <div class="text-center create clr-wt pd-10">Already have an account? <a class="clr-wt" href="{{url('/login')}}"><strong>Login</strong></a></div>
+                           @guest(session('auth.current'))
+                               <div class="text-center create clr-wt pd-10">Already have an account? <a class="clr-wt" href="{{url('/login')}}"><strong>Login</strong></a></div>
+                           @endguest
                 </form>
             </div>
         </div>

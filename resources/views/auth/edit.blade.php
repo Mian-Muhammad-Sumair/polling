@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-lg-4">
-                            <input type="submit" class="custom-btn " name="status" value="Update">
+                            <input type="submit" class="custom-btn-update " name="status" value="Update">
                         </div>
                     </form>
                 </div>
@@ -74,8 +74,8 @@
                                 @error('confirm_password') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-lg-4">
-                            <input type="submit" class="custom-btn " name="status" value="Change Password">
+                        <div class="col-md-6 col-sm-6 col-lg-6">
+                            <input type="submit" class="custom-btn-update " name="status" value="Change Password">
                         </div>
                     </form>
                 </div>
@@ -227,7 +227,7 @@
             text-decoration: none;
         }
 
-        .custom-btn {
+        .custom-btn-update {
             text-transform: inherit;
             background-color: #7158f4 !important;
             color: white !important;
@@ -237,7 +237,7 @@
             color: #000000;
         }
 
-        .second-part .custom-btn {
+        .second-part .custom-btn-update {
             margin-top: 15px;
         }
 
