@@ -128,7 +128,7 @@ Select Plan
     }
 
     .card .custom-btn {
-        margin-top: -10px;
+        margin-top: -25px !important;
         font-size: 14px;
         text-transform: capitalize !important;
         background-color: #404040;
@@ -348,6 +348,9 @@ Select Plan
                         </div>
 
                     </div>
+
+                </div>
+                <div class="chosse-plan-btn">
                     <a href="{{ URL::to('/') }}" class="custom-btn ">Choose Plan </a>
                 </div>
             </div>
@@ -395,6 +398,9 @@ Select Plan
                         </div>
 
                     </div>
+
+                </div>
+                <div class="chosse-plan-btn">
                     <a href="{{ URL::to('/') }}" class="custom-btn ">Choose Plan </a>
                 </div>
             </div>
@@ -443,6 +449,9 @@ Select Plan
                         </div>
 
                     </div>
+
+                </div>
+                <div class="chosse-plan-btn">
                     <a href="{{ URL::to('/') }}" class="custom-btn ">Choose Plan </a>
                 </div>
             </div>
