@@ -28,21 +28,26 @@ class PollParticipateRequest extends FormRequest
     {
         return [
             'polling_key' => [
-                'required',
+                'required','bail',
                 'exists:poll_keys,key',
                 function ($attribute, $value, $fail) {
             $pollKey=PollKey::where('key',$value)->with('Poll')->first();
                     $poll= $pollKey['Poll'];
                     $optionType=$poll['option_type'];
-                    if ($poll['status'] != 'Publish Poll') {
+                    if ($poll['status'] != 'Published') {
                         $fail('This Poll is not active.');
                     }elseif(now()->format('Y-m-d') >= $poll['end_date']){
                         $fail('This Poll is Expired.');
+                    }elseif( $poll['start_date']>now()->format('Y-m-d')){
+                        $fail('This Poll is Not Started.');
                     }elseif($poll['edit_by']!=0){
                         $fail('This Poll is banned by admin.');
                     }
                     elseif(isset($optionType) && $optionType!=''){
                         if (in_array("login_to_vote", $optionType)) {
+                           if(!auth('customer')->check() && !auth('admin')->check()  ){
+                               $fail('Please login to vote in this poll');
+                           }
                             //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You must have to login first to participate in this poll.');
                         }

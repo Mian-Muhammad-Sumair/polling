@@ -1,4 +1,4 @@
-
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 <!-- Framework Css -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">
 <!-- Font Awesome / Icon Fonts -->

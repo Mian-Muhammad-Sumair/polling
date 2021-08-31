@@ -103,7 +103,7 @@ Home
 
         </div>
     </div>
-    <div class="row about-section reverse animatedParent">
+    <div class="row about-section reverse animatedParent" id="about">
         <div class="col-md-6 col-lg-6 col-sm-6 animated bounceInLeft">
             <div class="title-menu">
                 About Us
@@ -138,7 +138,8 @@ Home
 
     </div>
 </div>
-@if(!empty($polls))
+{{$polls}}
+@if(!empty($polls)&& $polls!='[]')
     <div class="section-contact1">
         <div class=" animatedParent">
             <div class="container">
@@ -174,7 +175,7 @@ Home
         </div>
     </div>
 @endif
-<div class="section-contact">
+<div class="section-contact" id="contact">
     <div class=" animatedParent">
         <div class="images-bg-fix">
             <div class="container">

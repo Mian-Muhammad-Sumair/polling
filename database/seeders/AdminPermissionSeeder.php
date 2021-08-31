@@ -11,7 +11,7 @@ class AdminPermissionSeeder extends Seeder
     use PermissionSeederTrait;
 
     protected $permissions = [
-        'Poll','Role & Permission','Customer'
+        'Poll','Role & Permission','Customer', 'Contact', 'Subscribe'
     ];
 
     public function __construct()

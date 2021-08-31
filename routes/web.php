@@ -43,7 +43,7 @@ Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController:
 Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility']);
 Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
 Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
-Route::get('customer/{id}',[\App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
+Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
 
 Route::view('/register_billing', 'signUpBilling');
 
@@ -57,4 +57,8 @@ Route::prefix('admin')->group(function(){
     Route::get('contact_us/delete/{id}',[\App\Http\Controllers\ContactUsController::class,'destroy']);
     Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index']);
     Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy']);
+    Route::get('role_list',[\App\Http\Controllers\Admin\RoleController::class,'index']);
+    Route::get('assign_permission/{id}',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissionsForm']);
+    Route::post('assign_permission',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissions']);
+
 });

@@ -35,7 +35,7 @@ class CustomerPollDataTable extends DataTable
                     $type='badge-warning';
                 }
                 $visibility="<a href='poll/visibility/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span></a>";
-                if($this->user_type=='admin'){
+                if($this->user_type=='admin'&& $item->user_id!=auth()->id()){
                     $visibility="<span class='text-capitalize col-status badge ".$type."'>{$item->visibility}</span>";
                 }
                 return  $visibility;
@@ -46,7 +46,7 @@ class CustomerPollDataTable extends DataTable
                     $type='badge-error';
                 }
                 $status="<a href='poll/action/{$item->id}' ><span class='text-capitalize col-status badge ".$type."'>{$item->status}</span></a>";
-                if($this->user_type!='admin'){
+                if($this->user_type!='admin' && $item->user_id!=auth()->id()){
                     if($item->status=='Lock Poll' && $item->edit_by!=null){
                         $status="<span class='text-capitalize col-status badge ".$type."'>{$item->status}</span>";
                     }else{
@@ -62,15 +62,18 @@ class CustomerPollDataTable extends DataTable
             $edit='';
             $delete='';
             $view='';
-            if($this->user_type!='admin'){
-                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) && $item->status!='Published' || $this->user_type!='admin'){
+
+                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d'))){
 
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
                 if($item->status!='Published'){
                     $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
                 }
-            }
+                if($this->user_type=='admin' && $item->user_id!=auth()->id()){
+                    $edit='';
+                    $delete='';
+                }
                 if($item->status!='Lock Poll'){
                     $view =" <a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";
                 }

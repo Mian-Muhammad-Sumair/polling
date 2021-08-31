@@ -54,7 +54,9 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 @if(session('auth.current')=='admin')
                                     <a href="{{url('admin/customer')}}">Customers</a>
-
+                                    <a href="{{url('admin/role_list')}}">Roles</a>
+                                    <a href="{{url('admin/contact_us')}}">Contact Us List</a>
+                                    <a href="{{url('admin/subscribe')}}">Subscribe</a>
                                 @else
 
                                 @endif

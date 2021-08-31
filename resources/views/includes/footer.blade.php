@@ -9,15 +9,15 @@
                     <!--widget-footer-->
                     <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
                         <ul class="links">
-                            <li><a href="#">Get Started</a></li>
-                            <li><a href="#">Price & plans</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About</a></li>
+                            <li><a href="/poll/create">Get Started</a></li>
+                            <li><a href="/select_plan">Price & plans</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#about">About</a></li>
                         </ul>
                     </div>
                     <!--widget-footer-->
                     <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
-                        <h4>Subscribe for newletter</h4>
+                        <h4>Subscribe for newsletter</h4>
                         <ul>
                             <form method="post" action="{{url('subscribe/submit')}}">
                                 @csrf
