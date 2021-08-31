@@ -4300,7 +4300,7 @@ body,
     width: 100%;
     padding: 30px 20px 10px;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     box-shadow: 1px 2px 40px rgba(28, 30, 32, 0.14);
 }
 
@@ -4627,6 +4627,7 @@ ul {
     padding: 20px;
     border-radius: 10px;
     background: #f5f5f5;
+    margin-bottom: 30px;
 }
 
 .recent-polls-body .badge-left {
