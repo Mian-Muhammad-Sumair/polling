@@ -48,15 +48,17 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
+
                         <div class="sidenav-btn" onclick="openNav()">&#9776;</div>
                         <div class="sidenav-section">
                             <div id="mySidenav" right  class="sidenav">
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 @if(session('auth.current')=='admin')
-                                    <a href="{{url('admin/customer')}}">Customers</a>
+
+                                    @can('View Customer') <a href="{{url('admin/customer')}}">Customers</a>>@endcan
                                     <a href="{{url('admin/role_list')}}">Roles</a>
                                     <a href="{{url('admin/contact_us')}}">Contact Us List</a>
-                                    <a href="{{url('admin/subscribe')}}">Subscribe</a>
+                                  <a href="{{url('admin/subscribe')}}">Subscribe</a>
                                 @else
 
                                 @endif

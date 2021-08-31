@@ -4,11 +4,17 @@ Rolls List
 @endsection
 @section('extra_css')
 <style>
-    table .custom-btn{
+    .table-outer-body .dataTable tbody tr td:last-child a{
     background: #3f2ca7;
+    color: white;
+    padding: 10px;
     border-radius: 7px;
+        width: auto;
+
     box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
 }
+
+
 </style>
 @endsection
 @section('content')
