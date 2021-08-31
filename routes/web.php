@@ -32,6 +32,7 @@ Route::post('/pollParticipate', [App\Http\Controllers\PollVotingController::clas
 Route::get('/', [App\Http\Controllers\PollVotingController::class,'showParticipationForm']);
 Route::resource('/voting', App\Http\Controllers\PollVotingController::class);
 Route::post('/contact_us/send', [App\Http\Controllers\ContactUsController::class,'store']);
+Route::post('/subscribe/submit', [App\Http\Controllers\SubscribeController::class,'store']);
 Route::get('/voting/{id}/{pol}', [App\Http\Controllers\PollVotingController::class,'show']);
 Route::get('/vote/participate/{id}', [App\Http\Controllers\PollVotingController::class,'showPollIdentifyForm']);
 Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::class,'storePollIdentifyForm']);
@@ -54,4 +55,6 @@ Route::prefix('admin')->group(function(){
     Route::get('customer/status/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'status']);
     Route::get('/contact_us', [App\Http\Controllers\ContactUsController::class,'index']);
     Route::get('contact_us/delete/{id}',[\App\Http\Controllers\ContactUsController::class,'destroy']);
+    Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index']);
+    Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy']);
 });

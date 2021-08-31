@@ -14,6 +14,8 @@ use App\Repositories\PollRepository;
 use App\Repositories\PollRepositoryInterface;
 use App\Repositories\RoleRepository;
 use App\Repositories\RoleRepositoryInterface;
+use App\Repositories\SubscribeRepository;
+use App\Repositories\SubscribeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -39,6 +41,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ContactUsRepositoryInterface::class,
             ContactUsRepository::class
+        );
+        $this->app->bind(
+            SubscribeRepositoryInterface::class,
+            SubscribeRepository::class
         );
     }
 }

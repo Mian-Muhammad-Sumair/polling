@@ -19,11 +19,12 @@
                     <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
                         <h4>Subscribe for newletter</h4>
                         <ul>
-                            <form>
+                            <form method="post" action="{{url('subscribe/submit')}}">
+                                @csrf
                                 <li>
-                                    <div class="form-group"><input type="email" name=""></div>
+                                    <div class="form-group"><input type="email" name="email"></div>
                                 </li>
-                                <li><button class="custom-btn-gray">Subscribe</button>
+                                <li><button type="submit" class="custom-btn-gray">Subscribe</button>
                                 </li>
                             </form>
                         </ul>
