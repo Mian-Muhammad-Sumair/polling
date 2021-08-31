@@ -31,7 +31,7 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
                     @if(!request()->is('home'))
-                        <a href="{{ url('/') }}" class="custom-btn">Home</a>
+                        <a href="{{ url('/home') }}" class="custom-btn">Home</a>
                     @endif
                     @if(!request()->is('/'))
                         <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
