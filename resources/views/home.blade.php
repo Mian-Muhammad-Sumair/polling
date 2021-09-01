@@ -138,7 +138,6 @@ Home
 
     </div>
 </div>
-{{$polls}}
 @if(!empty($polls)&& $polls!='[]')
     <div class="section-contact1">
         <div class=" animatedParent">
