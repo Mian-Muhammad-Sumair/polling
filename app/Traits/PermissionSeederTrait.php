@@ -23,7 +23,8 @@ trait PermissionSeederTrait
         $newPermissions=[
             'Product Profile', 'Product Modifier', 'Product Category', 'Product Sub Category',
             'Product Unit', 'Product Drug Category', 'Line Item', 'Packaging Type',
-            'Group', 'Manufacturer', 'Supplier','Tag', 'Rack'
+            'Group', 'Manufacturer', 'Supplier','Tag', 'Rack',
+            'Contact Us', 'Subscriber'
         ];
         foreach ($modules as $module => $permissions) {
             if (gettype($module) === 'integer') {

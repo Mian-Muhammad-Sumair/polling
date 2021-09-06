@@ -29,7 +29,14 @@ class RoleDataTable extends DataTable
                 return $this->index;
             })
             ->addColumn('action', function($item){
-           return     "<a href='/admin/assign_permission/$item->id' class='custom-btn'>Assign Permission</a>";
+                $action= '';
+                if(auth()->user()->can('Create Role & Permission')){
+                    $action=  "<a href='/admin/assign_permission/$item->id' class='custom-btn'>Assign Permission</a>";
+                }
+
+
+           return  $action;
+//                return  "<a href='/admin/assign_permission/$item->id' class='custom-btn'>Assign Permission</a>";
             })->rawColumns(['action'])
             ;
     }

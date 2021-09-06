@@ -54,18 +54,16 @@
                             <div id="mySidenav" right  class="sidenav">
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 @if(session('auth.current')=='admin')
-
-                                    @can('View Customer') <a href="{{url('admin/customer')}}">Customers</a>>@endcan
-                                    <a href="{{url('admin/role_list')}}">Roles</a>
+                                    @can('View Customer') <a href="{{url('admin/customer')}}">Customers</a>@endcan
+                                    @can('View Role & Permission')    <a href="{{url('admin/role_list')}}">Roles</a>@endcan
                                     <a href="{{url('admin/contact_us')}}">Contact Us List</a>
-                                  <a href="{{url('admin/subscribe')}}">Subscribe</a>
+                                    <a href="{{url('admin/subscribe')}}">Subscribe</a>
                                 @else
 
                                 @endif
-                                <a href="{{ url('/dashboard') }}" >Dashboard </a>
-                                <a href="{{ url('/poll/create') }}" >Create Poll </a>
-                                <a href="{{ url('/poll') }}" >Poll List </a>
-
+                                  <a href="{{ url('/dashboard') }}" >Dashboard </a>
+                                @can('Create Poll')<a href="{{ url('/poll/create') }}" >Create Poll </a>@endcan
+                                @can('View Poll')<a href="{{ url('/poll') }}" >Poll List</a>@endcan
                             </div>
                         </div>
 

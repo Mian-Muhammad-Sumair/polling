@@ -83,10 +83,11 @@ class PollVotingController extends Controller
     {
 
         $data=$request->validated();
-        if(auth()->check()){
-        $userId=auth()->id();
-        }else{
+        if(!auth('customer')->check() && !auth('admin')->check()  ){
             $userId=request()->ip();
+
+        }else{
+            $userId=auth('customer')->check()?auth('customer')->id():auth('admin')->id();
         }
 
         foreach($data['answer'] as $answer){

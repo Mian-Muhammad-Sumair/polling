@@ -25,9 +25,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::put('/poll', [App\Http\Controllers\PollController::class,'update']);
-Route::get('/poll/delete/{id}', [App\Http\Controllers\PollController::class,'delete']);
+Route::get('/poll/delete/{id}', [App\Http\Controllers\PollController::class,'delete'])->middleware( ['can:Delete Poll']);
 Route::post('/', [App\Http\Controllers\PollVotingController::class,'pollParticipate']);
-Route::post('/pollParticipate', [App\Http\Controllers\PollVotingController::class,'pollParticipate'])->middleware('auth:customer,user,admin');
+Route::post('/pollParticipate', [App\Http\Controllers\PollVotingController::class,'pollParticipate']);
 //Route::post('/', [App\Http\Controllers\PollVotingController::class,'pollParticipate'])->middleware('auth:user,customer,admin');
 Route::get('/', [App\Http\Controllers\PollVotingController::class,'showParticipationForm']);
 Route::resource('/voting', App\Http\Controllers\PollVotingController::class);
@@ -36,13 +36,15 @@ Route::post('/subscribe/submit', [App\Http\Controllers\SubscribeController::clas
 Route::get('/voting/{id}/{pol}', [App\Http\Controllers\PollVotingController::class,'show']);
 Route::get('/vote/participate/{id}', [App\Http\Controllers\PollVotingController::class,'showPollIdentifyForm']);
 Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::class,'storePollIdentifyForm']);
-Route::get('/dashboard', [App\Http\Controllers\CustomerProfileController::class,'index']);
-Route::put('/user/update', [App\Http\Controllers\CustomerProfileController::class,'update']);
-Route::put('/user/update/password', [App\Http\Controllers\CustomerProfileController::class,'updatePassword']);
-Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus']);
-Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility']);
-Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
-Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
+Route::get('/dashboard', [App\Http\Controllers\CustomerProfileController::class,'index'])->middleware( ['can:View Poll']);
+Route::put('/user/update', [App\Http\Controllers\CustomerProfileController::class,'update'])->middleware( ['can:View Poll']);
+Route::put('/user/update/password', [App\Http\Controllers\CustomerProfileController::class,'updatePassword'])->middleware( ['can:Update Customer']);
+Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus'])->middleware( ['can:Update Poll']);
+Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility'])->middleware( ['can:Update Poll']);
+Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView'])->middleware( ['can:View Poll']);
+Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes'])->middleware( ['can:View Poll']);
+
+
 Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
 
 Route::view('/register_billing', 'signUpBilling');
@@ -50,15 +52,15 @@ Route::view('/register_billing', 'signUpBilling');
 Route::get('/select_plan', [App\Http\Controllers\HomeController::class, 'subscriptionPlan'])->name('Select Plan');
 Route::prefix('admin')->group(function(){
     Route::get('/',[\App\Http\Controllers\Admin\DashboardController::class,'index']);
-    Route::get('customer',[\App\Http\Controllers\Admin\CustomerController::class,'index']);
-    Route::get('customer/delete/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'destroy']);
-    Route::get('customer/status/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'status']);
-    Route::get('/contact_us', [App\Http\Controllers\ContactUsController::class,'index']);
-    Route::get('contact_us/delete/{id}',[\App\Http\Controllers\ContactUsController::class,'destroy']);
-    Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index']);
-    Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy']);
-    Route::get('role_list',[\App\Http\Controllers\Admin\RoleController::class,'index']);
-    Route::get('assign_permission/{id}',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissionsForm']);
-    Route::post('assign_permission',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissions']);
+    Route::get('customer',[\App\Http\Controllers\Admin\CustomerController::class,'index'])->middleware( ['can:Delete Poll']);
+    Route::get('customer/delete/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'destroy'])->middleware( ['can:Delete Customer']);
+    Route::get('customer/status/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'status'])->middleware( ['can:View Customer']);
+    Route::get('/contact_us', [App\Http\Controllers\ContactUsController::class,'index'])->middleware( ['can:View Contact Us']);
+    Route::get('contact_us/delete/{id}',[\App\Http\Controllers\ContactUsController::class,'destroy'])->middleware( ['can:Delete Contact Us']);
+    Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index'])->middleware( ['can:View Subscriber']);
+    Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy'])->middleware( ['can:Delete Subscriber']);
+    Route::get('role_list',[\App\Http\Controllers\Admin\RoleController::class,'index'])->middleware( ['can:View Role & Permission']);
+    Route::get('assign_permission/{id}',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissionsForm'])->middleware( ['can:View Role & Permission']);
+    Route::post('assign_permission',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissions'])->middleware( ['can:Update Role & Permission']);
 
 });

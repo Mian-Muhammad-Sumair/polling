@@ -45,7 +45,7 @@ class CustomerProfileController extends Controller
         $totalPoll=$poll->count();
         $activePoll=$poll->Activepoll()->count();
         $expiredPoll=Poll::where('user_id',auth()->id())->ExpiredPoll()->count();
-        return $dataTable->render('dashboard',['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
+        return  $dataTable->render('dashboard',['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
 
     }
 
