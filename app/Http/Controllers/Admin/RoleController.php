@@ -34,13 +34,17 @@ class RoleController extends Controller
     {
         $permissions=Permission::all();
         $role=Role::where('id',$roleId)->first();
-        return view('admin.assignPermissions')->with(['role'=>$role,'permissions'=>$permissions]);
+        $role_permissions=$role->permissions()->pluck('name')->toArray();
+        return view('admin.assignPermissions')->with(['role'=>$role,'role_permissions'=>$role_permissions,'permissions'=>$permissions]);
 
     }
     public function assignPermissions(RolePermissionStoreRequest $request)
     {
         $data=$request->validated();
         $role=Role::where('id',$data['role_id'])->first();
+        $permissions=$role->permissions()->pluck('name')->toArray();
+        if(isset($permissions))     {$role->revokePermissionTo($permissions);}
+
         $role->givePermissionTo($data['permission'])?
         toastr()->success('Successfully! Permissions Has Assigned.'):
             toastr()->error('Sorry! Please try again later.');
