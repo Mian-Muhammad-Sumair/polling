@@ -56,8 +56,8 @@
                                 @if(session('auth.current')=='admin')
                                     @can('View Customer') <a href="{{url('admin/customer')}}">Customers</a>@endcan
                                     @can('View Role & Permission')    <a href="{{url('admin/role_list')}}">Roles</a>@endcan
-                                    <a href="{{url('admin/contact_us')}}">Contact Us List</a>
-                                    <a href="{{url('admin/subscribe')}}">Subscribe</a>
+                                        @can('View Contact Us')   <a href="{{url('admin/contact_us')}}">Contact Us List</a>
+                                        @can('View Subscriber')   <a href="{{url('admin/subscribe')}}">Subscriber</a>
                                 @else
 
                                 @endif
