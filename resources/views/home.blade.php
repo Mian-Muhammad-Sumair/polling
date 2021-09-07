@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Home
+{{__('home.title')}}
 @endsection
 
 @section('extra_css')
@@ -51,11 +51,9 @@ Home
     <div class="item">
         <img src="{{asset('assets/images/banner-main.png')}}" alt="slider">
         <div class="inside">
-            <h2>Get Answers with <strong>Survays</strong></h2>
-            <p>Be the person with great ideas. Surveys give you actionable insights
-                and fresh perspectives..</p>
-            @can('Create Poll')<a href="{{ URL::to('/poll/create') }}" class="custom-btn">Get Started</a>@endcan
-            <a href="{{URL::to('/select_plan')}}" class="custom-btn-white" style="margin-left:10px">Go Premium</a>
+            {!! __('home.banner_description') !!}
+            @can('Create Poll')<a href="{{ URL::to('/poll/create') }}" class="custom-btn">{{__('home.Get Started')}}</a>@endcan
+            <a href="{{URL::to('/select_plan')}}" class="custom-btn-white" style="margin-left:10px">{{__('home.Go Premium')}}</a>
         </div>
         <!--inside-->
     </div>
@@ -78,7 +76,7 @@ Home
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        100+ Daily Survays
+                        {{__('home.100+ Daily Survays')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>
@@ -86,7 +84,7 @@ Home
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        100+ Daily Survays
+                        {{__('home.100+ Daily Survays')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>
@@ -94,7 +92,7 @@ Home
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        100+ Daily Survays
+                        {{__('home.100+ Daily Survays')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>
@@ -106,29 +104,10 @@ Home
     <div class="row about-section reverse animatedParent" id="about">
         <div class="col-md-6 col-lg-6 col-sm-6 animated bounceInLeft">
             <div class="title-menu">
-                About Us
+                {{__('About Us')}}
                 <div class="theme-bar theme-bar-20"></div>
             </div>
-            <div class="side">
-                <div class="first">
-                    <p>Learn more about SurveyMonkey Enterprise and schedule a demo.</p>
-                </div>
-                <ul>
-                    <li>
-                        <p> Manage multiple users and gain visibility into all survey data collected across your
-                            organization with admin controls and dashboards.</p>
-                    </li>
-                    <li>
-                        <p> Ensure confidential data is protected with enhanced security including encryption, SSO,
-                            and features that help you remain compliant with HIPAA and GDPR.
-                        </p>
-                    </li>
-                    <li>
-                        <p>Make feedback automated and actionable by connecting to key business systems using APIs
-                            and powerful integrations, including Salesforce, Marketo, Tableau, and more.</p>
-                    </li>
-                </ul>
-            </div>
+            {!! __('home.About Description') !!}
         </div>
         <div class="col-md-6 col-lg-6 col-sm-6  animated bounceInRight">
             <div class="side">
@@ -144,7 +123,7 @@ Home
             <div class="container">
                 <div class="top-header">
                     <div>
-                        <h2> <b> Public polls</b></h2>
+                        <h2> <b> {{__('home.Public polls')}}</b></h2>
                         <div class="underline"></div>
                     </div>
 
@@ -183,52 +162,34 @@ Home
                         <form method="POST" action="{{ url('contact_us/send') }}">
                             @csrf
                             <div class="form-group">
-                                <label>First Name  @error('first_name')<sup style="color: red">*</sup>@enderror </label>
+                                <label>{{__('home.First Name')}}   @error('first_name')<sup style="color: red">*</sup>@enderror </label>
                                 <input type="text"  name="first_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Last Name  @error('last_name')<sup style="color: red">*</sup>@enderror</label>
+                                <label>{{__('home.Last Name')}}  @error('last_name')<sup style="color: red">*</sup>@enderror</label>
                                 <input type="text"  name="last_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Email @error('email')<sup style="color: red">*</sup>@enderror </label>
+                                <label>{{__('home.Email')}} @error('email')<sup style="color: red">*</sup>@enderror </label>
                                 <input type="text" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label>Message  @error('message')<sup style="color: red">*</sup>@enderror</label>
+                                <label>{{__('home.Message')}}  @error('message')<sup style="color: red">*</sup>@enderror</label>
                                 <textarea name="message" required></textarea>
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit">Send</button>
+                                <button type="submit">{{__('home.Send')}}</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 text-section animated bounceInLeft">
                     <div class="title-menu float-right">
-                        Contact Us
+                        {{__('home.Contact Us')}}
                         <div class="theme-bar theme-bar-20 theme-bar-white"></div>
                     </div>
-                    <div class="side float-right">
-                        <div class="first">
-                            <p>Learn more about SurveyMonkey Enterprise and schedule a demo.</p>
-                        </div>
-                        <ul>
-                            <li>
-                                <p> Manage multiple users and gain visibility into all survey data collected across your
-                                    organization with admin controls and dashboards.</p>
-                            </li>
-                            <li>
-                                <p> Ensure confidential data is protected with enhanced security including encryption, SSO,
-                                    and features that help you remain compliant with HIPAA and GDPR.
-                                </p>
-                            </li>
-                            <li>
-                                <p>Make feedback automated and actionable by connecting to key business systems using APIs
-                                    and powerful integrations, including Salesforce, Marketo, Tableau, and more.</p>
-                            </li>
-                        </ul>
-                    </div>
+
+                    {!! __('home.Contact Us Description') !!}
                 </div>
             </div>
         </div>
