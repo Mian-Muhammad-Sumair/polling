@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::c
 Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
 
 
+Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
 Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
 
 Route::view('/register_billing', 'signUpBilling');
