@@ -20,9 +20,10 @@
                             <div class=" account-details ">
                                 <div class="form-group checkbox">
                                     <label>Permissions</label>
-                                    @foreach($permissions as $indec=>$permission)
+                                    @foreach($permissions as $index=>$permission)
                                         <div class="col-md-3 col-sm-3 ">
-                                            <input type="checkbox" name="permission[]" value="{{$permission['id']}}"   id="{{$permission['name']}}">
+                                            <input type="checkbox" name="permission[{{($index+1)}}]" {{array_search($permission['name'],$role_permissions)?"Checked":''}}
+                                                   value="{{$permission['id']}}"   id="{{$permission['name']}}">
                                             <label class="checkbox-main" for="{{$permission['name']}}">
                                                 <span class="first"></span>
                                                 <span>{{$permission['name']}}</span>
