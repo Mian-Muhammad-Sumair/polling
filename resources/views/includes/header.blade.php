@@ -12,11 +12,11 @@
                 <div class="button-header">
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Language
+                                {{__('header.Language')}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">English</a>
-                                <a class="dropdown-item" href="#">French</a>
+                                <a  class="dropdown-item  {{ session()->get('locale') == 'en' ? 'active' : '' }}"  href="{{ route('changeLang').'?lang=en' }}">{{__('header.English')}}</a>
+                                <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" href="{{ route('changeLang').'?lang=fr' }}">{{__('header.French')}}</a>
                             </div>
                     </div>
 
@@ -31,20 +31,20 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
                     @if(!request()->is('home'))
-                        <a href="{{ url('/home') }}" class="custom-btn">Home</a>
+                        <a href="{{ url('/home') }}" class="custom-btn">{{__('header.Home')}}</a>
                     @endif
                     @if(!request()->is('/'))
-                        <a href="{{ url('/') }}" class="custom-btn">Poll Participation </a>
+                        <a href="{{ url('/') }}" class="custom-btn">{{__('header.Poll Participation')}} </a>
                     @endif
                     @guest(session('auth.current'))
                         @if(!request()->is('home') && !request()->is('register'))
-                                <a href="{{ url('register') }}" class="custom-btn login">Sign Up</a>
+                                <a href="{{ url('register') }}" class="custom-btn login">{{__('header.Sign Up')}}</a>
                         @endif
                          @if(!request()->is('login') && !request()->is('/'))
-                                <a href="{{ url('login') }}" class="custom-btn login">Login</a>
+                                <a href="{{ url('login') }}" class="custom-btn login">{{__('header.Login')}}</a>
                          @endif
                     @else
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="custom-btn login">{{ __('Logout') }}</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="custom-btn login">{{ __('header.Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -84,3 +84,10 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 </script>
+
+    <style>
+        a.active{
+            background: #3f2ca7;
+            color: white;
+        }
+    </style>
