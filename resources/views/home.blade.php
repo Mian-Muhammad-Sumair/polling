@@ -52,7 +52,7 @@
         <img src="{{asset('assets/images/banner-main.png')}}" alt="slider">
         <div class="inside">
             {!! __('home.banner_description') !!}
-            @can('Create Poll')<a href="{{ URL::to('/poll/create') }}" class="custom-btn">{{__('home.Get Started')}}</a>@endcan
+          <a href="{{ URL::to('/poll/create') }}" class="custom-btn">{{__('home.Get Started')}}</a>
             <a href="{{URL::to('/select_plan')}}" class="custom-btn-white" style="margin-left:10px">{{__('home.Go Premium')}}</a>
         </div>
         <!--inside-->
