@@ -36,13 +36,14 @@ Route::post('/subscribe/submit', [App\Http\Controllers\SubscribeController::clas
 Route::get('/voting/{id}/{pol}', [App\Http\Controllers\PollVotingController::class,'show']);
 Route::get('/vote/participate/{id}', [App\Http\Controllers\PollVotingController::class,'showPollIdentifyForm']);
 Route::post('/poll_participate/', [App\Http\Controllers\PollVotingController::class,'storePollIdentifyForm']);
-Route::get('/dashboard', [App\Http\Controllers\CustomerProfileController::class,'index'])->middleware( ['can:View Poll']);
-Route::put('/user/update', [App\Http\Controllers\CustomerProfileController::class,'update'])->middleware( ['can:View Poll']);
-Route::put('/user/update/password', [App\Http\Controllers\CustomerProfileController::class,'updatePassword'])->middleware( ['can:Update Customer']);
-Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus'])->middleware( ['can:Update Poll']);
-Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility'])->middleware( ['can:Update Poll']);
-Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView'])->middleware( ['can:View Poll']);
-Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes'])->middleware( ['can:View Poll']);
+Route::get('/dashboard', [App\Http\Controllers\CustomerProfileController::class,'index']);
+
+Route::put('/user/update', [App\Http\Controllers\CustomerProfileController::class,'update']);
+Route::put('/user/update/password', [App\Http\Controllers\CustomerProfileController::class,'updatePassword']);
+Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollStatus']);
+Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility']);
+Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
+Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
 
 
 Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);

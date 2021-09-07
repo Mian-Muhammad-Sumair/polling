@@ -62,8 +62,8 @@
 
                                 @endif
                                   <a href="{{ url('/dashboard') }}" >Dashboard </a>
-                                @can('Create Poll')<a href="{{ url('/poll/create') }}" >Create Poll </a>@endcan
-                                @can('View Poll')<a href="{{ url('/poll') }}" >Poll List</a>@endcan
+                                <a href="{{ url('/poll/create') }}" >Create Poll </a>
+                               <a href="{{ url('/poll') }}" >Poll List</a>
                             </div>
                         </div>
 

@@ -41,6 +41,7 @@ class RoleController extends Controller
     public function assignPermissions(RolePermissionStoreRequest $request)
     {
         $data=$request->validated();
+
         $role=Role::where('id',$data['role_id'])->first();
         $permissions=$role->permissions()->pluck('name')->toArray();
         if(isset($permissions))     {$role->revokePermissionTo($permissions);}

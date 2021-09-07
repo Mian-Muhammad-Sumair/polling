@@ -22,7 +22,7 @@
                                     <label>Permissions</label>
                                     @foreach($permissions as $index=>$permission)
                                         <div class="col-md-3 col-sm-3 ">
-                                            <input type="checkbox" name="permission[{{($index+1)}}]" {{array_search($permission['name'],$role_permissions)?"Checked":''}}
+                                            <input type="checkbox" name="permission[{{$index+1}}]" {{array_search($permission['name'],$role_permissions)?"Checked":''}}
                                                    value="{{$permission['id']}}"   id="{{$permission['name']}}">
                                             <label class="checkbox-main" for="{{$permission['name']}}">
                                                 <span class="first"></span>

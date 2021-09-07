@@ -63,19 +63,18 @@ class CustomerPollDataTable extends DataTable
             $delete='';
             $view='';
 
-                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d')) &&
-                    auth()->user()->can('Update Poll')
+                if(strtotime($item->start_date) > strtotime(now()->format('Y-m-d'))
                 ){
                     $edit="<a href='poll/{$item->id}/edit' class='col-edit'><i class='fa fa-edit'></i></a>";
                 }
-                if($item->status!='Published' &&    auth()->user()->can('Delete Poll')){
+                if($item->status!='Published'){
                     $delete="<a href='poll/delete/{$item->id}' class='col-edit'><i class='fa fa-trash'></i></a>";
                 }
                 if($this->user_type=='admin' && $item->user_id!=auth()->id()){
                     $edit='';
                     $delete='';
                 }
-                if($item->status!='Lock Poll' &&   auth()->user()->can('View Poll')){
+                if($item->status!='Lock Poll'){
                     $view =" <a href='poll/view/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";
                 }
             return
