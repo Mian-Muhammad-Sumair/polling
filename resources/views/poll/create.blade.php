@@ -162,7 +162,7 @@ Create Poll
                         <label>Generate polling key</label>
                         <input type="text" id="key" name="key" value="{{ old('key') }}">
                         <div class="Generate-polling-key-radio">
-                            <input type="checkbox" id="key_type" class="largerCheckbox" name="key_type" value="1">
+                            <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">
                             <label for="key_type"> Multiple polling keys</label>
 
                         </div>
