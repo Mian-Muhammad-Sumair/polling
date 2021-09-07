@@ -114,7 +114,12 @@ class CustomerProfileController extends Controller
         return redirect('/dashboard');
     }
     public function pollView($id,CustomerPollOptionDataTable $datatable,CustomerPollKeysDataTable$pollKeysDataTable){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$id)->with(['pollKeys','pollIdentifierQuestions','questionOptions'])->first();
+        $poll=Poll::where('id',$id)->with(['pollKeys','pollIdentifierQuestions','questionOptions']);
+        if(!auth('admin')->check()){
+            $poll=$poll->where('user_id',auth()->id());
+        }
+
+        $poll=$poll->first();
         $TotalVote=Poll::PollVotes($id);
         $datatable->with('id', $id);
         $pollKeysDataTable->with('id', $id);
@@ -128,7 +133,11 @@ class CustomerProfileController extends Controller
 
     }
     public function pollVotes($pollID,$id,PollOptionVotesDataTable $dataTable){
-        $poll=Poll::where('user_id',auth()->id())->where('id',$pollID)->with(['pollKeys','questionOptions','pollIdentifierQuestions'])->first();
+        $poll=Poll::where('id',$pollID)->with(['pollKeys','questionOptions','pollIdentifierQuestions']);
+        if(!auth('admin')->check()){
+            $poll=$poll->where('user_id',auth()->id());
+        }
+        $poll=$poll->first();
         $selectedOption=QuestionOptions::where('id',$id)->first();
         $pollVote=Poll::PollVotes($pollID);
         $dataTable->with('id', $id);
