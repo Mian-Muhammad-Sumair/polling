@@ -200,13 +200,11 @@
                     <div class="col-md-4 col-sm-4 col-lg-4  second-part">
                         <div class="form-group">
                             <label>Polling key</label>
-                            @if($poll->pollKeys &&empty(old('key')))
-                                <input type="text" id="key" name="key[0]" value="" >
-                                <div class="Generate-polling-key-radio">
-                                    <input type="checkbox" id="key_type" class="largerCheckbox" {{old('key')==1?"checked":''}} name="key_type" value="1">
-                                    <label for="key_type"> Multiple polling keys</label>
-                                </div>
-                                <div onclick="getkey()" class="custom-btn ">Generate</div>
+                            @if($poll->pollKeys)
+                                @foreach($poll->pollKeys as $index=>$key)
+                                    <input type="text" id="key" name="key[{{$key->id}}]" value="{{$key->key}}" >
+                                    @error('key.'.$key->id) <span class="error_msg">{{$message}}</span> @enderror
+                                @endforeach
                                 @error('key') <span class="error_msg">{{$message}}</span> @enderror
                             @elseif(old('key'))
                                 @foreach(old('key') as $index=>$key)
@@ -215,14 +213,19 @@
 
                                 @endforeach
 
-                            @elseif($poll->pollKeys)
-                                @foreach($poll->pollKeys as $index=>$key)
-                                    <input type="text" id="key" name="key[{{$key->id}}]" value="{{$key->key}}" >
-                                    @error('key.'.$key->id) <span class="error_msg">{{$message}}</span> @enderror
-                                @endforeach
+                            @else
+                                <input type="text" id="key" name="key[]" value="{{ old('key') }}">
+                                <div class="Generate-polling-key-radio">
+                                    <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">
+                                    <label for="key_type"> Multiple polling keys</label>
+
+                                </div>
+                                    @error('key[0]') <span class="error_msg">{{$message}}</span> @enderror
+
                             @endif
                         </div>
                     </div>
+
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
                     </div>

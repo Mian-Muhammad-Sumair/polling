@@ -36,7 +36,7 @@ class PollUpdateRequest extends FormRequest
             'identifier_question.*'=> 'required',
             'visibility' => 'required',
             'option_type' => 'nullable|array',
-            'status'=> 'required|in:Lock Poll,Publish Poll',
+            'status'=> 'required|in:Lock Poll,Published',
             'key' => 'required|array',
             "key.*" => [
                 'required',
@@ -45,7 +45,7 @@ class PollUpdateRequest extends FormRequest
                     $id=PollKey::where('id',$id[1])->first();
                     $key = PollKey::where('key', $value)->first();
                     if($id) {
-                        $key=$key->where('poll_id', '!=', $id->poll_id);
+                        $key=$key->where('poll_id', '!=', $id->poll_id)->first();
                     }
                     if ($key) {
                         $fail('Please Enter a unique key.');
