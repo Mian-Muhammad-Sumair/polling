@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PollIdentifierQuestionStoreRequest;
 use App\Http\Requests\PollParticipateRequest;
 use App\Http\Requests\PollVotingRequest;
-use App\Models\poll;
+use App\Models\Poll;
 use App\Models\PollIdentifierAnswer;
 use App\Models\PollIdentifierQuestion;
 use App\Models\PollKey;
