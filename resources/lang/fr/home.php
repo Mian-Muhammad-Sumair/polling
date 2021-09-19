@@ -11,7 +11,7 @@ return [
 
     'title' => 'Accueil',
 
-    'banner_description' => '<h2>AccueilObtenir des réponses avec <strong>Enquêtes</strong></h2>
+    'banner_description' => '<h2>Soutenez vos idées avec <strong>Enquêtes</strong></h2>
             <p>Soyez la personne avec de grandes idées. Les sondages vous donnent des informations exploitables
                  et de nouvelles perspectives..</p>',
     'Get Started' => 'Commencer',

@@ -60,16 +60,42 @@
 </div>
 <!--===================== End of Base Slider ========================-->
 
-<div class="img-banner animatedParent">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="{{asset('assets/images/base.png')}}">
-            </div>
+@if(!empty($polls)&& $polls!='[]')
+    <div class="section-contact1">
+        <div class=" animatedParent">
+            <div class="container">
+                <div class="top-header">
+                    <div>
+                        <h2> <b> {{__('home.Public polls')}}</b></h2>
+                        <div class="underline"></div>
+                    </div>
 
+                </div>
+                <br>
+                <br>
+                @foreach($polls as $poll)
+                    <div class="recent-polls-body">
+                        <div class="badge-left">{{$poll['name']}}</div>
+                        <div class="badge-right">{{$poll['question']}}</div>
+                        <div class="row"    >
+                            @foreach($poll['votes'] as $vote)
+                                <div class="col-lg-2 col-md-4 col-xs-6">
+                                    <div class="itom-box">
+                                        <h6>
+                                            {{$vote['total_Vote']}}
+                                        </h6>
+
+                                        <b>{{$vote['question_option']}}</b>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
-</div>
+@endif
 <div class="container">
     <div class="survay-section">
         <div class="row">
@@ -117,42 +143,7 @@
 
     </div>
 </div>
-@if(!empty($polls)&& $polls!='[]')
-    <div class="section-contact1">
-        <div class=" animatedParent">
-            <div class="container">
-                <div class="top-header">
-                    <div>
-                        <h2> <b> {{__('home.Public polls')}}</b></h2>
-                        <div class="underline"></div>
-                    </div>
 
-                </div>
-                <br>
-                <br>
-                @foreach($polls as $poll)
-                <div class="recent-polls-body">
-                    <div class="badge-left">{{$poll['name']}}</div>
-                    <div class="badge-right">{{$poll['question']}}</div>
-                    <div class="row"    >
-                        @foreach($poll['votes'] as $vote)
-                        <div class="col-lg-2 col-md-4 col-xs-6">
-                            <div class="itom-box">
-                                <h6>
-                                    {{$vote['total_Vote']}}
-                                </h6>
-
-                                <b>{{$vote['question_option']}}</b>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-@endif
 <div class="section-contact" id="contact">
     <div class=" animatedParent">
         <div class="images-bg-fix">

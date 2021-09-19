@@ -1,6 +1,9 @@
 <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+<?php $content = file_get_contents(public_path("/css/app.css")); ?>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css?version=' . md5($content)) }}">
 <!-- Framework Css -->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">
+{{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">--}}
 <!-- Font Awesome / Icon Fonts -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/font-awesome.min.css') }}">
 <!-- Owl Carousel / Carousel- Slider -->
@@ -83,5 +86,21 @@
 
     .badge-inverse:hover {
         background-color: #1a1a1a;
+    }
+
+
+    a.active{
+        background: #3f2ca7;
+        color: white;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active,
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #3b83f6b5  !important;
     }
 </style>

@@ -11,7 +11,7 @@ return [
 
     'title' => 'Home',
 
-    'banner_description' => '<h2>Get Answers with <strong>Survays</strong></h2>
+    'banner_description' => '<h2>Support your ideas with <strong>Surveys</strong></h2>
             <p>Be the person with great ideas. Surveys give you actionable insights
                 and fresh perspectives..</p>',
     'Get Started' => 'Get Started',
@@ -40,7 +40,7 @@ return [
             </div>',
     'Public polls' => 'Public polls',
     'Contact Us' => ' Contact Us',
-    'Contact Us Description' => '<div class="side float-right">
+    'Contact Us Description' => '
                         <div class="first">
                             <p>Learn more about SurveyMonkey Enterprise and schedule a demo.</p>
                         </div>
@@ -59,7 +59,7 @@ return [
                                     and powerful integrations, including Salesforce, Marketo, Tableau, and more.</p>
                             </li>
                         </ul>
-                    </div>',
+                   ',
     'First Name'=>'First Name',
     'Last Name'=>'Last Name',
     'Email'=>'Email',

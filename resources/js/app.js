@@ -5,9 +5,16 @@
  */
 
 require('./bootstrap');
+require('./js/main');
+require('./js/owl.carousel');
+require('./js/lib/counter');
+require('./js/lib/jquery');
+require('./js/dataTables/jquery.dataTables');
 
 window.Vue = require('vue').default;
-
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

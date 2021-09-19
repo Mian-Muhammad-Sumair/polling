@@ -128,6 +128,15 @@ Dashboard
     }
 </style>
 @endsection
+@section('extra_js')
+    {!! $customersBarChart->renderChartJsLibrary() !!}
+    {!! $customersBarChart->renderJs() !!}
+
+    {!! $pollPieChart->renderChartJsLibrary() !!}
+    {!! $pollPieChart->renderJs() !!}
+
+@endsection
+
 @section('content')
 <div class="container">
     <div class="dashboard-body">
@@ -138,7 +147,7 @@ Dashboard
             </div>
             <div>
                 <h5>
-                    <b>Current plan : </b>Plan 1
+                    <b>Current plan : </b>Trial Package
                 </h5>
                 <h5>
                     <b>Status : </b>online <span>
@@ -161,14 +170,6 @@ Dashboard
                             <p>{{$user['about']}}</p>
                             <a href="customer/{{$user['id']}}">settings</a>
                             <p>{{$user['email']}}</p>
-                            <div class="social-icons">
-                                <i class="fa fa-twitter"></i> <span>Share with twitter</span>
-                                <br>
-                                <i class="fa fa-facebook"></i> <span>Share with facebook</span>
-                                <br>
-                                <i class="fa fa-link"></i> <span>Copy link</span>
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,28 +178,34 @@ Dashboard
                         <div class="col-lg-4">
                             <div class="pool-card">
                                 <h5>Total Poll <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">{{$totalPoll}}<i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$totalPoll}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
                                 <h5>Open Poll <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">{{$activePoll}}<i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$activePoll}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
                                 <h5>Expired Poll <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">{{$expiredPoll}}<i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$expiredPoll}}</h5>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-4">--}}
-                        {{-- <div class="pool-card">--}}
-                        {{-- <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>--}}
-                        {{-- <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>--}}
-                        {{-- </div>--}}
-                        {{-- </div>--}}
-
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h5>{{ $pollPieChart->options['chart_title'] }}</h5>
+                            {!! $pollPieChart->renderHtml() !!}
+                        </div>
+                        <div class="col-lg-8 ">
+                            <h5>{{ $customersBarChart->options['chart_title'] }}</h5>
+                            {!! $customersBarChart->renderHtml() !!}
+                        </div>
 
                     </div>
                 </div>
@@ -281,3 +288,4 @@ Dashboard
 </div>
 
 @endsection
+

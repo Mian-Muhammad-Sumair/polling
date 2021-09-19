@@ -20,6 +20,7 @@ use App\Repositories\PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -40,12 +41,51 @@ class CustomerProfileController extends Controller
      */
     public function index(CustomerPollDataTable $dataTable)
     {
+        $chart_options = [
+            'chart_title' => 'Poll created by months',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Poll',
+            'where_raw' =>"user_id='".auth()->id()."'" ,
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'bar',
+        ];
+        $customersBarChart = new LaravelChart($chart_options);
+
+        $chart_options = [
+            'chart_title' => 'Polls by Status',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Models\Poll',
+            'where_raw' =>"user_id='".auth()->id()."'" ,
+            'group_by_field' => 'status',
+            'chart_type' => 'pie',
+            'filter_field' => 'created_at',
+            'filter_period' => 'year', // show users only registered this month
+        ];
+
+        $pollPieChart = new LaravelChart($chart_options);
+        $chart_options = [
+            'chart_title' => 'Customers by Status',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Models\User',
+            'where_raw' =>"user_type='customer'" ,
+            'group_by_field' => 'status',
+            'chart_type' => 'pie',
+            'filter_field' => 'created_at',
+            'filter_period' => 'year', // show users only registered this month
+        ];
+
+        $customerPieChart = new LaravelChart($chart_options);
+
+
+
+
         $user=User::where('id',auth()->id())->first();
         $poll=Poll::where('user_id',auth()->id());
         $totalPoll=$poll->count();
         $activePoll=$poll->Activepoll()->count();
         $expiredPoll=Poll::where('user_id',auth()->id())->ExpiredPoll()->count();
-        return  $dataTable->render('dashboard',['user'=> $user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
+        return  $dataTable->render('dashboard',['customersBarChart'=>$customersBarChart,'pollPieChart'=>$pollPieChart,'user'=>$user,'totalPoll'=>$totalPoll,'activePoll'=>$activePoll,'expiredPoll'=>$expiredPoll]);
 
     }
 

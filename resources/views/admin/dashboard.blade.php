@@ -137,9 +137,9 @@ Dashboard
                 <div class="underline"></div>
             </div>
             <div>
-                <h5>
-                    <b>Current plan : </b>Plan 1
-                </h5>
+{{--                <h5>--}}
+{{--                    <b>Current plan : </b>Plan 1--}}
+{{--                </h5>--}}
                 <h5>
                     <b>Status : </b>online <span>
                         <div class="green-dot"></div>
@@ -155,18 +155,18 @@ Dashboard
                             <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
                         </div>
                         <div class="text">
-                            <h6>Asim rasheed</h6>
-                            <p>loram ipsome lorem ipsom <br> loram ipsome lorem ipsom</p>
-                            <a href="">settings</a>
-                            <p>john@gmail.com</p>
-                            <div class="social-icons">
-                                <i class="fa fa-twitter"></i> <span>Share with twitter</span>
-                                <br>
-                                <i class="fa fa-facebook"></i> <span>Share with facebook</span>
-                                <br>
-                                <i class="fa fa-link"></i> <span>Copy link</span>
+                            <h6>{{auth()->user()->name}}</h6>
+{{--                            <p>loram ipsome lorem ipsom <br> loram ipsome lorem ipsom</p>--}}
+{{--                            <a href="">settings</a>--}}
+                            <p>{{auth()->user()->email}}</p>
+{{--                            <div class="social-icons">--}}
+{{--                                <i class="fa fa-twitter"></i> <span>Share with twitter</span>--}}
+{{--                                <br>--}}
+{{--                                <i class="fa fa-facebook"></i> <span>Share with facebook</span>--}}
+{{--                                <br>--}}
+{{--                                <i class="fa fa-link"></i> <span>Copy link</span>--}}
 
-                            </div>
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -174,29 +174,41 @@ Dashboard
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Active Customer<i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$totalActiveCustomer}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Published Pools <i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$totalPublishPolls}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
+                                <h5>Opened Pools <i class="fa fa-info-circle"> </i></h5>
+                                <h5 class="numbers">{{$totalOpenedPolls}}</h5>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <hr>
+                    <div class="row">
                         <div class="col-lg-4">
-                            <div class="pool-card">
-                                <h5>Open Pool <i class="fa fa-info-circle"> </i></h5>
-                                <h5 class="numbers">00<i class="fa fa-info-circle"> </i></h5>
-                            </div>
+                            <h5>{{ $customerPieChart->options['chart_title'] }}</h5>
+                            {!! $customerPieChart->renderHtml() !!}
+                        </div>
+                        <div class="col-lg-8 ">
+                            <h5>{{ $customersBarChart->options['chart_title'] }}</h5>
+                            {!! $customersBarChart->renderHtml() !!}
                         </div>
 
+                        <div class="col-lg-12">
+                            <hr>
+                            <h5>{{ $pollLineChart->options['chart_title'] }}</h5>
+                            {!! $pollLineChart->renderHtml() !!}
+                        </div>
 
                     </div>
                 </div>
@@ -204,4 +216,16 @@ Dashboard
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('extra_js')
+    {!! $customersBarChart->renderChartJsLibrary() !!}
+    {!! $customersBarChart->renderJs() !!}
+
+    {!! $customerPieChart->renderChartJsLibrary() !!}
+    {!! $customerPieChart->renderJs() !!}
+
+    {!! $pollLineChart->renderChartJsLibrary() !!}
+    {!! $pollLineChart->renderJs() !!}
 @endsection

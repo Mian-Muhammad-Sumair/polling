@@ -15,8 +15,12 @@
                                 {{__('header.Language')}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a  class="dropdown-item  {{ session()->get('locale') == 'en' ? 'active' : '' }}"  href="{{ route('changeLang').'?lang=en' }}">{{__('header.English')}}</a>
-                                <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" href="{{ route('changeLang').'?lang=fr' }}">{{__('header.French')}}</a>
+                                <a  class="dropdown-item  {{ session()->get('locale') == 'en' ? 'active' : '' }}"  href="{{ route('changeLang').'?lang=en' }}">{{__('header.English')}}
+                                    <img src="{{asset('assets/svg/US-UK_Flag.svg')}}" width="20" alt="English Flag"></a>
+                                </a>
+                                <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" href="{{ route('changeLang').'?lang=fr' }}">{{__('header.French')}}
+                                    <img src="{{asset('assets/svg/frenchflagframed.svg')}}" width="20" alt="French Flag">
+                                </a>
                             </div>
                     </div>
 
@@ -59,9 +63,9 @@
                                         @can('View Contact Us')   <a href="{{url('admin/contact_us')}}">Contact Us List</a>@endcan
                                         @can('View Subscriber')   <a href="{{url('admin/subscribe')}}">Subscriber</a>@endcan
                                 @else
-
+                                    <a href="{{ url('admin') }}" >Dashboard </a>
                                 @endif
-                                  <a href="{{ url('/dashboard') }}" >Dashboard </a>
+
                                 <a href="{{ url('/poll/create') }}" >Create Poll </a>
                                <a href="{{ url('/poll') }}" >Poll List</a>
                             </div>
@@ -75,19 +79,12 @@
     </div>
 </header>
 
-<script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
+{{--@section('extra_js')--}}
 
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-</script>
 
-    <style>
-        a.active{
-            background: #3f2ca7;
-            color: white;
-        }
-    </style>
+{{--@endsection--}}
+
+{{--@section('extra_css')--}}
+
+
+{{--@endsection--}}
