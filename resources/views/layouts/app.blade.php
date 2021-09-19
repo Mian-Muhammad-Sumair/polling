@@ -30,7 +30,7 @@
 
     @include('includes.js_links')
     @yield('extra_js')
-
+   @if(isset($dataTable)) {!! $dataTable->scripts() !!}@else @endif
     @toastr_js
     @toastr_render
 </body>

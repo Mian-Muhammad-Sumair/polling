@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css?version=' . md5($content)) }}">
 <!-- Framework Css -->
-{{--<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">--}}
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">
 <!-- Font Awesome / Icon Fonts -->
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lib/font-awesome.min.css') }}">
 <!-- Owl Carousel / Carousel- Slider -->

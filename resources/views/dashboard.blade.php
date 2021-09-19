@@ -128,14 +128,7 @@ Dashboard
     }
 </style>
 @endsection
-@section('extra_js')
-    {!! $customersBarChart->renderChartJsLibrary() !!}
-    {!! $customersBarChart->renderJs() !!}
 
-    {!! $pollPieChart->renderChartJsLibrary() !!}
-    {!! $pollPieChart->renderJs() !!}
-
-@endsection
 
 @section('content')
 <div class="container">
@@ -289,3 +282,11 @@ Dashboard
 
 @endsection
 
+@section('extra_js')
+    {!! $customersBarChart->renderChartJsLibrary() !!}
+    {!! $customersBarChart->renderJs() !!}
+
+    {!! $pollPieChart->renderChartJsLibrary() !!}
+    {!! $pollPieChart->renderJs() !!}
+
+@endsection

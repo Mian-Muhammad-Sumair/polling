@@ -8,8 +8,8 @@
 </div>
 
 
-@section('extra_js')
+{{--@section('extra_js')--}}
 
-    {!! $dataTable->scripts() !!}
+{{--    {!! $dataTable->scripts() !!}--}}
 
-@endsection
+{{--@endsection--}}
