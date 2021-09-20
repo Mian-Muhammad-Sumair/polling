@@ -16,12 +16,9 @@
 
     .images-bg-fix .theme-bar {
         float: inherit;
-        width: 60%;
+        width: 40%;
     }
 
-    .section-contact .images-bg-fix .text-section .title-menu {
-        text-align: right;
-    }
 
     .section-contact .images-bg-fix .text-section li,
     .section-contact .images-bg-fix .text-section .first {
@@ -128,14 +125,14 @@
         </div>
     </div>
     <div class="row about-section reverse animatedParent" id="about">
-        <div class="col-md-6 col-lg-6 col-sm-6 animated bounceInLeft">
+        <div class="col-md-6 col-lg-6 animated bounceInLeft">
             <div class="title-menu">
                 {{__('About Us')}}
                 <div class="theme-bar theme-bar-20"></div>
             </div>
             {!! __('home.About Description') !!}
         </div>
-        <div class="col-md-6 col-lg-6 col-sm-6  animated bounceInRight">
+        <div class="col-md-6 col-lg-6  animated bounceInRight">
             <div class="side">
                 <img src="{{asset('assets/images/about.png')}}">
             </div>
@@ -148,7 +145,7 @@
     <div class=" animatedParent">
         <div class="images-bg-fix">
             <div class="container">
-                <div class="col-md-6 col-sm-6 animated bounceInRight">
+                <div class="col-md-6 animated bounceInRight">
                     <div class="login-bg contact-us-bg animatedParent">
                         <form method="POST" action="{{ url('contact_us/send') }}">
                             @csrf
@@ -174,12 +171,13 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6 text-section animated bounceInLeft">
-                    <div class="title-menu float-right">
+                <div class="col-md-6 text-section animated bounceInLeft">
+                    <div class="title-menu" style="text-align: right; margin-bottom:10px">
                         {{__('home.Contact Us')}}
-                        <div class="theme-bar theme-bar-20 theme-bar-white"></div>
                     </div>
 
+                    <div class="theme-bar theme-bar-20 theme-bar-white" style="float:right"></div>
+<br>
                     {!! __('home.Contact Us Description') !!}
                 </div>
             </div>
