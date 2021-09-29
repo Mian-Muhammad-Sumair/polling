@@ -161,7 +161,7 @@
         .theme-bar {
             width: 20%;
             height: 4px;
-            background-color: #7158F4;
+            background-color: #0044e4;
             margin-bottom: 40px;
             margin-top: 0px;
         }
@@ -246,11 +246,11 @@
             font-weight: 600 !important;
             margin-top: 30px !important;
             font-size: 18px !important;
-            background-color: #7158f4 !important;
+            background-color: #0044e4 !important;
 
         }
         strong{
-        color: #7158f4 !important;
+        color: #0044e4 !important;
         }
 
         .add_button:hover, .add_button:focus,

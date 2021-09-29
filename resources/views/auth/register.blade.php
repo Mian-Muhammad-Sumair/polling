@@ -6,7 +6,7 @@
 <div class=" content-order animatedParent container">
     <div class="row">
         <div class="col-md-7 images animated bounceInLeft ">
-            <img class="" src="{{asset('assets/images/register.png')}}" alt="image">
+            <img class="" src="{{asset('assets/images/register.png?v=1')}}" alt="image">
         </div>
         <div class="col-md-5 animated bounceInRight">
             <div class="login-bg register-bg animatedParent">
@@ -67,7 +67,7 @@
         .theme-bar{
             width: 10%;
             height: 4px;
-            background-color: #7158F4;
+            background-color: #0044e4;
             margin-bottom: 20px;
         }
         .error_msg{

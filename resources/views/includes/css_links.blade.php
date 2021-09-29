@@ -33,7 +33,7 @@
     .error_msg{
         display: block;
         margin-top: 10px;
-        color:#302f42;
+        color:#dedede;
         font-weight: 800;
         font-size: 14px;
     }
@@ -90,7 +90,7 @@
 
 
     a.active{
-        background: #3f2ca7;
+        background: #3116c1;
         color: white;
     }
     .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,

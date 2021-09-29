@@ -7,7 +7,7 @@
 <style>
     .images-bg-fix {
         background-image:url('{{asset('assets/images/contact.png')}}');
-        background-color: #7258f3;
+        background-color: #1f46a2;
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 80px;
@@ -46,7 +46,7 @@
 
 <div class="base-slider owl-carousel owl-theme bg-gray">
     <div class="item">
-        <img src="{{asset('assets/images/banner-main.png')}}" alt="slider">
+        <img src="{{asset('assets/images/banner-main.png?v=1')}}" alt="slider">
         <div class="inside">
             {!! __('home.banner_description') !!}
           <a href="{{ URL::to('/poll/create') }}" class="custom-btn">{{__('home.Get Started')}}</a>

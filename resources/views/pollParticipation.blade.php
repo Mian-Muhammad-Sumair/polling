@@ -216,7 +216,7 @@ used to vertically center elements, may need modification if you're not using de
     .theme-bar {
         width: 10%;
         height: 4px;
-        background-color: #7158F4;
+        background-color: #0044e4;
         margin-bottom: 20px;
     }
 

@@ -71,7 +71,7 @@ Create Poll
 
                 </div>
                 <div class="col-md-5 col-sm-12 register-img images">
-                    <img class="" src="{{asset('assets/images/register_poll.png')}}" alt="image">
+                    <img class="" src="{{asset('assets/images/register_poll.png?v=1')}}" alt="image">
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-lg-12 second-part">
@@ -297,7 +297,7 @@ Create Poll
     .theme-bar {
         width: 20%;
         height: 4px;
-        background-color: #7158F4;
+        background-color: #0044e4;
         margin-bottom: 40px;
         margin-top: 0px;
     }
@@ -378,7 +378,7 @@ Create Poll
         font-weight: 600 !important;
         margin-top: 30px !important;
         font-size: 18px !important;
-        background-color: #7158f4 !important;
+        background-color: #0044e4 !important;
 
     }
 

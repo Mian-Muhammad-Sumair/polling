@@ -320,7 +320,7 @@ ol li {
 
 input {
     color: #524f6f;
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 input::-webkit-input-placeholder {
@@ -376,8 +376,8 @@ footer .container-fluid {
 footer {
     width: 100%;
     bottom: 0;
-    background-image: url("../images/footer.png");
-    /*background-color:#7258f3;*/
+    background-image: url("../images/footer.png?1");
+    /*background-color:#1f46a2;*/
     background-repeat: round;
     /*padding-top: 80px;*/
 }
@@ -610,7 +610,7 @@ header .button-header {
 
 header .button-header .custom-btn {
     /*width: 113px;*/
-    background: #7158f4;
+    background: #0044e4;
     border-radius: 7px;
     /* border: 1px solid white; */
     color: #fff;
@@ -626,7 +626,7 @@ header .button-header .custom-btn.login {
     margin-right: 7px;
     border-radius: 7px;
     border: 1px solid #b1a3f9;
-    color: #7158f4;
+    color: #0044e4;
     border: 1px solid #b1a3f9;
     background-color: white;
 }
@@ -677,7 +677,7 @@ header .button-header .custom-btn:hover {
     border-radius: 7px;
     display: inline-block;
     text-transform: uppercase;
-    background-color: #7158f4;
+    background-color: #0044e4;
 }
 
 .custom-btn-gray {
@@ -958,7 +958,7 @@ header .button-header .custom-btn:hover {
 .theme-bar {
     width: 50px;
     height: 3px;
-    background-color: #7158f4;
+    background-color: #0044e4;
     margin-top: 5px;
 }
 
@@ -1615,13 +1615,13 @@ input.largerCheckbox {
 }
 
 .strong {
-    color: #7158f4 !important;
+    color: #0044e4 !important;
     font-weight: 700;
 }
 
 .base-slider .custom-btn {
     font-size: 14px;
-    color: #7158f4;
+    color: #0044e4;
     padding: 14px 33px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -2805,7 +2805,7 @@ footer .footer-logo img {
     padding: 40px 45px;
     box-shadow: 1px 1px 44px rgba(38, 63, 90, 0.09);
     border-radius: 15px;
-    background-color: #7158f4;
+    background-color: #0044e4;
 }
 
 .content-order .register-img img {
@@ -2830,7 +2830,7 @@ footer .footer-logo img {
 .sign-up form input {
     width: 100%;
     font-size: 13px;
-    color: #ffffff;
+    /*color: #ffffff;*/
     padding: 15px 10px;
     border-radius: 8px;
     border: 1px solid #ffffff;
@@ -2891,7 +2891,7 @@ footer .footer-logo img {
 }
 
 .section-contact img {
-    background-color: #7158f4;
+    background-color: #0044e4;
 }
 
 .title-menu {
@@ -2916,7 +2916,7 @@ footer .footer-logo img {
 
 .contact-us-bg form input,
 .contact-us-bg form textarea {
-    background-color: #4835aa;
+    background-color: #fff;
 }
 
 .contact-us-bg form textarea {
@@ -3016,11 +3016,11 @@ footer .footer-logo img {
 }
 
 .widget-categories li a:hover {
-    color: #7158f4;
+    color: #0044e4;
 }
 
 .widget-categories li span {
-    color: #7158f4;
+    color: #0044e4;
     margin-right: 5px;
 }
 
@@ -3395,7 +3395,7 @@ footer .footer-logo img {
 }
 
 .account-details .form-group.checkbox input:checked+label .first {
-    background: #7158f4;
+    background: #0044e4;
 }
 
 .account-details .form-group.checkbox input:checked+label .first:before {
@@ -4144,7 +4144,7 @@ form select:focus {
 .contact-us-bg form {
     /* width: 670px !important; */
     padding: 60px 50px 40px 50px !important;
-    background-color: #392891 !important;
+    background-color: #0044e4 !important;
 }
 
 .register-bg form,
@@ -4388,14 +4388,14 @@ html {
 }
 
 .button-header .dropdown {
-    background: #7158f4 none;
+    background: #0044e4 none;
     border-radius: 7px;
     box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
     margin-right: 5px;
 }
 
 .button-header .dropdown .btn {
-    background: #3f2ca7;
+    background: #3116c1;
     border-radius: 7px;
     color: white;
     box-shadow: 1px 1px 11px rgb(98 129 157 / 40%);
@@ -4497,7 +4497,7 @@ input {
 }
 
 .sidenav-btn {
-    background: #3f2ca7;
+    background: #3116c1;
     height: 36px;
     display: flex;
     justify-content: center;
@@ -4510,11 +4510,11 @@ input {
 }
 
 .closebtn:hover {
-    color: #7158f4 !important;
+    color: #0044e4 !important;
 }
 
 .sidenav-section .sidenav a:hover {
-    color: #7158f4 !important;
+    color: #0044e4 !important;
 }
 
 .table-outer-body .dataTables_empty {

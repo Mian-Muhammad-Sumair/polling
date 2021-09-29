@@ -92,11 +92,11 @@
         }
         .progress-card:hover{
             transition-timing-function: linear;
-            border:2px solid #7158f4;
+            border:2px solid #0044e4;
             background-color: white;
         }
        .checkbox input:checked +  .progress-card{
-           border:2px solid #7158f4;
+           border:2px solid #0044e4;
        }
         .progress{
             box-shadow: inset 0 0px 0px rgb(0 0 0);
@@ -106,7 +106,7 @@
             background-color: white;
         }
         .progress-bar-custom-theme{
-            background-color: #7158f4;
+            background-color: #0044e4;
         }
 
         .progress-card .text h2{

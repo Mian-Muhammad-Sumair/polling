@@ -97,12 +97,12 @@ Select Plan
         }
 
         .card-payment-row .col-lg-4:first-child .title {
-            background: #7158F4;
+            background: #0044e4;
 
         }
 
         .card-payment-row .col-lg-4:last-child .title {
-            background: #7158F4;
+            background: #0044e4;
         }
 
         .card-payment-row .col-lg-4:first-child .triangle {
@@ -110,7 +110,7 @@ Select Plan
             margin-left: 0.8%;
             height: 4%;
             margin-top: -0.7px;
-            background-image: linear-gradient(to top right, transparent 50%, #7158F4 50%), linear-gradient(to top left, transparent 50%, #7158F4 50%);
+            background-image: linear-gradient(to top right, transparent 50%, #0044e4 50%), linear-gradient(to top left, transparent 50%, #0044e4 50%);
             background-size: 50.2% 100%;
             background-repeat: no-repeat;
             background-position: top left, top right;
@@ -132,7 +132,7 @@ Select Plan
             margin-left: 0.8%;
             height: 4%;
             margin-top: -0.7px;
-            background-image: linear-gradient(to top right, transparent 50%, #7158F4 50%), linear-gradient(to top left, transparent 50%, #7158F4 50%);
+            background-image: linear-gradient(to top right, transparent 50%, #0044e4 50%), linear-gradient(to top left, transparent 50%, #0044e4 50%);
             background-size: 50.2% 100%;
             background-repeat: no-repeat;
             background-position: top left, top right;
@@ -197,7 +197,7 @@ Select Plan
 
         .card .options ul li::before {
             content: "\2022";
-            color: #7158F4;
+            color: #0044e4;
             font-size: 30px;
             font-weight: bold;
             display: inline-block;

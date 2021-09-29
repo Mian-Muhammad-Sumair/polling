@@ -139,7 +139,7 @@
         .theme-bar {
             width: 20%;
             height: 4px;
-            background-color: #7158F4;
+            background-color: #0044e4;
             margin-bottom: 40px;
             margin-top: 0px;
         }
@@ -217,7 +217,7 @@
             font-weight: 600 !important;
             margin-top: 40px !important;
             font-size: 24px !important;
-            background-color: #7158f4 !important;
+            background-color: #0044e4 !important;
 
         }
 
@@ -229,7 +229,7 @@
 
         .custom-btn-update {
             text-transform: inherit;
-            background-color: #7158f4 !important;
+            background-color: #0044e4 !important;
             color: white !important;
         }
 

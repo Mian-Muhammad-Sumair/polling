@@ -42,7 +42,7 @@
         .theme-bar {
             width: 20%;
             height: 4px;
-            background-color: #7158F4;
+            background-color: #0044e4;
             margin-bottom: 20px;
             margin-top: 0px;
         }
@@ -52,7 +52,7 @@
             color: #707070;
             font-weight: 600;
         }
-/* 
+/*
         .register-bg form {
             width: 90% !important;
 
@@ -322,7 +322,7 @@
                 </div>
             </div>
             <div class="col-md-5 register-img images  " style="padding-top:100px">
-                <img class="" src="{{asset('assets/images/billing.png')}}" alt="image">
+                <img class="" src="{{asset('assets/images/billing.png?v=1')}}" alt="image">
             </div>
         </div>
     </div>

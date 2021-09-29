@@ -32,7 +32,7 @@ header .menu li:before {
 }
 
 header .button-header .custom-btn {
-    background:#3f2ca7 none;
+    background:#3116c1 none;
     border-radius: 7px;
     box-shadow: 1px 1px 11px rgba(98, 129, 157, 0.4);
 }
@@ -41,14 +41,15 @@ header .button-header .custom-btn.login {
     margin-right: 7px;
     border-radius: 7px;
     border: 1px solid #B1A3F9;
-    color: #7158f4;
+    color: #0044e4;
     border: 1px solid #B1A3F9;
     background-color: white;
 }
 
-header .button-header .custom-btn.login:hover {
+header .button-header .custom-btn.login:hover,
+header .button-header .custom-btn:hover{
     color: #fff;
-    background-color: #392891;
+    background-color: #0044e4;
 }
 
 .base-slider {
@@ -62,7 +63,7 @@ header .button-header .custom-btn.login:hover {
 }
 
 .base-slider h2 strong {
-    color: #7158f4;
+    color: #0044e4;
     font-weight: 900;
 }
 
@@ -77,7 +78,7 @@ header .button-header .custom-btn.login:hover {
 
 .base-slider .custom-btn {
     color: #fff;
-    background-color: #7158f4;
+    background-color: #0044e4;
 }
 
 .base-slider .custom-btn-white {

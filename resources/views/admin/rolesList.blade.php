@@ -5,7 +5,7 @@ Rolls List
 @section('extra_css')
 <style>
     .table-outer-body .dataTable tbody tr td:last-child a{
-    background: #3f2ca7;
+    background: #3116c1;
     color: white;
     padding: 10px;
     border-radius: 7px;
