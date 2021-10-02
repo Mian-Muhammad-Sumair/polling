@@ -44,7 +44,7 @@ Create Poll
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Poll question</label>
-                            <input type="text" name="question" value="{{ old('question') }}">
+                            <textarea class="form-control" id="summary-ckeditor"  name="question">{{old('question')}}</textarea>
                             @error('question') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
@@ -243,6 +243,18 @@ Create Poll
         var key = document.getElementById('key').value = value;
 
     }
+</script>
+<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'summary-ckeditor', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    CKEDITOR.replace( 'poll_option', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
 </script>
 @endsection
 @section('extra_css')

@@ -24,6 +24,7 @@ Route::get('{guard}/register',[App\Http\Controllers\Auth\RegisterController::cla
 Route::post('{guard}/login',[App\Http\Controllers\Auth\LoginController::class,'login']);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/poll/image/upload', [App\Http\Controllers\PollController::class,'imgUpload'])->name('upload');
 Route::resource('/poll', App\Http\Controllers\PollController::class);
 Route::put('/poll', [App\Http\Controllers\PollController::class,'update']);
 Route::get('/poll/delete/{id}', [App\Http\Controllers\PollController::class,'delete'])->middleware( ['can:Delete Poll']);

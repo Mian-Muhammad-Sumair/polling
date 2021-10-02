@@ -12,7 +12,7 @@
                     <h3>{{$poll['name']}}</h3>
                 </div>
                 <div  class="heading">
-                    <h3>{{$poll['question']}}</h3>
+                    {!! $poll['question'] !!}
                     <p>Poll offered by {{$creator_name}} from {{$poll['start_date']}} to {{$poll['end_date']}}</p>
                 </div>
 

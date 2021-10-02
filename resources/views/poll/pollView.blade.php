@@ -20,7 +20,8 @@ Poll Data
                     <label><b>Info :</b></label><label> {{$poll->info}}</label>
                 </div>
                 <div class="col-lg-12">
-                    <label><b>Question :</b></label><label> {{$poll->question}}</label>
+                    <div> <label><b>Question :</b></label></div>
+                    <label> {!! $poll->question  !!}</label>
                 </div>
                 <div class="col-lg-12">
                     <label><b>Poll Key :</b></label><br>

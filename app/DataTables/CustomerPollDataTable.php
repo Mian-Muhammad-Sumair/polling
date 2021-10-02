@@ -132,7 +132,6 @@ class CustomerPollDataTable extends DataTable
             Column::make('name'),
             Column::make('start_date'),
             Column::make('end_date'),
-            Column::make('question'),
             Column::make('category'),
             Column::make('visibility'),
             Column::make('status'),
