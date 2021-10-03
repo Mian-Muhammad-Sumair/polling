@@ -33,7 +33,7 @@ class CustomerPollOptionDataTable extends DataTable
                 $this->index=$this->index+1;
                return $this->index;
             })
-
+            ->rawColumns(['question_option','action'])
             ->addColumn('action', function($item){
                 return     "   <a  href='/poll/votes/{$this->id}/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";
             })

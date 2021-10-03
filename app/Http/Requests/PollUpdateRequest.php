@@ -43,10 +43,11 @@ class PollUpdateRequest extends FormRequest
                 function ($attribute, $value, $fail) {
                     $id=explode('.',$attribute);
                     $id=PollKey::where('id',$id[1])->first();
-                    $key = PollKey::where('key', $value)->first();
-                    if($id) {
-                        $key=$key->where('poll_id', '!=', $id->poll_id)->first();
+                    $key = PollKey::where('key', $value);
+                    if($id){
+                        $key=$key->where('poll_id', '!=', $id->poll_id);
                     }
+                    $key=$key->first();
                     if ($key) {
                         $fail('Please Enter a unique key.');
                     }

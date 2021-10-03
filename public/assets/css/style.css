@@ -4658,7 +4658,15 @@ ul {
     flex-direction: column;
     justify-content: flex-start;
     padding: 15px 10px;
+
+
+}
+.recent-polls-body .item-main {
+  display: inline-table;
     border-right: 2px solid lightgray;
+}
+.recent-polls-body .item-main:last-child {
+    border-right: none;
 }
 
 .recent-polls-body .itom-box h6 {

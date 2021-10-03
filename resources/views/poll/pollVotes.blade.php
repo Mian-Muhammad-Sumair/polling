@@ -7,7 +7,7 @@
         <div class="dashboard-body">
             <div class="top-header">
                 <div>
-                    <h2><b>{{$selectedOption->question_option}} Option Total Votes</b></h2>
+                    <h2><b>{!! $selectedOption->question_option !!} Option Total Votes</b></h2>
                     <div class="underline"></div>
                 </div>
             </div>
@@ -21,7 +21,10 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <label style="font-size: 18px"><b>Question :</b></label><label> {{$poll->question}}</label><br>
+                        <label style="font-size: 18px"><b>Question :</b></label>
+                        <div><label>{!! $poll->question !!}</label></div>
+
+                        <br>
                     </div>
                     <div class="col-lg-12">
                         <label><b>Poll Key :</b></label><br>
@@ -42,7 +45,7 @@
                                     <a href='/poll/votes/{{$Options['poll_id']}}/{{$Options['id']}}'>{{$Options['total_Vote']}}
                                         <span class="separate"> - </span>{{$Options['question_option']}}</a>
                                     @else
-                                        {{$Options['total_Vote']}} <span class="separate"> - </span> {{$Options['question_option']}}
+                                        {!! $Options['total_Vote'] !!} <span class="separate"> - </span> {!! $Options['question_option'] !!}
                                     @endif
                                 </li>
                             @endforeach

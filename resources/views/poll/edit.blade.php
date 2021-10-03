@@ -45,7 +45,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Poll question</label>
-                                <textarea class="form-control" id="summary-ckeditor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
+                                <textarea class="form-control" id="question_editor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
                                 @error('question') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -53,21 +53,24 @@
                         <div class="col-md-12 field_wrapper">
                             <div class="form-group">
                                 <label>Poll option</label>
+                                @php
+                                    $poll_option_id=['poll_option_one','poll_option_two','poll_option_three','poll_option_four','poll_option_five'];
+                                    if(old('poll_option')){
+                                     $totalOption=count(old('poll_option'));
+                                    }else{
+                                    $totalOption=count($poll->questionOptions);
+                                    }
+                                @endphp
                                 @if(old('poll_option'))
                                       @foreach(old('poll_option') as $index=>$option)
-                                        <input type="text"  name="poll_option[{{$index}}]" value="{{$option}}">
+                                        <textarea class="form-control" id="{{$poll_option_id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
                                         @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-                                          @php
-                                          $totalOption=$index;
-                                          @endphp
+
                                     @endforeach
                                 @elseif($poll->questionOptions)
                                     @foreach($poll->questionOptions as $index=>$option)
-                                        <input type="text"name="poll_option[{{$option->id}}]" value="{{$option->question_option}}">
+                                        <textarea class="form-control" id="{{$poll_option_id[$index]}}" name="poll_option[{{$option->id}}]">{{$option->question_option}}</textarea>
                                         @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
-                                        @php
-                                            $totalOption=$index;
-                                        @endphp
                                     @endforeach
                                 @else
                                     <input type="text" name="poll_option[]" value="">
@@ -91,20 +94,21 @@
                     <div class="col-md-12 field_wrap">
                         <div class="form-group">
                             <label>Poll identifier questions</label>
+                            @php
+                            if(old('identifier_question')){$totalQuestions= $totalQuestions=count(old('identifier_question'));}else{ $totalQuestions=count($poll->pollIdentifierQuestions);}
+                            @endphp
                             @if(old('identifier_question'))
                                 @foreach(old('identifier_question') as $index=>$question)
                                     <input type="text" name="identifier_question[]" value="{{$question}}">
                                     @error('identifier_question.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-                                    @php
-                                        $totalQuestions=$index;
-                                    @endphp
+
                                 @endforeach
                             @elseif($poll->pollIdentifierQuestions)
                                 @foreach($poll->pollIdentifierQuestions as $index=>$question)
                                     <input type="text" name="identifier_question[{{$question->id}}]" value="{{$question->identifier_question}}">
                                     @error('identifier_question.'.$question->id) <span class="error_msg">{{$message}}</span> @enderror
                                     @php
-                                        $totalQuestions=$index;
+
                                     @endphp
                                 @endforeach
                             @else
@@ -238,7 +242,7 @@
 @endsection
 
 @section('extra_js')
-{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+
     <script type="text/javascript">
         $(document).ready(function() {
             var x = 1; //Initial field counter is 1
@@ -250,19 +254,28 @@
             var addQuestion = $('.add_question'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var wrap = $('.field_wrap'); //Input field wrapper
-            var fieldHTML = '<div> <input type="text" name="poll_option[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
             var fieldQuestionHTML = '<div> <input type="text" name="identifier_question[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
 
 
             x = parseInt(x, 10) + parseInt(totalOptions, 10);
             z = parseInt(z, 10) + parseInt(totalQuestions, 10);
-
+            var id ='';
             //Once add button is clicked
-            $(addButton).click(function() {
+            $(addButton).click(function()
+            var test = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            for (var i = 0; i < 20; i++)
+                id += test.charAt(Math.floor(Math.random() * test.length));
+            var fieldHTML = '<div> <textarea class="form-control" id="'+ id +'"  name="poll_option[]" "></textarea><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
                 //Check maximum number of input fields
                 if (x < maxField) {
                     x++; //Increment field counter
                     $(wrapper).append(fieldHTML); //Add field html
+
+                    $(document).load(
+                        CKEDITOR.replace(id  , {
+                            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                            filebrowserUploadMethod: 'form'
+                        }));
                 }
             });
             $(addQuestion).click(function() {
@@ -305,10 +318,29 @@
     </script>
 <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace( 'summary-ckeditor', {
+
+    CKEDITOR.replace( 'question_editor', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
+    CKEDITOR.replace( 'poll_option_one', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    CKEDITOR.replace( 'poll_option_two', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
+    CKEDITOR.replace( 'poll_option_three', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    CKEDITOR.replace( 'poll_option_four', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
 </script>
 @endsection
 @section('extra_css')

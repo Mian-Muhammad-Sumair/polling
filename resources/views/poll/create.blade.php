@@ -44,30 +44,12 @@ Create Poll
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Poll question</label>
-                            <textarea class="form-control" id="summary-ckeditor"  name="question">{{old('question')}}</textarea>
+                            <textarea class="form-control" id="question_editor"  name="question">{{ old('question')}}</textarea>
                             @error('question') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
                     {{-- {{dd($errors)}}--}}
-                    <div class="col-md-12 field_wrapper">
-                        <div class="form-group">
-                            <label>Poll option</label>
-                            @if(old('poll_option'))
-                            @foreach(old('poll_option') as $index=>$option)
-                            <input type="text" name="poll_option[]" value="{{$option}}">
-                            @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-                            @endforeach
-                            @else
-                            <input type="text" name="poll_option[]" value="">
-                            @endif
-                            @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group text-right float-right">
-                            <a href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
-                        </div>
-                    </div>
+
 
                 </div>
                 <div class="col-md-5 col-sm-12 register-img images">
@@ -75,6 +57,32 @@ Create Poll
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-lg-12 second-part">
+                <div class="col-md-12 field_wrapper">
+                    <div class="form-group">
+                        <label>Poll option</label>
+                        @if(old('poll_option'))
+                            @php
+                                $id=['poll_option_one','poll_option_two','poll_option_three','poll_option_four','poll_option_five'];
+                                $totalOption=count(old('poll_option'));
+                            @endphp
+                            @foreach(old('poll_option') as $index=>$option)
+                                <textarea class="form-control" id="{{$id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
+                                @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+                            @endforeach
+                                <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
+                        @else
+                            <textarea class="form-control" id="poll_option_one"  name="poll_option[]"></textarea>
+                            <input type="hidden"  id="total_Options" name="total_Options" value="0">
+
+                        @endif
+                        @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group text-right float-right">
+                        <a href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
+                    </div>
+                </div>
                 <div class="col-md-12 field_wrap">
                     <div class="form-group">
                         <label>Poll identifier questions</label>
@@ -184,7 +192,7 @@ Create Poll
 @endsection
 
 @section('extra_js')
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+
 <script type="text/javascript">
     $(document).ready(function() {
         var x = 1; //Initial field counter is 1
@@ -194,16 +202,29 @@ Create Poll
         var addQuestion = $('.add_question'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
         var wrap = $('.field_wrap'); //Input field wrapper
-        var fieldHTML = '<div> <input type="text" name="poll_option[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
         var fieldQuestionHTML = '<div> <input type="text" name="identifier_question[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
+        var total_Options= document.getElementById('total_Options').value;
+        x = parseInt(total_Options, 10);
 
-
+        var id ='';
         //Once add button is clicked
         $(addButton).click(function() {
             //Check maximum number of input fields
             if (x < maxField) {
+
+                var test = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                for (var i = 0; i < 20; i++)
+                    id += test.charAt(Math.floor(Math.random() * test.length));
+
+
+                var fieldHTML = '<div><textarea class="form-control" id="'+ id +'"  name="poll_option[]" "></textarea><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
                 x++; //Increment field counter
                 $(wrapper).append(fieldHTML); //Add field html
+                $(document).load(
+                    CKEDITOR.replace(id  , {
+                    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                    filebrowserUploadMethod: 'form'
+                }));
             }
         });
         $(addQuestion).click(function() {
@@ -230,10 +251,8 @@ Create Poll
     function makekey() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
         for (var i = 0; i < 20; i++)
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-
         return text;
     }
 
@@ -246,14 +265,29 @@ Create Poll
 </script>
 <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace( 'summary-ckeditor', {
+    CKEDITOR.replace( 'question_editor', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
-    CKEDITOR.replace( 'poll_option', {
+    CKEDITOR.replace( 'poll_option_one', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
+    CKEDITOR.replace( 'poll_option_two', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
+    CKEDITOR.replace( 'poll_option_three', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    CKEDITOR.replace( 'poll_option_four', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
+
 
 </script>
 @endsection
