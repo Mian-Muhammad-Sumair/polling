@@ -33,11 +33,14 @@ class PollOptionVotesDataTable extends DataTable
 
                 return $this->selected->question_option;
             })
+
+            ->rawColumns(['answer'])
             ->addColumn('#', function($item){
                 $this->userId=$item->user_id;
                 $this->index=$this->index+1;
                 return $this->index;
             });
+
         foreach($this->pollIdentifierQuestions as $index=>$IdentifierQuestion){
             $this->identifyAnswer=$IdentifierQuestion->id;
             $return=$return->addColumn($IdentifierQuestion->identifier_question, function($item){

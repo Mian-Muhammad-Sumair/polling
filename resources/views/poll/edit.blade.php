@@ -166,8 +166,9 @@
                         <div class="form-group checkbox">
                             <label>Poll option type</label>
                             @foreach(config('poll_option_types') as $option_type=>$option_type_title)
-                                <div class="col-md-3 col-sm-3 ">
-                                    <input type="checkbox" name="option_type[]" value="{{$option_type}}" @if((old('option_type') && in_array($option_type,old('option_type'))) || (!empty($poll->option_type) && in_array($option_type,$poll->option_type)) ) checked @else '' @endif id="{{$option_type}}">
+                                <div class="col-md-4 col-sm-3 ">
+                                    <input type="checkbox" name="option_type[]" value="{{$option_type}}"
+                                           @if((old('option_type') && in_array($option_type,old('option_type'))) || (!empty($poll->option_type) && in_array($option_type,$poll->option_type)) ) checked  @endif id="{{$option_type}}">
                                     <label class="checkbox-main" for="{{$option_type}}">
                                         <span class="first"></span>
                                         <span>{{$option_type_title}}</span>

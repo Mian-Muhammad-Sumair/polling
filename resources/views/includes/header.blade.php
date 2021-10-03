@@ -63,7 +63,7 @@
                                         @can('View Contact Us')   <a href="{{url('admin/contact_us')}}">Contact Us List</a>@endcan
                                         @can('View Subscriber')   <a href="{{url('admin/subscribe')}}">Subscriber</a>@endcan
                                 @else
-                                    <a href="{{ url('admin') }}" >Dashboard </a>
+                                    <a href="{{ url('dashboard') }}" >Dashboard </a>
                                 @endif
 
                                 <a href="{{ url('/poll/create') }}" >Create Poll </a>

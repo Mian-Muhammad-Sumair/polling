@@ -28,7 +28,6 @@
                 <input type="checkbox" name="answer" value="{{$option['id']}}" id="vote{{$index}}" >
                 <label class="progress-card "  for="vote{{$index}}">
                     <div class="text"><h2>{!!  $option['question_option'] !!}</h2></div>
-                    <div class="text"><h2>{!!  $option['question_option'] !!}</h2></div>
                     <div class="progress">
                         <div class="progress-bar bg-info progress-bar-custom-theme" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar" role="progressbar" aria-valuenow="3" aria-valuemin="10" aria-valuemax="100"></div>
