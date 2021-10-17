@@ -69,17 +69,23 @@ Create Poll
                                 $totalOption=count(old('poll_option'));
                             @endphp
                             @foreach(old('poll_option') as $index=>$option)
-                                <textarea class="form-control" id="{{$id[$index]}}"  name="poll_option[{{$index}}]">{{$option['option']}}</textarea>
+                                <div class="form-group">
+                                 <textarea class="form-control" id="{{$id[$index]}}"  name="poll_option[{{$index}}]">{{$option}}</textarea>
+                                </div>
                                 @error('poll_option.'.$index.'option') <span class="error_msg">{{$message}}</span> @enderror
                                 <div class="form-group">
+                                    <label>Option video</label>
                                     <input type="file"  id=""  name="video_{{$index}}" >
                                     @error('poll_option.'.$index.'option') <span class="error_msg">{{$message}}</span> @enderror
                                 </div>
                             @endforeach
                                 <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
                         @else
-                            <textarea class="form-control" id="poll_option_one"  name="poll_option[0]"></textarea>
                             <div class="form-group">
+                             <textarea class="form-control" id="poll_option_one"  name="poll_option[0]"></textarea>
+                             </div>
+                            <div class="form-group">
+                                <label>Option video</label>
                                 <input type="file"  id=""  name="video_0" >
                             </div>
                             <input type="hidden"  id="total_Options" name="total_Options" value="0">
@@ -247,10 +253,11 @@ Create Poll
 
 
                 var fieldHTML = '<div class="option">' +
-                    '<textarea class="form-control" id="'+ id +'"  name="poll_option['+x+']" ></textarea>' +
+                    ' <div class="form-group"><textarea class="form-control" id="'+ id +'"  name="poll_option['+x+']" ></textarea></div>' +
                     ' <div class="form-group">' +
-                    '                                <input type="file"  id=""  name="video_'+x+'" >\n' +
-                    '                            </div>' +
+                    '<label>Option video</label>' +
+                    '<input type="file"  id=""  name="video_'+x+'" >\n' +
+                    ' </div>' +
                     '<a href="javascript:void(0);" class="remove_button">Remove</a>' +
                     '</div>'; //New input field html
                 x++; //Increment field counter

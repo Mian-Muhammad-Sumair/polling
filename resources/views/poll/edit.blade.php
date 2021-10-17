@@ -7,7 +7,7 @@
 
     <div class="container content-order ">
         <div class="row login-bg ">
-            <form method="post" action="{{ url("poll/$poll->id") }}" >
+            <form method="post" action="{{ url("poll/$poll->id") }}" enctype="multipart/form-data" >
                 @csrf
                 @method('put')
                 <div class="col-md-12 col-sm-12 col-lg-12">
@@ -53,6 +53,11 @@
                             <textarea class="form-control" id="question_editor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
                             @error('question') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Question Video</label>
+                            <input type="file"  id="question_video" name="question_video" >
+                            @error('question_video') <span class="error_msg">{{$message}}</span> @enderror
+                        </div>
                     </div>
 
                     <div class="col-md-12 field_wrapper">
@@ -68,17 +73,26 @@
                             @endphp
                             @if(old('poll_option'))
                                 @foreach(old('poll_option') as $index=>$option)
-                                    <textarea class="form-control" id="{{$poll_option_id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
+                                    <div class="form-group">
+                                       <textarea class="form-control" id="{{$poll_option_id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
+                                    </div>
                                     @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-
+                                    <div class="form-group">
+                                        <input type="file"  id=""  name="video_{{$index}}" >
+                                    </div>
                                 @endforeach
                             @elseif($poll->questionOptions)
                                 @foreach($poll->questionOptions as $index=>$option)
+                                    <div class="form-group">
                                     <textarea class="form-control" id="{{$poll_option_id[$index]}}" name="poll_option[{{$option->id}}]">{{$option->question_option}}</textarea>
+                                    </div>
                                     @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
+
+                                    <div class="form-group">
+                                        <label>Poll identifier questions</label>
+                                        <input type="file"  id=""  name="video_{{$option->id}}" >
+                                    </div>
                                 @endforeach
-                            @else
-                                <input type="text" name="poll_option[]" value="">
                             @endif
                             <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
                             @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
@@ -269,11 +283,16 @@
             z = parseInt(z, 10) + parseInt(totalQuestions, 10);
             var id ='';
             //Once add button is clicked
-            $(addButton).click(function()
+            $(addButton).click(function(){
             var test = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             for (var i = 0; i < 20; i++)
                 id += test.charAt(Math.floor(Math.random() * test.length));
-            var fieldHTML = '<div> <textarea class="form-control" id="'+ id +'"  name="poll_option[]" "></textarea><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
+            var fieldHTML = '<div class="option"><div class="form-group"> <textarea class="form-control" id="'+ id +'"  name="poll_option[]" "></textarea></div>' +
+                '<div class="form-group">' +
+                '<label>Option video</label>' +
+                '<input type="file"  id=""  name="video_'+x+'" >' +
+                ' </div>' +
+                '<a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
                 //Check maximum number of input fields
                 if (x < maxField) {
                     x++; //Increment field counter
@@ -313,7 +332,7 @@
             //Once remove button is clicked
             $(wrapper).on('click', '.remove_button', function(e) {
                 e.preventDefault();
-                $(this).parent('div').remove(); //Remove field html
+                $(this).closest('.option').remove(); //Remove field html
                 x--; //Decrement field counter
             });
     });

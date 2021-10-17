@@ -75,7 +75,7 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                if($optionVideo){
                    $questionOptions['video']=$optionVideo;
                }
-               $questionOptions['question_option']=$option['option'];
+               $questionOptions['question_option']=$option;
                $questionOptions->save();
 
            }else{

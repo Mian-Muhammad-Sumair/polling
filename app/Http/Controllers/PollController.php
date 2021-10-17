@@ -56,7 +56,7 @@ class PollController extends Controller
         return view('poll.edit')->with(['poll'=>$poll,'categories'=>$this->categories]);
     }
 
-    public function update(PollUpopdateRequest $request,$id){
+    public function update(PollUpdateRequest $request,$id){
         $data=$request->validated();
         $data= $this->repository->update($id,$data)?
             toastr()->success('Successfully! Poll has been updated.'):
