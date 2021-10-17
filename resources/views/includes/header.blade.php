@@ -12,6 +12,11 @@
                 <div class="button-header">
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                @if(session()->get('locale') == 'en')
+                                <img src="{{asset('assets/svg/US-UK_Flag.svg')}}" width="20" alt="English Flag">
+                                @elseif(session()->get('locale') == 'fr')
+                                    <img src="{{asset('assets/svg/frenchflagframed.svg')}}" width="20" alt="French Flag">
+                                @endif
                                 {{__('header.Language')}}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
