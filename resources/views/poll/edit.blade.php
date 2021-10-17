@@ -16,15 +16,14 @@
                             <h2 class="title-page">Edit poll</h2>
                             <div class="theme-bar"></div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Poll name</label>
-
-                                <input type="text" name="name" value="{{old('name') == '' ?$poll->name:old('name') }}" >
+                                <textarea class="form-control" id="name"  name="name">{{old('name') == '' ?$poll->name:old('name')}}</textarea>
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group ">
                                 <label>Poll End Date</label>
                                 <div class="text" style="font-size:40px;">
@@ -34,88 +33,98 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Poll info</label>
-                                <input type="text" name="info" placeholder=""  value="{{old('info') == '' ?$poll->info:old('info')}}">
-                                @error('info') <span class="error_msg">{{$message}}</span> @enderror
-
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Poll question</label>
-                                <textarea class="form-control" id="question_editor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
-                                @error('question') <span class="error_msg">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 field_wrapper">
-                            <div class="form-group">
-                                <label>Poll option</label>
-                                @php
-                                    $poll_option_id=['poll_option_one','poll_option_two','poll_option_three','poll_option_four','poll_option_five'];
-                                    if(old('poll_option')){
-                                     $totalOption=count(old('poll_option'));
-                                    }else{
-                                    $totalOption=count($poll->questionOptions);
-                                    }
-                                @endphp
-                                @if(old('poll_option'))
-                                      @foreach(old('poll_option') as $index=>$option)
-                                        <textarea class="form-control" id="{{$poll_option_id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
-                                        @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-
-                                    @endforeach
-                                @elseif($poll->questionOptions)
-                                    @foreach($poll->questionOptions as $index=>$option)
-                                        <textarea class="form-control" id="{{$poll_option_id[$index]}}" name="poll_option[{{$option->id}}]">{{$option->question_option}}</textarea>
-                                        @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
-                                    @endforeach
-                                @else
-                                    <input type="text" name="poll_option[]" value="">
-                                @endif
-                                <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
-                                @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-group text-right float-right">
-                                <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="col-md-4 col-sm-4 register-img images">
                         <img class="" src="{{asset('assets/images/register_poll.png?v=1')}}" alt="image">
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-lg-12 second-part">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Poll info</label>
+                            <input type="text" name="info" placeholder=""  value="{{old('info') == '' ?$poll->info:old('info')}}">
+                            @error('info') <span class="error_msg">{{$message}}</span> @enderror
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Poll question</label>
+                            <textarea class="form-control" id="question_editor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
+                            @error('question') <span class="error_msg">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 field_wrapper">
+                        <div class="form-group">
+                            <label>Poll option</label>
+                            @php
+                                $poll_option_id=['poll_option_one','poll_option_two','poll_option_three','poll_option_four','poll_option_five'];
+                                if(old('poll_option')){
+                                 $totalOption=count(old('poll_option'));
+                                }else{
+                                $totalOption=count($poll->questionOptions);
+                                }
+                            @endphp
+                            @if(old('poll_option'))
+                                @foreach(old('poll_option') as $index=>$option)
+                                    <textarea class="form-control" id="{{$poll_option_id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
+                                    @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+
+                                @endforeach
+                            @elseif($poll->questionOptions)
+                                @foreach($poll->questionOptions as $index=>$option)
+                                    <textarea class="form-control" id="{{$poll_option_id[$index]}}" name="poll_option[{{$option->id}}]">{{$option->question_option}}</textarea>
+                                    @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
+                                @endforeach
+                            @else
+                                <input type="text" name="poll_option[]" value="">
+                            @endif
+                            <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
+                            @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group text-right float-right">
+                            <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
+                        </div>
+                    </div>
                     <div class="col-md-12 field_wrap">
                         <div class="form-group">
+
                             <label>Poll identifier questions</label>
                             @php
                             if(old('identifier_question')){$totalQuestions= $totalQuestions=count(old('identifier_question'));}else{ $totalQuestions=count($poll->pollIdentifierQuestions);}
                             @endphp
                             @if(old('identifier_question'))
                                 @foreach(old('identifier_question') as $index=>$question)
-                                    <input type="text" name="identifier_question[]" value="{{$question}}">
-                                    @error('identifier_question.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-
+                                    <div class="col-md-10 ">
+                                        <input type="text" name="identifier_question[{{$index}}}][question]" value="{{$option['question']}}">
+                                        @error('identifier_question.'.$index.'.question') <span class="error_msg">{{$message}}</span> @enderror
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="Generate-polling-key-radio">
+                                            <input type="checkbox" id="idt_qt{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}}][required]" value="1">
+                                            <label for="idt_qt{{$index}}"> Required</label>
+                                        </div>
+                                    </div>
                                 @endforeach
                             @elseif($poll->pollIdentifierQuestions)
                                 @foreach($poll->pollIdentifierQuestions as $index=>$question)
-                                    <input type="text" name="identifier_question[{{$question->id}}]" value="{{$question->identifier_question}}">
-                                    @error('identifier_question.'.$question->id) <span class="error_msg">{{$message}}</span> @enderror
-                                    @php
+                                    <div class="col-md-10 ">
+                                        <input type="text" name="identifier_question[{{$question->id}}}][question]" value="{{$question->identifier_question}}">
+                                        @error('identifier_question.'.$question->id.'.question') <span class="error_msg">{{$message}}</span> @enderror
 
-                                    @endphp
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="Generate-polling-key-radio">
+                                            <input type="checkbox" id="idt_qt{{$question->id}}" class="largerCheckbox" {{$question->required?"checked":''}}  name="identifier_question[{{$question->id}}}][required]" value="1">
+                                            <label for="idt_qt{{$question->id}}"> Required</label>
+                                        </div>
+                                    </div>
                                 @endforeach
-                            @else
-                                <input type="text" name="poll_option[]" value="">
                             @endif
                             <input type="hidden"  id="total_Questions" name="total_Questions" value="{{$totalQuestions}}">
-                            @error('identifier_question') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
                     <div class="col-md-12 ">
@@ -255,8 +264,6 @@
             var addQuestion = $('.add_question'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var wrap = $('.field_wrap'); //Input field wrapper
-            var fieldQuestionHTML = '<div> <input type="text" name="identifier_question[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
-
 
             x = parseInt(x, 10) + parseInt(totalOptions, 10);
             z = parseInt(z, 10) + parseInt(totalQuestions, 10);
@@ -280,6 +287,16 @@
                 }
             });
             $(addQuestion).click(function() {
+                var rand = Math.floor((Math.random() * 1000) + 1);
+                var fieldQuestionHTML = '<div class="question"><div class="col-lg-8"> <input type="text" name="identifier_question['+z+'][question]" value=""></div> ' +
+                    '<div class="col-md-2">' +
+                    ' <div class="Generate-polling-key-radio">' +
+                    '<input type="checkbox" id="idt_qt['+rand+']" class="largerCheckbox" name="identifier_question['+z+'][required]" value="1">' +
+                    '<label for="idt_qt['+rand+']"> Required</label>\n' +
+                    '                             </div>\n' +
+                    '                         </div>' +
+                    '<div class="col-lg-2"><a href="javascript:void(0);" class="remove_button btn btn-danger">Remove</a></div>' +
+                    '</div>'; //New input field html
                 //Check maximum number of input fields
                 if (z < maxField) {
                     z++; //Increment field counter
@@ -288,9 +305,10 @@
             });
             $(wrap).on('click', '.remove_button', function(e) {
                 e.preventDefault();
-                $(this).parent('div').remove(); //Remove field html
-                x--; //Decrement field counter
+                $(this).closest(".question").remove(); //Remove field html
+                z--; //Decrement field counter
             });
+
 
             //Once remove button is clicked
             $(wrapper).on('click', '.remove_button', function(e) {
@@ -298,7 +316,7 @@
                 $(this).parent('div').remove(); //Remove field html
                 x--; //Decrement field counter
             });
-        });
+    });
 
         function makekey() {
             var text = "";
@@ -338,6 +356,10 @@
         filebrowserUploadMethod: 'form'
     });
     CKEDITOR.replace( 'poll_option_four', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    CKEDITOR.replace( 'name', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });

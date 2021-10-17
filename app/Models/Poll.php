@@ -26,6 +26,7 @@ class Poll extends Model
         'visibility',
         'option_type',
         'status',
+        'question_video',
         'user_id',
     ];
 

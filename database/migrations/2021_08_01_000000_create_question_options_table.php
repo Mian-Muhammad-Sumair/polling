@@ -17,6 +17,7 @@ class CreateQuestionOptionsTable extends Migration
             $table->id();
             $table->integer('poll_id');
             $table->text('question_option');
+            $table->text('video')->nullable();
             $table->timestamps();
         });
     }

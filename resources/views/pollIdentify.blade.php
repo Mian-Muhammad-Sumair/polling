@@ -12,7 +12,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="col-md-12 col-sm-12">
                         <div class="col-md-12 main">
-                            <h2 class="title-page">Poll :{{$poll['name']}}</h2>
+                            <h2 class="title-page">Poll :{!! $poll['name'] !!}</h2>
                             <div class="theme-bar" style="margin-bottom: 20px;"></div>
                             <div  class="heading"  style="margin-bottom: 30px;">
                                 <p>Poll offered by {{$creator_name}} from {{$poll['start_date']}} to {{$poll['end_date']}}</p>
@@ -23,9 +23,14 @@
                         @foreach ($poll['pollIdentifierQuestions'] as $index => $question)
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label>{{$question['identifier_question']}}</label>
-                                    <input type="hidden" name="answer[{{$index+1}}][question]" value="{{$question['id']}}" >
-                                    <input type="text" name="answer[{{$index+1}}][answer]" value="{{old('answer.'.($index+1).'.answer')}}"  placeholder="{{$question['identifier_question']}}">
+                                    @php
+                                        $required=$question['required']?'block':'none';
+                                     @endphp
+
+                                    <label><span class='required' style="display:{{$required}}">* </span> {{$question['identifier_question']}}</label>
+                                    <input type="hidden" name="answer[{{$index+1}}][id]" value="{{$question['id']}}" >
+                                    <input type="hidden" name="answer[{{$index+1}}][question]" value="{{$question['required']}}" >
+                                    <input type="text" name="answer[{{$index+1}}][answer]" {{$question['required']?"required":''}} value="{{old('answer.'.($index+1).'.answer')}}"  placeholder="{{$question['identifier_question']}}">
                                     @error('answer.'.($index+1)) <span class="error_msg">{{$message}}</span> @enderror
                                 </div>
                             </div>
@@ -185,6 +190,9 @@
         }
         .bottom{
             margin-top: 30px;
+        }
+        .required{
+            color: red;
         }
     </style>
 @endsection

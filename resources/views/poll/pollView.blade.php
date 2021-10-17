@@ -13,8 +13,8 @@ Poll Data
         </div>
         <div class="poll-date-section">
             <div class="row">
-                <div class="col-lg-6">
-                    <label><b>Name :</b></label><label> {{$poll->name}}</label>
+                <div class="col-lg-12" style="text-align: center">
+                 <label> {!! $poll->name !!}</label>
                 </div>
                 <div class="col-lg-6">
                     <label><b>Info :</b></label><label> {{$poll->info}}</label>
@@ -22,6 +22,17 @@ Poll Data
                 <div class="col-lg-12">
                     <div> <label><b>Question :</b></label></div>
                     <label> {!! $poll->question  !!}</label>
+
+                    <div>
+
+                        @if($poll->question_video)
+
+                            <video width="320" height="240" controls>
+                                <source src="{{asset($poll->question_video)}}" type="video/mp4">
+                                <source src="{{asset($poll->question_video)}}" type="video/ogg">
+                            </video>
+                        @endif
+                    </div>
                 </div>
                 <div class="col-lg-12">
                     <label><b>Poll Key :</b></label><br>
@@ -37,7 +48,10 @@ Poll Data
                     <ol>
                         @foreach($poll->pollIdentifierQuestions as $question)
 
-                        <li> {{$question->identifier_question}}</li>
+                        <li> {{$question->identifier_question}}
+                            @if($question->required==1)
+                                <span class="required">*</span>
+                            @endif</li>
 
                         @endforeach
                     </ol>
@@ -59,6 +73,9 @@ Poll Data
         .selected {
             color: #7259F4 !important;
             font-weight: 800;
+        }
+        .required{
+            color: red;
         }
     </style>
 @endsection

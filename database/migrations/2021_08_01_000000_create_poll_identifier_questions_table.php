@@ -16,7 +16,8 @@ class CreatePollIdentifierQuestionsTable extends Migration
         Schema::create('poll_identifier_questions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('poll_id');
-            $table->string('identifier_question');
+            $table->text('identifier_question');
+            $table->boolean('required')->default(0);
             $table->timestamps();
         });
     }

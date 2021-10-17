@@ -34,11 +34,14 @@ class PollStoreRequest extends FormRequest
             'poll_option.*'=> 'required',
             'visibility' => 'required',
             'option_type' => 'nullable|array',
+            'question_video' => 'max:20480',
             'status'=> 'required|in:Lock Poll,Published',
             'key' => 'required_if:status,Publish Poll|unique:poll_keys,key',
             'key_type' => 'nullable|numeric',
             'identifier_question' => 'required|array',
-            'identifier_question.*'=> 'required'
+            'identifier_question.*.question'=> 'required',
+            'identifier_question.*.required'=> 'nullable',
+
         ];
     }
 

@@ -15,11 +15,12 @@ class CreatePollsTable extends Migration
     {
         Schema::create('polls', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('info');
+            $table->text('info');
             $table->text('question');
+            $table->text('question_video')->nullable();
             $table->string('category');
             $table->string('visibility');
             $table->string('option_type')->nullable();

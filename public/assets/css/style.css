@@ -4631,10 +4631,11 @@ ul {
 }
 
 .recent-polls-body .badge-left {
-    position: absolute;
+    /*position: absolute;*/
+    text-align: center;
     border-radius: 5px;
     top: -10px;
-    background: #ef4444;
+    background: #b3b3b3;
     color: white;
     padding: 5px 10px;
     left: 30px;

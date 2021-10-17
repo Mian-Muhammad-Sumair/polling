@@ -30,7 +30,7 @@ class PollIdentifierQuestionStoreRequest extends FormRequest
             "answer.*" => [
                 'required',
                 function ($attribute, $value, $fail) {
-                    if ($value['answer'] == ''||$value['question'] == '') {
+                    if (isset($value['question']) && $value['question'] == 1 && ($value['answer'] == ''||$value['question'] == '')) {
                         $fail('This answer is required.');
                     }
                 },

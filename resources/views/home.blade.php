@@ -72,14 +72,14 @@
                 <br>
                 @foreach($polls as $poll)
                     <div class="recent-polls-body">
-                        <div class="badge-left">{{$poll['name']}}</div>
+                        <div class="badge-left">{!! $poll['name'] !!}</div>
 {{--                        <div class="badge-right">{!! $poll['question']!!}</div>--}}
                         <div class="row"   style="text-align: center;" >
                             <div class="col-lg-12 col-md-12 col-xs-12"><b>{!! $poll['question']!!}</b></div>
                         </div>
                         <div class="row"    >
                             @foreach($poll['votes'] as $vote)
-                                <div class="col-lg-2 col-md-4 col-xs-6 item-main" >
+                                <div class="col-lg-2 col-md-12 col-xs-12  item-main" >
                                     <div class="itom-box" >
                                         <h6>
                                             {{$vote['total_Vote']}}

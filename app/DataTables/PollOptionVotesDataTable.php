@@ -30,7 +30,6 @@ class PollOptionVotesDataTable extends DataTable
         $return= datatables()
             ->eloquent($query)
             ->addColumn('answer', function($item){
-
                 return $this->selected->question_option;
             })
 
@@ -43,9 +42,10 @@ class PollOptionVotesDataTable extends DataTable
 
         foreach($this->pollIdentifierQuestions as $index=>$IdentifierQuestion){
             $this->identifyAnswer=$IdentifierQuestion->id;
-            $return=$return->addColumn($IdentifierQuestion->identifier_question, function($item){
-                $identifyAnswer=PollIdentifierAnswer::where('user_id', $this->userId)->get();
-                foreach($identifyAnswer as $index=>$answer){
+            $required=$IdentifierQuestion->required?'<span style="color: red"> * </span>':'1';
+            $return=$return->addColumn($IdentifierQuestion->identifier_question.$required, function($item){
+                $identifyAnswer=PollIdentifierAnswer::where('user_id', $this->userId)->where('identifier_question_id', $this->identifyAnswer)->get();
+                foreach($identifyAnswer as $answer){
                     if( $this->answerId!=$answer->id){
                         $this->answerId=$answer->id;
                         return $answer->answer;
@@ -97,8 +97,9 @@ class PollOptionVotesDataTable extends DataTable
     protected function getColumns()
     {
         $column=[Column::make('#')];
-        foreach($this->pollIdentifierQuestions as $IdentifierQuestions){
-            $add=  Column::make($IdentifierQuestions->identifier_question);
+        foreach($this->pollIdentifierQuestions as $IdentifierQuestion){
+            $required=$IdentifierQuestion->required?'<span style="color: red"> * </span>':'1';
+            $add=Column::make($IdentifierQuestion->identifier_question.$required);
             array_push($column,$add);
         }
         $adds=Column::make('answer');

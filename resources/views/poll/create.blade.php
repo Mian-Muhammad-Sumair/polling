@@ -7,7 +7,7 @@ Create Poll
 
 <div class="container content-order ">
     <div class="row login-bg ">
-        <form method="POST" action="{{ url('poll') }}">
+        <form method="POST" action="{{ url('poll') }}" enctype="multipart/form-data">
             @csrf
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <div class="col-md-7 col-sm-8">
@@ -15,14 +15,15 @@ Create Poll
                         <h2 class="title-page">Create poll</h2>
                         <div class="theme-bar"></div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label>Poll name</label>
-                            <input type="text" name="name" value="{{ old('name') }}">
+
+                            <textarea class="form-control" id="name"  name="name">{{ old('name') }}</textarea>
                             @error('name') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <div class="form-group ">
                             <label>Poll open window</label>
                             <div class="text" style="font-size:30px;">
@@ -33,30 +34,32 @@ Create Poll
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Poll info</label>
-                            <input type="text" name="info" placeholder="" value="{{ old('info') }}">
-                            @error('info') <span class="error_msg">{{$message}}</span> @enderror
-
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Poll question</label>
-                            <textarea class="form-control" id="question_editor"  name="question">{{ old('question')}}</textarea>
-                            @error('question') <span class="error_msg">{{$message}}</span> @enderror
-                        </div>
-                    </div>
-                    {{-- {{dd($errors)}}--}}
-
-
                 </div>
                 <div class="col-md-5 col-sm-12 register-img images">
                     <img class="" src="{{asset('assets/images/register_poll.png?v=1')}}" alt="image">
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-lg-12 second-part">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Poll info</label>
+                        <input type="text" name="info" placeholder="" value="{{ old('info') }}">
+                        @error('info') <span class="error_msg">{{$message}}</span> @enderror
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Poll question</label>
+                        <textarea class="form-control" id="question_editor"  name="question">{{ old('question')}}</textarea>
+                        @error('question') <span class="error_msg">{{$message}}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Question Video</label>
+                        <input type="file"  id="question_video" name="question_video" >
+                        @error('question_video') <span class="error_msg">{{$message}}</span> @enderror
+                    </div>
+                </div>
                 <div class="col-md-12 field_wrapper">
                     <div class="form-group">
                         <label>Poll option</label>
@@ -66,16 +69,23 @@ Create Poll
                                 $totalOption=count(old('poll_option'));
                             @endphp
                             @foreach(old('poll_option') as $index=>$option)
-                                <textarea class="form-control" id="{{$id[$index]}}"  name="poll_option[]">{{$option}}</textarea>
-                                @error('poll_option.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+                                <textarea class="form-control" id="{{$id[$index]}}"  name="poll_option[{{$index}}]">{{$option['option']}}</textarea>
+                                @error('poll_option.'.$index.'option') <span class="error_msg">{{$message}}</span> @enderror
+                                <div class="form-group">
+                                    <input type="file"  id=""  name="video_{{$index}}" >
+                                    @error('poll_option.'.$index.'option') <span class="error_msg">{{$message}}</span> @enderror
+                                </div>
                             @endforeach
                                 <input type="hidden"  id="total_Options" name="total_Options" value="{{$totalOption}}">
                         @else
-                            <textarea class="form-control" id="poll_option_one"  name="poll_option[]"></textarea>
+                            <textarea class="form-control" id="poll_option_one"  name="poll_option[0]"></textarea>
+                            <div class="form-group">
+                                <input type="file"  id=""  name="video_0" >
+                            </div>
                             <input type="hidden"  id="total_Options" name="total_Options" value="0">
 
                         @endif
-                        @error('poll_option') <span class="error_msg">{{$message}}</span> @enderror
+
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -88,15 +98,35 @@ Create Poll
                         <label>Poll identifier questions</label>
                         @if(old('identifier_question'))
                         @foreach(old('identifier_question') as $index=>$option)
-                        <input type="text" name="identifier_question[]" value="{{$option}}">
-                        @error('identifier_question.'.$index) <span class="error_msg">{{$message}}</span> @enderror
+                         <div class="col-md-10 ">
+                            <input type="text" name="identifier_question[{{$index}}][question]" value="{{$option['question']}}">
+                             @error('identifier_question.'.$index.'.question') <span class="error_msg">{{$message}}</span> @enderror
+                         </div>
+                         <div class="col-md-2">
+                             <div class="Generate-polling-key-radio">
+                                 <input type="checkbox" id="key_type{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}}][required]" value="1">
+                                 <label for="key_type{{$index}}"> Required</label>
+                             </div>
+                         </div>
+
                         @endforeach
+                            <input type="hidden" id="total_identifier_question" value="{{count(old('identifier_question'))}}">
                         @else
-                        <input type="text" name="identifier_question[]" value="">
+                        <div class="col-md-10 ">
+                            <input type="hidden" id="total_identifier_question" value="1">
+                            <input type="text" name="identifier_question[0][question]" value="">
+                            @error('identifier_question') <span class="error_msg">{{$message}}</span> @enderror
+                        </div>
+                            <div class="col-md-2">
+                                <div class="Generate-polling-key-radio">
+                                    <input type="checkbox" id="key_type" class="largerCheckbox"  name="identifier_question[0][required]" value="1">
+                                    <label for="key_type"> Required</label>
+                                </div>
+                            </div>
                         @endif
-                        @error('identifier_question') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                 </div>
+
                 <div class="col-md-12">
                     <div class="form-group text-right float-right">
                         <a href="javascript:void(0);" title="Add field" class="custom-btn add_question">Add more question +</a>
@@ -196,13 +226,12 @@ Create Poll
 <script type="text/javascript">
     $(document).ready(function() {
         var x = 1; //Initial field counter is 1
-        var z = 1; //Initial field counter is 1
+        var z = document.getElementById('total_identifier_question').value; //Initial field counter is 1
         var maxField = 5; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
         var addQuestion = $('.add_question'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
         var wrap = $('.field_wrap'); //Input field wrapper
-        var fieldQuestionHTML = '<div> <input type="text" name="identifier_question[]" value=""><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
         var total_Options= document.getElementById('total_Options').value;
         x = parseInt(total_Options, 10);
 
@@ -217,7 +246,13 @@ Create Poll
                     id += test.charAt(Math.floor(Math.random() * test.length));
 
 
-                var fieldHTML = '<div><textarea class="form-control" id="'+ id +'"  name="poll_option[]" "></textarea><a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
+                var fieldHTML = '<div class="option">' +
+                    '<textarea class="form-control" id="'+ id +'"  name="poll_option['+x+']" ></textarea>' +
+                    ' <div class="form-group">' +
+                    '                                <input type="file"  id=""  name="video_'+x+'" >\n' +
+                    '                            </div>' +
+                    '<a href="javascript:void(0);" class="remove_button">Remove</a>' +
+                    '</div>'; //New input field html
                 x++; //Increment field counter
                 $(wrapper).append(fieldHTML); //Add field html
                 $(document).load(
@@ -228,6 +263,16 @@ Create Poll
             }
         });
         $(addQuestion).click(function() {
+            var fieldQuestionHTML = '<div class="question"><div class="col-lg-8"> <input type="text" name="identifier_question['+z+'][question]" value=""></div> ' +
+                {{--'   @error("identifier_question."+z+".question") <span class="error_msg">{{$message}}</span> @enderror' +--}}
+                '<div class="col-md-2">' +
+                ' <div class="Generate-polling-key-radio">' +
+                '<input type="checkbox" id="key_type['+z+']" class="largerCheckbox" name="identifier_question['+z+'][required]" value="1">' +
+                '<label for="key_type['+z+']"> Required</label>\n' +
+                '                             </div>\n' +
+                '                         </div>' +
+                '<div class="col-lg-2"><a href="javascript:void(0);" class="remove_button btn btn-danger">Remove</a></div>' +
+                '</div>'; //New input field html
             //Check maximum number of input fields
             if (z < maxField) {
                 z++; //Increment field counter
@@ -236,14 +281,14 @@ Create Poll
         });
         $(wrap).on('click', '.remove_button', function(e) {
             e.preventDefault();
-            $(this).parent('div').remove(); //Remove field html
-            x--; //Decrement field counter
+            $(this).closest(".question").remove(); //Remove field html
+            z--; //Decrement field counter
         });
 
         //Once remove button is clicked
         $(wrapper).on('click', '.remove_button', function(e) {
             e.preventDefault();
-            $(this).parent('div').remove(); //Remove field html
+            $(this).closest('.option').remove(); //Remove field html
             x--; //Decrement field counter
         });
     });
@@ -286,6 +331,11 @@ Create Poll
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
+    CKEDITOR.replace( 'name', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+
 
 
 
@@ -456,6 +506,12 @@ Create Poll
             margin-bottom: 30px;
             margin-top: 20px !important;
         }
+    }
+    .field_wrap .Generate-polling-key-radio{
+        margin-top: 10px;
+    }
+    .remove_button{
+        margin-top:15px;
     }
 </style>
 @endsection

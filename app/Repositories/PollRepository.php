@@ -26,9 +26,10 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
 
    public function create(array $data)
    {
-     $item=parent::create($data);
+      $questionVideo= $this->uploadVideo('question_video');
+      $data['question_video']=$questionVideo;
+      $item=parent::create($data);
 
-//     $key=[];
        if($data['status']=='Published') {
            if(isset($data['key_type'])&&$data['key_type']==1){
                for ($i = 0; $i < 2; $i++) {
@@ -39,10 +40,21 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
            $item->pollKeys()->create(['key' => $data['key']]);
        }
        foreach ($data['identifier_question'] as $value) {
-           $item->pollIdentifierQuestions()->create(['identifier_question'=>$value]);
+          if(isset($value['question'])){
+              $required=isset($value['required'])&&$value['required']==1?1:0;
+              $item->pollIdentifierQuestions()->create(['identifier_question'=>$value['question'],'required'=>$required]);
+          }
+
        }
-       foreach ($data['poll_option'] as $value) {
-           $item->questionOptions()->create(['question_option'=>$value]);
+       foreach ($data['poll_option'] as $index=>$value) {
+           $option=[];
+           $optionVideo= $this->uploadVideo('video_'.$index);
+           $option['question_option']=$value;
+           if($optionVideo){
+               $option['video']=$optionVideo;
+           }
+
+           $item->questionOptions()->create($option);
        }
 
      return true;
@@ -50,12 +62,20 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
 
    public function update($id, array $data)
    {
+       $video= $this->uploadVideo('question_video');
+       if($video){
+           $data['question_video']=$video;
+       }
 
      $item= parent::update($id,$data);
        foreach ($data['poll_option'] as $index=>$option){
            $questionOptions=QuestionOptions::find($index);
            if($questionOptions&&$questionOptions['poll_id']==$id){
-               $questionOptions['question_option']=$option;
+               $optionVideo= $this->uploadVideo('video_'.$index);
+               if($optionVideo){
+                   $questionOptions['video']=$optionVideo;
+               }
+               $questionOptions['question_option']=$option['option'];
                $questionOptions->save();
 
            }else{
@@ -64,12 +84,14 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
 
        }
        foreach ($data['identifier_question'] as $index=>$question){
+           $required=isset($question['required'])&&$question['required']==1?1:0;
            $identifyQuestion=PollIdentifierQuestion::find($index);
            if($identifyQuestion&&$identifyQuestion['poll_id']==$id){
-               $identifyQuestion['identifier_question']=$question;
+               $identifyQuestion['identifier_question']=$question['question'];
+               $identifyQuestion['required']=$required;
                $identifyQuestion->save();
            }else{
-               $item->pollIdentifierQuestions()->create(['identifier_question'=>$question]);
+               $item->pollIdentifierQuestions()->create(['identifier_question'=>$question['question'],'required'=>$required]);
            }
        }
      $item->pollKeys()->delete();
@@ -96,10 +118,34 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
            }
 
         }else{
-            return false;
+            return falsuploadVideoe;
         }
 
         return true;
+    }
+    public function uploadVideo($name)
+    {
+        if(Request()->hasFile($name)){
+            $file = Request()->file($name);
+            $filenamewithextension = request()->file($name)->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = request()->file($name)->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = '_'.time().'.'.$extension;
+
+            //Upload File
+            request()->file($name)->storeAs('public/assets/uploads', $filenametostore);
+
+            $url = 'storage/assets/uploads/'.$filenametostore;
+
+            return $url;
+        }
+        return false;
     }
 
 }

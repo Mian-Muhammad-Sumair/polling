@@ -9,11 +9,17 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-lg-12  animated bounceInLeft">
                 <div class="main-heading">
-                    <h3>{{$poll['name']}}</h3>
+                    <h3>{!!  $poll['name'] !!}</h3>
                 </div>
                 <div  class="heading">
                     {!! $poll['question'] !!}
                     <p>Poll offered by {{$creator_name}} from {{$poll['start_date']}} to {{$poll['end_date']}}</p>
+                    @if($poll['question_video'])
+                        <video width="320" height="240" controls>
+                            <source src="{{asset($poll['question_video'])}}" type="video/mp4">
+                            <source src="{{asset($poll['question_video'])}}" type="video/ogg">
+                        </video>
+                    @endif
                 </div>
 
             </div>
@@ -28,6 +34,14 @@
                 <input type="checkbox" name="answer" value="{{$option['id']}}" id="vote{{$index}}" >
                 <label class="progress-card "  for="vote{{$index}}">
                     <div class="text"><h2>{!!  $option['question_option'] !!}</h2></div>
+                    @if($option['video'])
+                        <div>
+                        <video width="320" height="240" controls>
+                            <source src="{{asset($option['video'])}}" type="video/mp4">
+                            <source src="{{asset($option['video'])}}" type="video/ogg">
+                        </video>
+                        </div>
+                    @endif
                     <div class="progress">
                         <div class="progress-bar bg-info progress-bar-custom-theme" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         <div class="progress-bar" role="progressbar" aria-valuenow="3" aria-valuemin="10" aria-valuemax="100"></div>

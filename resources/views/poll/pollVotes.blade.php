@@ -13,14 +13,14 @@
             </div>
             <div class="poll-date-section">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <label><b>Name :</b></label><label> {{$poll->name}}</label>
+                    <div class="col-lg-12" style="text-align: center">
+                     <label> {!! $poll->name !!}</label>
                     </div>
                     <div class="col-lg-6">
                         <label><b>Info :</b></label><label> {{$poll->info}}</label>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <label style="font-size: 18px"><b>Question :</b></label>
                         <div><label>{!! $poll->question !!}</label></div>
 

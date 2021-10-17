@@ -89,14 +89,15 @@ class PollVotingController extends Controller
         }else{
             $userId=auth('customer')->check()?auth('customer')->id():auth('admin')->id();
         }
-
         foreach($data['answer'] as $answer){
-            $entry=[
-                'user_id'=>$userId,
-                'identifier_question_id'=>$answer['question'],
-                'answer'=>$answer['answer'],
-            ];
-            $vote=PollIdentifierAnswer::create($entry);
+            if($answer['question']){
+                $entry=[
+                    'user_id'=>$userId,
+                    'identifier_question_id'=>$answer['id'],
+                    'answer'=>$answer['answer'],
+                ];
+                $vote=PollIdentifierAnswer::create($entry);
+            }
         }
         return redirect('voting/'.$userId.'/'.$request['poll_code'])->with( ['id' => $request['poll_code']] );
     }

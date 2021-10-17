@@ -15,7 +15,8 @@ class QuestionOptions extends Model
      */
     protected $fillable = [
         'poll_id',
-        'question_option'
+        'question_option',
+        'video'
     ];
 
     public function poll()

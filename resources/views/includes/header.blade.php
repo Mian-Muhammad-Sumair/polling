@@ -16,7 +16,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a  class="dropdown-item  {{ session()->get('locale') == 'en' ? 'active' : '' }}"  href="{{ route('changeLang').'?lang=en' }}">{{__('header.English')}}
-                                    <img src="{{asset('assets/svg/US-UK_Flag.svg')}}" width="20" alt="English Flag"></a>
+                                    <img src="{{asset('assets/svg/US-UK_Flag.svg')}}" width="20" alt="English Flag">
                                 </a>
                                 <a class="dropdown-item {{ session()->get('locale') == 'fr' ? 'active' : '' }}" href="{{ route('changeLang').'?lang=fr' }}">{{__('header.French')}}
                                     <img src="{{asset('assets/svg/frenchflagframed.svg')}}" width="20" alt="French Flag">

@@ -57,7 +57,7 @@ class CustomerPollDataTable extends DataTable
                     $status="<span class='text-capitalize col-status badge ".$type."'>Expired</span>";
                 }
                 return  $status;
-            })->rawColumns(['action','status','visibility'])
+            })->rawColumns(['action','status','visibility','name'])
             ->addColumn('action', function($item){
             $edit='';
             $delete='';
