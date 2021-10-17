@@ -69,12 +69,13 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
 
      $item= parent::update($id,$data);
        foreach ($data['poll_option'] as $index=>$option){
+           $questionOptions=[];
            $questionOptions=QuestionOptions::find($index);
+           $optionVideo= $this->uploadVideo('video_'.$index);
+           if($optionVideo){
+               $questionOptions['video']=$optionVideo;
+           }
            if($questionOptions&&$questionOptions['poll_id']==$id){
-               $optionVideo= $this->uploadVideo('video_'.$index);
-               if($optionVideo){
-                   $questionOptions['video']=$optionVideo;
-               }
                $questionOptions['question_option']=$option;
                $questionOptions->save();
 
