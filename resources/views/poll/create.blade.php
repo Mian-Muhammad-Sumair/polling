@@ -110,7 +110,7 @@ Create Poll
                          </div>
                          <div class="col-md-2">
                              <div class="Generate-polling-key-radio">
-                                 <input type="checkbox" id="key_type{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}}][required]" value="1">
+                                 <input type="checkbox" id="key_type{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}][required]" value="1">
                                  <label for="key_type{{$index}}"> Required</label>
                              </div>
                          </div>
@@ -125,8 +125,8 @@ Create Poll
                         </div>
                             <div class="col-md-2">
                                 <div class="Generate-polling-key-radio">
-                                    <input type="checkbox" id="key_type" class="largerCheckbox"  name="identifier_question[0][required]" value="1">
-                                    <label for="key_type"> Required</label>
+                                    <input type="checkbox" id="key_type0" class="largerCheckbox"  name="identifier_question[0][required]" value="1">
+                                    <label for="key_type0"> Required</label>
                                 </div>
                             </div>
                         @endif

@@ -127,17 +127,13 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
     public function uploadVideo($name)
     {
         if(Request()->hasFile($name)){
-            $file = Request()->file($name);
-            $filenamewithextension = request()->file($name)->getClientOriginalName();
-
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
 
             //get file extension
             $extension = request()->file($name)->getClientOriginalExtension();
 
             //filename to store
-            $filenametostore = '_'.time().'.'.$extension;
+            $random=rand(1000,10000000000000000);
+            $filenametostore = $random.'_'.time().'.'.$extension;
 
             //Upload File
             request()->file($name)->storeAs('public/assets/uploads', $filenametostore);

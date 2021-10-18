@@ -18,7 +18,7 @@ class PollOptionVotesDataTable extends DataTable
     protected $index;
     public $identifyAnswer;
     public $userId;
-    public $answerId;
+    public $answerId=[];
     /**
      * Build DataTable class.
      *
@@ -42,15 +42,16 @@ class PollOptionVotesDataTable extends DataTable
 
         foreach($this->pollIdentifierQuestions as $index=>$IdentifierQuestion){
             $this->identifyAnswer=$IdentifierQuestion->id;
-            $required=$IdentifierQuestion->required?'<span style="color: red"> * </span>':'1';
-            $return=$return->addColumn($IdentifierQuestion->identifier_question.$required, function($item){
-                $identifyAnswer=PollIdentifierAnswer::where('user_id', $this->userId)->where('identifier_question_id', $this->identifyAnswer)->get();
+            $required=$IdentifierQuestion->required==1?'<span style="color: red"> * </span>':'';
+            $return=$return->addColumn($IdentifierQuestion->identifier_question.$required, function($item) use($IdentifierQuestion){
+                $identifyAnswer=PollIdentifierAnswer::where('user_id', $this->userId)->where('identifier_question_id', $IdentifierQuestion->id)->get();
                 foreach($identifyAnswer as $answer){
-                    if( $this->answerId!=$answer->id){
-                        $this->answerId=$answer->id;
+                    if($IdentifierQuestion->id==$answer->identifier_question_id && !in_array($answer->id, $this->answerId)){
+                        array_push( $this->answerId,$answer->id);
                         return $answer->answer;
                     }
                 }
+
             });
 
         }
@@ -98,7 +99,7 @@ class PollOptionVotesDataTable extends DataTable
     {
         $column=[Column::make('#')];
         foreach($this->pollIdentifierQuestions as $IdentifierQuestion){
-            $required=$IdentifierQuestion->required?'<span style="color: red"> * </span>':'1';
+            $required=$IdentifierQuestion->required==1?'<span style="color: red"> * </span>':'';
             $add=Column::make($IdentifierQuestion->identifier_question.$required);
             array_push($column,$add);
         }
