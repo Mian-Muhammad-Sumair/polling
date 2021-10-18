@@ -48,13 +48,18 @@ class PollParticipateRequest extends FormRequest
                            if(!auth('customer')->check() && !auth('admin')->check()  ){
                                $fail('Please login to vote in this poll');
                            }
+                            $user_id=auth('customer')->check()?auth('customer')->id():auth('admin')->id();
                             //this validation is not working because is this request we cannot trace if the user is login or not
 //                        $fail('You must have to login first to participate in this poll.');
+                        }else{
+                            $user_id=request()->ip();
                         }
                         if(!in_array("allow_multiple_votes", $optionType)) {
-                            $vote=PollIdentifierAnswer::where('user_id',request()->ip())->IdentifyUser($poll['id'])->first();
-                            if(!empty($vote)){
-                                $fail('You already vote on this poll ');
+                            if($user_id){
+                                $vote=PollIdentifierAnswer::where('user_id',$user_id)->IdentifyUser($poll['id'])->first();
+                                if(!empty($vote)){
+                                    $fail('You already vote on this poll ');
+                                }
                             }
                         }
                     }
