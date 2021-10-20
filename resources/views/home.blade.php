@@ -102,7 +102,7 @@
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        {{__('home.100+ Daily Survays')}}
+                        {{__('home.100+ Daily Surveys')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        {{__('home.100+ Daily Survays')}}
+                        {{__('home.100+ Daily Surveys')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
             <div class="col-md-4 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
-                        {{__('home.100+ Daily Survays')}}
+                        {{__('home.100+ Daily Surveys')}}
                         <div class="theme-bar theme-bar-30 theme-bar-center"></div>
                     </div>
                 </div>

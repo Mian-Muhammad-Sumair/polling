@@ -16,6 +16,8 @@ use App\Repositories\RoleRepository;
 use App\Repositories\RoleRepositoryInterface;
 use App\Repositories\SubscribeRepository;
 use App\Repositories\SubscribeRepositoryInterface;
+use App\Repositories\SubscriptionPlanRepository;
+use App\Repositories\SubscriptionPlanRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -45,6 +47,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SubscribeRepositoryInterface::class,
             SubscribeRepository::class
+        );
+        $this->app->bind(
+            SubscriptionPlanRepositoryInterface::class,
+            SubscriptionPlanRepository::class
         );
     }
 }

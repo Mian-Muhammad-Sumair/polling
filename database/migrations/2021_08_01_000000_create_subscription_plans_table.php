@@ -20,7 +20,7 @@ class CreateSubscriptionPlansTable extends Migration
             $table->text('info');
             $table->text('total_poll');
             $table->string('keys');
-            $table->string('status');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

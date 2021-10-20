@@ -66,5 +66,8 @@ Route::prefix('admin')->group(function(){
     Route::get('role_list',[\App\Http\Controllers\Admin\RoleController::class,'index'])->middleware( ['can:View Role & Permission']);
     Route::get('assign_permission/{id}',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissionsForm'])->middleware( ['can:View Role & Permission']);
     Route::post('assign_permission',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissions'])->middleware( ['can:Update Role & Permission']);
+    Route::resource('/subscription_plan', App\Http\Controllers\SubscriptionPlanController::class);
+    Route::get('/subscription_plan/delete/{id}', [App\Http\Controllers\SubscriptionPlanController::class,'delete']);
+    Route::get('/subscription_plan/status/{id}', [App\Http\Controllers\SubscriptionPlanController::class,'updateStatus']);
 
 });

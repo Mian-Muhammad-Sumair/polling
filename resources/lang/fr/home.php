@@ -16,7 +16,7 @@ return [
                  et de nouvelles perspectives..</p>',
     'Get Started' => 'Commencer',
     'Go Premium' => 'Passer en Premium',
-    '100+ Daily Survays' => '100+ Sondages quotidiens',
+    '100+ Daily Surveys' => '100+ Sondages quotidiens',
     'About Us' => 'À propos de nous',
     'About Description' => '
                 <div class="side">

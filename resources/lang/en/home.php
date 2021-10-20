@@ -16,7 +16,7 @@ return [
                 and fresh perspectives..</p>',
     'Get Started' => 'Get Started',
     'Go Premium' => 'Go Premium',
-    '100+ Daily Survays' => '100+ Daily Survays',
+    '100+ Daily Surveys' => '100+ Daily Surveys',
     'About Us' => 'About Us',
     'About Description' => '<div class="side">
                 <div class="first">

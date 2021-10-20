@@ -14,6 +14,7 @@ class ContactUsController extends Controller
 
     public function __construct(ContactUsRepositoryInterface $repository)
     {
+        $this->middleware('auth:admin');
         $this->repository=$repository;
     }
 

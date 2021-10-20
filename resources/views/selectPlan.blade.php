@@ -9,7 +9,7 @@ Select Plan
             <div class="col-md-4 col-lg-4 col-sm-4 ">
                 <div class="card ">
                     <div class="main-card">
-                        <h2 class="title ">{{$subscriptionPlan['name']}}<b>{{$subscriptionPlan['plan_type']}}</b></h2>
+                        <h2 class="title ">{{$subscriptionPlan['name']}} <b>{{$subscriptionPlan['plan_type']}}</b></h2>
                         <div class="triangle "></div>
                         <div class="main-sec">
                             <div class="desc">
@@ -88,7 +88,7 @@ Select Plan
         }
 
         .card-payment-row .col-lg-4 .title {
-            background: #808080;
+            background: #0044e4 ;
             height: 100px;
             color: white;
             font-size: 20px;
@@ -96,14 +96,14 @@ Select Plan
             border-radius: 10px;
         }
 
-        .card-payment-row .col-lg-4:first-child .title {
-            background: #0044e4;
+        /*.card-payment-row .col-lg-4:first-child .title {*/
+        /*    background: #0044e4;*/
 
-        }
+        /*}*/
 
-        .card-payment-row .col-lg-4:last-child .title {
-            background: #0044e4;
-        }
+        /*.card-payment-row .col-lg-4:last-child .title {*/
+        /*    background: #0044e4;*/
+        /*}*/
 
         .card-payment-row .col-lg-4:first-child .triangle {
             width: 98.5%;
@@ -121,7 +121,7 @@ Select Plan
             margin-left: 0.8%;
             height: 4%;
             margin-top: -0.7px;
-            background-image: linear-gradient(to top right, transparent 50%, #808080 50%), linear-gradient(to top left, transparent 50%, #808080 50%);
+            background-image: linear-gradient(to top right, transparent 50%, #0044e4  50%), linear-gradient(to top left, transparent 50%, #0044e4  50%);
             background-size: 50.2% 100%;
             background-repeat: no-repeat;
             background-position: top left, top right;
