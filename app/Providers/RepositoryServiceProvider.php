@@ -8,6 +8,8 @@ use App\CRUD\Repositories\BaseCRUDRepository;
 use App\CRUD\Repositories\BaseCRUDRepositoryInterface;
 use App\Repositories\ContactUsRepositoryInterface;
 use App\Repositories\ContactUsRepository;
+use App\Repositories\PaymentRepository;
+use App\Repositories\PaymentRepositoryInterface;
 use App\Repositories\PermissionRepository;
 use App\Repositories\PermissionRepositoryInterface;
 use App\Repositories\PollRepository;
@@ -51,6 +53,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SubscriptionPlanRepositoryInterface::class,
             SubscriptionPlanRepository::class
+        );
+        $this->app->bind(
+            PaymentRepositoryInterface::class,
+            PaymentRepository::class
         );
     }
 }

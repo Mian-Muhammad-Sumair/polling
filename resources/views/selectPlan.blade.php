@@ -6,10 +6,14 @@ Select Plan
 <div class="container animatedParent card-payment-row">
     <div class="row">
         @foreach($subscriptionPlans as $subscriptionPlan)
+
             <div class="col-md-4 col-lg-4 col-sm-4 ">
                 <div class="card ">
                     <div class="main-card">
-                        <h2 class="title ">{{$subscriptionPlan['name']}} <b>{{$subscriptionPlan['plan_type']}}</b></h2>
+                        <h2 class="title ">{{$subscriptionPlan['name']}} <b>{{$subscriptionPlan->latestSubscriptionPlanValue['plan_value']}} / {{$subscriptionPlan->latestSubscriptionPlanValue['plan_type']}}</b>
+                           <b> $ {{$subscriptionPlan->latestSubscriptionPlanValue['amount']}}</b>
+                        </h2>
+
                         <div class="triangle "></div>
                         <div class="main-sec">
                             <div class="desc">
@@ -21,13 +25,14 @@ Select Plan
                             <div class="options">
                                 <ul>
                                     <li>
+
                                         <p>
-                                            Create <b><span>{{$subscriptionPlan['keys']}}</span> Poll Keys</b>
+                                            Create <b><span>{{$subscriptionPlan->latestSubscriptionPlanValue['key']}}</span> Poll Keys</b>
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            Create <b><span>{{$subscriptionPlan['total_poll']}}</span> Maximum Poll</b>
+                                            Create <b><span>{{$subscriptionPlan->latestSubscriptionPlanValue['allow_poll']}}</span> Maximum Poll</b>
                                         </p>
                                     </li>
                                     <li>
@@ -43,13 +48,12 @@ Select Plan
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
 
                     </div>
                     <div class="chosse-plan-btn">
-{{--                        <a href="{{ URL::to('/register_billing/'.$subscriptionPlan['id']) }}" class="custom-btn ">Choose Plan </a>--}}
-                        <a href="#" class="custom-btn ">Choose Plan </a>
+                        <a href="{{ url('/payment/'.$subscriptionPlan['id']) }}" class="custom-btn ">Choose Plan </a>
+{{--                        <a href="#" class="custom-btn ">Choose Plan </a>--}}
                     </div>
                 </div>
             </div>

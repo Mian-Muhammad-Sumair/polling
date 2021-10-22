@@ -37,11 +37,18 @@ class PollController extends Controller
     }
 
     public function create(){
-
+      if(!$this->checkPlanValidPoll()){
+          toastr()->error('Sorry! Your poll limit excited. Please upgrade or select plan');
+          return redirect('/dashboard');
+      }
         return view('poll.create')->with(['categories'=>$this->categories]);
     }
     public function store(PollStoreRequest $request)
     {
+        if(!$this->checkPlanValidPoll()){
+            toastr()->error('Sorry! Your poll limit excited. Please upgrade or select plan');
+            return redirect('/dashboard');
+        }
         $data=$request->validated();
         $data['user_id']=auth()->id();
         $data= $this->repository->create($data)?

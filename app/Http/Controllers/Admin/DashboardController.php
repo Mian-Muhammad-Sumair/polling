@@ -73,6 +73,7 @@ class DashboardController extends Controller
         $customerPieChart = new LaravelChart($chart_options);
         $totalActiveCustomer = User::customer()->where('status','active')
             ->count();
+
         $totalPublishPolls  =Poll::where('status','Published')->count();
         $totalOpenedPolls=Poll::where('status','Published')->whereDate('start_date', '<=', date("Y-m-d"))
             ->whereDate('end_date', '>=', date("Y-m-d"))->count();

@@ -25,26 +25,54 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Type</label>
-                                <input type="text" name="plan_type"
-                                       value="{{old('plan_type') == '' ?$plan->plan_type:old('plan_type') }}">
+                                <label>Plan Type</label>
+                                <div class="select-dropdown">
+                                    <select name="plan_type" >
+                                        <option class="option-item" disabled selected>
+                                            Select
+                                        </option>
+                                        <option class="option-item" value="Day" {{('Day'==old('plan_type') || 'Day'==$plan->latestSubscriptionPlanValue->plan_type)?'selected':''}}>
+                                            Day
+                                        </option>
+                                        <option class="option-item" value="Week" {{('Week'==old('plan_type') || 'Week'==$plan->latestSubscriptionPlanValue->plan_type)?'selected':''}}>
+                                            Week
+                                        </option>
+                                        <option class="option-item" value="Month"  {{('Month'==old('plan_type')|| 'Month'==$plan->latestSubscriptionPlanValue->plan_type)?'selected':''}}>
+                                            Month
+                                        </option>
+                                        <option class="option-item" value="Year"  {{('Year'==old('plan_type')|| 'Year'==$plan->latestSubscriptionPlanValue->plan_type)?'selected':''}}>
+                                            Year
+                                        </option>
+                                    </select>
+                                </div>
+{{--                                <input type="text" name="plan_type"--}}
+{{--                                       value="{{old('plan_type') == '' ?$plan->latestSubscriptionPlanValue->plan_type:old('plan_type') }}">--}}
                                 @error('plan_type') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Allow Polls</label>
-                                <input type="number" name="total_poll"
-                                       value="{{old('total_poll') == '' ?$plan->total_poll:old('total_poll') }}">
-                                @error('total_poll') <span class="error_msg">{{$message}}</span> @enderror
+                                <label>Plan Value</label>
+
+                                <input type="text" name="plan_value"
+                                       value="{{old('plan_value') == '' ?$plan->latestSubscriptionPlanValue->plan_value:old('plan_value') }}">
+                                @error('plan_value') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Allow keys</label>
-                                <input type="number" name="keys"
-                                       value="{{old('keys') == '' ?$plan->keys:old('keys') }}">
-                                @error('keys') <span class="error_msg">{{$message}}</span> @enderror
+                                <label>Allow Polls</label>
+                                <input type="number" name="allow_poll"
+                                       value="{{old('allow_poll') == '' ?$plan->latestSubscriptionPlanValue->allow_poll:old('allow_poll') }}">
+                                @error('allow_poll') <span class="error_msg">{{$message}}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="number" name="allow_poll"
+                                       value="{{old('amount') == '' ?$plan->latestSubscriptionPlanValue->amount:old('amount') }}">
+                                @error('amount') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -53,6 +81,11 @@
                                 <textarea name="info">{{old('info') == '' ?$plan->info:old('info') }}</textarea>
                                 @error('info') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
+                        </div>
+                        <div class="Generate-polling-key-radio">
+                            <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">
+                            <label for="key_type"> Multiple polling keys</label>
+
                         </div>
                         <div class="col-md-4 col-sm-4 col-lg-4">
                             <input type="submit" class="custom-btn-update " name="status" value="Update">

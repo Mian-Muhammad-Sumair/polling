@@ -3,10 +3,26 @@
 namespace Database\Seeders;
 
 use App\Models\SubscriptionPlan;
+use App\Models\SubscriptionPlanValue;
+use App\Models\User;
+use Illuminate\Contracts\Hashing\Hasher as Hash;
 use Illuminate\Database\Seeder;
 
 class SubscriptionPlansSeeder extends Seeder
 {
+
+    /**
+     * @var \Illuminate\Contracts\Foundation\Application|mixed
+     */
+    private $model;
+    private $subValue;
+
+
+    public function __construct()
+    {
+        $this->model = resolve(SubscriptionPlan::class);
+        $this->subValue = resolve(SubscriptionPlanValue::class);
+    }
     /**
      * Run the database seeds.
      *
@@ -14,29 +30,22 @@ class SubscriptionPlansSeeder extends Seeder
      */
     public function run()
     {
-        SubscriptionPlan::create([
+        $plan = [
             'name' => 'Plan 1',
             'info' => 'Make feedback automated and actionable by connecting to key business systems using APIs and powerful integrations, including Salesforce, Marketo, Tableau, and more.',
-            'plan_type' => 'Month',
-            'keys' => 5,
-            'total_poll' => 2,
             'status' => 1
-        ]);
-        SubscriptionPlan::create([
-            'name' => 'Plan 2',
-            'info' => 'Make feedback automated and actionable by connecting to key business systems using APIs and powerful integrations, including Salesforce, Marketo, Tableau, and more.',
+            ];
+        $planValue = [
             'plan_type' => 'Month',
-            'keys' => 5,
-            'total_poll' => 5,
-            'status' => 1
-        ]);
-        SubscriptionPlan::create([
-            'name' => 'Plan 3',
-            'info' => 'Make feedback automated and actionable by connecting to key business systems using APIs and powerful integrations, including Salesforce, Marketo, Tableau, and more.',
-            'plan_type' => 'Month',
-            'keys' => 5,
-            'total_poll' => 10,
-            'status' => 1
-        ]);
+            'plan_value' => 1,
+            'allow_poll' => 2,
+            'amount' => 100,
+            ];
+
+        $item=$this->model->create($plan);
+        $planValue['subscription_plan_id']=$item->id;
+        $this->subValue->create($planValue);
+
+
     }
 }

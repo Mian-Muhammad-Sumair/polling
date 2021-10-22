@@ -33,7 +33,7 @@ class SubscriptionPlanController extends Controller
 //        if(auth()->user()->hasAnyPermission(['View Subscription Plan'])){
          return $dataTable->render('subscriptionPlan.index_table',['title'=>'Subscription Plans List']);
 //        }
-     return abort(403);
+//     return abort(403);
     }
     public function create()
     {
@@ -51,7 +51,7 @@ class SubscriptionPlanController extends Controller
     }
 
     public function show($id){
-        $plan=SubscriptionPlan::where('id',$id)->first();
+        $plan=SubscriptionPlan::where('id',$id)->with('latestSubscriptionPlanValue')->first();
         return view('subscriptionPlan.edit')->with('plan',$plan);
     }
 

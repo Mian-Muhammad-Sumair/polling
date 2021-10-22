@@ -14,11 +14,17 @@ class SubscriptionPlan extends Model
      */
     protected $fillable = [
         'name',
-        'plan_type',
         'info',
-        'keys',
-        'total_poll',
         'status',
     ];
+    public function subscriptionPlanValues()
+    {
+        return $this->hasMany(SubscriptionPlanValue::class);
+    }
+    public function latestSubscriptionPlanValue()
+    {
+        return $this->hasOne(SubscriptionPlanValue::class)->latest();
+    }
+
 
 }

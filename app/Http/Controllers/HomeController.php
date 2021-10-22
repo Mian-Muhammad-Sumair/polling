@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function subscriptionPlan()
     {
-        $subscriptionPlans=SubscriptionPlan::where('status',1)->get();
+        $subscriptionPlans=SubscriptionPlan::where('status',1)->with('latestSubscriptionPlanValue')->get();
         return view('selectPlan')->with(['subscriptionPlans'=>$subscriptionPlans]);
     }
 }

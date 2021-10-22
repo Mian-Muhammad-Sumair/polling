@@ -27,9 +27,9 @@ class SubscriptionPlanUpdateRequest extends FormRequest
         return [
             'name' => 'required',
             'plan_type' => 'required',
+            'plan_value' => 'required',
             'info' => 'required',
-            'keys' => 'required',
-            'total_poll' => 'required',
+            'allow_poll' => 'required',
 
         ];
     }

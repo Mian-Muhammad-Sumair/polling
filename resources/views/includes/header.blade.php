@@ -68,7 +68,7 @@
                                         @can('View Contact Us')   <a href="{{url('admin/contact_us')}}">Contact Us List</a>@endcan
                                         @can('View Subscriber')   <a href="{{url('admin/subscribe')}}">Subscriber</a>@endcan
                                         @can('View  Subscription Plan')   <a href="{{url('admin/subscription_plan')}}">Subscription Plan List</a>@endcan
-                                        @can('Update Subscription Plan')   <a href="{{url('admin/subscription_plan')}}">Add Subscription Plan</a>@endcan
+                                        @can('Update Subscription Plan')   <a href="{{url('admin/subscription_plan/create')}}">Add Subscription Plan</a>@endcan
                                 @else
                                     <a href="{{ url('dashboard') }}" >Dashboard </a>
                                 @endif

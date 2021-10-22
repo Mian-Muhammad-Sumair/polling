@@ -46,12 +46,12 @@ Route::get('/poll/action/{id}', [App\Http\Controllers\CustomerProfileController:
 Route::get('/poll/visibility/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVisibility']);
 Route::get('/poll/view/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollView']);
 Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileController::class,'pollVotes']);
-
+Route::get('/payment/{id}', [App\Http\Controllers\PaymentController::class,'show']);
+Route::post('/payment', [App\Http\Controllers\PaymentController::class,'store']);
 
 Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
 Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
 
-Route::view('/register_billing', 'signUpBilling');
 
 Route::get('/select_plan', [App\Http\Controllers\HomeController::class, 'subscriptionPlan'])->name('Select Plan');
 Route::prefix('admin')->group(function(){

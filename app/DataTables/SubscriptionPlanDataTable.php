@@ -24,8 +24,8 @@ class SubscriptionPlanDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function($item){
+//                <a href='subscription_plan/delete/{$item->id}' class='col-delete'><i class='fa fa-trash'></i></a>
            return     "
-                <a href='subscription_plan/delete/{$item->id}' class='col-delete'><i class='fa fa-trash'></i></a>
                 <a href='/admin/subscription_plan/{$item->id}' class='col-edit'><i class='fa fa-edit'></i></a>
                 ";
             })
@@ -33,14 +33,16 @@ class SubscriptionPlanDataTable extends DataTable
                 $this->index=$this->index+1;
                 return $this->index;
             })
-            ->addColumn('type', function($item){
-                return $item->plan_type;
+            ->addColumn('plan_type', function($item){
+                return $item->latestSubscriptionPlanValue->plan_type;
+            })
+            ->addColumn('plan_value', function($item){
+                return $item->latestSubscriptionPlanValue->plan_value;
             })
             ->addColumn('allow_poll', function($item){
-                return $item->total_poll;
-            })
-            ->addColumn('allow_keys', function($item){
-                return $item->keys;
+                return $item->latestSubscriptionPlanValue->allow_poll;
+            })   ->addColumn('amount', function($item){
+                return $item->latestSubscriptionPlanValue->amount;
             })
             ->addColumn('status', function($item){
                 $type='badge-error';
@@ -98,10 +100,11 @@ class SubscriptionPlanDataTable extends DataTable
         return [
             Column::make('#'),
             Column::make('name'),
-            Column::make('type'),
             Column::make('info'),
+            Column::make('plan_type'),
+            Column::make('plan_value'),
             Column::make('allow_poll'),
-            Column::make('allow_keys'),
+            Column::make('amount'),
             Column::computed('status')
                 ->exportable(false)
                 ->printable(false)

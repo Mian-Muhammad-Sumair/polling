@@ -139,14 +139,22 @@ Dashboard
                 <div class="underline"></div>
             </div>
             <div>
+                @if($active_plan)
                 <h5>
-                    <b>Current plan : </b>Trial Package
+
+                    <b>Current plan : </b> {{$active_plan->subscriptionPlanValue->subscriptionPlan->name}}
+
                 </h5>
                 <h5>
                     <b>Status : </b>online <span>
                         <div class="green-dot"></div>
                     </span>
                 </h5>
+                @else
+                    <a href="{{ url('/select_plan') }}" class="custom-btn">Select Plan</a>
+
+                @endif
+
             </div>
         </div>
         <div class="profile-section">

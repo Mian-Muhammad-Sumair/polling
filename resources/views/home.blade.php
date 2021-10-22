@@ -76,6 +76,13 @@
 {{--                        <div class="badge-right">{!! $poll['question']!!}</div>--}}
                         <div class="row"   style="text-align: center;" >
                             <div class="col-lg-12 col-md-12 col-xs-12"><b>{!! $poll['question']!!}</b></div>
+                            @if($poll['question_video'])
+
+                                <video width="320" height="240" controls>
+                                    <source src="{{asset($poll['question_video'])}}" type="video/mp4">
+                                    <source src="{{asset($poll['question_video'])}}" type="video/ogg">
+                                </video>
+                            @endif
                         </div>
                         <div class="row"    >
                             @foreach($poll['votes'] as $vote)
