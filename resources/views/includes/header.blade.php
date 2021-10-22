@@ -70,9 +70,10 @@
                                         @can('View  Subscription Plan')   <a href="{{url('admin/subscription_plan')}}">Subscription Plan List</a>@endcan
                                         @can('Update Subscription Plan')   <a href="{{url('admin/subscription_plan/create')}}">Add Subscription Plan</a>@endcan
                                 @else
-                                    <a href="{{ url('dashboard') }}" >Dashboard </a>
+                                    
                                 @endif
-
+                                <a href="{{ url('dashboard') }}" >Dashboard </a>
+                                <a href="{{ url('payment_list') }}" >Payment List </a>
                                 <a href="{{ url('/poll/create') }}" >Create Poll </a>
                                <a href="{{ url('/poll') }}" >Poll List</a>
                             </div>

@@ -11,6 +11,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class SubscribeDataTable extends DataTable
 {
+    protected $index;
     /**
      * Build DataTable class.
      *

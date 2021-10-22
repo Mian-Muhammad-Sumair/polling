@@ -13,6 +13,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class SubscriptionPlanDataTable extends DataTable
 {
+
     /**
      * Build DataTable class.
      *
@@ -77,7 +78,7 @@ class SubscriptionPlanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('subscription-plan-table')
+                    ->setTableId('subscription-plan-data-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')

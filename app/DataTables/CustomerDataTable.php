@@ -12,6 +12,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class CustomerDataTable extends DataTable
 {
+    protected $index;
     /**
      * Build DataTable class.
      *

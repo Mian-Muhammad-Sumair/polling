@@ -14,23 +14,25 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function checkPlanValidity(){
+    public function latestPaymentData(){
         $expiry_date='';
-        $plan=Payment::where('user_id',auth()->id())->where('status',1)->with('subscriptionPlanValue')->latest()->first();
-        if($plan){
-            $expiry_date=$this->expiryDate($plan->approved_date,$plan->subscriptionPlanValue->plan_type,$plan->subscriptionPlanValue->plan_value);
+        $payment=Payment::where('user_id',auth()->id())->where('status',1)->with('subscriptionPlanValue')->latest()->first();
+        if($payment){
+            $expiry_date=$this->expiryDate($payment->approved_date,$payment->subscriptionPlanValue->plan_type,$payment->subscriptionPlanValue->plan_value);
         }
+
+        return ['payment'=>$payment,'expiry'=>$expiry_date];
+    }
+    public function checkPlanValidity(){
+        $payment=$this->latestPaymentData();
+        $expiry_date=$payment['expiry'];
         $data=$expiry_date>now()?true:false;
         return $data;
     }
     public function checkActivePlanData(){
-        $plan=Payment::where('user_id',auth()->id())->where('status',1)->with('subscriptionPlanValue.subscriptionPlan')->latest()->first();
-
-        if($plan){
-            $expiry_date=$this->expiryDate($plan->approved_date,$plan->subscriptionPlanValue->plan_type,$plan->subscriptionPlanValue->plan_value);
-//            $expiry_date= Carbon::parse($plan->approved_date)->{"add" . ucfirst($plan->subscriptionPlanValue->plan_type) . "s"}($plan->subscriptionPlanValue->plan_value);
-        }
-        $data=$expiry_date>now()?$plan:false;
+        $payment=$this->latestPaymentData();
+        $expiry_date=$payment['expiry'];
+        $data=$expiry_date>now()?$payment['payment']:false;
         return $data;
     }
     public function checkPlanValidPoll(){

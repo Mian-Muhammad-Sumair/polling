@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\PaymentsDataTable;
 use App\DataTables\SubscriptionPlanDataTable;
 use App\Http\Requests\PaymentStoreRequest;
 use App\Http\Requests\SubscriptionPlanStoreRequest;
@@ -33,9 +34,14 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(SubscriptionPlanDataTable $dataTable)
+    public function index(PaymentsDataTable $dataTable)
     {
-         return $dataTable->render('subscriptionPlan.index_table',['title'=>'Payments List']);;
+        $userType=auth('admin')->check()?'admin':'customer';
+        $userId=auth()->id();
+        $dataTable->with('userType', $userType);
+        $dataTable->with('userId', $userId);
+        $dataTable->with('activePlan', $this->checkActivePlanData());
+         return $dataTable->render('payment.index_table',['title'=>'Payments List']);;
     }
 
     public function store(PaymentStoreRequest $request)
