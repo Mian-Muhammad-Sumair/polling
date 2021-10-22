@@ -37,7 +37,14 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
                    $item->pollKeys()->create(['key'=>$newKew]);
                }
            }
-           $item->pollKeys()->create(['key' => $data['key']]);
+           if($data['key']) {
+               foreach ( $data['key'] as $key){
+                   if(isset($key['required']) && $key['required']){
+                       $item->pollKeys()->create(['key' => $key['key']]);
+                   }
+               }
+           }
+
        }
        foreach ($data['identifier_question'] as $value) {
           if(isset($value['question'])){
@@ -96,8 +103,13 @@ class PollRepository extends BaseCRUDRepository implements PollRepositoryInterfa
            }
        }
      $item->pollKeys()->delete();
-       foreach ($data['key'] as $value) {
-           $item->pollKeys()->create(['key'=>$value]);
+       if($data['key']) {
+           foreach ( $data['key'] as $key){
+               if(isset($key['required']) && $key['required']){
+                   $item->pollKeys()->create(['key' => $key['key']]);
+               }
+
+           }
        }
        return true;
    }

@@ -35,11 +35,15 @@ class CustomerPollOptionDataTable extends DataTable
             })
             ->rawColumns(['question_option','action','video'])
             ->addColumn('video', function($item){
-
-                return     "<video width='320' height='240' controls>
+                $video='';
+                if($item->video){
+                    $video= "<video width='320' height='240' controls>
                                 <source src=".asset($item->video)." type='video/mp4'>
                                 <source src=".asset($item->video)." type='video/ogg'>
                             </video>";
+                }
+
+                return    $video;
             })
             ->addColumn('action', function($item){
                 return     "   <a  href='/poll/votes/{$this->id}/{$item->id}' class='col-view'><i class='fa fa-eye' ></i></a>";

@@ -25,12 +25,6 @@ Select Plan
                             <div class="options">
                                 <ul>
                                     <li>
-
-                                        <p>
-                                            Create <b><span>{{$subscriptionPlan->latestSubscriptionPlanValue['key']}}</span> Poll Keys</b>
-                                        </p>
-                                    </li>
-                                    <li>
                                         <p>
                                             Create <b><span>{{$subscriptionPlan->latestSubscriptionPlanValue['allow_poll']}}</span> Maximum Poll</b>
                                         </p>

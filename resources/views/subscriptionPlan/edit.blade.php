@@ -82,11 +82,11 @@
                                 @error('info') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
-                        <div class="Generate-polling-key-radio">
-                            <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">
-                            <label for="key_type"> Multiple polling keys</label>
+{{--                        <div class="Generate-polling-key-radio">--}}
+{{--                            <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">--}}
+{{--                            <label for="key_type"> Multiple polling keys</label>--}}
 
-                        </div>
+{{--                        </div>--}}
                         <div class="col-md-4 col-sm-4 col-lg-4">
                             <input type="submit" class="custom-btn-update " name="status" value="Update">
                         </div>

@@ -225,40 +225,65 @@
                     <div class="col-md-4 col-sm-4 col-lg-4">
                      <input type="submit" class="custom-btn btn-lg" name="status"  value="Lock Poll">
                     </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4  second-part">
-                        <div class="form-group">
-                            <label>Polling key</label>
-                            @if($poll->pollKeys)
-                                @foreach($poll->pollKeys as $index=>$key)
-                                    <input type="text" id="key" name="key[{{$key->id}}]" value="{{$key->key}}" >
-                                    @error('key.'.$key->id) <span class="error_msg">{{$message}}</span> @enderror
-                                @endforeach
-                                @error('key') <span class="error_msg">{{$message}}</span> @enderror
-                            @elseif(old('key'))
-                                @foreach(old('key') as $index=>$key)
-                                    <input type="text" id="key" name="key[{{$index}}]" value="{{$key}}" >
-                                    @error('key.'.$index) <span class="error_msg">{{$message}}</span> @enderror
-
-                                @endforeach
-
-                            @else
-                                <input type="text" id="key" name="key[]" value="{{ old('key') }}">
-                                <div class="Generate-polling-key-radio">
-                                    <input type="checkbox" id="key_type" class="largerCheckbox"  {{old('key')==1?"checked":''}}  name="key_type" value="1">
-                                    <label for="key_type"> Multiple polling keys</label>
-
-                                </div>
-                                    @error('key[0]') <span class="error_msg">{{$message}}</span> @enderror
-
-                            @endif
-                        </div>
+                    <div class="col-md-4 col-sm-4 col-lg-4">
+                        <a style="width: 100%;text-align: center"  data-toggle="modal" data-target="#demoModal" onclick="generateKey()" class="custom-btn  btn-lg ">Generate Poll Key</a>
                     </div>
-
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
                     </div>
 
                 </div>
+                <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="demoModalLabel">Sellect Keys</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body key_data">
+                            @if($poll->pollKeys)
+                                    @foreach($poll->pollKeys as $index=>$key)
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-10">
+                                                <input type="text" id="key" name="key[{{$key->id}}][key]" value="{{$key->key}}">
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="Generate-polling-key-radio" style="margin-top: 12px">
+                                                    <input type="checkbox" id="key_type0" class="largerCheckbox" checked  name="key[{{$key->id}}][required]" value="1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                        <input type="hidden" id="total_keys" class="total_keys" name="total_keys" value="{{count($poll->pollKeys)}}">
+                                @elseif(old('key'))
+                                    @foreach(old('key') as $index=>$key)
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-10">
+                                                <input type="text" id="key" name="key[{{$index}}][key]" value="{{$key['key']}}">
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="Generate-polling-key-radio" style="margin-top: 12px">
+                                                    <input type="checkbox" id="key_type0" class="largerCheckbox" {{$key['required']?"checked":''}}  name="key[{{$index}}][required]" value="1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                        <input type="hidden" class="total_keys" id="total_keys" name="total_keys" value="{{count(old('key'))}}">
+                            @else
+                                    <input type="hidden"  class="total_keys" id="total_keys" name="total_keys" value="0">
+                                    @error('key.key') <span class="error_msg">{{$message}}</span> @enderror
+
+                            @endif
+                            </div>
+                            <div class="modal-footer" style="color: white">
+                                <a href="#" class="  custom-btn" data-dismiss="modal">Ok</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </form>
         </div>
@@ -266,6 +291,9 @@
 @endsection
 
 @section('extra_js')
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -353,6 +381,22 @@
             var key = document.getElementById('key').value = value;
 
         }
+        function generateKey() {
+            var totalKeys =  document.getElementById('total_keys').value;
+            var max=5;
+            var total=   parseInt(totalKeys, 10) - parseInt(max, 10);
+            if(total<0){
+                var keymode=$('.key_data');
+                for (var i = 1 ; i < 6; i++){
+                    value = makekey();
+                    var Keyhtml = '<div class="col-lg-12"><div class="col-lg-10"><input type="text" id="key'+i+'" name="key['+i+'][key]" value="'+ value +'"></div><div class="col-lg-2">\n' +
+                        '<div class="Generate-polling-key-radio" style="margin-top: 12px"><input type="checkbox" id="key_type0" class="largerCheckbox" checked name="key['+i+'][required]" value="1"></div></div></div>';
+                    $(keymode).append(Keyhtml); //Add field html
+                    document.getElementById("total_keys").value=i;
+                }
+
+            }
+        }
     </script>
 <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <script>
@@ -390,8 +434,9 @@
         .images img {
             float: right;
         }
-        .error_msg{
-            color:red;
+
+        .error_msg {
+            color: red;
         }
 
 
@@ -407,8 +452,13 @@
             margin-bottom: 10px;
         }
 
-        .container {
-            width: 80%;
+        /* .container {
+                width: 80%;
+            } */
+        .form-contact form,
+        .login-bg form,
+        .sign-up form {
+            padding: 20px 0px;
         }
 
         .login-bg form {
@@ -458,7 +508,8 @@
             color: white;
         }
 
-        .form-contact form, .login-bg form {
+        .form-contact form,
+        .login-bg form {
             box-shadow: none;
         }
 
@@ -499,34 +550,61 @@
             color: #000000;
         }
 
-        .login-bg form .second-part label, .select-styled, .login-bg form .account-details label {
+        .login-bg form .second-part label,
+        .select-styled,
+        .login-bg form .account-details label {
             color: #000000 !important;
         }
-        .btn-lg{
-            padding: 25px 120px !important;
+
+        .btn-lg {
+            padding: 15px !important;
             color: white !important;
             font-weight: 600 !important;
-            margin-top: 40px !important;
-            font-size: 24px !important;
+            margin-top: 30px !important;
+            font-size: 18px !important;
             background-color: #0044e4 !important;
 
         }
+
         .add_button:hover, .add_button:focus,
         .add_question:hover, .add_question:focus{
             color: #fff !important;
             text-decoration: none;
         }
-        .custom-btn{
+
+        .custom-btn {
             text-transform: inherit;
         }
-        .login-bg form .second-part  input{
+
+        .login-bg form .second-part input {
             color: #000000;
         }
-        .second-part .custom-btn{
+
+        .second-part .custom-btn {
             margin-top: 15px;
         }
-        .bottom{
+
+        .bottom {
             margin-top: 30px;
         }
+
+        @media screen and (max-width: 767px) {
+            .content-order .register-img img {
+
+                margin-bottom: 30px;
+                margin-top: 20px !important;
+            }
+        }
+        .field_wrap .Generate-polling-key-radio{
+            margin-top: 10px;
+        }
+        .remove_button{
+            margin-top:15px;
+        }
+
     </style>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 @endsection
