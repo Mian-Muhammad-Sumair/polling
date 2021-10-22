@@ -3,16 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PaymentsDataTable;
-use App\DataTables\SubscriptionPlanDataTable;
 use App\Http\Requests\PaymentStoreRequest;
-use App\Http\Requests\SubscriptionPlanStoreRequest;
-use App\Http\Requests\SubscriptionPlanUpdateRequest;
 use App\Models\Payment;
 use App\Models\SubscriptionPlan;
-use App\Models\SubscriptionPlanValue;
 use App\Repositories\PaymentRepositoryInterface;
-use App\Repositories\SubscriptionPlanRepositoryInterface;
-use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -75,8 +69,13 @@ class PaymentController extends Controller
     }
 
 
-    public function updateStatus($id){
-
+    public function cancelPlan($id){
+        $payment=Payment::find($id);
+        $payment->status=2;
+        $payment->save()?
+            toastr()->success('Successfully! Your plan has been canceled.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('/select_plan');
     }
 
 }

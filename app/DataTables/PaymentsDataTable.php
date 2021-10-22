@@ -32,7 +32,7 @@ class PaymentsDataTable extends DataTable
 //            <a href='/plan/cancel/{$item->id}' class='text-capitalize col-status'><span class='badge badge-error'>Cancel Plan</span></a>
                 $acton='';
                 if($this->activePlan && $this->activePlan->id==$item->id && $this->userType!='admin'){
-                    $acton=" <a href='/plan/cancel/{$item->id}' class='text-capitalize col-status'><span class='badge badge-error'>Cancel Plan</span></a>";
+                    $acton="   <a href='/plan/cancel/{$item->id}' class='text-capitalize col-status'><span class='badge badge-error'>Cancel Plan</span></a>";
                 }
            return    $acton;
             })
@@ -69,9 +69,11 @@ class PaymentsDataTable extends DataTable
             ->addColumn('status', function($item){
                 $type='badge-error';
                 $status="Expired";
-                if($item->status){
+                if($item->status==1){
                     $status="Active";
                     $type='badge-success';
+                }elseif($item->status==2){
+                    $status="Canceled";
                 }
            return     "
                 <span class='text-capitalize col-status'><span class='badge ".$type."'>{$status}</span></span>

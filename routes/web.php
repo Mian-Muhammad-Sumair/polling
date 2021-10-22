@@ -49,6 +49,7 @@ Route::get('/poll/votes/{pollId}/{id}', [App\Http\Controllers\CustomerProfileCon
 Route::get('/payment/{id}', [App\Http\Controllers\PaymentController::class,'show']);
 Route::post('/payment', [App\Http\Controllers\PaymentController::class,'store']);
 Route::get('/payment_list', [App\Http\Controllers\PaymentController::class,'index']);
+Route::get('/plan/cancel/{id}', [App\Http\Controllers\PaymentController::class,'cancelPlan']);
 
 Route::get('lang/change', [LangController::class,'change'])->name('changeLang');
 Route::get('customer/{id}', [App\Http\Controllers\CustomerProfileController::class,'showCustomer']);
