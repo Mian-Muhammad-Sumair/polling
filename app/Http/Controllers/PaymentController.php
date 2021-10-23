@@ -50,12 +50,12 @@ class PaymentController extends Controller
         $data['subscription_plan_value_id']=$plan->latestSubscriptionPlanValue->id;
         $data['amount']=$plan->latestSubscriptionPlanValue->amount;
         $data['approved_date']=now();
-        $data['expiry_date']=now()->addYear();
+        $data['expiry_date']=now()->addYears(1);
 
         $data= $this->repository->create($data)?
             toastr()->success('Successfully! Payments Requested has been Created.'):
             toastr()->error('Sorry! Please try again later.');
-        return redirect('/admin/subscription_plan');
+        return redirect('/dashboard');
 
     }
 
