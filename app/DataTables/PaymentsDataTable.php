@@ -134,7 +134,6 @@ class PaymentsDataTable extends DataTable
             Column::make('first_name'),
             Column::make('last_name'),
             Column::make('payment_mode'),
-            Column::make('name_on_card'),
             Column::make('approved_date'),
             Column::make('plan'),
             Column::make('plan_type'),

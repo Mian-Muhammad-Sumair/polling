@@ -22,12 +22,8 @@ class Payment extends Model
         'state',
         'amount',
         'payment_mode',
-        'name_on_card',
-        'card_expiry',
         'approved_date',
         'status',
-        'security_code',
-        'card_number',
         'subscription_plan_value_id',
         'user_id',
     ];

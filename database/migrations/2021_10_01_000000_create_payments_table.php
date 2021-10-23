@@ -22,11 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('amount');
-            $table->string('payment_mode');
-            $table->string('name_on_card');
-            $table->string('card_number');
-            $table->string('card_expiry');
-            $table->string('security_code');
+            $table->string('payment_mode')->nullable();
             $table->date('approved_date')->nullable();
             $table->string('status')->default(0);
             $table->string('subscription_plan_value_id');
