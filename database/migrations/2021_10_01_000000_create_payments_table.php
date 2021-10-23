@@ -24,7 +24,7 @@ class CreatePaymentsTable extends Migration
             $table->string('amount');
             $table->string('payment_mode')->nullable();
             $table->date('approved_date')->nullable();
-            $table->string('status')->default(0);
+            $table->boolean('status')->default(0);
             $table->string('subscription_plan_value_id');
             $table->string('user_id');
             $table->timestamps();
