@@ -42,6 +42,8 @@ class Controller extends BaseController
         if($planDetails){
         $pollLimit=$planDetails->subscriptionPlanValue->allow_poll;
         $poll=Poll::whereDate('created_at','>',$planDetails->approved_date)->count();
+        }else{
+            $poll=0;
         }
         $data=$pollLimit>$poll?true:false;
         return $data;

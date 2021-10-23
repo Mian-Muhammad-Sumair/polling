@@ -97,14 +97,14 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label>Name on card</label>
-                                <input type="text" name="name_on_card" value="{{old('name_on_card')}}" required>
+                                <input type="text" name="name_on_card" value="{{old('name_on_card')}}" >
                                 @error('name_on_card') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label>Card number</label>
-                                <input type="text" name="card_number" value="{{old('card_number')}}"  required>
+                                <input type="text" name="card_number" value="{{old('card_number')}}"  >
                                 @error('card_number') <span class="error_msg">{{$message}}</span> @enderror
 
                             </div>
@@ -112,14 +112,14 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 <label>Expiry date</label>
-                                <input type="text"  value="{{old('card_expiry')}}" name="card_expiry" required>
+                                <input type="text"  value="{{old('card_expiry')}}" name="card_expiry" >
                                 @error('card_expiry') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                                 <label>Security code </label>
-                                <input type="text"  value="{{old('security_code')}}" name="security_code" required>
+                                <input type="text"  value="{{old('security_code')}}" name="security_code" >
                                 @error('security_code') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>

@@ -63,8 +63,8 @@ Route::prefix('admin')->group(function(){
     Route::get('customer/status/{id}',[\App\Http\Controllers\Admin\CustomerController::class,'status'])->middleware( ['can:View Customer']);
     Route::get('/contact_us', [App\Http\Controllers\ContactUsController::class,'index'])->middleware( ['can:View Contact Us']);
     Route::get('contact_us/delete/{id}',[\App\Http\Controllers\ContactUsController::class,'destroy'])->middleware( ['can:Delete Contact Us']);
-    Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index'])->middleware( ['can:View Subscriber']);
-    Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy'])->middleware( ['can:Delete Subscriber']);
+    Route::get('/subscribe', [\App\Http\Controllers\SubscribeController::class,'index']);
+    Route::get('subscribe/delete/{id}',[\App\Http\Controllers\SubscribeController::class,'destroy']);
     Route::get('role_list',[\App\Http\Controllers\Admin\RoleController::class,'index'])->middleware( ['can:View Role & Permission']);
     Route::get('assign_permission/{id}',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissionsForm'])->middleware( ['can:View Role & Permission']);
     Route::post('assign_permission',[\App\Http\Controllers\Admin\RoleController::class,'assignPermissions'])->middleware( ['can:Update Role & Permission']);

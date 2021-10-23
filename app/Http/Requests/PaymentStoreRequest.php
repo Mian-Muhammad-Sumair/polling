@@ -25,6 +25,7 @@ class PaymentStoreRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -32,11 +33,7 @@ class PaymentStoreRequest extends FormRequest
             'country' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'payment_mode' => 'required',
-            'name_on_card' => 'required',
-            'card_expiry' => 'required',
-            'security_code' => 'required',
-            'card_number' => 'required',
+            'payment_mode' => 'nullable',
             'plan' => 'required',
 
 

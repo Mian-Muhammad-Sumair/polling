@@ -20,7 +20,7 @@ class PaymentController extends Controller
     public function __construct(PaymentRepositoryInterface $repository)
     {
         $this->repository=$repository;
-        $this->middleware('auth:user,admin,customer');
+        $this->middleware('auth:admin,customer');
     }
 
     /**
@@ -50,12 +50,12 @@ class PaymentController extends Controller
         $data['subscription_plan_value_id']=$plan->latestSubscriptionPlanValue->id;
         $data['amount']=$plan->latestSubscriptionPlanValue->amount;
         $data['approved_date']=now();
-        $data['expiry_date']=now()->addYear();
+        $data['expiry_date']=now()->addYears(1);
 
         $data= $this->repository->create($data)?
             toastr()->success('Successfully! Payments Requested has been Created.'):
             toastr()->error('Sorry! Please try again later.');
-        return redirect('/admin/subscription_plan');
+        return redirect('/dashboard');
 
     }
 
@@ -64,7 +64,7 @@ class PaymentController extends Controller
              toastr()->error('Sorry! Your plan is already Active.');
              return redirect('/dashboard');
          }
-        return view('payment.create')->with('plan',$id);
+      return  view('payment.create')->with('plan',$id);
 
     }
 
