@@ -20,7 +20,7 @@ class PaymentController extends Controller
     public function __construct(PaymentRepositoryInterface $repository)
     {
         $this->repository=$repository;
-        $this->middleware('auth:user,admin');
+        $this->middleware('auth:admin,customer');
     }
 
     /**
