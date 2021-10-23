@@ -20,7 +20,7 @@ class PaymentController extends Controller
     public function __construct(PaymentRepositoryInterface $repository)
     {
         $this->repository=$repository;
-        $this->middleware('auth:user,admin');
+        $this->middleware('auth:user,admin,customer');
     }
 
     /**
@@ -40,7 +40,7 @@ class PaymentController extends Controller
 
     public function store(PaymentStoreRequest $request)
     {
-        if(  $this->checkPlanValidity()){
+        if( $this->checkPlanValidity()){
             toastr()->error('Sorry! Your plan is already Active.');
             return redirect('/dashboard');
         }
@@ -64,7 +64,7 @@ class PaymentController extends Controller
              toastr()->error('Sorry! Your plan is already Active.');
              return redirect('/dashboard');
          }
-        view('payment.create')->with('plan',$id);
+        return view('payment.create')->with('plan',$id);
 
     }
 

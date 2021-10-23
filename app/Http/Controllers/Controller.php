@@ -37,6 +37,7 @@ class Controller extends BaseController
     }
     public function checkPlanValidPoll(){
         $pollLimit=0;
+        $poll='';
         $planDetails=$this->checkActivePlanData();
         if($planDetails){
         $pollLimit=$planDetails->subscriptionPlanValue->allow_poll;
