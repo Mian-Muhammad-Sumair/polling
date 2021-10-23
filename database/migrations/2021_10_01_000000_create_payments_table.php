@@ -28,9 +28,9 @@ class CreatePaymentsTable extends Migration
             $table->string('card_expiry');
             $table->string('security_code');
             $table->date('approved_date')->nullable();
-            $table->text('status')->default(0);
-            $table->text('subscription_plan_value_id');
-            $table->text('user_id');
+            $table->string('status')->default(0);
+            $table->string('subscription_plan_value_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
