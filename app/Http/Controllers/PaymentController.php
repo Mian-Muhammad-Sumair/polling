@@ -64,7 +64,7 @@ class PaymentController extends Controller
              toastr()->error('Sorry! Your plan is already Active.');
              return redirect('/dashboard');
          }
-        view('payment.create')->with('plan',$id);
+      return  view('payment.create')->with('plan',$id);
 
     }
 
