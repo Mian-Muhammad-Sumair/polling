@@ -34,6 +34,12 @@ class PaymentsDataTable extends DataTable
                 if($this->activePlan && $this->activePlan->id==$item->id && $this->userType!='admin'){
                     $acton="   <a href='/plan/cancel/{$item->id}' class='text-capitalize col-status'><span class='badge badge-error'>Cancel Plan</span></a>";
                 }
+                if($this->userType=='admin'){
+                    if($item->status==0){
+                        $acton="   <a href='/plan/approve/{$item->id}' class='text-capitalize col-status'><span class='badge badge-success'>Approve Payment</span></a>";
+                    }
+                }
+
            return    $acton;
             })
             ->addColumn('#', function($item){
@@ -125,12 +131,9 @@ class PaymentsDataTable extends DataTable
      */
     protected function getColumns()
     {
-        if($this->userType=='admin'){
-            $user=Column::make('user');
-        }
-        return [
+
+        $allColumn= [
             Column::make('#'),
-            $user,
             Column::make('first_name'),
             Column::make('last_name'),
             Column::make('payment_mode'),
@@ -151,9 +154,12 @@ class PaymentsDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('amount'),
-
         ];
-
+        if($this->userType=='admin'){
+            $user=Column::make('user');
+            array_push($allColumn,$user);
+        }
+        return $allColumn;
 
     }
 

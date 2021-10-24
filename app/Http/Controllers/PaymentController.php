@@ -49,8 +49,6 @@ class PaymentController extends Controller
         $plan=SubscriptionPlan::where('id',$data['plan'])->with('latestSubscriptionPlanValue')->first();
         $data['subscription_plan_value_id']=$plan->latestSubscriptionPlanValue->id;
         $data['amount']=$plan->latestSubscriptionPlanValue->amount;
-        $data['approved_date']=now();
-        $data['expiry_date']=now()->addYears(1);
 
         $data= $this->repository->create($data)?
             toastr()->success('Successfully! Payments Requested has been Created.'):
@@ -76,6 +74,15 @@ class PaymentController extends Controller
             toastr()->success('Successfully! Your plan has been canceled.'):
             toastr()->error('Sorry! Please try again later.');
         return redirect('/select_plan');
+    }
+    public function approvePayment($id){
+        $payment=Payment::findOrFail($id);
+        $payment->status=1;
+        $payment->approved_date=now();
+        $payment->save()?
+            toastr()->success('Successfully!Plan has been Activated.'):
+            toastr()->error('Sorry! Please try again later.');
+        return redirect('/payment_list');
     }
 
 }

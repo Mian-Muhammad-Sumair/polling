@@ -37,7 +37,7 @@ class PollController extends Controller
     }
 
     public function create(){
-      if(!$this->checkPlanValidPoll()){
+      if(!$this->checkPlanValidPoll() && !auth('admin')->check()){
           toastr()->error('Sorry! Your poll limit excited. Please upgrade or select plan');
           return redirect('/dashboard');
       }
@@ -45,7 +45,7 @@ class PollController extends Controller
     }
     public function store(PollStoreRequest $request)
     {
-        if(!$this->checkPlanValidPoll()){
+        if(!$this->checkPlanValidPoll() && !auth('admin')->check()){
             toastr()->error('Sorry! Your poll limit excited. Please upgrade or select plan');
             return redirect('/dashboard');
         }
