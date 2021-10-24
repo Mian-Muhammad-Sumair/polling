@@ -75,7 +75,10 @@ class PaymentsDataTable extends DataTable
             ->addColumn('status', function($item){
                 $type='badge-error';
                 $status="Expired";
-                if($item->status==1){
+                if($item->status==0){
+                    $status="pending";
+                    $type='badge-warning';
+                }elseif($item->status==1){
                     $status="Active";
                     $type='badge-success';
                 }elseif($item->status==2){

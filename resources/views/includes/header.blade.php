@@ -64,16 +64,17 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 @if(session('auth.current')=='admin')
                                     @can('View Customer') <a href="{{url('admin/customer')}}">Customers</a>@endcan
-                                    @can('View Role & Permission')    <a href="{{url('admin/role_list')}}">Roles</a>@endcan
-                                        @can('View Contact Us')   <a href="{{url('admin/contact_us')}}">Contact Us List</a>@endcan
-                                        @can('View Subscriber')   <a href="{{url('admin/subscribe')}}">Subscriber</a>@endcan
-                                        @can('View  Subscription Plan')   <a href="{{url('admin/subscription_plan')}}">Subscription Plan List</a>@endcan
-                                        @can('Update Subscription Plan')   <a href="{{url('admin/subscription_plan/create')}}">Add Subscription Plan</a>@endcan
+                                    @can('View Role & Permission')    <a href="{{url('/admin/role_list')}}">Roles</a>@endcan
+                                        @can('View Contact Us')   <a href="{{url('/admin/contact_us')}}">Contact Us List</a>@endcan
+                                        @can('View Subscriber')   <a href="{{url('/admin/subscribe')}}">Subscriber</a>@endcan
+                                        @can('View Subscription Plan')   <a href="{{url('/admin/subscription_plan')}}">Subscription Plan List</a>@endcan
+                                        @can('Update Subscription Plan')   <a href="{{url('/admin/subscription_plan/create')}}">Add Subscription Plan</a>@endcan
+                                        <a href="{{ url('admin') }}" >Dashboard </a>
                                 @else
-
+                                    <a href="{{ url('/dashboard') }}" >Dashboard </a>
                                 @endif
-                                <a href="{{ url('dashboard') }}" >Dashboard </a>
-                                <a href="{{ url('payment_list') }}" >Payment List </a>
+
+                                <a href="{{ url('/payment_list') }}" >Payment List </a>
                                 <a href="{{ url('/poll/create') }}" >Create Poll </a>
                                <a href="{{ url('/poll') }}" >Poll List</a>
                             </div>

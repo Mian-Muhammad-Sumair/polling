@@ -41,6 +41,9 @@ class CustomerProfileController extends Controller
      */
     public function index(CustomerPollDataTable $dataTable)
     {
+        if(auth('admin')->check()){
+         return   redirect('/admin');
+        }
         $chart_options = [
             'chart_title' => 'Poll created by months',
             'report_type' => 'group_by_date',
