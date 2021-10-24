@@ -10,8 +10,8 @@ Select Plan
             <div class="col-md-4 col-lg-4 col-sm-4 ">
                 <div class="card ">
                     <div class="main-card">
-                        <h2 class="title ">{{$subscriptionPlan['name']}} <b>{{$subscriptionPlan->latestSubscriptionPlanValue['plan_value']}} / {{$subscriptionPlan->latestSubscriptionPlanValue['plan_type']}}</b>
-                           <b> $ {{$subscriptionPlan->latestSubscriptionPlanValue['amount']}}</b>
+                        <h2 class="title ">{{$subscriptionPlan['name']}} <b> / ({{$subscriptionPlan->latestSubscriptionPlanValue['plan_value']}}){{$subscriptionPlan->latestSubscriptionPlanValue['plan_type']}}</b>
+                           <b> ${{$subscriptionPlan->latestSubscriptionPlanValue['amount']}}</b>
                         </h2>
 
                         <div class="triangle "></div>
