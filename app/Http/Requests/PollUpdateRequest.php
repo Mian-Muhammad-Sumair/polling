@@ -39,7 +39,7 @@ class PollUpdateRequest extends FormRequest
             'option_type' => 'nullable|array',
             'status'=> 'required|in:Lock Poll,Published',
             'key' => 'required|array',
-            "key.*" => [
+            "key.*.key" => [
                 'required',
                 function ($attribute, $value, $fail) {
                     $id=explode('.',$attribute);

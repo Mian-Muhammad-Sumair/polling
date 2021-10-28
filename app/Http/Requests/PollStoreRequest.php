@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\PollKey;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PollStoreRequest extends FormRequest
@@ -31,18 +32,29 @@ class PollStoreRequest extends FormRequest
             'category' => 'required',
             'question' => 'required',
             'poll_option' => 'required|array',
-            'poll_option.*'=> 'required',
+            'poll_option.*' => 'required',
             'visibility' => 'required',
             'option_type' => 'nullable|array',
             'question_video' => 'max:20480',
-            'status'=> 'required|in:Lock Poll,Published',
-            'key' => 'required_if:status,Publish Poll|array',
-            'key.*.key' => 'unique:poll_keys,key',
+            'status' => 'required|in:Lock Poll,Published',
+            'key' => ['bail','required_if:status,Publish Poll', 'array',
+                function ($attribute, $value, $fail) {
+                    foreach ($value as $index=>$val) {
+                        if ($val['required']) {
+                            $keyCheck=PollKey::where('key',$val['key'])->exists();
+                            if($keyCheck){
+                                $fail($val['key'].'this key already assign to another poll.');
+                            }
+                        }
+                    }
+
+                }],
+            'key.*.key' => 'nullable',
             'key.*.required' => 'nullable',
             'key_type' => 'nullable|numeric',
             'identifier_question' => 'required|array',
-            'identifier_question.*.question'=> 'required',
-            'identifier_question.*.required'=> 'nullable',
+            'identifier_question.*.question' => 'required',
+            'identifier_question.*.required' => 'nullable',
 
         ];
     }

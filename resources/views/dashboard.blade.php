@@ -109,7 +109,7 @@ Dashboard
         min-height: 80px;
         width: 100%;
         background: #f5f5f5;
-        padding: 15px 20px;
+        padding: 15px 15px;
         border-radius: 10px;
         margin-bottom: 20px;
     }
@@ -135,23 +135,23 @@ Dashboard
     <div class="dashboard-body">
         <div class="top-header">
             <div>
-                <h2> <b> Welcome Back</b></h2>
+                <h2> <b>{{__('dashboard.Welcome Back')}}</b></h2>
                 <div class="underline"></div>
             </div>
             <div>
                 @if($active_plan)
                 <h5>
 
-                    <b>Current plan : </b> {{$active_plan->subscriptionPlanValue->subscriptionPlan->name}}
+                    <b>{{__('dashboard.Current plan')}} plan : </b> {{$active_plan->subscriptionPlanValue->subscriptionPlan->name}}
 
                 </h5>
                 <h5>
-                    <b>Status : </b>online <span>
+                    <b>{{__('dashboard.Status')}} : </b>{{__('dashboard.online')}} <span>
                         <div class="green-dot"></div>
                     </span>
                 </h5>
                 @else
-                    <a href="{{ url('/select_plan') }}" class="custom-btn">Select Plan</a>
+                    <a href="{{ url('/select_plan') }}" class="custom-btn">{{__('dashboard.Select Plan')}}</a>
 
                 @endif
 
@@ -169,7 +169,7 @@ Dashboard
                         <div class="text">
                             <h6>{{$user['name']}}</h6>
                             <p>{{$user['about']}}</p>
-                            <a href="customer/{{$user['id']}}">settings</a>
+                            <a href="customer/{{$user['id']}}">{{__('dashboard.settings')}}</a>
                             <p>{{$user['email']}}</p>
                         </div>
                     </div>
@@ -178,19 +178,19 @@ Dashboard
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Total Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Total Poll')}} <i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$totalPoll}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Open Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Open Poll')}} <i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$activePoll}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Expired Poll <i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Expired Poll')}}<i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$expiredPoll}}</h5>
                             </div>
                         </div>

@@ -41,9 +41,9 @@ class CustomerProfileController extends Controller
      */
     public function index(CustomerPollDataTable $dataTable)
     {
-        if(auth('admin')->check()){
-         return   redirect('/admin');
-        }
+//        if(auth('admin')->check()){
+//         return   redirect('/admin');
+//        }
         $chart_options = [
             'chart_title' => 'Poll created by months',
             'report_type' => 'group_by_date',
@@ -67,18 +67,6 @@ class CustomerProfileController extends Controller
         ];
 
         $pollPieChart = new LaravelChart($chart_options);
-        $chart_options = [
-            'chart_title' => 'Customers by Status',
-            'report_type' => 'group_by_string',
-            'model' => 'App\Models\User',
-            'where_raw' =>"user_type='customer'" ,
-            'group_by_field' => 'status',
-            'chart_type' => 'pie',
-            'filter_field' => 'created_at',
-            'filter_period' => 'year', // show users only registered this month
-        ];
-
-        $customerPieChart = new LaravelChart($chart_options);
 
 
 

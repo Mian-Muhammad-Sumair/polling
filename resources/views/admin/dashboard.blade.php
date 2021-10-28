@@ -109,7 +109,7 @@ Dashboard
         min-height: 80px;
         width: 100%;
         background: #f5f5f5;
-        padding: 15px 20px;
+        padding: 15px 15px;
         border-radius: 10px;
         margin-bottom: 20px;
     }
@@ -133,7 +133,7 @@ Dashboard
     <div class="dashboard-body">
         <div class="top-header">
             <div>
-                <h2> <b> Welcome Back</b></h2>
+                <h2> <b>{{__('dashboard.Welcome Back')}}</b></h2>
                 <div class="underline"></div>
             </div>
             <div>
@@ -141,7 +141,7 @@ Dashboard
 {{--                    <b>Current plan : </b>Plan 1--}}
 {{--                </h5>--}}
                 <h5>
-                    <b>Status : </b>online <span>
+                    <b>{{__('dashboard.Status')}} : </b>{{__('dashboard.online')}} <span>
                         <div class="green-dot"></div>
                     </span>
                 </h5>
@@ -174,19 +174,19 @@ Dashboard
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Active Customer<i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Active Customer')}}<i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$totalActiveCustomer}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Published Pools <i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Published Polls')}} <i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$totalPublishPolls}}</h5>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="pool-card">
-                                <h5>Opened Pools <i class="fa fa-info-circle"> </i></h5>
+                                <h5>{{__('dashboard.Opened Polls')}} <i class="fa fa-info-circle"> </i></h5>
                                 <h5 class="numbers">{{$totalOpenedPolls}}</h5>
                             </div>
                         </div>
