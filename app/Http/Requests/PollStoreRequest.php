@@ -43,7 +43,12 @@ class PollStoreRequest extends FormRequest
                         if ($val['required']) {
                             $keyCheck=PollKey::where('key',$val['key'])->exists();
                             if($keyCheck){
-                                $fail($val['key'].'this key already assign to another poll.');
+                                $fail("This key ({$val['key']}) already assign to another poll.");
+                            }else{
+                                $matchKeysCount=collect($value)->where('required',1)->where('key',$val['key'])->count();
+                                if($matchKeysCount>1){
+                                    $fail("Duplication key error ({$val['key']})");
+                                }
                             }
                         }
                     }

@@ -203,6 +203,7 @@ Create Poll
                 </div>
                 <div class="col-md-4 col-sm-4 col-lg-4">
                     <a style="width: 100%;text-align: center"  data-toggle="modal" data-target="#demoModal" onclick="generateKey()" class="custom-btn  btn-lg ">Generate Poll Key</a>
+                    @error('key') <span class="error_msg">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-4 col-sm-4 col-lg-4">

@@ -16,6 +16,7 @@
                             <h2 class="title-page">Edit poll</h2>
                             <div class="theme-bar"></div>
                         </div>
+                        <input type="hidden" name="poll_id" value="{{$poll->id}}">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Poll name</label>
@@ -111,9 +112,9 @@
                             if(old('identifier_question')){$totalQuestions= $totalQuestions=count(old('identifier_question'));}else{ $totalQuestions=count($poll->pollIdentifierQuestions);}
                             @endphp
                             @if(old('identifier_question'))
-                                @foreach(old('identifier_question') as $index=>$question)
+                                @foreach(old('identifier_question') as $index=>$option)
                                     <div class="col-md-10 ">
-                                        <input type="text" name="identifier_question[{{$index}}}][question]" value="{{$option['question']}}">
+                                        <input type="text" name="identifier_question[{{$index}}][question]" value="{{$option['question']}}">
                                         @error('identifier_question.'.$index.'.question') <span class="error_msg">{{$message}}</span> @enderror
                                     </div>
                                     <div class="col-md-2">
@@ -126,13 +127,13 @@
                             @elseif($poll->pollIdentifierQuestions)
                                 @foreach($poll->pollIdentifierQuestions as $index=>$question)
                                     <div class="col-md-10 ">
-                                        <input type="text" name="identifier_question[{{$question->id}}}][question]" value="{{$question->identifier_question}}">
+                                        <input type="text" name="identifier_question[{{$question->id}}][question]" value="{{$question->identifier_question}}">
                                         @error('identifier_question.'.$question->id.'.question') <span class="error_msg">{{$message}}</span> @enderror
 
                                     </div>
                                     <div class="col-md-2">
                                         <div class="Generate-polling-key-radio">
-                                            <input type="checkbox" id="idt_qt{{$question->id}}" class="largerCheckbox" {{$question->required?"checked":''}}  name="identifier_question[{{$question->id}}}][required]" value="1">
+                                            <input type="checkbox" id="idt_qt{{$question->id}}" class="largerCheckbox" {{$question->required?"checked":''}}  name="identifier_question[{{$question->id}}][required]" value="1">
                                             <label for="idt_qt{{$question->id}}"> Required</label>
                                         </div>
                                     </div>
@@ -227,6 +228,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <a style="width: 100%;text-align: center"  data-toggle="modal" data-target="#demoModal" onclick="generateKey()" class="custom-btn  btn-lg ">Generate Poll Key</a>
+                        @error('key') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
                         <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
@@ -273,7 +275,6 @@
                                         <input type="hidden" class="total_keys" id="total_keys" name="total_keys" value="{{count(old('key'))}}">
                             @else
                                     <input type="hidden"  class="total_keys" id="total_keys" name="total_keys" value="0">
-                                    @error('key.key') <span class="error_msg">{{$message}}</span> @enderror
 
                             @endif
                             </div>
