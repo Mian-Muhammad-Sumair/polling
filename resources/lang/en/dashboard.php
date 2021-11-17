@@ -15,6 +15,7 @@ return [
 
     'Welcome Back' => 'Welcome Back',
     'Customers by Status' => 'Customers by Status',
+    'Poll created by months' => 'Poll created by months',
     'online' => 'online',
     'Status' => 'Status',
     'Customers Register by months' => 'Customers Register by months',

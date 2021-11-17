@@ -7,6 +7,7 @@ use App\Models\Poll;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
@@ -17,14 +18,17 @@ class DashboardController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index(){
-
-
+    public function index()
+    {
+        $language = Lang::get('dashboard');
+        $CustomersByStatus = $language['Customers by Status'];
+        $CustomersRegisterByMonths = $language['Customers Register by months'];
+        $PollsByStatus = $language['Polls by Status'];
         $chart_options = [
-            'chart_title' => 'Customers Register by months',
+            'chart_title' => $CustomersRegisterByMonths,
             'report_type' => 'group_by_date',
             'model' => 'App\Models\User',
-            'where_raw' =>"user_type='customer'" ,
+            'where_raw' => "user_type='customer'",
             'group_by_field' => 'created_at',
             'group_by_period' => 'day',
             'chart_type' => 'bar',
@@ -32,10 +36,10 @@ class DashboardController extends Controller
         $customersBarChart = new LaravelChart($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Customers by Status',
+            'chart_title' => $CustomersByStatus,
             'report_type' => 'group_by_string',
             'model' => 'App\Models\User',
-            'where_raw' =>"user_type='customer'" ,
+            'where_raw' => "user_type='customer'",
             'group_by_field' => 'status',
             'chart_type' => 'pie',
             'filter_field' => 'created_at',
@@ -45,12 +49,12 @@ class DashboardController extends Controller
         $customerPieChart = new LaravelChart($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Polls by Status',
+            'chart_title' => $PollsByStatus,
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Poll',
-            'conditions'            => [
+            'conditions' => [
                 ['name' => 'Poll Publish', 'condition' => "status='Published'", 'color' => 'black', 'fill' => true],
-                ['name' => 'Poll Completed', 'condition' => 'end_date <='.date("Y-m-d"), 'color' => 'blue', 'fill' => true],
+                ['name' => 'Poll Completed', 'condition' => 'end_date <=' . date("Y-m-d"), 'color' => 'blue', 'fill' => true],
             ],
             'group_by_field' => 'created_at',
             'chart_type' => 'line',
@@ -60,10 +64,10 @@ class DashboardController extends Controller
 
         $pollLineChart = new LaravelChart($chart_options);
         $chart_options = [
-            'chart_title' => 'Customers by Status',
+            'chart_title' => $CustomersByStatus,
             'report_type' => 'group_by_string',
             'model' => 'App\Models\User',
-            'where_raw' =>"user_type='customer'" ,
+            'where_raw' => "user_type='customer'",
             'group_by_field' => 'status',
             'chart_type' => 'pie',
             'filter_field' => 'created_at',
@@ -71,13 +75,13 @@ class DashboardController extends Controller
         ];
 
         $customerPieChart = new LaravelChart($chart_options);
-        $totalActiveCustomer = User::customer()->where('status','active')
+        $totalActiveCustomer = User::customer()->where('status', 'active')
             ->count();
 
-        $totalPublishPolls  =Poll::where('status','Published')->count();
-        $totalOpenedPolls=Poll::where('status','Published')->whereDate('start_date', '<=', date("Y-m-d"))
+        $totalPublishPolls = Poll::where('status', 'Published')->count();
+        $totalOpenedPolls = Poll::where('status', 'Published')->whereDate('start_date', '<=', date("Y-m-d"))
             ->whereDate('end_date', '>=', date("Y-m-d"))->count();
-        return view('admin.dashboard',compact('totalPublishPolls','totalOpenedPolls','totalActiveCustomer','customersBarChart','customerPieChart','pollLineChart'));
+        return view('admin.dashboard', compact('totalPublishPolls', 'totalOpenedPolls', 'totalActiveCustomer', 'customersBarChart', 'customerPieChart', 'pollLineChart'));
     }
 
 }

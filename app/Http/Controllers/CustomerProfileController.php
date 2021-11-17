@@ -20,6 +20,7 @@ use App\Repositories\PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -44,8 +45,14 @@ class CustomerProfileController extends Controller
 //        if(auth('admin')->check()){
 //         return   redirect('/admin');
 //        }
+
+        $language = Lang::get('dashboard');
+
+        $PollCreatedByMonths = $language['Poll created by months'];
+        $PollsByStatus = $language['Polls by Status'];
+
         $chart_options = [
-            'chart_title' => 'Poll created by months',
+            'chart_title' =>$PollCreatedByMonths,
             'report_type' => 'group_by_date',
             'model' => 'App\Models\Poll',
             'where_raw' =>"user_id='".auth()->id()."'" ,
@@ -56,7 +63,7 @@ class CustomerProfileController extends Controller
         $customersBarChart = new LaravelChart($chart_options);
 
         $chart_options = [
-            'chart_title' => 'Polls by Status',
+            'chart_title' => $PollsByStatus,
             'report_type' => 'group_by_string',
             'model' => 'App\Models\Poll',
             'where_raw' =>"user_id='".auth()->id()."'" ,
@@ -99,7 +106,7 @@ class CustomerProfileController extends Controller
         $user->name=$data['name'];
         $user->email=$data['email'];
         $user->about=$data['about'];
-            $user->save()?
+        $user->save()?
             toastr()->success('Successfully! Profile is Updated.'):
             toastr()->error('Sorry! Please try again later.');
         return redirect('dashboard');
@@ -135,8 +142,8 @@ class CustomerProfileController extends Controller
         $messege='';
         $poll=Poll::where('id',$id)->first();
 
-            // update poll visibility if private if public or private if public
-            $poll->visibility = $poll->visibility=='public'?'private':'public';
+        // update poll visibility if private if public or private if public
+        $poll->visibility = $poll->visibility=='public'?'private':'public';
 
 
         $poll->save()?

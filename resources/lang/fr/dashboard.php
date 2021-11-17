@@ -16,6 +16,7 @@ return [
     'Welcome Back' => 'Content de te revoir',
     'Customers by Status' => 'Clients par statut',
     'online' => 'en ligne',
+    'Poll created by months' => 'Sondage créé par mois',
     'Status' => 'Statut',
     'Customers Register by months' => 'Les clients s\'inscrivent par mois',
     'Polls by Status' => 'Sondages par statut',
