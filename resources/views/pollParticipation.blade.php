@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Poll Participation
+    {{__('participation.Poll Participation')}}
 @endsection
 @section('content')
 <div class="container  participation-section  content-order animatedParent">
@@ -8,7 +8,7 @@ Poll Participation
         <div class="col-md-6 col-sm-7  animated bounceInRight">
             <div class="login-bg login-form participation-form register-bg animatedParent">
                 <div class="main">
-                    <h2 class="title-page">Poll Participation</h2>
+                    <h2 class="title-page">{{__('participation.Poll Participation')}}</h2>
                     <div class="theme-bar"></div>
                 </div>
                     @if(auth()->id())
@@ -21,17 +21,17 @@ Poll Participation
 {{--                <form action="{{ url(auth()->id()>0?'/': '/pollParticipate'  ) }}" method="POST">--}}
                     @csrf
                     <div class="form-group">
-                        <label>Enter Polling key </label>
+                        <label>{{__('participation.Enter Polling key')}} </label>
                         <input type="text" name="polling_key" value="{{ old('polling_key') }}">
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         @error('polling_key') <span class="error_msg">{{$message}}</span> @enderror
 
                     </div>
                     <div class="form-group text-right">
-                        <button>Participate to a poll</button>
+                        <button>{{__('participation.PARTICIPATE TO A POLL')}}</button>
                     </div>
                            @guest(session('auth.current'))
-                               <div class="text-center create clr-wt pd-10">Already have an account? <a class="clr-wt" href="{{url('/login')}}"><strong>Login</strong></a></div>
+                               <div class="text-center create clr-wt pd-10"{{__('participation.Already have an account?')}} <a class="clr-wt" href="{{url('/login')}}"><strong>{{__('participation.Login')}}</strong></a></div>
                            @endguest
                 </form>
             </div>

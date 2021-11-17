@@ -9,22 +9,22 @@
                     <!--widget-footer-->
                     <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-2">
                         <ul class="links">
-                            <li><a href="/poll/create">Get Started</a></li>
-                            <li><a href="/select_plan">Price & plans</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li><a href="#about">About</a></li>
+                            <li><a href="/poll/create">{{__('footer.Get Started')}}</a></li>
+                            <li><a href="/select_plan">{{__('footer.Price & plans')}}</a></li>
+                            <li><a href="#contact">{{__('footer.Contact')}}</a></li>
+                            <li><a href="#about">{{__('footer.About')}}</a></li>
                         </ul>
                     </div>
                     <!--widget-footer-->
                     <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-2">
-                        <h4>Subscribe for newsletter</h4>
+                        <h4>{{__('footer.Subscribe for newsletter')}}</h4>
                         <ul>
                             <form method="post" action="{{url('subscribe/submit')}}">
                                 @csrf
                                 <li>
                                     <div class="form-group"><input type="email" name="email"></div>
                                 </li>
-                                <li><button type="submit" class="custom-btn-gray">Subscribe</button>
+                                <li><button type="submit" class="custom-btn-gray">{{__('footer.Subscribe')}}</button>
                                 </li>
                             </form>
                         </ul>
@@ -32,7 +32,7 @@
                     <!--widget-footer-->
 
                     <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-5 text-right">
-                        <h4 class="">Social Links</h4>
+                        <h4 class="">{{__('footer.Social Links')}}</h4>
                         <ul class="social-icon">
                             <li><a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
