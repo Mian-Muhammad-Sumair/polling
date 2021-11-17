@@ -54,7 +54,7 @@
 }
 
 @media only screen and (min-width: 1320px) {
-    header>.container,
+    header > .container,
     .service-page header .container {
         width: 1170px;
     }
@@ -83,7 +83,6 @@
     .content-order .register-img img,
     .login-img img {
         max-width: 90%;
-        ;
     }
     .register-bg form,
     .sign-up form {
@@ -134,7 +133,6 @@
     }
     .content-order .register-img img {
         max-width: 85%;
-        ;
     }
     header .button-header .custom-btn {
         /*width: 91px;*/
@@ -268,7 +266,7 @@
         max-width: 100%;
     }
     .section-contact .images-bg-fix .text-section {
-        padding: 0 30px;
+        padding: 0 15px;
     }
     .content-order .register-img img {
         /* max-width: 40%; */
@@ -354,7 +352,6 @@
     }
 }
 
-
 /* @media (min-width: 768px) {
     .container {
         width: 90%;
@@ -391,7 +388,8 @@
     .contact-us-bg form {
         padding: 40px 35px 40px 35px !important;
     }
-    footer {}
+    footer {
+    }
 }
 
 @media only screen and (max-width: 1600px) {
@@ -460,7 +458,7 @@
         padding: 29px 0;
         background-color: #0479ec;
     }
-    header>.container {
+    header > .container {
         /*display: none;*/
     }
     header.transparent {
@@ -553,7 +551,7 @@
     footer .footer-logo .logo {
         float: none;
     }
-    footer .widget-footer:nth-child(3n+1) {
+    footer .widget-footer:nth-child(3n + 1) {
         /*clear: both;*/
     }
     footer .widget-footer.last {
@@ -728,13 +726,13 @@
     /*=====  End of contact.html  ======*/
 }
 
-@media only screen and (max-width:1000px) {
+@media only screen and (max-width: 1000px) {
     footer .container {
         padding-top: 25px;
     }
 }
 
-@media only screen and (min-width:900px) {
+@media only screen and (min-width: 900px) {
     .participation-footer {
         position: inherit !important;
     }
@@ -755,7 +753,7 @@
         width: 100%;
     }
     .base-slider .inside p {
-        font-size: 9px;
+        font-size: 14px;
     }
     .title-head {
         font-size: 24px;
@@ -819,10 +817,10 @@
     /*footer .widget-footer {*/
     /*  width: 50%;*/
     /*}*/
-    footer .widget-footer:nth-child(2n+1) {
+    footer .widget-footer:nth-child(2n + 1) {
         clear: both;
     }
-    footer .widget-footer:nth-child(3n+1) {
+    footer .widget-footer:nth-child(3n + 1) {
         clear: initial;
     }
     /*footer .widget-footer.last {*/
@@ -879,7 +877,7 @@
         margin-right: 3px;
         margin-bottom: 20px;
     }
-    .our-team ul li:nth-child(2n+1) {
+    .our-team ul li:nth-child(2n + 1) {
         clear: both;
     }
     .user-slider .owl-prev,
@@ -988,7 +986,7 @@
     .order-page .tab-content .content {
         padding: 15px;
     }
-    .order-page .tab-content div>img {
+    .order-page .tab-content div > img {
         margin-left: 0;
     }
     /*=====  End of  order.html  ======*/
@@ -1054,7 +1052,6 @@
     }
     .content-order .register-img img {
         max-width: 40% !important;
-        ;
     }
     .login-bg form .form-group,
     .sign-up form .form-group {
@@ -1075,7 +1072,7 @@
 	=            Index.html            =
 	==================================*/
     .base-slider {
-        padding-top: 55px;
+        /* padding-top: 55px; */
     }
     .base-slider .owl-prev,
     .base-slider .owl-next {
@@ -1089,8 +1086,10 @@
         margin-bottom: 10px;
     }
     .base-slider h2 {
-        font-size: 13px;
+        font-size: 22px !important;
         line-height: normal;
+        font-weight: bold;
+        /* margin-top: 20px; */
     }
     .base-slider .custom-btn {
         font-size: 10px;
@@ -1273,7 +1272,7 @@
         text-align: center;
         margin-top: 5px;
     }
-    .my-account .content>div {
+    .my-account .content > div {
         margin-bottom: 20px;
     }
     .my-account .content .center,
@@ -1307,7 +1306,7 @@
     .order-page .tab-content .content {
         width: 100%;
     }
-    .order-page .tab-content .content>div {
+    .order-page .tab-content .content > div {
         margin-bottom: 20px;
     }
     .order-page .tab-content .content .center,
@@ -1374,7 +1373,6 @@
     /*=====  End of contact.html  ======*/
 }
 
-
 /*=====  End of Style Responsive  ======*/
 
 @media only screen and (min-width: 565px) and (max-width: 787px) {
@@ -1383,5 +1381,29 @@
     }
     .footer-outer .text-right {
         text-align: left !important;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .transparent .logo {
+        text-align: center;
+    }
+    .button-header .custom-btn {
+        font-size: 12px !important;
+        padding: 10px !important;
+        border-radius: 3px !important;
+    }
+    .button-header .dropdown .btn {
+        font-size: 12px !important;
+        padding: 3px 10px !important;
+        border-radius: 3px !important;
+        height: 32px;
+    }
+    .button-header {
+        justify-content: center;
+        height: 50px !important;
+    margin-top: 5px !important;
+    }
+    .footer-outer .text-right {
+        text-align: center !important;
     }
 }

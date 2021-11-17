@@ -10,8 +10,9 @@
         background-color: #1f46a2;
         background-repeat: no-repeat;
         background-size: cover;
-        padding-top: 80px;
-        height: 700px;
+        padding: 50px 0px;
+
+        /* height: 700px; */
     }
 
     .images-bg-fix .theme-bar {
@@ -22,16 +23,17 @@
 
     .section-contact .images-bg-fix .text-section li,
     .section-contact .images-bg-fix .text-section .first {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
 
-    header.transparent {
+    /* header.transparent {
         position: absolute;
-    }
+    } */
 
     @media only screen and (max-width:1200px) {
         .images-bg-fix {
-            height: 1350px;
+            
+            /* height: 1350px; */
         }
 
         .section-contact {
@@ -50,7 +52,7 @@
         <div class="inside">
             {!! __('home.banner_description') !!}
           <a href="{{ URL::to('/poll/create') }}" class="custom-btn">{{__('home.Get Started')}}</a>
-            <a href="{{URL::to('/select_plan')}}" class="custom-btn-white" style="margin-left:10px">{{__('home.Go Premium')}}</a>
+            <a href="{{URL::to('/select_plan')}}" class="custom-btn custom-btn-white" style="margin-left:10px">{{__('home.Go Premium')}}</a>
         </div>
         <!--inside-->
     </div>
@@ -106,7 +108,7 @@
 <div class="container">
     <div class="survay-section">
         <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-4">
+            <div class="col-md-6 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
                         {{__('home.100+ Daily Surveys')}}
@@ -114,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-4">
+            <div class="col-md-6 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
                         {{__('home.100+ Daily Surveys')}}
@@ -122,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-4">
+            <div class="col-md-12 col-lg-4 col-sm-4">
                 <div class="">
                     <div class="title-head">
                         {{__('home.100+ Daily Surveys')}}

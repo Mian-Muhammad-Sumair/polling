@@ -57,8 +57,8 @@ header .button-header .custom-btn:hover{
 }
 
 .base-slider h2 {
-    font-width: 500px;
-    ;
+    /* font-width: 500px; */
+    
     font-size: 32px;
 }
 
@@ -67,15 +67,17 @@ header .button-header .custom-btn:hover{
     font-weight: 900;
 }
 
-.base-slider p {
-    width: 35%;
-}
+
 
 .base-slider h2,
 .base-slider p {
+    width: 65%;
+
     color: #707070;
 }
-
+.base-slider p {
+    width: 55%;
+}
 .base-slider .custom-btn {
     color: #fff;
     background-color: #0044e4;

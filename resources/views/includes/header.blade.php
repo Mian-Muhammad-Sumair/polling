@@ -1,14 +1,14 @@
 <header class="transparent">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 col-lg-2 col-sm-12 ">
+            <div class="col-md-3 col-lg-6 col-sm-12 ">
 {{--                @if(request()->is('home'))--}}
 {{--                <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="logo"></a></div>--}}
 {{--                @else--}}
                 <div class="logo"><a href="{{ url('/home') }}"><img src="{{ asset('assets/images/logo.png?1') }}" alt="logo"></a></div>
 
             </div>
-            <div class="col-md-9 col-lg-9 col-sm-12">
+            <div class="col-md-9 col-lg-6 col-sm-12">
                 <div class="button-header">
                     <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

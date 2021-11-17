@@ -7,7 +7,7 @@
                         <div class="logo "><a href="{{ URL::to('/home') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
                     </div>
                     <!--widget-footer-->
-                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
+                    <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-2">
                         <ul class="links">
                             <li><a href="/poll/create">Get Started</a></li>
                             <li><a href="/select_plan">Price & plans</a></li>
@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                     <!--widget-footer-->
-                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-2">
+                    <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-2">
                         <h4>Subscribe for newsletter</h4>
                         <ul>
                             <form method="post" action="{{url('subscribe/submit')}}">
@@ -31,7 +31,7 @@
                     </div>
                     <!--widget-footer-->
 
-                    <div class="col-lg-3 col-md-6 col-sm-3 widget-footer wt-5 text-right">
+                    <div class="col-lg-3 col-md-6 col-sm-12 widget-footer wt-5 text-right">
                         <h4 class="">Social Links</h4>
                         <ul class="social-icon">
                             <li><a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
