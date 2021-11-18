@@ -280,7 +280,7 @@
         float: none;
     }
     .participation-form {
-        float: right !important;
+        /* float: right !important; */
     }
     .login-bg form .form-group label,
     .sign-up form .form-group {
@@ -1388,8 +1388,8 @@
         text-align: center;
     }
     .button-header .custom-btn {
-        font-size: 12px !important;
-        padding: 10px !important;
+        font-size: 11px !important;
+        padding: 10px 5px !important;
         border-radius: 3px !important;
     }
     .button-header .dropdown .btn {
@@ -1400,10 +1400,14 @@
     }
     .button-header {
         justify-content: center;
-        height: 50px !important;
+        min-height: 50px !important;
     margin-top: 5px !important;
     }
+    .card-payment-row {padding-top: 30px;}
     .footer-outer .text-right {
         text-align: center !important;
+    }
+    .button-header .dropdown-menu {
+        left: 0 !important;
     }
 }

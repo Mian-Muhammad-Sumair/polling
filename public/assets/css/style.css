@@ -606,12 +606,15 @@ header .menu .sub-menu li a {
 header .button-header {
     /* text-align: right; */
     margin-right: 7px;
-    height: 60px;
+    min-height: 60px;
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
 }
 
 header .button-header .custom-btn {
+    white-space: pre;
+    margin: 4px 2px ;
     /*width: 113px;*/
     background: #0044e4;
     border-radius: 7px;
@@ -3083,7 +3086,15 @@ footer .footer-logo img {
 
 /* 02. Content Order
    ==================================== */
-
+.content-order {
+    padding-top: 120px;
+    overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+    .content-order {
+        padding-top: 30px;
+    }
+}
 .content-order h2 {
     color: #39335b;
     font-size: 32px;
