@@ -613,12 +613,14 @@ header .button-header {
 
 header .button-header .custom-btn {
     /*width: 113px;*/
+    white-space: pre;
     background: #0044e4;
     border-radius: 7px;
     /* border: 1px solid white; */
     color: #fff;
     box-shadow: 1px 1px 22px rgba(98, 129, 157, 0.4);
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
+    font-size: 12px !important;
     display: inline-block;
     text-align: center;
     padding: 10px 12px;
@@ -4300,6 +4302,8 @@ html {
 }
 
 .button-header .dropdown .btn {
+    padding-right: 10px;
+    font-size: 12px;
     background: #3116c1;
     border-radius: 7px;
     color: white;
