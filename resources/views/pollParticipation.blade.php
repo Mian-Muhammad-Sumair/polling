@@ -5,7 +5,7 @@
 @section('content')
 <div class="container  participation-section  content-order animatedParent">
     <div class="row">
-        <div class="col-md-6 col-sm-7  animated bounceInRight">
+        <div class="col-md-6 col-sm-12  animated bounceInRight">
             <div class="login-bg login-form participation-form register-bg animatedParent">
                 <div class="main">
                     <h2 class="title-page">{{__('participation.Poll Participation')}}</h2>
@@ -36,7 +36,7 @@
                 </form>
             </div>
 </div>
-        <div class="col-md-6 col-sm-5 participation-img login-img image animated bounceInLeft">
+        <div class="col-md-6 col-sm-12 participation-img login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
         </div>

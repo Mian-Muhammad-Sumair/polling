@@ -407,8 +407,11 @@
 @media only screen and (min-width: 670px) and (max-width: 991px) {
     .register-bg form,
     .sign-up form {
-        width: 440px !important;
+        /* width: 440px !important; */
         padding: 35px 40px 20px 38px !important;
+    }
+    button {
+        padding: 15px 15px !important;
     }
     .title-menu {
         font-size: 28px;
@@ -1401,9 +1404,11 @@
     .button-header {
         justify-content: center;
         min-height: 50px !important;
-    margin-top: 5px !important;
+        margin-top: 5px !important;
     }
-    .card-payment-row {padding-top: 30px;}
+    .card-payment-row {
+        padding-top: 30px;
+    }
     .footer-outer .text-right {
         text-align: center !important;
     }
