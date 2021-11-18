@@ -43,9 +43,7 @@
                 <img src="{{asset('assets/images/login.svg')}}" alt="image">
             </div>
 </div>
-        <div class="col-md-6 col-sm-12 participation-img login-img image animated bounceInLeft">
-            <img src="{{asset('assets/images/login.svg')}}" alt="image">
-        </div>
+        
         </div>
     </div>
     </div>
