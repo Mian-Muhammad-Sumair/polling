@@ -157,7 +157,7 @@
     <div class=" animatedParent">
         <div class="images-bg-fix">
             <div class="container">
-                <div class="col-md-6 animated bounceInRight">
+                <div class="col-md-12 col-lg-6 animated bounceInRight">
                     <div class="login-bg contact-us-bg animatedParent">
                         <form method="POST" action="{{ url('contact_us/send') }}">
                             @csrf
@@ -183,7 +183,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6 text-section animated bounceInLeft">
+                <div class="col-md-12 col-lg-6 text-section animated bounceInLeft">
                     <div class="title-menu" style="text-align: right; margin-bottom:10px">
                         {{__('home.Contact Us')}}
                     </div>

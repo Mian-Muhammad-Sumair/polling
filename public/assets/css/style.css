@@ -4601,7 +4601,13 @@ ul {
         padding: 10px 0px;
     }
 }
+.content-order {
+    padding-top: 130px;
+}
 @media only screen and (max-width: 767px) {
+    .content-order {
+        padding-top: 30px;
+    }
     .contact-us-bg form {
         padding: 20px !important;
     }
@@ -4625,21 +4631,26 @@ ul {
         margin-bottom: 5px;
     }
     .text-section .title-menu {
-        text-align: left !important;
+        text-align: center !important;
     }
     .text-section .theme-bar {
         float: left !important;
+        display: none;
     }
     .section-contact .images-bg-fix .text-section li,
     .section-contact .images-bg-fix .text-section .first {
-        text-align: left !important;
+        text-align: center !important;
     }
+}
+body .wrapper {
+    overflow: hidden;
 }
 .transparent {
     position: absolute !important; 
     top: 0 !important;
     right: 0 !important;
 }
+
 @media only screen and (max-width: 1200px) {
     .transparent {
         position: revert !important; 

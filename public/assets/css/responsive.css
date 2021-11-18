@@ -320,7 +320,7 @@
 
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
     .contact-us-bg form {
-        width: 530px !important;
+        /* width: 530px !important; */
     }
     .section-contact .images-bg-fix .text-section p {
         font-size: 22px;
@@ -329,7 +329,7 @@
 
 @media only screen and (min-width: 1100px) and (max-width: 1200px) {
     .contact-us-bg form {
-        width: 500px !important;
+        /* width: 500px !important; */
     }
 }
 
@@ -341,7 +341,7 @@
 
 @media only screen and (min-width: 800px) and (max-width: 991px) {
     .contact-us-bg form {
-        width: 450px !important;
+        width: 100% !important;
     }
     .section-contact .images-bg-fix .text-section p {
         font-size: 20px;
@@ -360,7 +360,7 @@
 
 @media only screen and (min-width: 500px) and (max-width: 799px) {
     .contact-us-bg form {
-        width: 420px !important;
+        width: 100% !important;
     }
     .title-head {
         font-size: 24px;
