@@ -31,11 +31,11 @@
                         <button>{{__('participation.PARTICIPATE TO A POLL')}}</button>
                     </div>
                            @guest(session('auth.current'))
-                               <div class="text-center create clr-wt pd-10"{{__('participation.Already have an account?')}} <a class="clr-wt" href="{{url('/login')}}"><strong>{{__('participation.Login')}}</strong></a></div>
+                               <div class="text-center create clr-wt pd-10"{{__('participation.Already have an account?')}}> <a class="clr-wt" href="{{url('/login')}}"><strong>{{__('participation.Login')}}</strong></a></div>
                            @endguest
                 </form>
             </div>
-        
+</div>
         <div class="col-md-6 col-sm-5 participation-img login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
