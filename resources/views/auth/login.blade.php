@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Login
+    {{ __('login.Login') }}
 @endsection
 @section('content')
 
@@ -8,7 +8,7 @@ Login
     <div class="row">
         <div class="col-md-12 col-sm-12  animated bounceInRight">
             <div class="main">
-                <h2 class="title-page">{{ __('Login.Login') }}</h2>
+                <h2 class="title-page">{{ __('login.Login') }}</h2>
                 <div class="theme-bar"></div>
             </div>
         </div>
@@ -18,23 +18,23 @@ Login
                 <form method="POST" action="{{ url(request()->segment(1)=='login'?'/customer/login':request()->segment(1).'/login') }}" style="float: right">
                     @csrf
                     <div class="form-group">
-                        <label>{{ __('Login.E-Mail Address') }} </label>
+                        <label>{{ __('login.E-Mail Address') }} </label>
                         <input type="text" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('Login.Password') }} </label>
+                        <label>{{ __('login.Password') }} </label>
                         <input type="password" name="password" required autocomplete="current-password">
                         @error('password') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="form-group text-right">
-                        <button>{{ __('Login.Login') }}</button>
+                        <button>{{ __('login.Login') }}</button>
                     </div>
-                    <div class=" create clr-wt pd-10">{{_('Login.Dont have account?')}} <a class="clr-wt" href="{{ url(request()->segment(1)=='login'?'/register':request()->segment(1).'/register') }}"><strong>{{__('Login.Register')}}</strong></a></div>
-                    <div class=" create clr-wt pd-10">{{__('Login.Just wanna participate in a poll?')}} <a class="clr-wt" href="{{ url('/') }}"><strong>{{__('Login.Poll
+                    <div class=" create clr-wt pd-10">{{__('login.Dont have account?')}} <a class="clr-wt" href="{{ url(request()->segment(1)=='login'?'/register':request()->segment(1).'/register') }}"><strong>{{__('login.Register')}}</strong></a></div>
+                    <div class=" create clr-wt pd-10">{{__('login.Just wanna participate in a poll?')}} <a class="clr-wt" href="{{ url('/') }}"><strong>{{__('login.Poll
                         Participation')}}</strong></a></div>
                     @if (Route::has('password.request'))
-                    <div class=" create clr-wt pd-10">{{ __('Login.Forgot Your Password?') }} <a class="clr-wt" href="{{ route('password.request') }}"><strong>{{ __('Login.Click Here') }}</strong></a></div>
+                    <div class=" create clr-wt pd-10">{{ __('login.Forgot Your Password?') }} <a class="clr-wt" href="{{ route('password.request') }}"><strong>{{ __('login.Click Here') }}</strong></a></div>
                     @endif
                 </form>
             </div>
