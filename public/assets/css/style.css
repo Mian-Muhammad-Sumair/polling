@@ -4364,7 +4364,7 @@ input {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 99999;
     top: 0;
     right: 0;
     background-color: #eeeeee;
@@ -4408,6 +4408,7 @@ input {
 .sidenav-btn {
     background: #3116c1;
     height: 36px;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;

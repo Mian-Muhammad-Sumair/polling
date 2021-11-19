@@ -1415,4 +1415,32 @@
     .button-header .dropdown-menu {
         left: 0 !important;
     }
+    .dashboard-body .top-header {
+        flex-direction: column !important;
+    }
+    .dashboard-body .top-header .custom-btn {
+        margin-top: 20px;
+
+    }
+    .dashboard-body .profile-section .profile {
+        margin-bottom: 20px;
+    }
+    .dataTables_wrapper {
+        padding-top: 20px;
+    }
+    table.dataTable thead .sorting{
+        white-space: nowrap;
+    }
+    .table-outer-body .dataTable tbody tr td {
+        white-space: nowrap;
+    }
+    table.dataTable thead .sorting_desc, tbody th {
+        white-space: nowrap !important;
+    }
+    .chosse-plan-btn {
+padding-bottom: 10px;
+    }
+    .register-bg {
+        margin-top: 20px;
+    }
 }
