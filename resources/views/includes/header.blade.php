@@ -64,7 +64,7 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 @if(session('auth.current')=='admin')
                                     @can('View Customer') <a href="{{url('admin/customer')}}">{{__('header.Dashboard')}}</a>@endcan
-                                    @can('View Role & Permission')    <a href="{{url('/admin/role_list')}}">{{__('header.Role')}}s</a>@endcan
+                                    @can('View Role & Permission')    <a href="{{url('/admin/role_list')}}">{{__('header.Roles')}}s</a>@endcan
                                     @can('View Contact Us')   <a href="{{url('/admin/contact_us')}}">{{__('header.Contact Us List')}}</a>@endcan
                                     @can('View Subscriber')   <a href="{{url('/admin/subscribe')}}">{{__('header.Subscriber')}}</a>@endcan
                                     @can('View Subscription Plan')   <a href="{{url('/admin/subscription_plan')}}">{{__('header.Subscription Plan List')}}</a>@endcan

@@ -4608,6 +4608,7 @@ ul {
 }
 .content-order {
     padding-top: 130px;
+    padding-bottom: 20px;
 }
 @media only screen and (max-width: 767px) {
     .content-order {
@@ -4651,14 +4652,14 @@ body .wrapper {
     overflow: hidden;
 }
 .transparent {
-    position: absolute !important; 
+    position: absolute !important;
     top: 0 !important;
     right: 0 !important;
 }
 
 @media only screen and (max-width: 1200px) {
     .transparent {
-        position: revert !important; 
+        position: revert !important;
         top: 0 !important;
         right: 0 !important;
     }

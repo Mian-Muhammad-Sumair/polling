@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Edit User
+{{__('user.Update User')}}
 @endsection
 
 @section('content')
@@ -8,9 +8,9 @@
     <div class="container content-order ">
         <div class="row login-bg ">
             <div class="col-md-12 col-sm-12 col-lg-12">
-                <div class="col-md-7 col-sm-8">
+                <div class="col-md-6 col-sm-7">
                     <div class="col-md-12 main">
-                        <h2 class="title-page">Update User</h2>
+                        <h2 class="title-page">{{__('user.Update User')}}</h2>
                         <div class="theme-bar"></div>
                     </div>
                     <form method="post" action="{{ url("/user/update") }}">
@@ -18,14 +18,14 @@
                         @method('put')
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>User name</label>
+                                <label>{{__('user.User name')}}</label>
                                 <input type="text" name="name" value="{{old('name') == '' ?$user->name:old('name') }}">
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>{{__('user.Email')}}</label>
                                 <input type="text" name="email"
                                        value="{{old('email') == '' ?$user->email:old('email') }}">
                                 @error('email') <span class="error_msg">{{$message}}</span> @enderror
@@ -33,20 +33,20 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>About</label>
+                                <label>{{__('user.About')}}</label>
                                 <input type="text" name="about"
-                                       value="{{old('email') == '' ?$user->about:old('about') }}">
+                                       value="{{old('about') == '' ?$user->about:old('about') }}">
                                 @error('about') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-lg-4">
-                            <input type="submit" class="custom-btn-update " name="status" value="Update">
+                            <input type="submit" class="custom-btn-update " name="status" value="{{__('user.Update')}}">
                         </div>
                     </form>
                 </div>
-                <div class="col-md-5 col-sm-4">
+                <div class="col-md-6 col-sm-5">
                     <div class="col-md-12 main">
-                        <h2 class="title-page">Update Password</h2>
+                        <h2 class="title-page">{{__('user.Update Password')}}</h2>
                         <div class="theme-bar"></div>
                     </div>
                     <form method="post" action="{{ url("/user/update/password") }}">
@@ -54,14 +54,14 @@
                         @method('put')
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Old Password</label>
+                                <label>{{__('user.Old Password')}}</label>
                                 <input type="password" name="old_password" value="">
                                 @error('old_password') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>New Password</label>
+                                <label>{{__('user.New Password')}}</label>
                                 <input type="password" name="new_password"
                                        value="">
                                 @error('new_password') <span class="error_msg">{{$message}}</span> @enderror
@@ -69,13 +69,13 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Conform Password</label>
+                                <label>{{__('user.Conform Password')}}</label>
                                 <input type="password" name="confirm_password">
                                 @error('confirm_password') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6">
-                            <input type="submit" class="custom-btn-update " name="status" value="Change Password">
+                            <input type="submit" class="custom-btn-update " name="status" value="{{__('user.Change Password')}}">
                         </div>
                     </form>
                 </div>

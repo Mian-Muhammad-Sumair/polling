@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Edit Poll
+{{__('poll.Edit Poll')}}
 @endsection
 
 @section('content')
@@ -13,20 +13,20 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="col-md-8 col-sm-8">
                         <div class="col-md-12 main">
-                            <h2 class="title-page">Edit poll</h2>
+                            <h2 class="title-page">{{__('poll.Edit Poll')}}</h2>
                             <div class="theme-bar"></div>
                         </div>
                         <input type="hidden" name="poll_id" value="{{$poll->id}}">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Poll name</label>
+                                <label>{{__('poll.Poll name')}}</label>
                                 <textarea class="form-control" id="name"  name="name">{{old('name') == '' ?$poll->name:old('name')}}</textarea>
                                 @error('name') <span class="error_msg">{{$message}}</span> @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group ">
-                                <label>Poll End Date</label>
+                                <label>{{__('poll.Poll End Date')}}</label>
                                 <div class="text" style="font-size:40px;">
                                     <input type="date" name="end_date"   placeholder="To"  value="{{old('end_date') == '' ?$poll->end_date:old('end_date') }}">
                                     @error('start_date') <span class="error_msg">{{$message}}</span> @enderror
@@ -42,7 +42,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12 second-part">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Poll info</label>
+                            <label>{{__('poll.Poll info')}}</label>
                             <input type="text" name="info" placeholder=""  value="{{old('info') == '' ?$poll->info:old('info')}}">
                             @error('info') <span class="error_msg">{{$message}}</span> @enderror
 
@@ -50,12 +50,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Poll question</label>
+                            <label>{{__('poll.Poll question')}}</label>
                             <textarea class="form-control" id="question_editor"  name="question">{{old('info') == '' ?$poll->question:old('question')}}</textarea>
                             @error('question') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
                         <div class="form-group">
-                            <label>Question Video</label>
+                            <label>{{__('poll.Question Video')}}</label>
                             <input type="file"  id="question_video" name="question_video" >
                             @error('question_video') <span class="error_msg">{{$message}}</span> @enderror
                         </div>
@@ -63,7 +63,7 @@
 
                     <div class="col-md-12 field_wrapper">
                         <div class="form-group">
-                            <label>Poll option</label>
+                            <label>{{__('poll.Poll option')}}</label>
                             @php
                                 $poll_option_id=['poll_option_one','poll_option_two','poll_option_three','poll_option_four','poll_option_five'];
                                 if(old('poll_option')){
@@ -90,7 +90,7 @@
                                     @error('poll_option.'.$option->id) <span class="error_msg">{{$message}}</span> @enderror
 
                                     <div class="form-group">
-                                        <label>Poll identifier questions</label>
+                                        <label>{{__('poll.Poll identifier questions')}}</label>
                                         <input type="file"  id=""  name="video_{{$option->id}}" >
                                     </div>
                                 @endforeach
@@ -101,13 +101,13 @@
                     </div>
                     <div>
                         <div class="form-group text-right float-right">
-                            <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">Add option +</a>
+                            <a  href="javascript:void(0);" title="Add field" class="custom-btn add_button">{{__('poll.Add option')}} +</a>
                         </div>
                     </div>
                     <div class="col-md-12 field_wrap">
                         <div class="form-group">
 
-                            <label>Poll identifier questions</label>
+                            <label>{{__('poll.Poll identifier questions')}}</label>
                             @php
                             if(old('identifier_question')){$totalQuestions= $totalQuestions=count(old('identifier_question'));}else{ $totalQuestions=count($poll->pollIdentifierQuestions);}
                             @endphp
@@ -119,8 +119,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="Generate-polling-key-radio">
-                                            <input type="checkbox" id="idt_qt{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}}][required]" value="1">
-                                            <label for="idt_qt{{$index}}"> Required</label>
+                                            <input type="checkbox" id="idt_qt{{$index}}" class="largerCheckbox" {{Isset($option['required'])&&$option['required']==1?"checked":''}}  name="identifier_question[{{$index}}][required]" value="1">
+                                            <label for="idt_qt{{$index}}"> {{__('poll.Required')}}</label>
                                         </div>
                                     </div>
                                 @endforeach
@@ -134,7 +134,7 @@
                                     <div class="col-md-2">
                                         <div class="Generate-polling-key-radio">
                                             <input type="checkbox" id="idt_qt{{$question->id}}" class="largerCheckbox" {{$question->required?"checked":''}}  name="identifier_question[{{$question->id}}][required]" value="1">
-                                            <label for="idt_qt{{$question->id}}"> Required</label>
+                                            <label for="idt_qt{{$question->id}}"> {{__('poll.Required')}}</label>
                                         </div>
                                     </div>
                                 @endforeach
@@ -144,16 +144,16 @@
                     </div>
                     <div class="col-md-12 ">
                         <div class="form-group text-right float-right">
-                            <a href="javascript:void(0);" title="Add field" class="custom-btn add_question">Add more question +</a>
+                            <a href="javascript:void(0);" title="Add field" class="custom-btn add_question">{{__('poll.Add more question')}} +</a>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-5">
                         <div class="form-group ">
-                            <label>Poll category</label>
+                            <label>{{__('poll.Poll category')}}</label>
                             <div class="select-dropdown">
                                 <select name="category">
                                     <option class="option-item" disabled selected>
-                                        Select
+                                        {{__('poll.Select')}}
                                     </option>
                                     @foreach($categories as $category)
                                         <option class="option-item" {{($category==old('category') || $category==$poll->category)?'selected':''}} value="{{$category}}">
@@ -167,17 +167,17 @@
                     </div>
                     <div class="col-md-5 col-sm-5 ">
                         <div class="form-group">
-                            <label>Poll visibility  <span>*</span></label>
+                            <label>{{__('poll.Poll visibility')}} <span>*</span></label>
                             <div class="select-dropdown">
                                 <select name="visibility" >
                                     <option class="option-item" disabled selected>
-                                        Select
+                                        {{__('poll.Select')}}
                                     </option>
                                     <option class="option-item" value="private" {{('private'==old('visibility') || 'private'==$poll->visibility)?'selected':''}}>
-                                        Private
+                                        {{__('poll.Private')}}
                                     </option>
                                     <option class="option-item" value="public" {{('public'==old('visibility') || 'public'==$poll->visibility)?'selected':''}}>
-                                        Public
+                                        {{__('poll.Public')}}
                                     </option>
                                 </select>
                             </div>
@@ -188,7 +188,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="col-md-10 col-sm-10 account-details ">
                         <div class="form-group checkbox">
-                            <label>Poll option type</label>
+                            <label>{{__('poll.Poll option type')}}</label>
                             @foreach(config('poll_option_types') as $option_type=>$option_type_title)
                                 <div class="col-md-4 col-sm-3 ">
                                     <input type="checkbox" name="option_type[]" value="{{$option_type}}"
@@ -227,11 +227,11 @@
                      <input type="submit" class="custom-btn btn-lg" name="status"  value="Lock Poll">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
-                        <a style="width: 100%;text-align: center"  data-toggle="modal" data-target="#demoModal" onclick="generateKey()" class="custom-btn  btn-lg ">Generate Poll Key</a>
+                        <a style="width: 100%;text-align: center"  data-toggle="modal" data-target="#demoModal" onclick="generateKey()" class="custom-btn  btn-lg ">{{__('poll.Generate Poll Key')}}</a>
                         @error('key') <span class="error_msg">{{$message}}</span> @enderror
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
-                        <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
+                            <input type="submit" class="custom-btn btn-lg" name="status" value="Published">
                     </div>
 
                 </div>
@@ -239,7 +239,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="demoModalLabel">Sellect Keys</h5>
+                                <h5 class="modal-title" id="demoModalLabel">{{__('poll.Select Keys')}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -267,7 +267,7 @@
                                             </div>
                                             <div class="col-lg-2">
                                                 <div class="Generate-polling-key-radio" style="margin-top: 12px">
-                                                    <input type="checkbox" id="key_type0" class="largerCheckbox" {{$key['required']?"checked":''}}  name="key[{{$index}}][required]" value="1">
+                                                    <input type="checkbox" id="key_type0" class="largerCheckbox " {{isset($key['required']) && $key['required']?"checked":''}}   name="key[{{$index}}][required]" value="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -279,7 +279,7 @@
                             @endif
                             </div>
                             <div class="modal-footer" style="color: white">
-                                <a href="#" class="  custom-btn" data-dismiss="modal">Ok</a>
+                                <a href="#" class="  custom-btn" data-dismiss="modal">{{__('poll.Ok')}}</a>
                             </div>
                         </div>
                     </div>

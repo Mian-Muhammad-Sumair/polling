@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Poll Data
+    {{__('poll.Poll Data')}}
 @endsection
 @section('content')
     <div class="container">
         <div class="dashboard-body">
             <div class="top-header">
                 <div>
-                    <h2><b>{!! $selectedOption->question_option !!} Option Total Votes</b></h2>
+                    <h2><b>{!! $selectedOption->question_option !!} {{__('poll.Option Total Votes')}}</b></h2>
                     <div class="underline"></div>
                 </div>
             </div>
@@ -17,17 +17,17 @@
                      <label> {!! $poll->name !!}</label>
                     </div>
                     <div class="col-lg-6">
-                        <label><b>Info :</b></label><label> {{$poll->info}}</label>
+                        <label><b>{{__('poll.Info')}} :</b></label><label> {{$poll->info}}</label>
                     </div>
 
                     <div class="col-lg-12">
-                        <label style="font-size: 18px"><b>Question :</b></label>
+                        <label style="font-size: 18px"><b>{{__('poll.Question')}} :</b></label>
                         <div><label>{!! $poll->question !!}</label></div>
 
                         <br>
                     </div>
                     <div class="col-lg-12">
-                        <label><b>Poll Key :</b></label><br>
+                        <label><b>{{__('poll.Poll Key')}} :</b></label><br>
                         @foreach($poll->pollkeys as $index=>$key)
                             <label class="selected">( {{$key->key}} )</label>
                             @if(count($poll->pollkeys)!=$index+1)
@@ -36,7 +36,7 @@
                         @endforeach
                     </div>
                     <div class="col-lg-12">
-                        <label><b>Total Vote - Options :</b></label>
+                        <label><b>{{__('poll.Total Vote')}} - {{__('poll.Options')}} :</b></label>
                         <ol>
                             @foreach($pollVote as $index=>$Options)
                                 <li class="{{$selectedOption->question_option==$Options['question_option']?'selected':''}}"

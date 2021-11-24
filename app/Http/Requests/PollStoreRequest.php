@@ -37,10 +37,10 @@ class PollStoreRequest extends FormRequest
             'option_type' => 'nullable|array',
             'question_video' => 'max:20480',
             'status' => 'required|in:Lock Poll,Published',
-            'key' => ['bail','required_if:status,Publish Poll', 'array',
+            'key' => ['bail','required_if:status,Published', 'array',
                 function ($attribute, $value, $fail) {
                     foreach ($value as $index=>$val) {
-                        if ($val['required']) {
+                        if (isset($val['required']) && $val['required']) {
                             $keyCheck=PollKey::where('key',$val['key'])->exists();
                             if($keyCheck){
                                 $fail("This key ({$val['key']}) already assign to another poll.");
@@ -50,6 +50,8 @@ class PollStoreRequest extends FormRequest
                                     $fail("Duplication key error ({$val['key']})");
                                 }
                             }
+                        }else{
+                            $fail("Please enter poll key first");
                         }
                     }
 

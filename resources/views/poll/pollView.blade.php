@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-Poll Data
+{{__('poll.Poll Data')}}
 @endsection
 @section('content')
 <div class="container">
     <div class="dashboard-body">
         <div class="top-header">
             <div>
-                <h2> <b>Poll Data</b></h2>
+                <h2> <b>{{__('poll.Poll Data')}}</b></h2>
                 <div class="underline"></div>
             </div>
         </div>
@@ -17,10 +17,10 @@ Poll Data
                  <label> {!! $poll->name !!}</label>
                 </div>
                 <div class="col-lg-6">
-                    <label><b>Info :</b></label><label> {{$poll->info}}</label>
+                    <label><b>{{__('poll.Info')}} :</b></label><label> {{$poll->info}}</label>
                 </div>
                 <div class="col-lg-12">
-                    <div> <label><b>Question :</b></label></div>
+                    <div> <label><b>{{__('poll.Question')}} :</b></label></div>
                     <label> {!! $poll->question  !!}</label>
 
                     <div>
@@ -44,7 +44,7 @@ Poll Data
                     @endforeach
                 </div>
                 <div class="col-lg-12">
-                    <label><b>Poll identifier Question :</b></label>
+                    <label><b>{{__('poll.Poll identifier Question')}} :</b></label>
                     <ol>
                         @foreach($poll->pollIdentifierQuestions as $question)
 
