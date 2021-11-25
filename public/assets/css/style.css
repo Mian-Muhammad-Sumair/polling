@@ -437,18 +437,18 @@ header {
     padding: 10px 0;
     /* margin-bottom: 90px; */
     position: relative;
-    background-color: #0479ec;
+    background-color: #0479ec !;
 }
 
 header.transparent {
     top: 0;
     left: 0;
-    background: #4526eb !important;
+    /* background: #4526eb !important; */
     width: 100%;
     z-index: 999999;
     /* padding: 50px 0 0;
     margin-bottom: 60px; */
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 
 header.transparent .logo-mobile {
@@ -4606,10 +4606,14 @@ ul {
         padding: 10px 0px;
     }
 }
-.content-order {
-    padding-top: 130px;
-    padding-bottom: 20px;
+.dashboard-body {
+    padding-top: 30px;
 }
+/* @media only screen and (min-width: 1200px) {
+    .content-order {
+        padding-top: 130px;
+    }
+} */
 @media only screen and (max-width: 767px) {
     .content-order {
         padding-top: 30px;
@@ -4651,11 +4655,11 @@ ul {
 body .wrapper {
     overflow: hidden;
 }
-.transparent {
+
     position: absolute !important;
     top: 0 !important;
     right: 0 !important;
-}
+} */
 
 @media only screen and (max-width: 1200px) {
     .transparent {

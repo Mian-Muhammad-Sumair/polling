@@ -6,7 +6,7 @@
 @section('extra_css')
 <style>
     .images-bg-fix {
-        background-image:url('{{asset('assets/images/contact.png')}}');
+        /* background-image:url('{{asset('assets/images/contact.png')}}'); */
         background-color: #1f46a2;
         background-repeat: no-repeat;
         background-size: cover;
@@ -26,9 +26,8 @@
         margin-bottom: 10px;
     }
 
-    /* header.transparent {
-        position: absolute;
-    } */
+    header.transparent {
+     background: #4526EB; }
 
     @media only screen and (max-width:1200px) {
         .images-bg-fix {

@@ -94,7 +94,9 @@
         margin-bottom: 20px;
     }
 }
-
+.login-container, .card-payment-row {
+    padding-top: 30px;
+}
 @media only screen and (min-width: 991px) and (max-width: 1200px) {
     /*==================================
 	=            Index.html            =
@@ -127,9 +129,6 @@
     .login-bg form .form-group,
     .sign-up form .form-group {
         margin-bottom: 15px;
-    }
-    header.transparent {
-        padding: 20px 0 0;
     }
     .content-order .register-img img {
         max-width: 85%;
@@ -300,7 +299,7 @@
         margin-bottom: 0px;
     }
     .login-img img {
-        margin-top: 120px;
+        margin-top: 40px;
         max-width: 100%;
     }
     .contact-us-bg form {
@@ -371,7 +370,7 @@
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .login-img img {
-        margin-top: 120px;
+        margin-top: 40px;
         max-width: 100%;
     }
     .section-contact .images-bg-fix .text-section {
@@ -410,9 +409,9 @@
         /* width: 440px !important; */
         padding: 35px 40px 20px 38px !important;
     }
-    button {
+    /* button {
         padding: 15px 15px !important;
-    }
+    } */
     .title-menu {
         font-size: 28px;
         margin-bottom: 10px;
@@ -458,7 +457,7 @@
 	=            Index.html            =
 	==================================*/
     header {
-        padding: 29px 0;
+        padding: 10px 0;
         background-color: #0479ec;
     }
     header > .container {
@@ -1036,10 +1035,10 @@
     /*==================================
 	=            login.html            =
 	==================================*/
-    .login-bg,
+    /* .login-bg,
     .sign-up {
         padding-bottom: 80px;
-    }
+    } */
     .login-bg form,
     .sign-up form {
         width: 100%;
@@ -1065,7 +1064,7 @@
     }
     .register-bg form,
     .sign-up form {
-        width: 384px !important;
+        /* width: 384px !important; */
         padding: 28px 30px 20px 30px !important;
     }
 }
