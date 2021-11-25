@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
         <div class="col-md-6 col-sm-12 login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
