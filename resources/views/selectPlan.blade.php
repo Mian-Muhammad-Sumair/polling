@@ -3,7 +3,7 @@
 Select Plan
 @endsection
 @section('content')
-<div class="container animatedParent card-payment-row">
+<div class="container content-order animatedParent card-payment-row">
     <div class="row">
         @foreach($subscriptionPlans as $subscriptionPlan)
 

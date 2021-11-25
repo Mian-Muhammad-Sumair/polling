@@ -12,7 +12,7 @@
                 <div class="theme-bar"></div>
             </div>
         </div>
-        <div class="col-md-5 col-sm-7  animated bounceInRight">
+        <div class="col-md-5 col-sm-12  animated bounceInRight">
             <div class="login-bg login-form register-bg animatedParent">
 
                 <form method="POST" action="{{ url(request()->segment(1)=='login'?'/customer/login':request()->segment(1).'/login') }}" style="float: right">
@@ -39,7 +39,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-7 col-sm-5 login-img image animated bounceInLeft">
+        <div class="col-md-7 col-sm-12 login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
     </div>

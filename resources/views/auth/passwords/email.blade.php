@@ -3,10 +3,10 @@
 @section('content')
 <div class="container login-container content-order animatedParent">
     <div class="row justify-content-center">
-        <div class="col-md-6 animated bounceInRight"">
+        <div class="col-md-6 animated bounceInRight">
             <div class=" main">
-            <h2 class="title-page">Reset Password</h2>
-            <div class="theme-bar"></div>
+                <h2 class="title-page">Reset Password</h2>
+                <div class="theme-bar"></div>
                 <!-- <div class="card-header">{{ __('Reset Password') }}</div> -->
 
                 <div class="card-body">
@@ -57,11 +57,12 @@
                         </form>
                     </div>
                 </div>
+            </div>
         </div>
         <div class="col-md-6 col-sm-5 login-img image animated bounceInLeft">
             <img src="{{asset('assets/images/login.svg')}}" alt="image">
         </div>
     </div>
-    </div>
+</div>
 </div>
 @endsection
